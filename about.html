@@ -1,0 +1,216 @@
+<!-- About page -->
+<!-- Includes navigation bar and bottom bar -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- boilerplate garbage -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yaqin</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about_styles.css">
+</head>
+
+<body> 
+    <div class="top-nav">
+        <div class="top-nav-left">
+        <a class="left-align" href="index.html">Home</a>
+        <a class="left-align active" href="about.html">About</a>
+        <a class="left-align" href="projects.html">Projects</a>
+        <a class="left-align" href="interests.html">Interests</a>
+        <a class="left-align" href="technical.html">For_Nerds</a>
+        </div>
+        
+        <div class="top-nav-right">
+        <a class="right-align" href="contact.html">Contact</a>
+        <a class="right-align" href="resume.html">CV</a>
+        </div>
+    </div> 
+
+    <div>
+    <div>
+        <h1 class="title-text welcome-left"> Some stuff about me </h1>
+        <p class="welcome-paragraph"> 
+            This page will contain some things about me you might want to know about, or just general ramblings :D
+        </p>
+    </div>
+
+    <details class="collapsible-generic collapsible-about" open> 
+        <summary class="collapsible-generic-header collapsible-about-header"> What have I used before (Programming Languages, Tools, Frameworks, Environments) </summary>
+        <p>
+            So this will be a section will be a quick overview of what I have used before as well what I could realistically quickly pick up based on previous experience. 
+        </p>
+
+        <p>
+            Programming Languages: 
+            - C/C++ used interchangeably based on what project requirements, more familiar with C though, as I've used that more for microcontroller/Arduino type projects. 
+            - Java used mostly in university courseworks, group courseworks and larger software projects. 
+            - Python used mostly for rapid prototyping, eventually was used for my Final Year Project
+            - JavaScript used mostly begrudgingly when doing web development stuff. 
+            - TypeScript/Dart used when developing Flutter applications. 
+            - Haskell used mostly in university functional programming modules and for my STQL interpreter project. 
+            - SQL used during my relational database theory modules
+            - Lua used for general purpose scripting, specifically for Cyberpunk 2077 CyberEngineTweaks mod integration. 
+            - Bash used for Linux scripting
+            - Batch used for Windows scripting
+            - ARMv8 assembly used as part of a systems module at one point. 
+            - HTML/CSS, I debated putting this as a programming language but someone made a Turing Machine with it so I that makes it count in my book. 
+
+            Markup Languages: 
+            - XML 
+            - JSON. Anything is a spade if you use it to dig, just like anything is a markup language if you use it instead of implementing a proper database xD
+            - YAML because for some reason video games and their mods really like using this. 
+            - Markdown, because GitHub and because Discord :)
+        </p>
+
+        <p>
+            Build tools: 
+            - Maven for Java group projects in university. 
+            - Cmake for C/C++ projects, both personal and in university. 
+            - Alex Haskell lexer, similar to the C/C++ lexers "lex" and "flex"
+            - Happy Haskell parser, similar to yacc C parser. 
+            - GCC and Clang C compilers, also used for cross compilation at one point to compile for an ARMv8 target on an x86-64 PC.
+        </p>
+
+        <p>
+            Development tools: 
+            - Git, GitHub and GitLab for VCS (obviously). Also GitHub desktop because I am lazy and it's surprisingly good. 
+            - JetBrains IDE suite (IDEA, Pycharm, CLion)
+            - Microsoft Visual Studio for some windows native app development. I dislike writing C/C++ and using their build tools in Windows, would much rather do it in a Unix (yes, unix not just linux). 
+            - Microsoft Visual Studio Code for Flutter (it's their recommended IDE, I don't know why, but it does work well), and for web development in HTML, CSS, JS etc. 
+            - Sublime Text (definitely licensed version) as a basic text editor, though I used to use Atom which was a lot cleaner (RIP). 
+            - GNU nano as a CLI text editor, I don't use vi/vim as I do go outside :D (jk, I just like included tools more)
+            - Jupyter notebook because I accidentally ended up doing data science in my computer science degree. I wouldn't use it for anything else though. 
+        </p>
+
+        <p>
+           General Tools: 
+           - SSH, primarily the included version with unix systems and openSSH on windows. 
+           - PuTTy, because the included openSSH version in windows is very barebones. 
+           - WinSCP, because for some reason I decided to use windows as my remote client. I want to switch to SCP eventually though, or whatver the unix/linux version of this software is called. 
+           - VMware workstation/Fusion: I primarily use this for virtualization because the university used to give me a free license, prior to that I had a completely legal license for this. 
+           - VirtualBox: I want to fully switch over to this for virtualization eventually but I never had the chance to yet. 
+           - WSL2: I love being able to run linux commands from my windows machine without having to fire up a VMware or VirtualBox VM :)
+           - Docker: Mostly just experimenting with this for my HomeLab server projects. 
+        </p>
+
+        <p>
+            Frameworks: 
+            - Qt for Python desktop GUI
+            - Tk for Python desktop GUI 
+            - JavaFX for Java desktop GUI 
+            - Flutter for cross-platform GUI
+            - NumPy and Pandas because I did a data science module accidentally. 
+            - OpenCV as part of my final year project. 
+        </p>
+        <p>
+            Development Environments: 
+            - Ubuntu 22 LTS (debian): I use this if it's the simplest option or if I'm going to implement something based on a tutorial, because it's likely written with this in mind. 
+            - PopOS 22 (debian): I use this on my personal linux box, I like the default desktop environment more than Ubuntu 22, it has some nifty included tools and the Nvidia drivers are a nice touch. 
+            - Raspberry Pi OS: I use this on my HomeLab Raspberry Pi 5 because of the performance optimizations that they have made to the distro to make it run really well on the Pi. 
+            - Windows 10: I don't like Windows 11 :p and I have it installed on my main computer, which means I have to begrudgingly use it to develop sometimes. 
+            - MacOS: I used to develop primarily in MacOS actually, until I switched over to Linux for that. Most unix tools work out of the box, even some Linux ones, though it can be a pain to get some software on MacOS and my MacBook Pro is getting old :(
+        </p>
+
+        <p>
+            Cloud platforms: 
+            - AWS: AWS console, EC2, EC2 Instance Connect, Route 53, Elastic IP, etc
+            - OVH: OVH console, VPS, SSL gateway. 
+        </p>
+            
+
+    </details><br>
+
+    <details class="collapsible-generic collapsible-about" open> 
+        <summary class="collapsible-generic-header collapsible-about-header"> The BSc Computer Science experience briefly summarized </summary>
+        <p>
+            I wanted to briefly summarize each year of my degree and use that as a jumping off point to list each year's modules and corresponding courseworks. 
+            <br>// psst, my Final Year Project has it's own page <a href="projects.html#project1">here</a>, if you're looking for that
+        </p>
+
+        <p>
+            TONE DISCLAIMER: 
+            I debated on creating a purely factual list, detailing each module's contents by essentially copying their syllabuses. 
+            However, I decided against this as I was strongly inspired by <a href="https://www.youtube.com/watch?v=XoSllabxqiQ">this</a> YouTube video titled "My Whole Computer Science Degree in 12 Minutes". 
+            In that video, the creator both recounted his entire degree experience but most importantly, made it a humorous experience rather than a soulless information dump. 
+            I wish to replicate this in text form
+        </p>
+
+        <details class="collapsible-generic collapsible-about" id="degree-year1" open> 
+            <summary class="collapsible-generic-header collapsible-about-header"> Year 1 </summary>
+            <p>
+                Year 1, this is the year where everyone reaches the peak of "mount stupid" on the dunning-kruger graph. 
+                The introductory modules will have you under the impression that you know everything there is to know about whatever topic it is that you're learning.  
+                The courseworks will be well-documented and come with extensive test harnesses and they will tell you which libraries to use and how to solve the problems step by step. 
+                The excitement of creating new software isn't lost on you, and the power goes to your head, and you will think that you can do anything (you can't). 
+            </p>
+
+            <ul>
+                <li></li>
+            </ul>
+        </details><br>
+        
+    
+        
+        <details class="collapsible-generic collapsible-about" id="degree-year2" open> 
+            <summary class="collapsible-generic-header collapsible-about-header"> Year 2 </summary>
+            <p>
+                Year 2, this is the year where you fall off "mount stupid" and enter the valley of despair. 
+                The modules have stopped holding your hand and you have to start learning these more advanced topics on your own. 
+                The courseworks have started to become more open-ended and complex, they stop telling you how to actually solve them and just give you a vague finishing point to reach towards. 
+                You start questioning if this is even for you, and you develop your first bout of the classic Computer Science/Developer imposter syndrome. 
+            </p> 
+            
+            <ul>
+                <li></li>
+            </ul>
+        </details><br>
+        
+    
+        
+        <details class="collapsible-generic collapsible-about" id="degree-year3" open> 
+            <summary class="collapsible-generic-header collapsible-about-header"> Year 3 </summary>
+            <p>
+                Year 3, if you have somehow not failed Year 2 (difficulty: impossible), then you will have successfully entered Year 3. 
+                In this year, you can look forward to doing your final year project/dissertation!!
+                Don't get too happy though, you still have to do some modules, and they have gotten even more complex. 
+                You have gotten used to it though, and you are trudging through the slope of enlightenment!
+            </p>
+
+            <ul>
+                <li></li>
+            </ul>
+        </details><br>
+
+    </details><br>
+
+    <details class="collapsible-generic collapsible-about" open> 
+        <summary class="collapsible-generic-header collapsible-about-header"> What I am looking for in a job </summary>
+        <p id="job">
+            UNDER CONSTRUCTION
+            I wanted to explain what I expect from my first job, regarding professional growth, technical skill development and work environment.
+        </p>
+    </details><br>
+
+    <!--
+    <details class="collapsible-generic collapsible-about"> 
+        <summary class="collapsible-generic-header collapsible-about-header"> Project_title </summary>
+        <p>
+        about_content
+        </p>
+    </details><br>
+    -->
+
+    <div class="bottom-bar">
+        <p class="bottom-bar-text">
+        You have scrolled to the bottom of this page! <br><br>
+        Since you've reached the bottom my "about me" page, maybe you want to get to know even more about me, here's a button to my contact information page. 
+        </p>
+        
+        <a href="contact.html"><button class="button-generic button-centered contact-button"> Contact Me! </button></a>
+    </div>
+
+</body>
+</html>

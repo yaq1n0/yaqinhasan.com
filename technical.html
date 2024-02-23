@@ -1,0 +1,172 @@
+<!-- Technical Info page -->
+<!-- Includes navigation bar and bottom bar -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- boilerplate garbage -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yaqin</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/technical_styles.css">
+
+</head>
+
+<body> 
+
+    <div class="top-nav">
+        <div class="top-nav-left">
+        <a class="left-align" href="index.html">Home</a>
+        <a class="left-align" href="about.html">About</a>
+        <a class="left-align" href="projects.html">Projects</a>
+        <a class="left-align" href="interests.html">Interests</a>
+        <a class="left-align active" href="technical.html">For_Nerds</a>
+        </div>
+        
+        <div class="top-nav-right">
+        <a class="right-align" href="contact.html">Contact</a>
+        <a class="right-align" href="resume.html">CV</a>
+        </div>
+    </div> 
+
+    <div>
+        <h1 class="title-text welcome-left"> Here's some technical information about this website </h1>
+
+        <div class="welcome-container">
+            <text class="welcome-container-title">This page includes the following: </text>
+            <ul>
+                <li> 
+                    A summary of the development status of this website, a summary of what needs to be implemented and what might be implemented eventually. 
+                </li>
+                <li> 
+                    The technical hosting/implementation details of this website. 
+                    The rest of the information about this site can be found in its project page <a href="projects.html#project-">here</a>
+                </li>
+                <li>
+                    a way to open the <a href="readme.md">readme.md</a> file from the site (just for my own personal convenience)
+                </li>
+            </ul>
+        </div>
+        
+        <details class="collapsible-generic collapsible-technical" open> 
+            <summary class="collapsible-generic-header collapsible-technical-header"> Development status </summary>
+            <div>
+                <br>
+
+                <text class="collapsible-generic-subheading" id="status"> Current Status: </text>
+                <ul class="collapsible-generic-unordered-list">
+                    <li>
+                        The general framework for the site is done, everything should be responsive by design, 
+                        though further testing is required to ensure no visual bugs are present. 
+                    </li>
+                    <li>
+                        index.html home page is ready.
+                    </li>
+                    <li>
+                        resume.html CV/Resume page is ready.
+                    </li>
+                    <li>
+                        contact.html contact information page is ready.
+                    </li>
+                    <li>
+                        technical.html site technical information page is ready.
+                    </li>
+                    <li> 
+                        projects.html projects list is ready (3 projects for now, many more to come!)
+                    </li>
+                </ul>
+
+                <text class="collapsible-generic-subheading" id="status"> Version History (reverse chronological) </text>
+                <ul class="collapsible-generic-unordered-list">
+                    <li>
+                        (upcoming) Release 1.0: Completed about.html, projects.html, interests.html
+                    </li>
+                    <li>
+                        Beta 1.3: Sanitizing site for upload to public repository (separating development repository from public). 
+                    </li>
+                    <li>
+                        Beta 1.2.1: Updated projects titles, interests titles and about sections. 
+                    </li>
+                    <li>
+                        Beta 1.2.0: Updated index.html landing page with a "For Employers" site map/shortcuts section
+                    </li>
+                    <li>
+                        Beta 1.2.0: Updated Projects.html with first 3 largest projects. 
+                    </li>
+                    <li>
+                        Beta 1.1.0: Added unformatted about.html sections "degree summary" and "skills list"
+                    </li>
+                    <li>
+                        Beta 1.0.1: Updated CV. 
+                    </li>
+                    <li>
+                        Beta 1.0: First version of the website, Index.html landing page has projects and interests summaries, contacts and CV page implemented.  
+                    </li>
+                    <li> 
+                        Alpha 1.0: Responsive UI framework implemented, file structure created. 
+                    </li>
+                </ul>
+
+                <text class="collapsible-generic-subheading"> To be implemented soon: </text>
+                <ul class="collapsible-generic-unordered-list">
+                    <li>
+                        Add more projects to the projects.html file.
+                    </li>
+                    <li>
+                        Actually fill in the personal interests interests.html file. 
+                    </li>
+                    <li>
+                        Add media to supplement index.html, projects.html, interests.html.
+                    </li>
+                </ul>
+
+                <text class="collapsible-generic-subheading"> Might be implemented eventually: </text>
+                <ul class="collapsible-generic-unordered-list">
+                    <li>
+                        Remove google fonts API dependency, bundle the JetBrains Mono font with the website in the site directory. 
+                    </li>
+                    <li>
+                        Improve consistency in implementation of features 
+                    </li>
+                    <li>
+                        Remove unnecessary CSS repetition where possible, increase the usage of generics, without creating too much unnecessary polymorphism ( balance :D )
+                    </li>
+                    <li>
+                        Expand theming with more base colors and complete color variations(no skipped color permutations)
+                    </li>
+                    <li>
+                        improve top navigation bar with a simple menu drop down for mobile (though I might not do this if it takes some bloated JS module to do so)
+                    </li>
+                </ul>
+
+            </div>
+        </details><br>
+
+        <details class="collapsible-generic collapsible-technical" open> 
+            <summary class="collapsible-generic-header collapsible-technical-header"> Hosting details </summary>
+            <p>
+                The domain name yaqinhasan.com is hosted on AWS Route 53 name servers. 
+                <br>The website is being hosted on an OVH VPS, running Ubuntu 22 LTS. 
+                <br>The webserver is Apache2 http server. 
+                <br><br>
+                SSL is provided through a free OVH SSL gateway, sits between the domain name and the server. 
+                Though I do want to eventually switch over to using certbot, because it would allow me to use apache vhosts. 
+                I want to eventually host multiple sites on this VPS, not just this personal site. 
+            </p>
+        </details><br>
+
+        <!--
+            <details class="collapsible-generic collapsible-projects" id="project0"> 
+                <summary class="collapsible-generic-header collapsible-projects-header"> Project_title </summary>
+                <p>
+                project_content
+                </p>
+            </details><br>
+        -->
+
+    </div>
+
+</body>
+</html>

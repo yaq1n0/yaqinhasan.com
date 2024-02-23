@@ -1,0 +1,22 @@
+
+.welcome-container {
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.welcome-container-title {
+    font-weight: 400;
+}
+
+
+/* <detail> collapsible header */
+.collapsible-technical-header {
+    background-color: var(--theme-color-1-translucent) ;
+    color: var(--theme-color-1);
+}
+
+/* <detail> collapsible content */
+.collapsible-technical {
+    background-color: var(--theme-color-1-translucent);
+    border-radius: 16px;
+}

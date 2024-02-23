@@ -1,0 +1,16 @@
+
+.welcome-left {
+    color: var(--theme-color-1-light);
+}
+
+/* <detail> collapsible header */
+.collapsible-projects-header {
+    background-color: var(--theme-color-1-light-translucent) ;
+    color: var(--theme-color-1);
+}
+
+/* <detail> collapsible content */
+.collapsible-projects {
+    background-color: var(--theme-color-1-light-translucent);
+    border-radius: 16px;
+}

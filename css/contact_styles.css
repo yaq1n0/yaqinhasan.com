@@ -1,0 +1,46 @@
+
+:root {
+    --contact-list-width: 60vw;
+    --contact-list-height: min(120px, 12vw);
+    --contact-list-item-width: min(80px, 8vw);
+    --contact-list-item-height: var(--contact-list-item-width);
+    --contact-list-item-side-margin: 4vw;
+    --num-contact-list-items: 3;
+
+    --width-contact-list-items: calc(var(--num-contact-list-items) * (var(--contact-list-item-width) + (var(--contact-list-item-side-margin) * 2)))
+}
+
+.contact-list-container {
+    width: var(--contact-list-width);
+    height: var(--contact-list-height);
+    margin-left: calc((100vw - var(--contact-list-width)) / 2);
+    margin-right: calc((100vw - var(--contact-list-width)) / 2);
+
+    border-radius: 16px;
+    background-color: var(--contact-bar-color);
+}
+
+.contact-list {
+    list-style-type: none; /* don't show any list indicator */
+
+    width: var(--width-contact-list-items);
+    padding-left: calc((var(--contact-list-width) - var(--width-contact-list-items)) / 2);
+}
+
+.contact-list-item {
+    float:left;
+}
+
+.contact-list-icon {
+    height: var(--contact-list-item-height);
+    width: var(--contact-list-item-width);
+}
+
+.contact-list-item a {
+    display: block;
+    color: var(--site-white);
+    margin-top: calc((var(--contact-list-height) - var(--contact-list-item-height)) / 2);
+    margin-bottom: calc((var(--contact-list-height) - var(--contact-list-item-height)) / 2);
+    margin-left: var(--contact-list-item-side-margin);
+    margin-right: var(--contact-list-item-side-margin);
+}
