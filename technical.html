@@ -146,14 +146,35 @@
 
         <details class="collapsible-generic collapsible-technical" open> 
             <summary class="collapsible-generic-header collapsible-technical-header"> Hosting details </summary>
+            <text class="collapsible-generic-subheading"> Domain Name </text> 
             <p>
-                The domain name yaqinhasan.com is hosted on AWS Route 53 name servers. 
-                <br>The website is being hosted on an OVH VPS, running Ubuntu 22 LTS. 
-                <br>The webserver is Apache2 http server. 
-                <br><br>
-                SSL is provided through a free OVH SSL gateway, sits between the domain name and the server. 
-                Though I do want to eventually switch over to using certbot, because it would allow me to use apache vhosts. 
-                I want to eventually host multiple sites on this VPS, not just this personal site. 
+                I knew that you could buy domain names from a bunch of different providers, I decided to look around a bit and I found a few good options. 
+                I eventually settled on AWS route 53 because the Name Servers would be well distributed geographically, it included WHOIS lookup protection, and I was already familiar with the AWS console. 
+            </p>
+
+            <text class="collapsible-generic-subheading"> "Stack" Choice </text> 
+            <p>
+                I am using OVH as a cloud provider because they offer the best price/month for the specifications that I need.
+                I initially used AWS EC2 but the flexible pricing model actually turned out to be more expensive once I extrapolated expected costs long term. 
+            </p>
+            
+            <p>
+                I was pretty sure that I was going to use Ubuntu 22 LTS for the server's operating system because 
+                I was familiar with the Debian/Ubuntu family of distros 
+                and it is the most well documented distro which meant that there would be plenty of guides/tutorials written with it in mind. 
+            </p>
+
+            <p>
+                I had a pretty strong inkling that I was going to use apache as the webserver for the my website. 
+                Nevertheless, I also looked at other options such as nginx, but decided that I didn't need the extra performance or scalability yet,
+                and would be better off with the better documented apache ecosystem. 
+            </p>
+
+            <text class="collapsible-generic-subheading"> HTTPS </text> 
+            <p>
+                I initially used an OVH SSL gateway to enable HTTPS on my website. 
+                However, I eventually scaled up to use virtual hosts so that I can host more than one website/domain on this server, which meant that I needed a HTTPS solution that supported that. 
+                I found certbot, which generates and renews SSL certificates from "Let's Encrypt" and would meet this requirement. 
             </p>
         </details><br>
 
