@@ -158,8 +158,22 @@ h1 {
     font-weight: 400;
 }
 
+.collapsible-generic-subheading-small {
+    font-size: calc(var(--base-font-size) * 1.2);
+    font-weight: 400;
+}
+
 .collapsible-generic-unordered-list {
     padding-left: 5%;
+}
+
+.link-sentence {
+    text-decoration: none;
+    color: var(--site-white);
+    font-weight: 400;
+    background-color: var(--theme-color-2-dark);
+    padding: 2px;
+    border-radius: 8px;
 }
 
 /* Top Navigation Bar */

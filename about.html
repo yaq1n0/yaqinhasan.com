@@ -43,68 +43,146 @@
             So this will be a section will be a quick overview of what I have used before as well what I could realistically quickly pick up based on previous experience. 
         </p>
 
-        <p>
-            Programming Languages: 
-            - C/C++ used interchangeably based on what project requirements, more familiar with C though, as I've used that more for microcontroller/Arduino type projects. 
-            - Java used mostly in university courseworks, group courseworks and larger software projects. 
-            - Python used mostly for rapid prototyping, eventually was used for my Final Year Project
-            - JavaScript used mostly begrudgingly when doing web development stuff. 
-            - TypeScript/Dart used when developing Flutter applications. 
-            - Haskell used mostly in university functional programming modules and for my STQL interpreter project. 
-            - SQL used during my relational database theory modules
-            - Lua used for general purpose scripting, specifically for Cyberpunk 2077 CyberEngineTweaks mod integration. 
-            - Bash used for Linux scripting
-            - Batch used for Windows scripting
-            - ARMv8 assembly used as part of a systems module at one point. 
-            - HTML/CSS, I debated putting this as a programming language but someone made a Turing Machine with it so I that makes it count in my book. 
+        <details class="collapsible-generic collapsible-about" open> 
+            <summary class="collapsible-generic-header collapsible-about-header"> Programming Languages </summary>
+            <br>
+            <text class="collapsible-generic-subheading-small"> Programming Languages </text>
+            <p>
+                I am going to sort them from lowest level to highest level (yes, I know it isn't a perfect system), I just feel like it's a cool way to showcase how broad the range is 
+            </p>
+            <ul>
+                <li> ARMv8 assembly: used during my systems modules as well as compiler modules </li>
+                <li> C: used in conjunction ARMv8 assembly as mentioned above, but also just as a general purpose high-level language </li>
+                <li> C++: used whenever I needed to develop fast, or when I was doing a systems module and they had libraries only in C++ </li>
+                <li> Java: used whenever I need something large and object-oriented first, or when working in a group </li>
+                <li> Dart: used to develop Flutter applications </li>
+                <li> JavaScript: used reluctantly in web development </li>
+                <li> Python: used when I need something done fast, or because there's a library I want to use </li>
+                <li> HTML/CSS: someone made a Turing Machine with these languages so they are a programming language now </li>
+                <li> SQL: another turing complete language, also obviously used for database querying</li>
+            </ul>
+            
+            <text class="collapsible-generic-subheading-small"> Scripting Languages </text>
+            <p> 
+                I wanted to have a separate section for scripting languages
+            </p>
 
-            Markup Languages: 
-            - XML 
-            - JSON. Anything is a spade if you use it to dig, just like anything is a markup language if you use it instead of implementing a proper database xD
-            - YAML because for some reason video games and their mods really like using this. 
-            - Markdown, because GitHub and because Discord :)
-        </p>
+            <ul>
+                <li>Python: i love scripting in Python, it's like executable pseudocode </li>
+                <li>Lua: used when I need to write scripts for games, because they are usually done in Lua, due to the game engine integration </li>
+                <li>Linux Bash: for unix/linux scripting </li>
+                <li>Windows Batch: for windows scripting </li>
+            </ul>
+            <text class="collapsible-generic-subheading-small"> Markup Languages </text>
+            <p> 
+                I wanted to have a separate section for markup languages
+            </p>
+            <ul>
+                <li>XML</li>
+                <li>JSON: it's not technical a markup language, but you can use it as one, and everyone does</li>
+                <li>YAML: because video games use this a lot</li>
+                <li>Markdown: because GitHub markdown </li>
+            </ul>
 
-        <p>
-            Build tools: 
-            - Maven for Java group projects in university. 
-            - Cmake for C/C++ projects, both personal and in university. 
-            - Alex Haskell lexer, similar to the C/C++ lexers "lex" and "flex"
-            - Happy Haskell parser, similar to yacc C parser. 
-            - GCC and Clang C compilers, also used for cross compilation at one point to compile for an ARMv8 target on an x86-64 PC.
-        </p>
+        </details><br>
 
-        <p>
-            Development tools: 
-            - Git, GitHub and GitLab for VCS (obviously). Also GitHub desktop because I am lazy and it's surprisingly good. 
-            - JetBrains IDE suite (IDEA, Pycharm, CLion)
-            - Microsoft Visual Studio for some windows native app development. I dislike writing C/C++ and using their build tools in Windows, would much rather do it in a Unix (yes, unix not just linux). 
-            - Microsoft Visual Studio Code for Flutter (it's their recommended IDE, I don't know why, but it does work well), and for web development in HTML, CSS, JS etc. 
-            - Sublime Text (definitely licensed version) as a basic text editor, though I used to use Atom which was a lot cleaner (RIP). 
-            - GNU nano as a CLI text editor, I don't use vi/vim as I do go outside :D (jk, I just like included tools more)
-            - Jupyter notebook because I accidentally ended up doing data science in my computer science degree. I wouldn't use it for anything else though. 
-        </p>
+        <details class="collapsible-generic collapsible-about" close> 
+            <summary class="collapsible-generic-header collapsible-about-header"> Tools </summary>
+            <br>
+            <text class="collapsible-generic-subheading-small"> Development tools </text>
+            <ul>
+                <li> Git, GitHub and GitLab version control software. Also GitHub desktop because I am lazy and it's surprisingly good. </li>
+                <li> JetBrains IDE suite (IDEA, Pycharm, CLion) </li>
+                <li> Microsoft Visual Studio for some windows native app development. I dislike writing C/C++ and using their build tools in Windows, 
+                    would much rather do it in a Unix environment (yes, unix not just linux). </li>
+                <li> Microsoft Visual Studio Code for Flutter (it's their recommended IDE, 
+                    I don't know why, but it does work well), and for web development in HTML, CSS, JS etc. </li>
+                <li> Sublime Text (definitely licensed version) as a basic text editor, though I used to use Atom which was a lot cleaner (RIP). </li>
+                <li> GNU nano as a CLI text editor, I don't use vi/vim as I do go outside :D (jk, I just like included tools more) </li>
+                <li> Jupyter notebook because I accidentally ended up doing data science in my computer science degree. 
+                    I wouldn't use it for anything else though. </li>
+        
+            </ul>
 
-        <p>
-           General Tools: 
-           - SSH, primarily the included version with unix systems and openSSH on windows. 
-           - PuTTy, because the included openSSH version in windows is very barebones. 
-           - WinSCP, because for some reason I decided to use windows as my remote client. I want to switch to SCP eventually though, or whatver the unix/linux version of this software is called. 
-           - VMware workstation/Fusion: I primarily use this for virtualization because the university used to give me a free license, prior to that I had a completely legal license for this. 
-           - VirtualBox: I want to fully switch over to this for virtualization eventually but I never had the chance to yet. 
-           - WSL2: I love being able to run linux commands from my windows machine without having to fire up a VMware or VirtualBox VM :)
-           - Docker: Mostly just experimenting with this for my HomeLab server projects. 
-        </p>
 
-        <p>
-            Frameworks: 
-            - Qt for Python desktop GUI
-            - Tk for Python desktop GUI 
-            - JavaFX for Java desktop GUI 
-            - Flutter for cross-platform GUI
-            - NumPy and Pandas because I did a data science module accidentally. 
-            - OpenCV as part of my final year project. 
-        </p>
+            <text class="collapsible-generic-subheading-small"> Build tools </text>
+            <ul>
+                <li> Maven for Java group projects in university. </li>
+                <li> Cmake for C/C++ projects, both personal and in university. </li>
+                <li> Alex Haskell lexer, similar to the C/C++ lexers "lex" and "flex" </li>
+                <li> Happy Haskell parser, similar to yacc C parser. </li>
+                <li> GCC and Clang C compilers, also used for cross compilation at one point to compile for an ARMv8 target on an x86-64 PC. </li>
+            </ul>
+
+
+            <text class="collapsible-generic-subheading-small"> General tools </text>
+            <ul>
+                <li> SSH, primarily the included version with unix systems and openSSH on windows. </li>
+                <li> PuTTy, because the included openSSH version in windows is very barebones. </li>
+                <li> WinSCP, because for some reason I decided to use windows as my remote client. I want to switch to SCP eventually though, 
+                    or whatver the unix/linux version of this software is called. </li>
+                <li> VMware workstation/Fusion: I primarily use this for virtualization because the university used to give me a free license, 
+                    prior to that I had a completely legal license for this. </li>
+                <li> VirtualBox: I want to fully switch over to this for virtualization eventually but I never had the chance to yet. </li>
+                <li> WSL2: I love being able to run linux commands from my windows machine without having to fire up a VMware or VirtualBox VM :) </li>
+                <li> Docker: Mostly just experimenting with this for my HomeLab server projects. </li>     
+            </ul>
+
+        </details><br>
+
+        <details class="collapsible-generic collapsible-about" close> 
+            <summary class="collapsible-generic-header collapsible-about-header"> Frameworks and Libraries </summary>
+            <br>
+            <text class="collapsible-generic-subheading-small"> Frameworks </text>
+            <ul>
+                <li> Qt for Python desktop GUI </li>
+                <li> Tk for Python desktop GUI </li>
+                <li> JavaFX for Java desktop GUI </li>
+                <li> Flutter for cross-platform GUI </li>                        
+            </ul>
+
+
+            <text class="collapsible-generic-subheading-small"> Libraries </text>
+            <ul>
+                <li> OpenCV as part of my final year project. </li>
+                <li> NumPy and Pandas because I did a data science module accidentally. </li>
+            </ul>
+
+        </details><br>
+
+
+        <details class="collapsible-generic collapsible-about" close> 
+            <summary class="collapsible-generic-header collapsible-about-header"> Development Environments </summary>
+            <br>
+            <text class="collapsible-generic-subheading-small"> Development Environments </text>
+            <ul>
+                <li> Ubuntu 22 LTS (debian): I use this if it's the simplest option or if I'm going to implement something based on a tutorial, 
+                    because it's likely written with this in mind. </li>
+                <li> PopOS 22 (debian): I use this on my personal linux box, I like the default desktop environment more than Ubuntu 22, 
+                    it has some nifty included tools and the Nvidia drivers are a nice touch. </li>
+                <li> Raspberry Pi OS: I use this on my HomeLab Raspberry Pi 5 because of the 
+                    performance optimizations that they have made to the distro to make it run really well on the Pi. </li>
+                <li> Windows 10: I don't like Windows 11 :p and I have it installed on my main computer, 
+                    which means I have to begrudgingly use it to develop sometimes. </li>
+                <li> MacOS: I used to develop primarily in MacOS actually, until I switched over to Linux for that. 
+                    Most unix tools work out of the box, even some Linux ones, 
+                    though it can be a pain to get some software on MacOS and my MacBook Pro is getting old :( </li>
+            
+            </ul>
+
+            <text class="collapsible-generic-subheading-small"> Cloud platforms </text>
+            <p> 
+                I wanted to have a separate section for cloud platforms here as I believe that they are in a 
+                similar class to development environments as they are just another place where you can develop solutions in. 
+            </p>
+
+            <ul>
+                <li> AWS: AWS console, EC2, EC2 Instance Connect, Route 53, Elastic IP, etc </li>
+                <li> OVH: OVH console, VPS, SSL gateway </li>
+            </ul>
+        </details><br>
+
+
         <p>
             Development Environments: 
             - Ubuntu 22 LTS (debian): I use this if it's the simplest option or if I'm going to implement something based on a tutorial, because it's likely written with this in mind. 
@@ -123,64 +201,340 @@
 
     </details><br>
 
-    <details class="collapsible-generic collapsible-about" open> 
+    <details class="collapsible-generic collapsible-about" close> 
         <summary class="collapsible-generic-header collapsible-about-header"> The BSc Computer Science experience briefly summarized </summary>
-        <p>
-            I wanted to briefly summarize each year of my degree and use that as a jumping off point to list each year's modules and corresponding courseworks. 
-            <br>// psst, my Final Year Project has it's own page <a href="projects.html#project1">here</a>, if you're looking for that
+        <p style="text-align: center;">
+            Here's a breakdown of what the modules I actually took were, their associated courseworks and how that related to my skill set and knowledge base. 
+            <br><a href="projects.html#project1" class="link-sentence"> If you ware looking for my Final Year Project, it has its own page, click here to go to it. </a>
         </p>
 
-        <p>
-            TONE DISCLAIMER: 
-            I debated on creating a purely factual list, detailing each module's contents by essentially copying their syllabuses. 
-            However, I decided against this as I was strongly inspired by <a href="https://www.youtube.com/watch?v=XoSllabxqiQ">this</a> YouTube video titled "My Whole Computer Science Degree in 12 Minutes". 
-            In that video, the creator both recounted his entire degree experience but most importantly, made it a humorous experience rather than a soulless information dump. 
-            I wish to replicate this in text form
-        </p>
+        <details class="collapsible-generic collapsible-about" open> 
+            <summary class="collapsible-generic-header collapsible-about-header"> The inspiration for the tone of this section </summary>
+                <p>
+                    I debated on creating a purely factual list, detailing each module's contents by essentially copying their syllabuses. 
+                    However, I decided against this as I was strongly inspired by the following youtube video. 
+                </p>    
+                    
+                <p style="text-align: center;">
+                    <iframe style="width: 95%; height: 800px"
+                    src="https://www.youtube.com/embed/XoSllabxqiQ?si=zuZ_RDH_WGIK-31N" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                    </iframe>
+                </p>
+        </details><br>
 
-        <details class="collapsible-generic collapsible-about" id="degree-year1" open> 
+        <details class="collapsible-generic collapsible-about" id="degree-year1" close> 
             <summary class="collapsible-generic-header collapsible-about-header"> Year 1 </summary>
             <p>
-                Year 1, this is the year where everyone reaches the peak of "mount stupid" on the dunning-kruger graph. 
-                The introductory modules will have you under the impression that you know everything there is to know about whatever topic it is that you're learning.  
-                The courseworks will be well-documented and come with extensive test harnesses and they will tell you which libraries to use and how to solve the problems step by step. 
-                The excitement of creating new software isn't lost on you, and the power goes to your head, and you will think that you can do anything (you can't). 
+                In first year, you are introduced to the very basics of computer science, and a lot of the modules here are foundational to every computer scientist's education. 
+                The courseworks hold your hand through them and provide you with a robust and thoroughly tested suite of unit tests and test harnesses. 
+                This is where you will see modules covering the basics of Object Oriented Programming (OOP), basic data structures and algorithms, linear algebra and discrete math. 
             </p>
 
             <ul>
-                <li></li>
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Programming 1: </text>
+                    <p>
+                        This is the module everyone knows they will have to take in their first year.
+                        We covered the basics of programming for the 2% of students who haven't written a single line of code before. 
+                        Followed by the basics of Object Oriented Programming theory such as inheritance and polymorphism.
+                    </p>  
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Programming 2 (electric boogaloo): </text>
+                    <p>
+                        We learned how to actually make proper Java programs instead of just little basic programs. 
+                        Introduction to Apache Maven and build systems, introduction to the JVM and how it works etc. 
+                    </p>
+                    <p>
+                        We also each made a really bad clone of Tetris under the name TetrECS, 
+                        which had multiplayer functionality which was really easy to cheat (I did no such thing :3). 
+                    </p>
+                    
+                    <p style="text-align: center; "><a class="link-sentence" href="https://github.com/yaq1n0/tetrecs"> You can find the code for my version of TetrECS on my github here. </a></p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Computer Systems 1: </text>
+                    <p>
+                        This module covers the basics of computer hardware and architectures, 
+                        I have recently learned that this is something not all first year students cover, which is interesting. 
+                        we also got a Raspberry Pi 3B+ to play with, which we were apparently supposed to return. 
+                        (If someone from the University of Southampton reads this, I did return all the hardware provided to me as is policy)
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Foundations of Computer Science: </text>
+                    <p>
+                        I don't know why my university decided to name this module as such, but it is essentially the "Linear Algebra and Discrete Mathematics" module that every first year takes. 
+                        I also strongly remember everyone in my cohort massively struggling here :)
+                        The goal was simply to hold your breath through the maths, pass the module and survive. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Algorithmics: </text>
+                    <p>
+                        Again, I don't know why this module wasn't just called "Data Structures and Algorithms" but it was basically just that.
+                        I remember quite enjoying this as it's always been a field that fascinated me. 
+                        Plus, it's also going to be referred to a lot in the future when we learn about complexity and computability theory in depth. 
+                    </p>  
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Data Management: </text>
+                    <p>
+                        Yet another instance of unconventional naming, this module is basically "Relational Database Management Systems" or RDBMS. 
+                        We covered the basics of relational database theory, did some SQL programming and even some bash scripting basics here. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Software Modelling and Design: </text>
+                    <p>
+                        I have no clue who decided that this should be a first year module. 
+                        Formal software design and verification is a very useful thing to learn, and definitely gave me a deeper understanding of how to develop safe and verifiable software. 
+                        However, this was done using the university's proprietary "Event-B" language which meant documentation was basically nonexistent. 
+                        I truly believe this module would have shone a lot brighter and been much more appreciated as a second or third year optional specialization in formal systems. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Professional Development: </text>
+                    <p>
+                        No first year at university is complete without the token "career skills" module that I'm sure comes from good intentions but is always extremely poorly executed. 
+                        Having first year university students who don't even know what they want to specialize in write a CV sounds good until you realize that they would have nothing real to put into it. 
+                        I think this module would have been way better conducted during second year before internship season or third year. 
+                    </p>
+                </li>
             </ul>
         </details><br>
         
     
         
-        <details class="collapsible-generic collapsible-about" id="degree-year2" open> 
+        <details class="collapsible-generic collapsible-about" id="degree-year2" close> 
             <summary class="collapsible-generic-header collapsible-about-header"> Year 2 </summary>
             <p>
-                Year 2, this is the year where you fall off "mount stupid" and enter the valley of despair. 
-                The modules have stopped holding your hand and you have to start learning these more advanced topics on your own. 
-                The courseworks have started to become more open-ended and complex, they stop telling you how to actually solve them and just give you a vague finishing point to reach towards. 
-                You start questioning if this is even for you, and you develop your first bout of the classic Computer Science/Developer imposter syndrome. 
+                The best way to summarize the second year of my degree would be "oh you thought you knew <insert_topic_here>, you do not", this theme will pop up a lot when I actually break down the modules. 
+                The courseworks get bigger and more open ended, which means they give you more room for creativity and develop your complex problem solving skills but that also means that if you get lost, you get really lost. 
             </p> 
-            
+
             <ul>
-                <li></li>
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Programming 3 </text>
+                    <p>
+                        So you thought you knew how to program? 
+                        Well actually, you only know how to write imperative procedural programs using the object oriented paradigm. 
+                        Here, you can actually write programs using purely functions, goodbye classes and objects! 
+                    </p>
+                        
+                    <p>
+                        Why would you want to do this? Oh of course, it's so that you can deeper understand the connection between mathematics and programming!
+                        Oh you meant when you'd actually choose to write functional code over object oriented? Uhm, when the university tells you to!
+                    </p>
+
+                    <p>
+                        So yeah, this module was the introduction to the abomination that is functional programming in Haskell. 
+                        I am now one of the 7 people on this entire planet who can write advanced Haskell code. 
+                        I don't know when I will ever need to use this skill, but I have it and it's rare so it gives me internet programmer points. 
+                    <p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Software Engineering Group Project </text>
+                    <p>
+                        So you thought software engineering was just programming?? 
+                        Well actually, you have to go through an entire requirements analysis and design process, communicating with the customer the whole time before you can even start writing any code!
+                        Welcome to software engineering, where the requirements are constantly changing, no one knows what the whole program is doing, but somehow we are still making progress (look at the pretty AGILE charts please!). 
+                    </p>
+
+                    <p> 
+                        Yeah, this module was just a group of 6 designing a runway redeclaration (doesn't matter what the function is really) desktop app using JavaFX. 
+                        We had to use AGILE development practices, including the weekly scrum meetings, burn down charts and all of that. 
+                        We designed the program, or more accurately, me and one other guy came up with the UML class diagrams. 
+                        We then used a Model View Controller (MVC) design pattern to delegate tasks for front-end and back-end. 
+                        Finally, we had to all use a single github repository and learn how to actually use git's version control beyond committing and pushing. 
+                    </p>
+
+                    <p style="text-align: center; "><a class="link-sentence" href="projects.html#project3"> Read more about my Software Engineering "Runway Redeclaration" app here </a></p>
+                    <p style="text-align: center; "><a class="link-sentence" href="https://github.com/yaq1n0/SEG-project-2021"> Or go straight to the source code here </a></p>
+
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Theory of Computing </text>
+                    <p>
+                        So you thought you were out of the woods of all the theoretical computer science modules??
+                        Time for you to learn automata theory, computability and complexity! 
+                    </p>
+
+                    <p>
+                        In all seriousness, this module actually wasn't that bad, It is actually an incredibly beautiful part of computer science. 
+                        I do believe that if I were academically inclined, I would have pursued more knowledge in theoretical computer science, but alas, I prefer having money. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Programming Language Concepts </text>
+                    <p>
+                        This module was a bit of a curve ball, we had heard about it in first year and in the first semester of second year that we would eventually have to design our own interpreter.
+                        Obviously, this was terrifying news to first years who had just about figured out how to use GCC and Clang to compile their first C helloworld.c program. 
+                    </p>
+
+                    <p>
+                        This module covered how programming languages actually worked on a conceptual and theoretical level. 
+                        How they are similar to human languages with syntaxes and grammars. 
+                        How we lex them into tokens and parse those into expressions that we can then evaluate. 
+                    </p>
+
+                    <p> 
+                        I actually really enjoyed this branch of study, which I come to know now as "compiler theory". 
+                        We eventually had to design and implement an interpreter for a Toy language using Haskell. 
+                        Initially, I thought that it was incredibly stupid that we do this using a functional language like haskell, but realizing that it was between that and C, I understand why the university chose haskell. 
+                        Haskell's functional nature makes it really simple to manipulate data structures, like what you'd find in a parse tree, and then evaluate the tree systematically using defined rules. 
+                    </p>
+
+                    <p style="text-align: center; "><a class="link-sentence" href="projects.html#project2"> Read more about my Toy language STQL and its interpreter I designed here </a></p>
+                    <p style="text-align: center; "><a class="link-sentence" href="https://github.com/yaq1n0/STQL-haskell"> Or go straight to the source code here </a></p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Computer Systems 2 </text>
+                    <p>
+                        This was the only optional module that I was able to take in year 2, I chose this because I really enjoyed Computer Systems 1 in first year and always wanted to have a better understanding of hardware and low-level systems programming. 
+                        This module introduced embedded systems theory and concepts, as well as some operating system concepts such as prioritization and scheduling. 
+                        It also gave insight into how buses and IO work as well as how memory architectures (ex: von neumann) work. 
+                    </p>
+
+                    <p>
+                        We were also given a Raspberry Pi Pico microcontroller and basically told to have fun and build some cool little projects with it. 
+                        This isn't hyperbole, we were actually told that we just had to build stuff, document and upload it and then we'd get the mark for this part of the module. 
+                        I absolutely loved this open ended teaching approach, and I fell in love with microcontrollers and electronics even more because of this module. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Intelligent Systems </text>
+                    <p>
+                        The name of this module should have been "Introduction to Artificial Intelligence" as it covered basically the concepts and theory that underlay modern Artificial Intelligence and Machine Learning. 
+                        I have never been much of an AI person, unlike some of my contemporaries so I found the mathematical background tedious rather than intriguing and I found the lack of practical aspects to this module to be a detriment to engagement. 
+                    </p>
+
+                    <p>
+                        I think that if we were actually allowed to implement and our own algorithms or actually get hands on with some of the existing ones, this modules would have been a lot more interesting than just sitting through lectures. 
+                        I remember the countless hours of just learning different searching algorithms in theory and having to "run" those algorithms manually in the exam. 
+                        An extremely tedious module with a lot of wasted potential. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Distributed Systems and Networking </text>
+                    <p>
+                        I don't know why this module wasn't split up into 2 smaller ones, it basically was when we took it anyway. 
+                        We started with the networking half which was as expected, an introduction to network architectures following the OSI 7-layer model.
+                        That was pretty unremarkable, pretty theory heavy and more or less got the points across. 
+                    </p>
+
+                    <p>
+                        The distributed systems part of this module was more interesting, with us having to implement our own distributed networked file storage system in Java. 
+                        We have to account for concurrency, consistency and reliability and overall it was really interesting dealing with real-world distributed systems problems. 
+                        The most important takeaway from this module though was the ACID principles of atomicity, consistency, isolation, and durability, 
+                        which I actually ended up applying into many other of my projects, some entirely unrelated to distributed systems. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Interaction Design </text>
+                    <p>
+                        Ah, we joked around about this module being "professional development 2" as it was the only non-technical module of the year. 
+                        Though conceptually, this was essentially a Human-Computer interface theory module with an emphasis on User Interaction and Experience. 
+                        A perfectly average module, does just about what it sets out to do and nothing more. 
+                    </p>
+                </li>
             </ul>
         </details><br>
         
     
         
-        <details class="collapsible-generic collapsible-about" id="degree-year3" open> 
+        <details class="collapsible-generic collapsible-about" id="degree-year3" close> 
             <summary class="collapsible-generic-header collapsible-about-header"> Year 3 </summary>
             <p>
-                Year 3, if you have somehow not failed Year 2 (difficulty: impossible), then you will have successfully entered Year 3. 
-                In this year, you can look forward to doing your final year project/dissertation!!
-                Don't get too happy though, you still have to do some modules, and they have gotten even more complex. 
-                You have gotten used to it though, and you are trudging through the slope of enlightenment!
+                If by some miracle, you've managed to survive the grade slump that is second year and pass. 
+                You will now be in third year, where you get to select four! optional modules, all of which are extremely advanced and specialized and build on existing knowledge and skills. 
+                You also get to do you dissertation, which is your first entirely unique piece of work you'll make in academia (in theory). 
             </p>
 
             <ul>
-                <li></li>
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Advanced Computer Architecture: </text>
+                    <p>
+                        This was an optional module choice that I chose because I wanted to learn more about computer architectures and hardware. 
+                        It ended up being a very fitting continuation to the hardware architectures side of Computer Systems 2 from second year. 
+                    </p>
+
+                    <p>
+                        We learned about CPU design from the lowest level half-adders building up to a full floating point unit. 
+                        Then we learned about optimizations such as branch prediction and Single Instruction Multiple Data (SIMD).
+                    <p>
+                    
+                    <p>
+                        We also dabble into the GPU side of things with a quick overview of current architectures, 
+                        which I particularly enjoyed as I could now understand technical whitepapers on the newest GPU architectures that I was already following. 
+                    </p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Real-Time Computing and Embedded Systems </text>
+                    <p>
+                        This was an optional module choice that I chose because I enjoyed tinkering with the Raspberry Pi Pico microcontroller from Computer Systems 2 and wanted to learn more about embedded systems. 
+                        The module ended up being more real-time systems with a bit of embedded systems but nonetheless I quite enjoyed it. 
+                    </p>
+
+                    <p>
+                       We were given the opportunity to try and implement our own low-level real-time database, try our hand at real-time scheduling with "Cheddar" and even do a bit of FreeRTOS tinkering. 
+                       This module really felt like an intro to a whole new world which I wish I had the chance to study further. 
+                    <p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Computational Biology </text>
+                    <p>
+                        I chose this optional module because I thought it would be about biologically inspired computing, something along the lines of bio-inspired algorithms and systems. 
+                        I was incredibly wrong, and when I realized, it was too late, I was doomed. 
+                    </p>
+
+                    <p>
+                       The module turned out to be a glorified data science intro where we had to learn NumPy and Pandas and use that to analyze big data sets and come up with conclusions. 
+                       It wasn't necessarily a bad module, it was just not what I expected and I did really badly on it because of my lack of interest in the actual subject matter. 
+                       Though I should partially take the blame for not previewing the syllabus before selecting it as an optional. 
+                    <p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Web Architecture and HyperText Technologies </text>
+                    <p>
+                        I initially was going to do a module called computer vision, though after sitting through weeks of digital signal processing lectures and realizing it wasn't the kind of computer vision I actually wanted to do, I decided to switch courses. 
+                        This turned out to be much better than I expected as I actually quite enjoyed this module. 
+                        It wasn't extremely difficult though it built up well on the concepts learned in the second year module "distributed systems and networking" and helped me gain a better understanding of the concepts that underlay the web and internet as we know it. 
+                    </p>
+
+                    <p>
+                       We were given the opportunity to familiarize ourselves with Representational State Transfer concepts, client-server architecture and even play around with some practical RESTful APIs. 
+                       One of the courseworks being to use curl to essentially play around with a RESTful API that the university used to store building information, document how it worked, and come up with ways to improve it. 
+                    <p>
+                </li>
+
+                <li class="module-summary">
+                    <text class="collapsible-generic-subheading-small"> Engineering Management and Law </text>
+                    <p>
+                        This was a required module for third year and covered just about what it says it would cover. 
+                        There was the usual trite management stuff which I didn't leave much of an impression.
+                        Though I found myself quite fond of the law aspect of this module as we had to read about past cases and learn about the concept of precedence in law. 
+                    </p>
+                </li>
             </ul>
         </details><br>
 
@@ -189,8 +543,17 @@
     <details class="collapsible-generic collapsible-about" open> 
         <summary class="collapsible-generic-header collapsible-about-header"> What I am looking for in a job </summary>
         <p id="job">
-            UNDER CONSTRUCTION
-            I wanted to explain what I expect from my first job, regarding professional growth, technical skill development and work environment.
+            I am currently looking for my first job out of university, and it's important I make an intelligent choice as it will dictate the direction of my future career. 
+            I have a broad skill set which means that I can fit in and do just about anything, but it also means that to be good at something, I will have to put in the work to learn and develop that skill. 
+        </p>
+
+        <p>
+            Therefore, my first job must be the right environment for someone to develop and grow, it should allow for experimentation with a broad variety of roles and responsibilities. 
+            Eventually leaning towards and specializing in the right place for me to provide the most value to my employer as well as specialize and increase my worth professionally. 
+        </p>
+
+        <p>
+            I also believe that having a strong mentorship culture at the job will be a huge benefit as it would allow me to more quickly integrate into the work culture and start becoming more beneficial to the company. 
         </p>
     </details><br>
 
