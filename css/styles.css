@@ -10,6 +10,7 @@
 }
 
 :root {
+    scroll-behavior: smooth;
     /* universal font-families */
     --font-1: "JetBrains Mono", monospace; 
 
@@ -79,9 +80,11 @@
     /* "responsive" font sizing 
     scale the max font size to 2% of the viewport width, but keep it above 12px and below 24px
     in theory max(<mininum size in pixels>, min(<scaling to viewport width>, <max size in pixels>)) */
-    --base-font-size: max(12px, min(2vw, 20px));
-    --large-font-size: max(16px, min(3vw, 48px));
-    --small-font-size: max(10px, min(1.5vw, 16px)); 
+    --base-font-size: max(12px, min(2vw, 16px));
+    --large-font-size: calc(var(--base-font-size) * 1.5);
+    --larger-font-size: calc(var(--base-font-size) * 2.0);
+    --largest-font-size: calc(var(--base-font-size) * 4.0);
+    --small-font-size: calc(var(--base-font-size) * 0.8);
 }
 
 body {
@@ -96,7 +99,7 @@ body {
 }
 
 .title-text {
-    font-size: var(--large-font-size);
+    font-size: var(--larger-font-size);
     font-weight: 800;
     width: 90%;
     padding-left: 5%;
@@ -167,13 +170,18 @@ h1 {
     padding-left: 5%;
 }
 
-.link-sentence {
+.link {
+    text-align:center;
     text-decoration: none;
     color: var(--site-white);
     font-weight: 400;
     background-color: var(--theme-color-2-dark);
-    padding: 2px;
+    padding: 4px;
     border-radius: 8px;
+}
+
+.link :hover {
+    background-color: red;
 }
 
 /* Top Navigation Bar */
@@ -245,6 +253,10 @@ h1 {
 /* Welcome Section */
 .welcome-left {
     text-align: left;
+}
+
+.welcome-center {
+    text-align: center;
 }
 
 .welcome-right {

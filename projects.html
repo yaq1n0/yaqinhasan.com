@@ -31,6 +31,24 @@
         </div>
     </div> 
 
+    <a href="#" class="stt" >
+        <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" class="bi bi-arrow-up" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+        </svg>
+    </a>
+
+    <a onclick="openAll()" class="expand-all" >
+        <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
+        </svg>
+    </a>
+
+    <a onclick="closeAll()" class="collapse-all" >
+        <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+        </svg>
+    </a>
+
     <div>
         <div>
             <h1 class="title-text welcome-left"> Here are some of my projects </h1>
@@ -38,12 +56,42 @@
                 This page will highlight my most significant projects in a manner that should be approachable to both a general and technical audience. 
                 <br>It also has the secondary purpose of acting as secondary documentation for these projects in perpetuity. 
             </p>
+
+            <p class="title-text welcome-center" id="project-shortcuts"> Project Shortcuts </p>
+                
+            <div class="shortcuts-list">
+            <a class="link" onclick="gotoProject('project0')"> 
+                    This Website! 
+            </a>
+
+            <a class="link" onclick="gotoProject('project1')"> 
+                My Degree Final Year Project 
+            </a>
+
+            <a class="link" onclick="gotoProject('project1')"> 
+                Structured Turtle Querying Language (Haskell)
+            </a>
+            
+            <a class="link" onclick="gotoProject('project1')"> 
+                Heathrow Runway Redeclaration JavaFX Group Project
+            </a>
+
+            <a class="link" onclick="gotoProject('project1')"> 
+                RoboCopy-GUI (Flutter/Dart)
+            </a>
+
+            <a class="link" onclick="gotoProject('project1')"> 
+                Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork 
+            </a>
+            </div>
+            <br>
         </div>
 
+    <div>
         <details class="collapsible-generic collapsible-projects" id="project0" open> 
             <summary class="collapsible-generic-header collapsible-projects-header">This Website!</summary>
 
-            <p style="text-align: center;"><a class="link-sentence" href="https://github.com/yaq1n0/yaqinhasan.com">You can find the source code for this website here</a></p>
+            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/yaqinhasan.com">You can find the source code for this website here</a></p>
 
             <text class="collapsible-generic-subheading"> Getting Started </text>
             <p> 
@@ -113,7 +161,7 @@
         <details class="collapsible-generic collapsible-projects"  id="project1"> 
             <summary class="collapsible-generic-header collapsible-projects-header"> My Degree Final Year Project (FYP) </summary>
 
-            <p style="text-align: center;"><a class="link-sentence" href="https://github.com/yaq1n0/thymio-python">You can find the source code for this project here</a></p>
+            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/thymio-python">You can find the source code for this project here</a></p>
 
             <text class="collapsible-generic-subheading"> Intro </text>
             <p> 
@@ -300,7 +348,7 @@
         <details class="collapsible-generic collapsible-projects"  id="project2"> 
             <summary class="collapsible-generic-header collapsible-projects-header"> Structured Turtle Query Language (STQL) </summary>
 
-            <p style="text-align: center;"><a class="link-sentence" href="https://github.com/yaq1n0/STQL-haskell">You can find the source code for this project here</a></p>
+            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/STQL-haskell">You can find the source code for this project here</a></p>
 
             <text class="collapsible-generic-subheading">Intro</text>
             <p>
@@ -367,17 +415,17 @@
 
         <details class="collapsible-generic collapsible-projects" id="project3"> 
             <summary class="collapsible-generic-header collapsible-projects-header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</summary>
-            <p style="text-align: center;"><a class="link-sentence" href="https://github.com/yaq1n0/SEG-project-2021">You can find the source code for this project here</a></p>
+            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/SEG-project-2021">You can find the source code for this project here</a></p>
         </details><br>
 
         <details class="collapsible-generic collapsible-projects" id="project4"> 
             <summary class="collapsible-generic-header collapsible-projects-header"> RoboCopy GUI version using Google's Flutter Framework </summary>
-            <p style="text-align: center;"><a class="link-sentence" href="https://github.com/yaq1n0/robocopy-GUI">You can find the source code for this project here</a></p>
+            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/robocopy-GUI">You can find the source code for this project here</a></p>
         </details><br>
 
         <details class="collapsible-generic collapsible-projects" id="project5"> 
             <summary class="collapsible-generic-header collapsible-projects-header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </summary>
-            <p style="text-align: center;"><a class="link-sentence" href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1PL">You can find the source code for this project here</a></p>
+            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1PL">You can find the source code for this project here</a></p>
         </details><br>
         
         <!--
@@ -399,5 +447,7 @@
         <a href="contact.html"><button class="button-generic button-centered contact-button"> Contact Me! </button></a>
     </div>
 
+    <!-- JS -->
+    <script defer src="js/projects.js"></script>
 </body>
 </html>
