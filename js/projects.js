@@ -20,5 +20,3 @@ function gotoProject(project_id) {
     document.getElementById(project_id).open = true;
     document.getElementById(project_id).scrollIntoView();
 }
-
-closeAll()
