@@ -13,21 +13,54 @@
 
 </head>
 
-<body> 
+<body onresize="handlePortrait()"> 
 
     <!--Top Navigation Bar-->
-    <div class="top-nav">
-        <div class="top-nav-left">
-        <a class="left-align active" href="index.html">Home</a>
-        <a class="left-align" href="about.html">About</a>
-        <a class="left-align" href="projects.html">Projects</a>
-        <a class="left-align" href="interests.html">Interests</a>
-        <a class="left-align" href="technical.html">For_Nerds</a>
+    <div class="nav">
+        <div class="left-container">
+        <a style="text-decoration: none;" href="index.html">
+            <div class="item left-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" class="left-icon bi bi-house-fill" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                    <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                </svg>
+                <text class="left-text show-landscape-only">Home</text>
+            </div>
+        </a>
+        <a style="text-decoration: none;" href="#">
+            <div class="item left-item show-portrait-only">
+                <svg xmlns="http://www.w3.org/2000/sv" class="left-icon bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+            </div>
+        </a>
+        <!-- Add dropdown -->
+        <a style="text-decoration: none;" href="about.html">
+            <div class="item left-item show-landscape-only">
+                <text class="left-text">About</text>
+            </div>
+        </a>
+        <a style="text-decoration: none;" href="projects.html">
+            <div class="item left-item show-landscape-only">
+                <text class="left-text">Projects</text>
+            </div>
+        </a>
+        <a style="text-decoration: none;" href="interests.html">
+            <div class="item left-item show-landscape-only">
+                <text class="left-text">Interests</text>
+            </div>
+        </a>
         </div>
         
-        <div class="top-nav-right">
-        <a class="right-align" href="contact.html">Contact</a>
-        <a class="right-align" href="resume.html">CV</a>
+        <div class="right-container">
+        <a style="text-decoration: none;" class="right-align" href="contact.html">
+            <div class="item right-item">
+                <svg xmlns="http://www.w3.org/2000/svg" class="right-icon bi bi-file-person-fill" viewBox="0 0 16 16">
+                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
+                </svg>
+                <text class="right-text show-landscape-only">Contact</text>
+            </div>
+        </a>
         </div>
     </div> 
 
@@ -36,10 +69,12 @@
         <a href="technical.html#status" style="text-decoration: none;"><p class="under-construction">
             THIS SITE IS UNDER CONSTRUCTION. CLICK HERE TO READ MORE ABOUT THE DEVELOPMENT STATUS :)
         </p></a>
-
-        <h1 class="title-text welcome-left">Welcome to yet another developer portfolio site</h1>
-        <h1 class="title-text welcome-right">I'm Yaqin, let's get to know me a little</h1> 
         
+        <div class="welcome-container">
+        <img class="welcome-logo"src="resources/images/logo-no-background.svg"></img>
+        <p class="title-text welcome-right">Welcome to yet another developer portfolio site :)</p>
+        </div>
+
         <p class="welcome-paragraph"> 
             I am a 20 year old recent BSc Computer Science graduate from the University of Southampton who started out as a tech enthusiast. 
             <br>I have experience working with a variety of programming languages, build tools and development environments. 
@@ -121,5 +156,6 @@
     </div>
     <br>
     
+    <script src="js/main.js"></script>
 </body>
 </html>

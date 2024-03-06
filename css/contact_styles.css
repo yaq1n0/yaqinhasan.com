@@ -44,3 +44,11 @@
     margin-left: var(--contact-list-item-side-margin);
     margin-right: var(--contact-list-item-side-margin);
 }
+
+.pdf-embed {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+
+    height: 100vh;
+}

@@ -5,14 +5,23 @@
 }
 
 /* Welcome/Intro Section */
-.welcome-left {
-    color: var(--theme-color-2-light);
-    font-size: var(--largest-font-size);
+.welcome-container {
+    display:flex;
+    justify-content: center;
+}
+
+.welcome-logo {
+    width: 40%;
+    border-width: 1px;
+    padding-left: 4vw;
+
 }
 
 .welcome-right {
     color: var(--theme-color-2-light);
     font-size: var(--largest-font-size);
+
+    
 }
 
 .welcome-paragraph {
