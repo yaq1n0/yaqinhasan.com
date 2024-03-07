@@ -10,437 +10,492 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/float_nav.css">
     <link rel="stylesheet" href="css/projects_styles.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico">
 
 </head>
 
-<body> 
+<body onresize="handlePortrait()"> 
 
-    <div class="top-nav">
-        <div class="top-nav-left">
-        <a class="left-align" href="index.html">Home</a>
-        <a class="left-align" href="about.html">About</a>
-        <a class="left-align active" href="projects.html">Projects</a>
-        <a class="left-align" href="interests.html">Interests</a>
-        <a class="left-align" href="technical.html">For_Nerds</a>
+    <!-- Top Navigation Bar -->
+    <div class="nav">
+        <!-- left-container of nav -->
+        <div class="left-container">
+
+        <!-- Primary Home Button -->
+        <a style="text-decoration: none;" href="index.html">
+            <div class="item left-item show-landscape-only">
+                <svg xmlns="http://www.w3.org/2000/svg" class="left-icon bi bi-house-fill" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                    <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                </svg>
+                <text class="left-text">Home</text>
+            </div>
+        </a>
+
+        <!-- Dropdown Menu Button -->
+        <a style="text-decoration: none;" href="#">
+            <div class="item left-item show-portrait-only" id="nav-dropdown-icon" onclick="toggleNavDropdown()">
+                <svg xmlns="http://www.w3.org/2000/sv" class="left-icon bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+                <text class="left-text">Menu</text>
+            </div>
+        </a>
+
+        <!-- Secondary Home Button (for dropdown) -->
+        <a style="text-decoration: none;" href="index.html">
+            <div class="item left-item nav-dropdown-item" style="display: none;">
+                <text class="left-text">Home</text>
+            </div>
+        </a>
+
+        <!-- About Me Button -->
+        <a style="text-decoration: none;" href="about.html">
+            <div class="item left-item show-landscape-only nav-dropdown-item">
+                <text class="left-text">About</text>
+            </div>
+        </a>
+
+        <!-- Projects Button -->
+        <a style="text-decoration: none;" href="projects.html">
+            <div class="item left-item show-landscape-only nav-dropdown-item">
+                <text class="left-text">Projects</text>
+            </div>
+        </a>
+
+        <!-- Interests Button -->
+        <a style="text-decoration: none;" href="interests.html">
+            <div class="item left-item show-landscape-only nav-dropdown-item">
+                <text class="left-text">Interests</text>
+            </div>
+        </a>
+
         </div>
-        
-        <div class="top-nav-right">
-        <a class="right-align" href="contact.html">Contact</a>
-        <a class="right-align" href="resume.html">CV</a>
+
+        <!-- right-container of nav -->
+        <div class="right-container">
+
+        <!-- Contact Information Button -->
+        <a style="text-decoration: none;" class="right-align" href="contact.html">
+            <div class="item right-item">
+                <svg xmlns="http://www.w3.org/2000/svg" class="right-icon bi bi-file-person-fill" viewBox="0 0 16 16">
+                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
+                </svg>
+                <text class="right-text">Contact</text>
+            </div>
+        </a>
         </div>
     </div> 
 
-    <a href="#" class="stt" >
-        <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" class="bi bi-arrow-up" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
-        </svg>
-    </a>
-
-    <a onclick="openAll()" class="expand-all" >
-        <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
-        </svg>
-    </a>
-
-    <a onclick="closeAll()" class="collapse-all" >
-        <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
-        </svg>
-    </a>
-
+    <!-- Floating Navigation Buttons -->
     <div>
-        <div>
-            <h1 class="title-text welcome-left"> Here are some of my projects </h1>
-            <p class="welcome-paragraph"> 
-                This page will highlight my most significant projects in a manner that should be approachable to both a general and technical audience. 
-                <br>It also has the secondary purpose of acting as secondary documentation for these projects in perpetuity. 
-            </p>
+        <a href="#" class="stt" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" class="bi bi-arrow-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+            </svg>
+        </a>
 
-            <p class="title-text welcome-center" id="project-shortcuts"> Project Shortcuts </p>
-            
-            <div class="shortcuts-list-container">
-            <div class="shortcuts-list">
-            <a class="link" onclick="gotoProject('project0')"> 
-                    This Website! 
-            </a>
+        <a onclick="openAll()" class="expand-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
+            </svg>
+        </a>
 
-            <a class="link" onclick="gotoProject('project1')"> 
-                My Degree Final Year Project 
-            </a>
-
-            <a class="link" onclick="gotoProject('project2')"> 
-                Structured Turtle Querying Language (Haskell)
-            </a>
-            </div>
-            
-            <div class="shortcuts-list">
-            <a class="link" onclick="gotoProject('project3')"> 
-                Heathrow Runway Redeclaration JavaFX Group Project
-            </a>
-
-            <a class="link" onclick="gotoProject('project4')"> 
-                RoboCopy-GUI (Flutter/Dart)
-            </a>
-
-            <a class="link" onclick="gotoProject('project5')"> 
-                Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork 
-            </a>
-            </div>
-            </div>
-            <br>
-        </div>
-
-    <div>
-        <details class="collapsible-generic collapsible-projects" id="project0" open> 
-            <summary class="collapsible-generic-header collapsible-projects-header">This Website!</summary>
-
-            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/yaqinhasan.com">You can find the source code for this website here</a></p>
-
-            <text class="collapsible-generic-subheading"> Getting Started </text>
-            <p> 
-                After I finished my degree and began to look for a job, I realized that I would have to find a way to highlight my projects and experience beyond what could be reasonably detailed in a CV and cover letter. 
-                Every decent developer these days seems to have their own website, so I thought "how hard could it be" and got started researching how to go about creating one for myself. 
-            </p>
-
-            <p>
-                I started by trying to define the functional goals for this website. 
-                <ul>
-                    <li> It should give people an idea of what I am like technically, professionally and personally. </li>
-                    <li> It should implicitly showcase my full-stack (ish) web development skill and design ideologies. </li>
-                    <li> It should list and explain what skills and experience I have, exhaustively if possible. </li>
-                    <li> It should document and explain my projects that I have on GitHub in a way that recruiters can understand. </li>
-                    <li> It should serve as further documentation for my GitHub projects, supplementing the readme.md files. </li>
-                    <li> It should showcase my personal interests in way that allows me to share my passions for these things, instead of just name dropping them in a CV. </li>
-                    <li> It should be a one-stop shop for people to find further information about me (link my socials and contact info). </li>
-                </ul>
-            </p>
-
-            <text class="collapsible-generic-subheading"> Initial Research, Abandoned Approaches </text>
-            <p>
-                I have been able to write HTML, CSS and pure JS since I was in middle school. 
-                This meant that I wouldn't have to learn the actual website development part much. 
-                <br>I also knew about website templates, which I initially thought about using to simplify the creation process. 
-                <br>I have also used Flutter to develop desktop apps before, and knew that Flutter could be used to create websites.
-                And in the worst case, I could also use React, Angular, Vue or any other one of the million JS frameworks. 
-            </p>
-
-            <p>
-                I tried to build a flutter example app for web, it didn't immediately work, so I gave up on it. 
-                I probably could've gotten it to work but in hindsight, 
-                I'm glad I didn't use a JS framework as it would just be unnecessary code  overhead and web bloat. 
-            </p>
-
-            <p> 
-                I moved on to looking at html/css/js templates. 
-                I found one called "Monica." which looked to fit the description. 
-                I read through the source code and got to work changing stuff and adding context. 
-                I got to a point where had a solid landing page and generic template to start working off of, when I had an epiphany. 
-            </p>
-
-            <text class="collapsible-generic-subheading"> A Minimalist Approach Begins </text>
-            <p>
-                First, I realized that once I really thought about the functional requirements of this site, I didn't actually need a template. 
-                Secondly, the template was incredibly bloated with unnecessary JS dependencies, fluff UI animations and source code that was unnecessarily convoluted 
-                (a single 5000 line styles.css file that was a pain to work with).     
-                Thirdly, I personally believe in minimalist design as well as clean, simple, to the point software. 
-            </p>
-
-            <p> 
-                Realizing all of this, I decided to see how long it would actually take me to create the framework for the website I had in mind from scratch. 
-                Building everything from scratch, but also wanting to retain responsive UI design meant that I had to learn a few bits of new HTML and CSS. 
-                I also implemented some basic good coding practices that the template didn't such as: 
-                <ul>
-                    <li> Creating global responsible font size variables. </li>
-                    <li> Creating global theme color variables and variations for them. </li>
-                    <li> Using entirely relative and responsive positioning, layout and sizing code. </li>
-                    <li> Having separate stylesheets for each page, to try and avoid having an massive abomination of a styles.css file. </li>
-                    <li> Using consistent polymorphism concepts for UI elements, so that they can be reused and repurposed site-wide </li>
-                </ul>
-                It took me around 3 hours to go from nothing to having a responsive skeleton with a generic page template, reaching feature parity with the template branch of the site. 
-            </p>
-
-        </details><br>
-
-        <details class="collapsible-generic collapsible-projects"  id="project1"> 
-            <summary class="collapsible-generic-header collapsible-projects-header"> My Degree Final Year Project (FYP) </summary>
-
-            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/thymio-python">You can find the source code for this project here</a></p>
-
-            <text class="collapsible-generic-subheading"> Intro </text>
-            <p> 
-                A final year project, also known as an honours project has 2 parts, the actual project and the accompanying dissertation/report. 
-                I might eventually add my dissertation here if there's enough interest but at thousands of words long, I doubt many people would read it fully. 
-                Therefore, I will try to summarize things for the sake of brevity and to only include what I believe to be most relevant. 
-            </p>
-
-            <text class="collapsible-generic-subheading"> Project Selection/Project Brief </text>
-            <p>
-                The FYP process for a BSc Computer Science at the University of Southampton begins with a selection process that allows you to select topics that you are interested in. 
-                Each project topic is tied to a supervisor, and while you can't directly select a supervisor, you can see who your supervisor is likely to be when you select your topic. 
-                Your choices are then put through a matching algorithm to match you with a supervisor. 
-            </p>
-
-            <p>
-                After you're allocated a project topic and supervisor, you can then discuss with them about their current areas of interest. 
-                Hopefully, you'll be able to find some common ground between something you want to do and something they are able to help you with. 
-                Within a few weeks of the first semester of your 3rd year, you are expected to select a project title and project brief. 
-            </p>
-
-            <p>
-                The conventional wisdom is to select a vague yet believable project title that you can then eventually refine and narrow down over time. 
-                This wisdom extends to the project brief, which you are expected to produce alongside it, detailing what you wish to do.   
-            </p>
-
-            <p>
-                I didn't have any strong feelings or inspiration as to what project I actually wanted to make.
-                However, I knew early on that I wanted to do something that would allow me to explore unfamiliar fields and try out some new technologies. 
-            </p>
-
-            <p>
-                Eventually, I decided on a project titled "an intelligent approach to navigation in environments with compliant obstacles". 
-                Now lets break down what this intentionally vague and pretentiously academic title actually means. 
-            </p>
-
-            <p>
-                Obstacle compliance is just the term used to describe how easy it would be to either disregard and move through or to push aside an obstacle. 
-                A good example of a highly compliant obstacle would be grass, a moderately compliant one being a small branch that can be pushed aside, and a non-compliant one being a large immovable rock. 
-            </p>
-
-            <p>
-                The general gist of the project is that autonomous navigation algorithms don't intrinsically understand object compliance. 
-                Theoretically, this can be achieved in the following ways: 
-                
-                <ul>
-                    <li> Hard coding compliance for expected obstacles: This requires the most developer/human effort, and is most likely to fail in the field </li>
-                    <li> Test and learn compliance details for obstacles on the fly: This takes relatively little human effort, and in theory accounts for everything that could possibly be encountered. </li>
-                    <li> Contextual AI: This wasn't really a thing that was on my mind as someone who wasn't really at the cutting edge of AI developments in 2023. 
-                        Though writing this in 2024, it would likely not be long until someone trains an AI model to associate recognized objects with physical characteristics like mass, coefficient of friction and compliance</li>
-                </ul>
-
-                Obviously, I wouldn't have hard coded compliance for a set of recognized obstacles and called that a day, so I decided on using the second approach. 
-            </p>
-
-            <text class="collapsible-generic-subheading">Compliance Testing </text>
-            <p>
-                The end goal of the project was to essentially develop a way to populate a data base of key-value pairs. 
-                Each key-value containing a value an obstacle_id and its associated compliance_value. 
-            </p>
-
-            <p>
-                Classifying objects and obtaining object_id will be done in the next section, in this we section we will cover obtaining compliance_value. 
-                There are a few ways to get a compliance value but all of them boil down to f(internal_variable) where a function is applied to some internal variable that the robot can measure. 
-            </p>
-
-            <p>
-                Quite a few internal values can be used to define compliance functionally.
-                Some of the methods evaluated were: 
-                <ul>
-                    <li>Using the current draw of the robot's wheels/locomotion servos, with increased current draw being associated with lower compliance</li>
-                    <li>Using a pressure sensor at the front of the robot, with increased pressure being indicative of lower compliance. </li>
-                    <li>Using an accelerometer to measure deceleration on impact, with larger decelerations being indicative of lower compliance. </li>
-                </ul>
-                Ultimately, the final method was chosen. 
-            </p>
-
-            <text class="collapsible-generic-subheading">Sensor selection </text>
-            <p>
-                In order to be able to use a function to calculate a compliance_value from the deceleration on collision,
-                the sensor must have the following properties. 
-                <ul>
-                    <li>A high enough polling rate to detect rapid spikes in deceleration. </li>
-                    <li>A high enough precision to be used to meaningfully differentiate between different deceleration amounts. </li>
-                    <li>A way to interface with the computer or microcontroller that's running the control software. </li>
-                </ul>
-            </p>
-
-            <p>
-                I played around with the following accelerometers before choosing one for the final approach. 
-                <ul>
-                    <li>
-                        The robot I was using, the Thymio, has an internal accelerometer (read more in the next section). 
-                        I attempted to use this as it reported sensor data using the same bus as the control signals which I would have to use anyway. 
-                        However, it ended up not having a high enough polling rate and precision. 
-                        The reasons for why these are important are highlighted above. 
-                    </li>
-                    <li>
-                        I also had a Pico4ML microcontroller board on hand, which had an accelerometer on board that I thought could be repurposed to act like a USB accelerometer. 
-                        I wrote a lightweight program for the microcontroller that read the accelerometer data and outputted it to the serial (USB port) bus that connected it to the computer running the primary control software.  
-                        From there, it was just a simple matter of reading the serial bus, cleaning up the data and interfacing with the control code. 
-                        However, using the serial interface raw proved the be slightly unreliable. 
-                        I have no doubt that I could eventually find a way to make it consistent but I decided to try other options. 
-                    </li>
-                    <li>
-                        Eventually, I bought an MPU6050 Inertial Measurement Unit (IMU), 
-                        an IMU being a combination sensor with an 3-axis accelerometer and a 3-axis gyroscope. 
-                        It had a good amount of documentation, was pre-calibrated and had a pre-written library which would perform the raw input sanitation for me. 
-                    </li>
-                </ul>
-            </p>
-
-            <text class="collapsible-generic-subheading">Test Platform and Thymio </text>
-            <p>
-                I would have needed some kind of mobile robotic test platform to develop the prototype on. 
-                In theory, I could've used anything that had the ability to move, a couple servos and wheels bolted to a slab. 
-            </p>
-
-            <p>
-                However, my supervisor had access and experience to Thymio robots, which were simple small robots with a few built in sensors. 
-                Most importantly though, they include a first party control library which meant that I won't have to directly control servos for movement. 
-            </p>
-
-            <text class="collapsible-generic-subheading">Obstacle detection and classification</text>
-            <p>
-                Up until this project, I had done some modules on ML theory, but I have never actually implemented or used anything in a practical setting. 
-                I did a lot of research and found out about OpenCV, which allowed me to use pre-trained object classification models to detect and classify objects. 
-                I eventually settled on using a model specifically for "everyday objects" which I believed would allow me to classify anything I would use in testing. 
-            </p>
-
-            <p>
-                Obviously running in object recognition model on a Raspberry Pi 3 single board computer was going to run into some performance constraints. 
-                I tried my best to optimize by disabling the preview and directly sending the camera input to the model.  
-                Eventually I had to sacrifice the input resolution to get the model to work in somewhat real-time, which meant less accurate object classification. 
-                However, I managed to get around this by caching the recognition data once and using it for subsequent frames. 
-                The final solution ended up with minimal recognition delay in the few hundred milliseconds range, but also being consistent and accurate enough practically. 
-            </p>
-
-            <text class="collapsible-generic-subheading">Summary of Final Prototype</text>
-            <p>
-                I had a Raspberry Pi 3 running the control program, written in Python. 
-                The Pi 3 was also running the OpenCV object classification model using data from a Pi camera. 
-                The MPU6050 IMU was wired directly to the GPIO pins on the raspberry pi and transmitting data over the I2C bus. 
-                The Thymio robot was being controlled by the Pi 3 through their proprietary dbus Python library asebamedulla. 
-                Everything was powered off a standard USD-PD compatible battery pack. 
-            </p>
-
-            <p>
-                The final prototype was able to identify and classify obstacles, then it would decide to test the compliance of the obstacle if it was unknown to it. 
-                In theory, this would then be coupled with a navigation algorithm, using the compliance values to augment the different path "weights" to come up with a more efficient path, 
-                not just by distance but also by obstacle compliance data along the way. 
-            </p>
-
-            <text class="collapsible-generic-subheading">Theoretical Improvements</text>
-            <p>
-                By calculating compliance_value from f(internal_variable), we are mapping a single sensor's data to a numerical value. 
-                This inherently has 2 issues, the first being that information is lost during the mapping process, regardless of what function is used. 
-                Secondly, using a single sensor value is inherently limiting, as it can often miss certain nuances. 
-            </p>
-
-            <p>
-                On the function side, the simplest function used to turn a range of values, such as deceleration, into a single value is an average. 
-                This would lead to a sharp single spike such as when colliding with a completely immovable and non-compliant obstacle to return a lower compliance_value than
-                a prolonged deceleration as as from pushing a heavy but movable and slightly compliant obstacle. 
-            </p>
-
-            <p>
-                Therefore, it becomes a task in itself to choose or create a function best suited for the job that consistently outputs obstacle compliance values that are representative and useable for comparison purposes. 
-            </p>
-        
-            <p>
-                On the variables side, using a single variable simplifies things but it can also be easily become inaccurate. 
-                For example, by only using a single accelerometer axis, if the robot tilts or otherwise doesn't collide with the obstacles directly every time, 
-                it will generate inconsistent data due to the vectoring of the values measured. 
-            </p>
-
-            <p>
-                Therefore, it makes sense to try and take into account as many variables as possible in calculating an obstacle's compliance_value,
-                to allow for errors like this to either be accounted for with erroneous data detection and correction or though simple mathematical redundancy. 
-            </p>
-
-        </details><br>
-
-        <details class="collapsible-generic collapsible-projects"  id="project2"> 
-            <summary class="collapsible-generic-header collapsible-projects-header"> Structured Turtle Query Language (STQL) </summary>
-
-            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/STQL-haskell">You can find the source code for this project here</a></p>
-
-            <text class="collapsible-generic-subheading">Intro</text>
-            <p>
-                As part of the second year of my computer science degree, I took the following modules:
-                <ul>
-                    <li>Theory of Computing: Which covered computability and complexity theory</li>
-                    <li>Programming 3: Which covered functional programming in Haskell</li>
-                    <li>Programming Language Concepts: Which covered compiler/interpreter theory</li>
-                </ul>
-                You can read more about them in my modules breakdown <a href="about.html#degree-year2">here</a>.                
-            </p>
-
-            <p>
-                While those modules were technically separate, I have a strong hunch that they were all taught in the same year in order to provide the theoretical background required for the coursework. 
-                The coursework was meant to be done in a group of 3, and the goal was the design a Toy language and accompanying interpreter in Haskell. 
-            </p>
-
-            <text class="collapsible-generic-subheading">Coursework Scope</text>
-            <p>
-                The scope for the toy language was to act as a querying language for Turtle RDF files. 
-                The actual data type and file syntax is arbitrary, but if you'd like to learn more about it, <a href="https://www.w3.org/TR/turtle/">here</a>. 
-                The querying functionality was akin to a subset of common SQL-like functions, such as filtering, merging etc. 
-            </p>
-
-            <p>
-                The coursework was meant to be done in a group of 3. 
-                I proposed that we split it such that one person designs the Toy language and interpreter, one person does the underlying logic, and another person links the 2 together. 
-            </p>
-
-            <text class="collapsible-generic-subheading">Group Difficulties</text>
-            <p>
-                However, it turned out that one of my groupmates ended being incredibly uncooperative, not showing up to "scrum" meetings and ended up contributing less than 10% of the total group effort. 
-                The other 2 of us attempted to resolve this issue by helping to break down the tasks for him and make them more straightforward, followed by explaining out predicament to the Module Lead. 
-                Eventually, we realized that we were spending more time and effort trying to incorporate him into the workflows and agreed to simply pick up his responsibilities between the 2 of us, as we had a rapidly approaching deadline. 
-            </p>
-
-            <p>
-                Therefore, it ended up with me designing the Toy language, the accompanying interpreter and the interfacing code. 
-                While my other groupmate ended up implementing the entire backend functionality and the actual execution in Haskell. 
-            </p>
-
-            <text class="collapsible-generic-subheading">What My Groupmate Implemented</text>
-            <p>
-                Due to this division of duty, the 2 of us worked on roughly half of the total work amount each. 
-                However, my understanding of the backend functionality is limited as I let her do the backend independently. 
-                As I understand it, she used a Haskell library which did the raw interfacing with the Turtle files, and she implemented a bunch of high-level functions based on the low-level library functions. 
-                The end result being that she essentially provided me with an API that I can make function calls to from the interpreter.  
-            </p>
-
-            <text class="collapsible-generic-subheading">What I Implemented</text>
-            <p>
-                For my responsibilities, I designed the language around the library's functionality. 
-                As the library was initially meant to modify files, I realized that I wouldn't actually need to implement runtime variables and I could instead use intermediary files as pseudo-variables. 
-                The second thing I realized was that the actual functionality could be implemented using a combination of simpler functions rather than using a larger set of more complex functions. 
-                Essentially reducing the interpreter complexity at the "cost" of requiring more effort to write the code in the Toy language. 
-            </p>
-
-            <text class="collapsible-generic-subheading">About The Name</text>
-            <p>
-                Me and the other groupmate that actually did their part eventually realized the coincidental syntactic and functional similarity of our Toy language to SQL. 
-                Knowing that SQL stood for structured querying language, we then named our language structured turtle querying language, or STQL for short.
-            </p>
-        </details><br>
-
-        <details class="collapsible-generic collapsible-projects" id="project3"> 
-            <summary class="collapsible-generic-header collapsible-projects-header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</summary>
-            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/SEG-project-2021">You can find the source code for this project here</a></p>
-        </details><br>
-
-        <details class="collapsible-generic collapsible-projects" id="project4"> 
-            <summary class="collapsible-generic-header collapsible-projects-header"> RoboCopy GUI version using Google's Flutter Framework </summary>
-            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/robocopy-GUI">You can find the source code for this project here</a></p>
-        </details><br>
-
-        <details class="collapsible-generic collapsible-projects" id="project5"> 
-            <summary class="collapsible-generic-header collapsible-projects-header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </summary>
-            <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1PL">You can find the source code for this project here</a></p>
-        </details><br>
-        
-        <!--
-        <details class="collapsible-generic collapsible-projects" id="project0"> 
-            <summary class="collapsible-generic-header collapsible-projects-header"> Project_title </summary>
-            <p>
-            project_content
-            </p>
-        </details><br>
-        -->
+        <a onclick="closeAll()" class="collapse-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+            </svg>
+        </a>
     </div>
+
+    <!-- Welcome Section -->
+    <div>
+        <h1 class="title-text welcome-left"> Here are some of my projects </h1>
+        <p class="welcome-paragraph"> 
+            This page will highlight my most significant projects in a manner that should be approachable to both a general and technical audience. 
+            <br>It also has the secondary purpose of acting as secondary documentation for these projects in perpetuity. 
+        </p>
+    </div>
+
+    <!-- Navigation Shortcuts -->
+    <div>
+        <p class="title-text welcome-center" id="shortcuts-header"> Shortcuts </p>
+        
+        <div class="shortcuts-list-container">
+        <div class="shortcuts-list-row">
+        <a class="link" onclick="gotoElement('')"> 
+            shortcut 1a
+        </a>
+
+        <a class="link" onclick="gotoElement('')"> 
+            shortcut 1b
+        </a>
+        </div>
+    
+        <div class="shortcuts-list-row">
+        <a class="link" onclick="gotoElement('')"> 
+            shortcut 2a
+        </a>
+
+        <a class="link" onclick="gotoElement('')"> 
+            shortcut 2b
+        </a>
+        </div>
+        </div><br>
+    </div>
+
+    <details class="collapsible-generic collapsible-projects" id="project0" open> 
+        <summary class="collapsible-generic-header collapsible-projects-header">This Website!</summary>
+
+        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/yaqinhasan.com">You can find the source code for this website here</a></p>
+
+        <text class="collapsible-generic-subheading"> Getting Started </text>
+        <p> 
+            After I finished my degree and began to look for a job, I realized that I would have to find a way to highlight my projects and experience beyond what could be reasonably detailed in a CV and cover letter. 
+            Every decent developer these days seems to have their own website, so I thought "how hard could it be" and got started researching how to go about creating one for myself. 
+        </p>
+
+        <p>
+            I started by trying to define the functional goals for this website. 
+            <ul>
+                <li> It should give people an idea of what I am like technically, professionally and personally. </li>
+                <li> It should implicitly showcase my full-stack (ish) web development skill and design ideologies. </li>
+                <li> It should list and explain what skills and experience I have, exhaustively if possible. </li>
+                <li> It should document and explain my projects that I have on GitHub in a way that recruiters can understand. </li>
+                <li> It should serve as further documentation for my GitHub projects, supplementing the readme.md files. </li>
+                <li> It should showcase my personal interests in way that allows me to share my passions for these things, instead of just name dropping them in a CV. </li>
+                <li> It should be a one-stop shop for people to find further information about me (link my socials and contact info). </li>
+            </ul>
+        </p>
+
+        <text class="collapsible-generic-subheading"> Initial Research, Abandoned Approaches </text>
+        <p>
+            I have been able to write HTML, CSS and pure JS since I was in middle school. 
+            This meant that I wouldn't have to learn the actual website development part much. 
+            <br>I also knew about website templates, which I initially thought about using to simplify the creation process. 
+            <br>I have also used Flutter to develop desktop apps before, and knew that Flutter could be used to create websites.
+            And in the worst case, I could also use React, Angular, Vue or any other one of the million JS frameworks. 
+        </p>
+
+        <p>
+            I tried to build a flutter example app for web, it didn't immediately work, so I gave up on it. 
+            I probably could've gotten it to work but in hindsight, 
+            I'm glad I didn't use a JS framework as it would just be unnecessary code  overhead and web bloat. 
+        </p>
+
+        <p> 
+            I moved on to looking at html/css/js templates. 
+            I found one called "Monica." which looked to fit the description. 
+            I read through the source code and got to work changing stuff and adding context. 
+            I got to a point where had a solid landing page and generic template to start working off of, when I had an epiphany. 
+        </p>
+
+        <text class="collapsible-generic-subheading"> A Minimalist Approach Begins </text>
+        <p>
+            First, I realized that once I really thought about the functional requirements of this site, I didn't actually need a template. 
+            Secondly, the template was incredibly bloated with unnecessary JS dependencies, fluff UI animations and source code that was unnecessarily convoluted 
+            (a single 5000 line styles.css file that was a pain to work with).     
+            Thirdly, I personally believe in minimalist design as well as clean, simple, to the point software. 
+        </p>
+
+        <p> 
+            Realizing all of this, I decided to see how long it would actually take me to create the framework for the website I had in mind from scratch. 
+            Building everything from scratch, but also wanting to retain responsive UI design meant that I had to learn a few bits of new HTML and CSS. 
+            I also implemented some basic good coding practices that the template didn't such as: 
+            <ul>
+                <li> Creating global responsible font size variables. </li>
+                <li> Creating global theme color variables and variations for them. </li>
+                <li> Using entirely relative and responsive positioning, layout and sizing code. </li>
+                <li> Having separate stylesheets for each page, to try and avoid having an massive abomination of a styles.css file. </li>
+                <li> Using consistent polymorphism concepts for UI elements, so that they can be reused and repurposed site-wide </li>
+            </ul>
+            It took me around 3 hours to go from nothing to having a responsive skeleton with a generic page template, reaching feature parity with the template branch of the site. 
+        </p>
+
+    </details><br>
+
+    <details class="collapsible-generic collapsible-projects"  id="project1"> 
+        <summary class="collapsible-generic-header collapsible-projects-header"> My Degree Final Year Project (FYP) </summary>
+
+        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/thymio-python">You can find the source code for this project here</a></p>
+
+        <text class="collapsible-generic-subheading"> Intro </text>
+        <p> 
+            A final year project, also known as an honours project has 2 parts, the actual project and the accompanying dissertation/report. 
+            I might eventually add my dissertation here if there's enough interest but at thousands of words long, I doubt many people would read it fully. 
+            Therefore, I will try to summarize things for the sake of brevity and to only include what I believe to be most relevant. 
+        </p>
+
+        <text class="collapsible-generic-subheading"> Project Selection/Project Brief </text>
+        <p>
+            The FYP process for a BSc Computer Science at the University of Southampton begins with a selection process that allows you to select topics that you are interested in. 
+            Each project topic is tied to a supervisor, and while you can't directly select a supervisor, you can see who your supervisor is likely to be when you select your topic. 
+            Your choices are then put through a matching algorithm to match you with a supervisor. 
+        </p>
+
+        <p>
+            After you're allocated a project topic and supervisor, you can then discuss with them about their current areas of interest. 
+            Hopefully, you'll be able to find some common ground between something you want to do and something they are able to help you with. 
+            Within a few weeks of the first semester of your 3rd year, you are expected to select a project title and project brief. 
+        </p>
+
+        <p>
+            The conventional wisdom is to select a vague yet believable project title that you can then eventually refine and narrow down over time. 
+            This wisdom extends to the project brief, which you are expected to produce alongside it, detailing what you wish to do.   
+        </p>
+
+        <p>
+            I didn't have any strong feelings or inspiration as to what project I actually wanted to make.
+            However, I knew early on that I wanted to do something that would allow me to explore unfamiliar fields and try out some new technologies. 
+        </p>
+
+        <p>
+            Eventually, I decided on a project titled "an intelligent approach to navigation in environments with compliant obstacles". 
+            Now lets break down what this intentionally vague and pretentiously academic title actually means. 
+        </p>
+
+        <p>
+            Obstacle compliance is just the term used to describe how easy it would be to either disregard and move through or to push aside an obstacle. 
+            A good example of a highly compliant obstacle would be grass, a moderately compliant one being a small branch that can be pushed aside, and a non-compliant one being a large immovable rock. 
+        </p>
+
+        <p>
+            The general gist of the project is that autonomous navigation algorithms don't intrinsically understand object compliance. 
+            Theoretically, this can be achieved in the following ways: 
+            
+            <ul>
+                <li> Hard coding compliance for expected obstacles: This requires the most developer/human effort, and is most likely to fail in the field </li>
+                <li> Test and learn compliance details for obstacles on the fly: This takes relatively little human effort, and in theory accounts for everything that could possibly be encountered. </li>
+                <li> Contextual AI: This wasn't really a thing that was on my mind as someone who wasn't really at the cutting edge of AI developments in 2023. 
+                    Though writing this in 2024, it would likely not be long until someone trains an AI model to associate recognized objects with physical characteristics like mass, coefficient of friction and compliance</li>
+            </ul>
+
+            Obviously, I wouldn't have hard coded compliance for a set of recognized obstacles and called that a day, so I decided on using the second approach. 
+        </p>
+
+        <text class="collapsible-generic-subheading">Compliance Testing </text>
+        <p>
+            The end goal of the project was to essentially develop a way to populate a data base of key-value pairs. 
+            Each key-value containing a value an obstacle_id and its associated compliance_value. 
+        </p>
+
+        <p>
+            Classifying objects and obtaining object_id will be done in the next section, in this we section we will cover obtaining compliance_value. 
+            There are a few ways to get a compliance value but all of them boil down to f(internal_variable) where a function is applied to some internal variable that the robot can measure. 
+        </p>
+
+        <p>
+            Quite a few internal values can be used to define compliance functionally.
+            Some of the methods evaluated were: 
+            <ul>
+                <li>Using the current draw of the robot's wheels/locomotion servos, with increased current draw being associated with lower compliance</li>
+                <li>Using a pressure sensor at the front of the robot, with increased pressure being indicative of lower compliance. </li>
+                <li>Using an accelerometer to measure deceleration on impact, with larger decelerations being indicative of lower compliance. </li>
+            </ul>
+            Ultimately, the final method was chosen. 
+        </p>
+
+        <text class="collapsible-generic-subheading">Sensor selection </text>
+        <p>
+            In order to be able to use a function to calculate a compliance_value from the deceleration on collision,
+            the sensor must have the following properties. 
+            <ul>
+                <li>A high enough polling rate to detect rapid spikes in deceleration. </li>
+                <li>A high enough precision to be used to meaningfully differentiate between different deceleration amounts. </li>
+                <li>A way to interface with the computer or microcontroller that's running the control software. </li>
+            </ul>
+        </p>
+
+        <p>
+            I played around with the following accelerometers before choosing one for the final approach. 
+            <ul>
+                <li>
+                    The robot I was using, the Thymio, has an internal accelerometer (read more in the next section). 
+                    I attempted to use this as it reported sensor data using the same bus as the control signals which I would have to use anyway. 
+                    However, it ended up not having a high enough polling rate and precision. 
+                    The reasons for why these are important are highlighted above. 
+                </li>
+                <li>
+                    I also had a Pico4ML microcontroller board on hand, which had an accelerometer on board that I thought could be repurposed to act like a USB accelerometer. 
+                    I wrote a lightweight program for the microcontroller that read the accelerometer data and outputted it to the serial (USB port) bus that connected it to the computer running the primary control software.  
+                    From there, it was just a simple matter of reading the serial bus, cleaning up the data and interfacing with the control code. 
+                    However, using the serial interface raw proved the be slightly unreliable. 
+                    I have no doubt that I could eventually find a way to make it consistent but I decided to try other options. 
+                </li>
+                <li>
+                    Eventually, I bought an MPU6050 Inertial Measurement Unit (IMU), 
+                    an IMU being a combination sensor with an 3-axis accelerometer and a 3-axis gyroscope. 
+                    It had a good amount of documentation, was pre-calibrated and had a pre-written library which would perform the raw input sanitation for me. 
+                </li>
+            </ul>
+        </p>
+
+        <text class="collapsible-generic-subheading">Test Platform and Thymio </text>
+        <p>
+            I would have needed some kind of mobile robotic test platform to develop the prototype on. 
+            In theory, I could've used anything that had the ability to move, a couple servos and wheels bolted to a slab. 
+        </p>
+
+        <p>
+            However, my supervisor had access and experience to Thymio robots, which were simple small robots with a few built in sensors. 
+            Most importantly though, they include a first party control library which meant that I won't have to directly control servos for movement. 
+        </p>
+
+        <text class="collapsible-generic-subheading">Obstacle detection and classification</text>
+        <p>
+            Up until this project, I had done some modules on ML theory, but I have never actually implemented or used anything in a practical setting. 
+            I did a lot of research and found out about OpenCV, which allowed me to use pre-trained object classification models to detect and classify objects. 
+            I eventually settled on using a model specifically for "everyday objects" which I believed would allow me to classify anything I would use in testing. 
+        </p>
+
+        <p>
+            Obviously running in object recognition model on a Raspberry Pi 3 single board computer was going to run into some performance constraints. 
+            I tried my best to optimize by disabling the preview and directly sending the camera input to the model.  
+            Eventually I had to sacrifice the input resolution to get the model to work in somewhat real-time, which meant less accurate object classification. 
+            However, I managed to get around this by caching the recognition data once and using it for subsequent frames. 
+            The final solution ended up with minimal recognition delay in the few hundred milliseconds range, but also being consistent and accurate enough practically. 
+        </p>
+
+        <text class="collapsible-generic-subheading">Summary of Final Prototype</text>
+        <p>
+            I had a Raspberry Pi 3 running the control program, written in Python. 
+            The Pi 3 was also running the OpenCV object classification model using data from a Pi camera. 
+            The MPU6050 IMU was wired directly to the GPIO pins on the raspberry pi and transmitting data over the I2C bus. 
+            The Thymio robot was being controlled by the Pi 3 through their proprietary dbus Python library asebamedulla. 
+            Everything was powered off a standard USD-PD compatible battery pack. 
+        </p>
+
+        <p>
+            The final prototype was able to identify and classify obstacles, then it would decide to test the compliance of the obstacle if it was unknown to it. 
+            In theory, this would then be coupled with a navigation algorithm, using the compliance values to augment the different path "weights" to come up with a more efficient path, 
+            not just by distance but also by obstacle compliance data along the way. 
+        </p>
+
+        <text class="collapsible-generic-subheading">Theoretical Improvements</text>
+        <p>
+            By calculating compliance_value from f(internal_variable), we are mapping a single sensor's data to a numerical value. 
+            This inherently has 2 issues, the first being that information is lost during the mapping process, regardless of what function is used. 
+            Secondly, using a single sensor value is inherently limiting, as it can often miss certain nuances. 
+        </p>
+
+        <p>
+            On the function side, the simplest function used to turn a range of values, such as deceleration, into a single value is an average. 
+            This would lead to a sharp single spike such as when colliding with a completely immovable and non-compliant obstacle to return a lower compliance_value than
+            a prolonged deceleration as as from pushing a heavy but movable and slightly compliant obstacle. 
+        </p>
+
+        <p>
+            Therefore, it becomes a task in itself to choose or create a function best suited for the job that consistently outputs obstacle compliance values that are representative and useable for comparison purposes. 
+        </p>
+    
+        <p>
+            On the variables side, using a single variable simplifies things but it can also be easily become inaccurate. 
+            For example, by only using a single accelerometer axis, if the robot tilts or otherwise doesn't collide with the obstacles directly every time, 
+            it will generate inconsistent data due to the vectoring of the values measured. 
+        </p>
+
+        <p>
+            Therefore, it makes sense to try and take into account as many variables as possible in calculating an obstacle's compliance_value,
+            to allow for errors like this to either be accounted for with erroneous data detection and correction or though simple mathematical redundancy. 
+        </p>
+
+    </details><br>
+
+    <details class="collapsible-generic collapsible-projects"  id="project2"> 
+        <summary class="collapsible-generic-header collapsible-projects-header"> Structured Turtle Query Language (STQL) </summary>
+
+        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/STQL-haskell">You can find the source code for this project here</a></p>
+
+        <text class="collapsible-generic-subheading">Intro</text>
+        <p>
+            As part of the second year of my computer science degree, I took the following modules:
+            <ul>
+                <li>Theory of Computing: Which covered computability and complexity theory</li>
+                <li>Programming 3: Which covered functional programming in Haskell</li>
+                <li>Programming Language Concepts: Which covered compiler/interpreter theory</li>
+            </ul>
+            You can read more about them in my modules breakdown <a href="about.html#degree-year2">here</a>.                
+        </p>
+
+        <p>
+            While those modules were technically separate, I have a strong hunch that they were all taught in the same year in order to provide the theoretical background required for the coursework. 
+            The coursework was meant to be done in a group of 3, and the goal was the design a Toy language and accompanying interpreter in Haskell. 
+        </p>
+
+        <text class="collapsible-generic-subheading">Coursework Scope</text>
+        <p>
+            The scope for the toy language was to act as a querying language for Turtle RDF files. 
+            The actual data type and file syntax is arbitrary, but if you'd like to learn more about it, <a href="https://www.w3.org/TR/turtle/">here</a>. 
+            The querying functionality was akin to a subset of common SQL-like functions, such as filtering, merging etc. 
+        </p>
+
+        <p>
+            The coursework was meant to be done in a group of 3. 
+            I proposed that we split it such that one person designs the Toy language and interpreter, one person does the underlying logic, and another person links the 2 together. 
+        </p>
+
+        <text class="collapsible-generic-subheading">Group Difficulties</text>
+        <p>
+            However, it turned out that one of my groupmates ended being incredibly uncooperative, not showing up to "scrum" meetings and ended up contributing less than 10% of the total group effort. 
+            The other 2 of us attempted to resolve this issue by helping to break down the tasks for him and make them more straightforward, followed by explaining out predicament to the Module Lead. 
+            Eventually, we realized that we were spending more time and effort trying to incorporate him into the workflows and agreed to simply pick up his responsibilities between the 2 of us, as we had a rapidly approaching deadline. 
+        </p>
+
+        <p>
+            Therefore, it ended up with me designing the Toy language, the accompanying interpreter and the interfacing code. 
+            While my other groupmate ended up implementing the entire backend functionality and the actual execution in Haskell. 
+        </p>
+
+        <text class="collapsible-generic-subheading">What My Groupmate Implemented</text>
+        <p>
+            Due to this division of duty, the 2 of us worked on roughly half of the total work amount each. 
+            However, my understanding of the backend functionality is limited as I let her do the backend independently. 
+            As I understand it, she used a Haskell library which did the raw interfacing with the Turtle files, and she implemented a bunch of high-level functions based on the low-level library functions. 
+            The end result being that she essentially provided me with an API that I can make function calls to from the interpreter.  
+        </p>
+
+        <text class="collapsible-generic-subheading">What I Implemented</text>
+        <p>
+            For my responsibilities, I designed the language around the library's functionality. 
+            As the library was initially meant to modify files, I realized that I wouldn't actually need to implement runtime variables and I could instead use intermediary files as pseudo-variables. 
+            The second thing I realized was that the actual functionality could be implemented using a combination of simpler functions rather than using a larger set of more complex functions. 
+            Essentially reducing the interpreter complexity at the "cost" of requiring more effort to write the code in the Toy language. 
+        </p>
+
+        <text class="collapsible-generic-subheading">About The Name</text>
+        <p>
+            Me and the other groupmate that actually did their part eventually realized the coincidental syntactic and functional similarity of our Toy language to SQL. 
+            Knowing that SQL stood for structured querying language, we then named our language structured turtle querying language, or STQL for short.
+        </p>
+    </details><br>
+
+    <details class="collapsible-generic collapsible-projects" id="project3"> 
+        <summary class="collapsible-generic-header collapsible-projects-header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</summary>
+        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/SEG-project-2021">You can find the source code for this project here</a></p>
+    </details><br>
+
+    <details class="collapsible-generic collapsible-projects" id="project4"> 
+        <summary class="collapsible-generic-header collapsible-projects-header"> RoboCopy GUI version using Google's Flutter Framework </summary>
+        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/robocopy-GUI">You can find the source code for this project here</a></p>
+    </details><br>
+
+    <details class="collapsible-generic collapsible-projects" id="project5"> 
+        <summary class="collapsible-generic-header collapsible-projects-header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </summary>
+        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1PL">You can find the source code for this project here</a></p>
+    </details><br>
+    
+    <!--
+    <details class="collapsible-generic collapsible-projects" id="project0"> 
+        <summary class="collapsible-generic-header collapsible-projects-header"> Project_title </summary>
+        <p>
+        project_content
+        </p>
+    </details><br>
+    -->
 
     <div class="bottom-bar">
         <p class="bottom-bar-text">
@@ -451,7 +506,8 @@
         <a href="contact.html"><button class="button-generic button-centered contact-button"> Contact Me! </button></a>
     </div>
 
-    <!-- JS -->
-    <script defer src="js/projects.js"></script>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/float_nav.js"></script>
 </body>
 </html>

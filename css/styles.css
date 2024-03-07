@@ -69,10 +69,6 @@
     --bottom-bar-color: var(--theme-color-2-translucent);
     --contact-bar-color: var(--theme-color-3-translucent);
 
-    /* this shouldn't be hard coded, but until I need it, im leaving it 
-    it's basically a highlight dark tint anyway */
-    --nav-bar-hover: hsla(0, 0%, 0%, 0.4);
-
     /* contact button at the bottom of pages */
     --contact-button-color: var(--theme-color-2);
     --contact-button-hover: var(--theme-color-2-dark);
@@ -175,7 +171,8 @@ h1 {
     text-decoration: none;
     color: var(--site-white);
     font-weight: 400;
-    background-color: var(--theme-color-2-dark);
+    /* keep this red so that it shows when it needs to be configured */
+    background-color: red;
     padding: 4px;
     border: solid 2px;
     border-color: var(--site-white);
@@ -199,31 +196,24 @@ h1 {
 .nav .left-container {
     display: flex;
     flex-direction: row;
+    align-items: start;
+    justify-items: start;
     width: 70%;
 }
 
 .nav .right-container {
     display: flex;
     flex-direction: row-reverse;
+    align-items: start;
+    justify-items: start;
     width: 30%;
-}
-
-.nav .left-item:hover {
-    background-color: var(--nav-bar-hover);
-}
-
-.nav .right-item:hover {
-    background-color: var(--nav-bar-hover);
-}
-
-.nav .active {
-    background-color: var(--nav-bar-hover);
 }
 
 .nav .item {
     font-size: calc(var(--base-font-size) * 1.2);
     height:  calc(var(--base-font-size) * 1.8);
     padding: 2px 4px; /* padding between content and border [top] [side] */
+    margin: 2px 4px;
     border-radius: 8px; 
 
     display: flex;
@@ -235,45 +225,38 @@ h1 {
 .nav .left-item {
     border: solid 2px var(--theme-color-1-light);
     color: var(--theme-color-1-light);
-    margin-right: calc(var(--base-font-size) * 0.5);
 }
 
-.nav .left-icon {
-    height: calc(var(--base-font-size) * 1.5);
-    width: calc(var(--base-font-size) * 1.5);
-    /* extra padding for icons */
-    padding-top: calc(var(--base-font-size) * 0.1);
-    padding-left: calc(var(--base-font-size) * 0.4);
-    padding-right: calc(var(--base-font-size) * 0.4);
-    
-    fill: var(--theme-color-1-light);
-}
+    .nav .left-icon {
+        height: calc(var(--base-font-size) * 1.5);
+        width: calc(var(--base-font-size) * 1.5);
+        fill: var(--theme-color-1-light);
+        padding-left: 4px; 
+        padding-right: 4px;
+    }
 
-.nav .left-text {
-    font-size: calc(var(--base-font-size) * 1.2);
-}
+    .nav .left-text {
+        font-size: calc(var(--base-font-size) * 1.2);
+    }
 
 .nav .right-item {
     border: solid 2px var(--theme-color-2-light);
     color: var(--theme-color-2-light);
-    margin-left: calc(var(--base-font-size) * 0.5);
 }
 
-.nav .right-icon {
-    height: calc(var(--base-font-size) * 1.5);
-    width: calc(var(--base-font-size) * 1.5);
-    padding-top: calc(var(--base-font-size) * 0.1);
-    padding-left: calc(var(--base-font-size) * 0.4);
-    padding-right: calc(var(--base-font-size) * 0.4);
+    .nav .right-icon {
+        height: calc(var(--base-font-size) * 1.5);
+        width: calc(var(--base-font-size) * 1.5);
+        fill: var(--theme-color-2-light);
+        padding-left: 4px; 
+        padding-right: 4px;
+    }
 
-    fill: var(--theme-color-2-light);
-}
+    .nav .right-text {
+        font-size: calc(var(--base-font-size) * 1.2);
+    }
 
-.nav .right-text {
-    font-size: calc(var(--base-font-size) * 1.2);
-    padding-top: calc(var(--base-font-size) * 0.1);
-    padding-right: calc(var(--base-font-size) * 0.4);
-}
+.nav-dropdown-item
 
 /* Welcome Section */
 .welcome-left {

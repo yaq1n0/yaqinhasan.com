@@ -3,6 +3,15 @@
     color: var(--theme-color-3-light);
 }
 
+.welcome-center {
+    color: var(--theme-color-3-light);
+    margin: 0%;
+}
+
+.link {
+    background-color: var(--theme-color-3-translucent);
+}
+
 /* <detail> collapsible header */
 .collapsible-about-header {
     background-color: var(--theme-color-3-light-translucent) ;

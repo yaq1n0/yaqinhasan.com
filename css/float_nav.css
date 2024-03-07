@@ -1,0 +1,77 @@
+/* stylesheet for about.html, project.html and interests.html */
+
+/* shortcuts container*/
+
+.shortcuts-list-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4vw;
+    padding-right: 4vw;
+}
+
+.shortcuts-list-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 0.5rem;
+}
+
+.link {
+    overflow: auto;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+
+/* floating navigation buttons */ 
+    /* scroll to top*/
+    .stt {
+        position: fixed;
+        right: 4rem;
+        bottom: 2rem;
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        background: var(--site-white);
+        box-shadow: 0 0.25rem 0.5rem 0 var(--site-white);
+        opacity: 0.7;
+    }
+
+    .stt:hover {
+        opacity: 0.8;
+    }
+
+    /* expand all */
+    .expand-all {
+        position: fixed;
+        right: 12rem;
+        bottom: 2rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background: var(--site-white);
+        box-shadow: 0 0.25rem 0.5rem 0 var(--site-white);
+        opacity: 0.7;
+    }
+
+    .expand-all:hover {
+        opacity: 0.8;
+    }
+
+    /* collapse-all */ 
+    .collapse-all {
+        position: fixed;
+        right: 18rem;
+        bottom: 2rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background: var(--site-white);
+        box-shadow: 0 0.25rem 0.5rem 0 var(--site-white);
+        opacity: 0.7;
+    }
+
+    .collapse-all:hover {
+        opacity: 0.8;
+    }

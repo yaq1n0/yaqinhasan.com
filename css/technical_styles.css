@@ -1,13 +1,16 @@
 
-.welcome-container {
-    padding-left: 4%;
-    padding-right: 4%;
+.welcome-left {
+    color: var(--site-white);
 }
 
-.welcome-container-title {
-    font-weight: 400;
+.welcome-center {
+    color: var(--site-white);
+    margin: 0%;
 }
 
+.link {
+    background-color: var(--theme-color-1-translucent);
+}
 
 /* <detail> collapsible header */
 .collapsible-technical-header {

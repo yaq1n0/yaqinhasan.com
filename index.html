@@ -9,60 +9,82 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/float_nav.css">
     <link rel="stylesheet" href="css/index_styles.css">
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
-    <!-- TODO: update this site wide -->
 
 </head>
 
 <body onresize="handlePortrait()"> 
 
-    <!--Top Navigation Bar-->
+    <!-- Top Navigation Bar -->
     <div class="nav">
+        <!-- left-container of nav -->
         <div class="left-container">
+
+        <!-- Primary Home Button -->
         <a style="text-decoration: none;" href="index.html">
-            <div class="item left-item active">
+            <div class="item left-item show-landscape-only">
                 <svg xmlns="http://www.w3.org/2000/svg" class="left-icon bi bi-house-fill" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
                     <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                 </svg>
-                <text class="left-text show-landscape-only">Home</text>
+                <text class="left-text">Home</text>
             </div>
         </a>
+
+        <!-- Dropdown Menu Button -->
         <a style="text-decoration: none;" href="#">
-            <div class="item left-item show-portrait-only">
+            <div class="item left-item show-portrait-only" id="nav-dropdown-icon" onclick="toggleNavDropdown()">
                 <svg xmlns="http://www.w3.org/2000/sv" class="left-icon bi bi-list" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
+                <text class="left-text">Menu</text>
             </div>
         </a>
-        <!-- Add dropdown -->
+
+        <!-- Secondary Home Button (for dropdown) -->
+        <a style="text-decoration: none;" href="index.html">
+            <div class="item left-item nav-dropdown-item" style="display: none;">
+                <text class="left-text">Home</text>
+            </div>
+        </a>
+
+        <!-- About Me Button -->
         <a style="text-decoration: none;" href="about.html">
-            <div class="item left-item show-landscape-only">
+            <div class="item left-item show-landscape-only nav-dropdown-item">
                 <text class="left-text">About</text>
             </div>
         </a>
+
+        <!-- Projects Button -->
         <a style="text-decoration: none;" href="projects.html">
-            <div class="item left-item show-landscape-only">
+            <div class="item left-item show-landscape-only nav-dropdown-item">
                 <text class="left-text">Projects</text>
             </div>
         </a>
+
+        <!-- Interests Button -->
         <a style="text-decoration: none;" href="interests.html">
-            <div class="item left-item show-landscape-only">
+            <div class="item left-item show-landscape-only nav-dropdown-item">
                 <text class="left-text">Interests</text>
             </div>
         </a>
+
         </div>
-        
+
+        <!-- right-container of nav -->
         <div class="right-container">
+
+        <!-- Contact Information Button -->
         <a style="text-decoration: none;" class="right-align" href="contact.html">
             <div class="item right-item">
                 <svg xmlns="http://www.w3.org/2000/svg" class="right-icon bi bi-file-person-fill" viewBox="0 0 16 16">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
                 </svg>
-                <text class="right-text show-landscape-only">Contact</text>
+                <text class="right-text">Contact</text>
             </div>
         </a>
         </div>
@@ -70,7 +92,7 @@
 
     <!--Welcome Section-->
     <div>
-        <a href="technical.html#status" style="text-decoration: none;"><p class="under-construction">
+        <a href="technical.html" style="text-decoration: none;"><p class="under-construction">
             THIS SITE IS UNDER CONSTRUCTION. CLICK HERE TO READ MORE ABOUT THE DEVELOPMENT STATUS :)
         </p></a>
         
@@ -103,29 +125,35 @@
             </div>
 
             <!--shortcuts-->
-            <div class="employer-shortcuts-container">
-                <a class="employer-shortcut" href="about.html#skills"><li>
+            <p class="title-text welcome-center"> Site Shortcuts </p>
+
+            <div class="shortcuts-list-container">
+                <div class="shortcuts-list-row">
+                <a class="link" href="about.html#skills">
                 A comprehensive list of my technical skills (programming languages, tools, environments, etc).
-                </li></a>
+                </a>
 
-                <a class="employer-shortcut" href="about.html#degree"><li>
+                <a class="link" href="about.html#degree">
                     A list of my degree modules and what they covered.
-                </li></a>
+                </a>
+                </div>
 
-                <a class="employer-shortcut" href="about.html#job"><li>
+                <div class="shortcuts-list-row">
+                <a class="link" href="about.html#job">
                     What I am looking for in a job.
-                </li></a>
+                </a>
 
-                <a class="employer-shortcut" href="projects.html"><li>
+                <a class="link" href="projects.html">
                     A comprehensive list of my projects.
-                </li></a>
+                </a>
 
-                <a class="employer-shortcut" href="interests.html"><li>
+                <a class="link" href="interests.html">
                     A comprehensive list of my personal interests.
-                </li></a>
+                </a>
+                </div>
             </div>
             
-            <!--contact-->
+            <!--contact info-->
             <p class="contact-list-header"> Here are the links to my GitHub, Linkedin and Email (yaqin.k.hasan@gmail.com) </p>
             
             <div class="contact-list-container">
@@ -160,6 +188,7 @@
     </div>
     <br>
     
+    <!-- JavaScript -->
     <script src="js/main.js"></script>
 </body>
 </html>
