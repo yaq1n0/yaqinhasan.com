@@ -8,14 +8,20 @@
   background-color: var(--theme-color-2-translucent);
 }
 
-/* <detail> collapsible header */
-.collapsible-interests-header {
-  background-color: var(--theme-color-2-light-translucent);
-  color: var(--theme-color-2);
+.collapsible {
+    background-color: var(--theme-color-2-light-translucent);
+    color: var(--theme-color-3);
 }
 
-/* <detail> collapsible content */
-.collapsible-interests {
-  background-color: var(--theme-color-2-light-translucent);
-  border-radius: 16px;
+.collapsible .header {
+    background-color: var(--theme-color-2-light-translucent);
+}
+
+.subheading {
+    text-align: center;
+    color: var(--theme-color-2-light);
+}
+
+.subheading-small {
+    color: var(--theme-color-2-light);
 }

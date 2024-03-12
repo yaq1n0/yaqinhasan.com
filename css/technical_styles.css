@@ -8,14 +8,19 @@
   background-color: var(--theme-color-1-translucent);
 }
 
-/* <detail> collapsible header */
-.collapsible-technical-header {
-  background-color: var(--theme-color-1-translucent);
-  color: var(--theme-color-1);
+.collapsible {
+    background-color: var(--theme-color-1-light-translucent);
 }
 
-/* <detail> collapsible content */
-.collapsible-technical {
-  background-color: var(--theme-color-1-translucent);
-  border-radius: 16px;
+.collapsible .header {
+    background-color: var(--theme-color-1-light-translucent);
+}
+
+.subheading {
+    text-align: center;
+    color: var(--theme-color-1-light);
+}
+
+.subheading-small {
+    color: var(--theme-color-1-light);
 }

@@ -174,16 +174,16 @@
     <!-- Welcome Section -->
     <br><h1 class="title-text welcome-center">Technical Site Info</h1><br>
 
-    <details class="collapsible-generic collapsible-technical" open>
-      <summary class="collapsible-generic-header collapsible-technical-header">
+    <details class="collapsible" open>
+      <summary class="header">
         Development status
       </summary>
       <div>
         <br />
-        <text class="collapsible-generic-subheading" id="status">
+        <text class="subheading" id="status">
           Current Status:
         </text>
-        <ul class="collapsible-generic-unordered-list">
+        <ul class="list">
           <li>
             The general framework for the site is done, everything should be
             responsive by design, though further testing is required to ensure
@@ -204,13 +204,16 @@
           <li>TODO: interests.html</li>
         </ul>
 
-        <text class="collapsible-generic-subheading" id="status">
+        <text class="subheading" id="status">
           Version History (reverse chronological)
         </text>
-        <ul class="collapsible-generic-unordered-list">
+        <ul class="list">
           <li>
-            (upcoming) Release 1.0: Completed about.html, projects.html,
-            interests.html
+            (upcoming) Release 1.0: Content complete
+          </li>
+          <li>
+            Beta 1.7: Massive codebase refactoring, future proofing, increased polymorphism, 
+            shortened class names, text pruning, readability improvements, bug fixes.  
           </li>
           <li>
             Beta 1.6: Implemented adaptive navigation bar with a dropdown menu
@@ -252,10 +255,10 @@
           </li>
         </ul>
 
-        <text class="collapsible-generic-subheading">
+        <text class="subheading">
           To be implemented soon:
         </text>
-        <ul class="collapsible-generic-unordered-list">
+        <ul class="list">
           <li>Add more projects to the projects.html file.</li>
           <li>Actually fill in the personal interests interests.html file.</li>
           <li>
@@ -263,10 +266,10 @@
           </li>
         </ul>
 
-        <text class="collapsible-generic-subheading">
+        <text class="subheading">
           Might be implemented eventually:
         </text>
-        <ul class="collapsible-generic-unordered-list">
+        <ul class="list">
           <li>
             Remove google fonts API dependency, bundle the JetBrains Mono font
             with the website in the site directory.
@@ -291,12 +294,12 @@
     </details>
     <br />
 
-    <details class="collapsible-generic collapsible-technical" open>
-      <summary class="collapsible-generic-header collapsible-technical-header">
+    <details class="collapsible" open>
+      <summary class="header">
         Hosting details
       </summary>
       <br />
-      <text class="collapsible-generic-subheading"> Domain Name </text>
+      <text class="subheading"> Domain Name </text>
       <p>
         I knew that you could buy domain names from a bunch of different
         providers, I decided to look around a bit and I found a few good
@@ -305,7 +308,7 @@
         protection, and I was already familiar with the AWS console.
       </p>
 
-      <text class="collapsible-generic-subheading"> "Stack" Choice </text>
+      <text class="subheading"> "Stack" Choice </text>
       <p>
         I am using OVH as a cloud provider because they offer the best
         price/month for the specifications that I need. I initially used AWS EC2
@@ -328,7 +331,7 @@
         documented apache ecosystem.
       </p>
 
-      <text class="collapsible-generic-subheading"> HTTPS </text>
+      <text class="subheading"> HTTPS </text>
       <p>
         I initially used an OVH SSL gateway to enable HTTPS on my website.
         However, I eventually scaled up to use virtual hosts so that I can host
@@ -338,16 +341,7 @@
         requirement.
       </p>
     </details>
-    <br />
-
-    <!--
-        <details class="collapsible-generic collapsible-projects" id="project0"> 
-            <summary class="collapsible-generic-header collapsible-projects-header"> Project_title </summary>
-            <p>
-            project_content
-            </p>
-        </details><br>
-    -->
+    <br>
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>

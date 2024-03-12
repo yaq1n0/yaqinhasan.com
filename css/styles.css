@@ -180,20 +180,22 @@ h1 {
   text-align: center;
 }
 
-.collapsible .top-level {
-  font-size: var(--largest-font-size);
-  width: 80vw;
-  margin: auto;
-}
-
 .collapsible {
-  border-radius: 16px;
+    /* leave this red for debugging */
+    width: 90%;
+    margin: auto;
+    border-radius: 24px;
+    padding: 1rem;
+    background-color: red;
 }
 
 .collapsible .header {
   font-weight: 400;
   font-size: var(--large-font-size);
-  border-radius: 24px;
+
+  border-radius: 12px;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
 }
 
 .collapsible .subheading {
@@ -206,10 +208,15 @@ h1 {
   font-weight: 400;
 }
 
+.collapsible .list {
+    padding-left: 1.5rem;
+}
+
 .link {
   text-align: center;
+  margin:auto;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--site-white);
   padding: 4px;
   border: solid 2px var(--site-white);

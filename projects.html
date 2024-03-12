@@ -122,22 +122,30 @@
     <div>
         <div class="shortcuts-list">
         <div class="row">
-        <a class="link" onclick="gotoElement('')"> 
-            shortcut 1a
+        <a class="link" onclick="gotoElement('project0')"> 
+            This Site!
         </a>
 
-        <a class="link" onclick="gotoElement('')"> 
-            shortcut 1b
+        <a class="link" onclick="gotoElement('project1')"> 
+            Final Year Project
+        </a>
+
+        <a class="link" onclick="gotoElement('project2')"> 
+            STQL-Haskell
         </a>
         </div>
     
         <div class="row">
-        <a class="link" onclick="gotoElement('')"> 
-            shortcut 2a
+        <a class="link" onclick="gotoElement('project3')"> 
+            JavaFX AGILE App
         </a>
 
-        <a class="link" onclick="gotoElement('')"> 
-            shortcut 2b
+        <a class="link" onclick="gotoElement('project4')"> 
+            RoboCopy-GUI
+        </a>
+
+        <a class="link" onclick="gotoElement('project5')"> 
+            CyberVehiclesOverhaulFork
         </a>
         </div>
         </div><br>
@@ -146,7 +154,7 @@
     <details class="collapsible" id="project0" open> 
         <summary class="header">This Website!</summary>
 
-        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/yaqinhasan.com">GitHub Page</a></p>
+        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/yaqinhasan.com">GitHub Page</a></p><br>
 
         <text class="subheading"> Getting Started </text>
         <p> 
@@ -156,7 +164,7 @@
 
         <p>
             I started by trying to define the functional goals for this website. 
-            <ul>
+            <ul class="list">
                 <li> It should give people an idea of what I am like technically, professionally and personally. </li>
                 <li> It should implicitly showcase my full-stack (ish) web development skill and design ideologies. </li>
                 <li> It should list and explain what skills and experience I have, exhaustively if possible. </li>
@@ -201,7 +209,7 @@
             Realizing all of this, I decided to see how long it would actually take me to create the framework for the website I had in mind from scratch. 
             Building everything from scratch, but also wanting to retain responsive UI design meant that I had to learn a few bits of new HTML and CSS. 
             I also implemented some basic good coding practices that the template didn't such as: 
-            <ul>
+            <ul class="list">
                 <li> Creating global responsible font size variables. </li>
                 <li> Creating global theme color variables and variations for them. </li>
                 <li> Using entirely relative and responsive positioning, layout and sizing code. </li>
@@ -216,16 +224,16 @@
     <details class="collapsible"  id="project1"> 
         <summary class="header"> My Degree Final Year Project (FYP) </summary>
 
-        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/thymio-python">GitHub Page</a></p>
+        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/thymio-python">GitHub Page</a></p><br>
 
-        <text class="collapsible-generic-subheading"> Intro </text>
+        <text class="subheading"> Intro </text>
         <p> 
             A final year project, also known as an honours project has 2 parts, the actual project and the accompanying dissertation/report. 
             I might eventually add my dissertation here if there's enough interest but at thousands of words long, I doubt many people would read it fully. 
             Therefore, I will try to summarize things for the sake of brevity and to only include what I believe to be most relevant. 
         </p>
 
-        <text class="collapsible-generic-subheading"> Project Selection/Project Brief </text>
+        <text class="subheading"> Project Selection/Project Brief </text>
         <p>
             The FYP process for a BSc Computer Science at the University of Southampton begins with a selection process that allows you to select topics that you are interested in. 
             Each project topic is tied to a supervisor, and while you can't directly select a supervisor, you can see who your supervisor is likely to be when you select your topic. 
@@ -262,7 +270,7 @@
             The general gist of the project is that autonomous navigation algorithms don't intrinsically understand object compliance. 
             Theoretically, this can be achieved in the following ways: 
             
-            <ul>
+            <ul class="list">
                 <li> Hard coding compliance for expected obstacles: This requires the most developer/human effort, and is most likely to fail in the field </li>
                 <li> Test and learn compliance details for obstacles on the fly: This takes relatively little human effort, and in theory accounts for everything that could possibly be encountered. </li>
                 <li> Contextual AI: This wasn't really a thing that was on my mind as someone who wasn't really at the cutting edge of AI developments in 2023. 
@@ -272,7 +280,7 @@
             Obviously, I wouldn't have hard coded compliance for a set of recognized obstacles and called that a day, so I decided on using the second approach. 
         </p>
 
-        <text class="collapsible-generic-subheading">Compliance Testing </text>
+        <text class="subheading">Compliance Testing </text>
         <p>
             The end goal of the project was to essentially develop a way to populate a data base of key-value pairs. 
             Each key-value containing a value an obstacle_id and its associated compliance_value. 
@@ -286,7 +294,7 @@
         <p>
             Quite a few internal values can be used to define compliance functionally.
             Some of the methods evaluated were: 
-            <ul>
+            <ul class="list">
                 <li>Using the current draw of the robot's wheels/locomotion servos, with increased current draw being associated with lower compliance</li>
                 <li>Using a pressure sensor at the front of the robot, with increased pressure being indicative of lower compliance. </li>
                 <li>Using an accelerometer to measure deceleration on impact, with larger decelerations being indicative of lower compliance. </li>
@@ -294,11 +302,11 @@
             Ultimately, the final method was chosen. 
         </p>
 
-        <text class="collapsible-generic-subheading">Sensor selection </text>
+        <text class="subheading">Sensor selection </text>
         <p>
             In order to be able to use a function to calculate a compliance_value from the deceleration on collision,
             the sensor must have the following properties. 
-            <ul>
+            <ul class="list">
                 <li>A high enough polling rate to detect rapid spikes in deceleration. </li>
                 <li>A high enough precision to be used to meaningfully differentiate between different deceleration amounts. </li>
                 <li>A way to interface with the computer or microcontroller that's running the control software. </li>
@@ -307,7 +315,7 @@
 
         <p>
             I played around with the following accelerometers before choosing one for the final approach. 
-            <ul>
+            <ul class="list">
                 <li>
                     The robot I was using, the Thymio, has an internal accelerometer (read more in the next section). 
                     I attempted to use this as it reported sensor data using the same bus as the control signals which I would have to use anyway. 
@@ -329,7 +337,7 @@
             </ul>
         </p>
 
-        <text class="collapsible-generic-subheading">Test Platform and Thymio </text>
+        <text class="subheading">Test Platform and Thymio </text>
         <p>
             I would have needed some kind of mobile robotic test platform to develop the prototype on. 
             In theory, I could've used anything that had the ability to move, a couple servos and wheels bolted to a slab. 
@@ -340,7 +348,7 @@
             Most importantly though, they include a first party control library which meant that I won't have to directly control servos for movement. 
         </p>
 
-        <text class="collapsible-generic-subheading">Obstacle detection and classification</text>
+        <text class="subheading">Obstacle detection and classification</text>
         <p>
             Up until this project, I had done some modules on ML theory, but I have never actually implemented or used anything in a practical setting. 
             I did a lot of research and found out about OpenCV, which allowed me to use pre-trained object classification models to detect and classify objects. 
@@ -355,7 +363,7 @@
             The final solution ended up with minimal recognition delay in the few hundred milliseconds range, but also being consistent and accurate enough practically. 
         </p>
 
-        <text class="collapsible-generic-subheading">Summary of Final Prototype</text>
+        <text class="subheading">Summary of Final Prototype</text>
         <p>
             I had a Raspberry Pi 3 running the control program, written in Python. 
             The Pi 3 was also running the OpenCV object classification model using data from a Pi camera. 
@@ -370,7 +378,7 @@
             not just by distance but also by obstacle compliance data along the way. 
         </p>
 
-        <text class="collapsible-generic-subheading">Theoretical Improvements</text>
+        <text class="subheading">Theoretical Improvements</text>
         <p>
             By calculating compliance_value from f(internal_variable), we are mapping a single sensor's data to a numerical value. 
             This inherently has 2 issues, the first being that information is lost during the mapping process, regardless of what function is used. 
@@ -400,15 +408,15 @@
 
     </details><br>
 
-    <details class="collapsible-generic collapsible-projects"  id="project2"> 
-        <summary class="collapsible-generic-header collapsible-projects-header"> Structured Turtle Query Language (STQL) </summary>
+    <details class="collapsible"  id="project2"> 
+        <summary class="header"> Structured Turtle Query Language (STQL) </summary>
 
-        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/STQL-haskell">You can find the source code for this project here</a></p>
+        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/STQL-haskell">GitHub Page</a></p><br>
 
-        <text class="collapsible-generic-subheading">Intro</text>
+        <text class="subheading">Intro</text>
         <p>
             As part of the second year of my computer science degree, I took the following modules:
-            <ul>
+            <ul class="list">
                 <li>Theory of Computing: Which covered computability and complexity theory</li>
                 <li>Programming 3: Which covered functional programming in Haskell</li>
                 <li>Programming Language Concepts: Which covered compiler/interpreter theory</li>
@@ -421,7 +429,7 @@
             The coursework was meant to be done in a group of 3, and the goal was the design a Toy language and accompanying interpreter in Haskell. 
         </p>
 
-        <text class="collapsible-generic-subheading">Coursework Scope</text>
+        <text class="subheading">Coursework Scope</text>
         <p>
             The scope for the toy language was to act as a querying language for Turtle RDF files. 
             The actual data type and file syntax is arbitrary, but if you'd like to learn more about it, <a href="https://www.w3.org/TR/turtle/">here</a>. 
@@ -433,7 +441,7 @@
             I proposed that we split it such that one person designs the Toy language and interpreter, one person does the underlying logic, and another person links the 2 together. 
         </p>
 
-        <text class="collapsible-generic-subheading">Group Difficulties</text>
+        <text class="subheading">Group Difficulties</text>
         <p>
             However, it turned out that one of my groupmates ended being incredibly uncooperative, not showing up to "scrum" meetings and ended up contributing less than 10% of the total group effort. 
             The other 2 of us attempted to resolve this issue by helping to break down the tasks for him and make them more straightforward, followed by explaining out predicament to the Module Lead. 
@@ -445,7 +453,7 @@
             While my other groupmate ended up implementing the entire backend functionality and the actual execution in Haskell. 
         </p>
 
-        <text class="collapsible-generic-subheading">What My Groupmate Implemented</text>
+        <text class="subheading">What My Groupmate Implemented</text>
         <p>
             Due to this division of duty, the 2 of us worked on roughly half of the total work amount each. 
             However, my understanding of the backend functionality is limited as I let her do the backend independently. 
@@ -453,7 +461,7 @@
             The end result being that she essentially provided me with an API that I can make function calls to from the interpreter.  
         </p>
 
-        <text class="collapsible-generic-subheading">What I Implemented</text>
+        <text class="subheading">What I Implemented</text>
         <p>
             For my responsibilities, I designed the language around the library's functionality. 
             As the library was initially meant to modify files, I realized that I wouldn't actually need to implement runtime variables and I could instead use intermediary files as pseudo-variables. 
@@ -461,37 +469,28 @@
             Essentially reducing the interpreter complexity at the "cost" of requiring more effort to write the code in the Toy language. 
         </p>
 
-        <text class="collapsible-generic-subheading">About The Name</text>
+        <text class="subheading">About The Name</text>
         <p>
             Me and the other groupmate that actually did their part eventually realized the coincidental syntactic and functional similarity of our Toy language to SQL. 
             Knowing that SQL stood for structured querying language, we then named our language structured turtle querying language, or STQL for short.
         </p>
     </details><br>
 
-    <details class="collapsible-generic collapsible-projects" id="project3"> 
-        <summary class="collapsible-generic-header collapsible-projects-header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</summary>
-        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/SEG-project-2021">You can find the source code for this project here</a></p>
+    <details class="collapsible" id="project3"> 
+        <summary class="header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</summary>
+        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/SEG-project-2021">GitHub Page</a></p><br>
     </details><br>
 
-    <details class="collapsible-generic collapsible-projects" id="project4"> 
-        <summary class="collapsible-generic-header collapsible-projects-header"> RoboCopy GUI version using Google's Flutter Framework </summary>
-        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/robocopy-GUI">You can find the source code for this project here</a></p>
+    <details class="collapsible" id="project4"> 
+        <summary class="header"> RoboCopy GUI version using Google's Flutter Framework </summary>
+        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/robocopy-GUI">GitHub Page</a></p><br>
     </details><br>
 
-    <details class="collapsible-generic collapsible-projects" id="project5"> 
-        <summary class="collapsible-generic-header collapsible-projects-header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </summary>
-        <p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1PL">You can find the source code for this project here</a></p>
+    <details class="collapsible" id="project5"> 
+        <summary class="header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </summary>
+        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1PL">GitHub Page</a></p><br>
     </details><br>
     
-    <!--
-    <details class="collapsible-generic collapsible-projects" id="project0"> 
-        <summary class="collapsible-generic-header collapsible-projects-header"> Project_title </summary>
-        <p>
-        project_content
-        </p>
-    </details><br>
-    -->
-
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/float_nav.js"></script>
