@@ -140,8 +140,8 @@
 
   /* "responsive" font sizing 
     scale the max font size to 2% of the viewport width, but keep it above 12px and below 24px
-    in theory max(<mininum size in pixels>, min(<scaling to viewport width>, <max size in pixels>)) */
-  --base-font-size: max(12px, min(2vw, 16px));
+    in theory max(<minimum size in pixels>, min(<scaling to viewport width>, <max size in pixels>)) */
+  --base-font-size: 16px;
   --large-font-size: calc(var(--base-font-size) * 1.5);
   --larger-font-size: calc(var(--base-font-size) * 2);
   --largest-font-size: calc(var(--base-font-size) * 3);
@@ -161,6 +161,7 @@
 
 body {
   background-color: var(--background-color);
+  font-size: var(--base-font-size);
 }
 
 .title-text {
@@ -216,6 +217,7 @@ h1 {
   text-align: center;
   margin:auto;
   text-decoration: none;
+  font-size: var(--base-font-size);
   font-weight: 600;
   color: var(--site-white);
   padding: 4px;
@@ -258,10 +260,10 @@ h1 {
 }
 
 .nav .item {
-  font-size: calc(var(--base-font-size) * 1.2);
-  height: calc(var(--base-font-size) * 1.8);
-  padding: 2px 4px; /* padding between content and border [top] [side] */
-  margin: 2px 4px;
+  font-size: var(--large-font-size);
+  height: calc(var(--large-font-size) * 1.8);
+  padding: 2px 8px; /* padding between content and border [top] [side] */
+  margin: 8px 4px;
   border-radius: 8px;
 
   display: flex;
