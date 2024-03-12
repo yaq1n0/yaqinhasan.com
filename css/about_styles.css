@@ -1,33 +1,57 @@
 
-.welcome-left {
-    color: var(--theme-color-3-light);
-}
-
 .welcome-center {
+    text-align: center;
     color: var(--theme-color-3-light);
-    margin: 0%;
 }
 
 .link {
     background-color: var(--theme-color-3-translucent);
 }
 
-/* <detail> collapsible header */
-.collapsible-about-header {
-    background-color: var(--theme-color-3-light-translucent) ;
+.collapsible {
+    background-color: var(--theme-color-3-light-translucent);
     color: var(--theme-color-3);
 }
 
-/* <detail> collapsible content */
-.collapsible-about {
+.collapsible .header {
     background-color: var(--theme-color-3-light-translucent);
-    border-radius: 16px;
 }
 
-.module-summary {
-    padding-bottom: 10px;
-}
-
-.collapsible-generic-subheading-small {
+.subheading {
+    text-align: center;
     color: var(--theme-color-3-light);
+}
+
+.subheading-small {
+    color: var(--theme-color-3-light);
+}
+
+.keywords-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.keywords-list .row{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    overflow: auto;
+}
+
+.keywords-list .keyword {
+    font-size: var(--base-font-size);
+    background-color: var(--theme-color-3-light-translucent);
+    border: 2px solid var(--theme-color-3-dark);
+    border-radius: 8px;
+
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }

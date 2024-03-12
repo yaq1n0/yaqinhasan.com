@@ -1,144 +1,53 @@
-
-:root{
---about-button-color: var(--theme-color-3);
---about-button-hover: var(--theme-color-3-dark);
-
-/* vars for contact-box */
---contact-list-width: 60vw;
---contact-list-height: min(120px, 12vw);
---contact-list-item-width: min(80px, 8vw);
---contact-list-item-height: var(--contact-list-item-width);
---contact-list-item-side-margin: 4vw;
---num-contact-list-items: 3;
-
---width-contact-list-items: calc(var(--num-contact-list-items) * (var(--contact-list-item-width) + (var(--contact-list-item-side-margin) * 2)))
-}
-
-/* site under construction banner*/ 
+/* site under construction banner*/
 .under-construction {
-    color: yellow;
-    background-color: hsla(0, 100%, 60%, 0.3);
-    border-radius: 24px;
-    padding: 12px;
-    
-    width: 60vw - 24px;
-    margin-left: 20vw;
-    margin-right: 20vw;
+  display: flex;
+  width: 60vw;
+  margin: auto; 
 
-    font-size: var(--base-font-size);
-    font-weight: 800;
-    text-decoration: none;
+  background-color: hsla(0, 100%, 60%, 0.3);
+  color: yellow;
+
+  font-size: var(--base-font-size);
+  font-weight: 800;
+  text-decoration: none;
+
+  border-radius: 24px;
+  padding: 12px;
 }
 
 /* Welcome/Intro Section */
 .welcome-container {
-    display:flex;
-    justify-content: center;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: center;
 }
 
 .welcome-logo {
-    width: 40%;
-    border-width: 1px;
-    padding-left: 4vw;
+  width: min(20rem, 50%);
+  padding: 1rem;
 }
 
 .welcome-right {
-    color: var(--theme-color-2-light);
-    font-size: var(--largest-font-size);
+  width: min(20rem, 50%);
+  text-align: right; 
+  font-size: calc(var(--largest-font-size) * 1);
+  color: var(--theme-color-2-light);
+  padding: 1rem;
+}
+
+.welcome-center {
+    text-align: center;
+    color: var(--theme-color-1-dark);
+    margin: 0%;
 }
 
 .welcome-paragraph {
-    text-align: center ;
+  text-align: center;
 }
 
-/* about me button */ 
-.about-button {
-    background-color: var(--about-button-color);
-    margin-top: 24px;
+
+
+.link {
+  background-color: var(--theme-color-1-translucent);
 }
-
-.about-button:hover {
-    background-color: var(--about-button-hover);
-}
-
-/* "For Employers" Section */
-.employer-intro {
-    text-align: center;
-}
-
-/* <detail> collapsible header */
-.collapsible-index-header {
-    background-color: var(--theme-color-1-light-translucent) ;
-    color: var(--theme-color-1);
-}
-
-/* <detail> collapsible content */
-.collapsible-index {
-    background-color: var(--theme-color-1-light-translucent);
-    border-radius: 16px;
-}
-
-/* Site Shortcuts */
-    .welcome-center {
-        color: var(--theme-color-1-dark);
-        margin: 0%;
-    }
-
-    .shortcuts-container {
-        padding-top: 1.5%;
-        padding-bottom: 1.5%;
-        padding-left: 5%;
-        padding-right: 2%;
-        background-color: var(--theme-color-1-light-translucent);
-        border-radius: 16px;
-    }
-
-    .link {
-        background-color: var(--theme-color-1-dark);
-    }
-
-
-/* contact list */
-    .contact-list-header {
-        text-align: center;
-        font-weight: 600;
-        font-size: calc(var(--base-font-size) * 1.2);
-        color: var(--theme-color-1-dark);
-    }
-
-    .contact-list-container {
-        width: var(--contact-list-width);
-        height: var(--contact-list-height);
-        /* -5vw on margin-left to account for being in a details box */
-        margin-left: calc((100vw - var(--contact-list-width)) / 2 - 5vw);
-        margin-right: calc((100vw - var(--contact-list-width)) / 2);
-
-        border-radius: 16px;
-        background-color: var(--contact-bar-color);
-    }
-
-    .contact-list {
-        list-style-type: none; /* don't show any list indicator */
-
-        width: var(--width-contact-list-items);
-        padding-left: calc((var(--contact-list-width) - var(--width-contact-list-items)) / 2);
-    }
-
-    .contact-list-item {
-        float:left;
-    }
-
-    .contact-list-icon {
-        height: var(--contact-list-item-height);
-        width: var(--contact-list-item-width);
-    }
-
-    .contact-list-item a {
-        display: block;
-        color: var(--site-white);
-        margin-top: calc((var(--contact-list-height) - var(--contact-list-item-height)) / 2);
-        margin-bottom: calc((var(--contact-list-height) - var(--contact-list-item-height)) / 2);
-        margin-left: var(--contact-list-item-side-margin);
-        margin-right: var(--contact-list-item-side-margin);
-    }
-

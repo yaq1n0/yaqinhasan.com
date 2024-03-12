@@ -1,25 +1,21 @@
 
-.welcome-left {
-    color: var(--site-white);
-}
-
 .welcome-center {
-    color: var(--site-white);
-    margin: 0%;
+  text-align: center;
+  color: var(--theme-color-1-light);
 }
 
 .link {
-    background-color: var(--theme-color-1-translucent);
+  background-color: var(--theme-color-1-translucent);
 }
 
 /* <detail> collapsible header */
 .collapsible-technical-header {
-    background-color: var(--theme-color-1-translucent) ;
-    color: var(--theme-color-1);
+  background-color: var(--theme-color-1-translucent);
+  color: var(--theme-color-1);
 }
 
 /* <detail> collapsible content */
 .collapsible-technical {
-    background-color: var(--theme-color-1-translucent);
-    border-radius: 16px;
+  background-color: var(--theme-color-1-translucent);
+  border-radius: 16px;
 }

@@ -1,25 +1,21 @@
 
-.welcome-left {
-    color: var(--theme-color-2-light);
-}
-
 .welcome-center {
-    color: var(--theme-color-2-light);
-    margin: 0%;
+  text-align: center;
+  color: var(--theme-color-2-light);
 }
 
 .link {
-    background-color: var(--theme-color-2-translucent);
+  background-color: var(--theme-color-2-translucent);
 }
 
 /* <detail> collapsible header */
 .collapsible-interests-header {
-    background-color: var(--theme-color-2-light-translucent) ;
-    color: var(--theme-color-2);
+  background-color: var(--theme-color-2-light-translucent);
+  color: var(--theme-color-2);
 }
 
 /* <detail> collapsible content */
 .collapsible-interests {
-    background-color: var(--theme-color-2-light-translucent);
-    border-radius: 16px;
+  background-color: var(--theme-color-2-light-translucent);
+  border-radius: 16px;
 }

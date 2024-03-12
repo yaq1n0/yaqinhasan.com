@@ -2,14 +2,14 @@
 
 
 function openAll() {
-    let elements = document.getElementsByClassName('collapsible-generic');
+    let elements = document.getElementsByClassName('collapsible');
     for (var i=0; i<elements.length; i++) {
         elements[i].open = true;
     }
 }
 
 function closeAll() {
-    let elements = document.getElementsByClassName('collapsible-generic');
+    let elements = document.getElementsByClassName('collapsible');
     for (var i=0; i<elements.length; i++) {
         elements[i].open = false;
     }

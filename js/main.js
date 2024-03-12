@@ -11,6 +11,12 @@ function handlePortrait() {
     let portrait_elements = document.getElementsByClassName('show-portrait-only');
     let w = window.outerWidth;
     let width_threshold = 600; /* above threshold = landscape, below threshold = portrait */
+    let width_warning = 300; /* warn user of really narrow viewport */
+
+    /* warn user of really narrow viewport */
+    if (w <= width_warning) {
+        alert("your device's viewport is narrower than this site was designed and tested for, I suggest you try landscape mode. ")
+    }
 
     if (w >= width_threshold) {
         /* landscape mode */

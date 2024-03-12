@@ -1,0 +1,35 @@
+:root {
+  --contact-item-count: 3;
+  --contact-item-size: 5rem;
+  --contact-item-padding: 1rem;
+}
+
+
+.contact-list {
+  --contact-list-width: calc(
+    var(--contact-item-count) *
+      (var(--contact-item-size) + 2 * var(--contact-item-padding))
+  );
+
+  width: var(--contact-list-width);
+  padding: 1rem;
+
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  justify-content: center;
+
+  border-radius: 16px;
+  background-color: var(--contact-bar-color);
+}
+
+.contact-list .item {
+  color: var(--site-white);
+  padding-left: var(--contact-item-padding);
+  padding-right: var(--contact-item-padding);
+}
+
+.contact-list .icon {
+  height: var(--contact-item-size);
+  width: var(--contact-item-size);
+}
