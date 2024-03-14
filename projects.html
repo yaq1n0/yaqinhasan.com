@@ -10,8 +10,11 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/float_nav.css">
-    <link rel="stylesheet" href="css/projects_styles.css">
+    <link rel="stylesheet" href="css/global/nav-bar.css">
+    <link rel="stylesheet" href="css/global/text-box.css">
+    <link rel="stylesheet" href="css/global/float-nav.css">
+    <link rel="stylesheet" href="css/global/collapsible.css">
+    <link rel="stylesheet" href="css/page/projects.css">
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
@@ -26,69 +29,62 @@
     <!-- Top Navigation Bar -->
     <div class="nav">
         <!-- left-container of nav -->
-        <div class="left-container">
+        <div class="left" id="left-container">
+
+        <!-- Dropdown Menu Button -->
+        <a href="#">
+            <div class="item show-portrait-only" onclick="toggleNavDropdown()">
+                <svg xmlns="http://www.w3.org/2000/sv" class="icon" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+                <text>Menu</text>
+            </div>
+        </a>
 
         <!-- Primary Home Button -->
-        <a style="text-decoration: none;" href="index.html">
-            <div class="item left-item show-landscape-only">
-                <svg xmlns="http://www.w3.org/2000/svg" class="left-icon bi bi-house-fill" viewBox="0 0 16 16">
+        <a href="index.html">
+            <div class="item show-landscape-only dropdown-item">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
                     <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                 </svg>
-                <text class="left-text">Home</text>
-            </div>
-        </a>
-
-        <!-- Dropdown Menu Button -->
-        <a style="text-decoration: none;" href="#">
-            <div class="item left-item show-portrait-only" id="nav-dropdown-icon" onclick="toggleNavDropdown()">
-                <svg xmlns="http://www.w3.org/2000/sv" class="left-icon bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                </svg>
-                <text class="left-text">Menu</text>
-            </div>
-        </a>
-
-        <!-- Secondary Home Button (for dropdown) -->
-        <a style="text-decoration: none;" href="index.html">
-            <div class="item left-item nav-dropdown-item" style="display: none;">
-                <text class="left-text">Home</text>
+                <text>Home</text>
             </div>
         </a>
 
         <!-- About Me Button -->
-        <a style="text-decoration: none;" href="about.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">About</text>
+        <a href="about.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>About</text>
             </div>
         </a>
 
         <!-- Projects Button -->
-        <a style="text-decoration: none;" href="projects.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">Projects</text>
+        <a href="projects.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>Projects</text>
             </div>
         </a>
 
         <!-- Interests Button -->
-        <a style="text-decoration: none;" href="interests.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">Interests</text>
+        <a href="interests.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>Interests</text>
             </div>
         </a>
 
         </div>
 
         <!-- right-container of nav -->
-        <div class="right-container">
+        <div class="right">
 
         <!-- Contact Information Button -->
-        <a style="text-decoration: none;" class="right-align" href="contact.html">
-            <div class="item right-item">
-                <svg xmlns="http://www.w3.org/2000/svg" class="right-icon bi bi-file-person-fill" viewBox="0 0 16 16">
+        <a style="text-decoration: none;" href="contact.html">
+            <div class="item">
+                <text>Contact</text>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
                 </svg>
-                <text class="right-text">Contact</text>
             </div>
         </a>
         </div>
@@ -96,65 +92,45 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-        <a href="#" class="stt" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" class="bi bi-arrow-up" viewBox="0 0 16 16">
+        <a href="#" class="float-nav stt" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
             </svg>
         </a>
 
-        <a onclick="openAll()" class="expand-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+        <a onclick="openAll()" class="float-nav expand-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
             </svg>
         </a>
 
-        <a onclick="closeAll()" class="collapse-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+        <a onclick="closeAll()" class="float-nav collapse-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)"  viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
             </svg>
         </a>
     </div>
 
     <!-- Welcome Section -->
-    <br><h1 class="title-text welcome-center"> My Projects </h1><br>
+    <p class="top-header"> My Projects </p>
 
-    <!-- Navigation Shortcuts -->
-    <div>
-        <div class="shortcuts-list">
-        <div class="row">
-        <a class="link" onclick="gotoElement('project0')"> 
-            This Site!
-        </a>
-
-        <a class="link" onclick="gotoElement('project1')"> 
-            Final Year Project
-        </a>
-
-        <a class="link" onclick="gotoElement('project2')"> 
-            STQL-Haskell
-        </a>
-        </div>
-    
-        <div class="row">
-        <a class="link" onclick="gotoElement('project3')"> 
-            JavaFX AGILE App
-        </a>
-
-        <a class="link" onclick="gotoElement('project4')"> 
-            RoboCopy-GUI
-        </a>
-
-        <a class="link" onclick="gotoElement('project5')"> 
-            CyberVehiclesOverhaulFork
-        </a>
-        </div>
-        </div><br>
+    <!-- Navigation Shortcuts -->   
+    <div class="text-box">
+        <a onclick="gotoElement('project0')"><text class="link">This Site!</text></a>
+        <a onclick="gotoElement('project1')"><text class="link">Final Year Project</text></a>
+        <a onclick="gotoElement('project2')"><text class="link">STQL-Haskell</text></a>
+        <a onclick="gotoElement('project3')"><text class="link">JavaFX AGILE App</text></a>
+        <a onclick="gotoElement('project4')"><text class="link">RoboCopy-GUI</text></a>
+        <a onclick="gotoElement('project5')"><text class="link">CyberVehiclesOverhaulFork</text></a>
     </div>
 
+    <br>
     <details class="collapsible" id="project0" open> 
         <summary class="header">This Website!</summary>
 
-        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/yaqinhasan.com">GitHub Page</a></p><br>
+        <div class="text-box">
+            <a href="https://github.com/yaq1n0/yaqinhasan.com" target="_blank"><text class="link">GitHub Page</text></a>
+        </div>
 
         <text class="subheading"> Getting Started </text>
         <p> 
@@ -164,7 +140,7 @@
 
         <p>
             I started by trying to define the functional goals for this website. 
-            <ul class="list">
+            <ul>
                 <li> It should give people an idea of what I am like technically, professionally and personally. </li>
                 <li> It should implicitly showcase my full-stack (ish) web development skill and design ideologies. </li>
                 <li> It should list and explain what skills and experience I have, exhaustively if possible. </li>
@@ -209,7 +185,7 @@
             Realizing all of this, I decided to see how long it would actually take me to create the framework for the website I had in mind from scratch. 
             Building everything from scratch, but also wanting to retain responsive UI design meant that I had to learn a few bits of new HTML and CSS. 
             I also implemented some basic good coding practices that the template didn't such as: 
-            <ul class="list">
+            <ul>
                 <li> Creating global responsible font size variables. </li>
                 <li> Creating global theme color variables and variations for them. </li>
                 <li> Using entirely relative and responsive positioning, layout and sizing code. </li>
@@ -224,7 +200,9 @@
     <details class="collapsible"  id="project1"> 
         <summary class="header"> My Degree Final Year Project (FYP) </summary>
 
-        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/thymio-python">GitHub Page</a></p><br>
+        <div class="text-box">
+            <a href="https://github.com/yaq1n0/thymio-python" target="_blank"><text class="link">GitHub Page</text></a>
+        </div>
 
         <text class="subheading"> Intro </text>
         <p> 
@@ -270,7 +248,7 @@
             The general gist of the project is that autonomous navigation algorithms don't intrinsically understand object compliance. 
             Theoretically, this can be achieved in the following ways: 
             
-            <ul class="list">
+            <ul>
                 <li> Hard coding compliance for expected obstacles: This requires the most developer/human effort, and is most likely to fail in the field </li>
                 <li> Test and learn compliance details for obstacles on the fly: This takes relatively little human effort, and in theory accounts for everything that could possibly be encountered. </li>
                 <li> Contextual AI: This wasn't really a thing that was on my mind as someone who wasn't really at the cutting edge of AI developments in 2023. 
@@ -294,7 +272,7 @@
         <p>
             Quite a few internal values can be used to define compliance functionally.
             Some of the methods evaluated were: 
-            <ul class="list">
+            <ul>
                 <li>Using the current draw of the robot's wheels/locomotion servos, with increased current draw being associated with lower compliance</li>
                 <li>Using a pressure sensor at the front of the robot, with increased pressure being indicative of lower compliance. </li>
                 <li>Using an accelerometer to measure deceleration on impact, with larger decelerations being indicative of lower compliance. </li>
@@ -306,7 +284,7 @@
         <p>
             In order to be able to use a function to calculate a compliance_value from the deceleration on collision,
             the sensor must have the following properties. 
-            <ul class="list">
+            <ul>
                 <li>A high enough polling rate to detect rapid spikes in deceleration. </li>
                 <li>A high enough precision to be used to meaningfully differentiate between different deceleration amounts. </li>
                 <li>A way to interface with the computer or microcontroller that's running the control software. </li>
@@ -315,7 +293,7 @@
 
         <p>
             I played around with the following accelerometers before choosing one for the final approach. 
-            <ul class="list">
+            <ul>
                 <li>
                     The robot I was using, the Thymio, has an internal accelerometer (read more in the next section). 
                     I attempted to use this as it reported sensor data using the same bus as the control signals which I would have to use anyway. 
@@ -411,12 +389,14 @@
     <details class="collapsible"  id="project2"> 
         <summary class="header"> Structured Turtle Query Language (STQL) </summary>
 
-        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/STQL-haskell">GitHub Page</a></p><br>
+        <div class="text-box">
+            <a href="https://github.com/yaq1n0/STQL-haskell" target="_blank"><text class="link">GitHub Page</text></a>
+        </div>
 
         <text class="subheading">Intro</text>
         <p>
             As part of the second year of my computer science degree, I took the following modules:
-            <ul class="list">
+            <ul>
                 <li>Theory of Computing: Which covered computability and complexity theory</li>
                 <li>Programming 3: Which covered functional programming in Haskell</li>
                 <li>Programming Language Concepts: Which covered compiler/interpreter theory</li>
@@ -478,17 +458,23 @@
 
     <details class="collapsible" id="project3"> 
         <summary class="header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</summary>
-        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/SEG-project-2021">GitHub Page</a></p><br>
+        <div class="text-box">
+            <a href="https://github.com/yaq1n0/SEG-project-2021" target="_blank"><text class="link">GitHub Page</text></a>
+        </div>
     </details><br>
 
     <details class="collapsible" id="project4"> 
         <summary class="header"> RoboCopy GUI version using Google's Flutter Framework </summary>
-        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/robocopy-GUI">GitHub Page</a></p><br>
+        <div class="text-box">
+            <a href="https://github.com/yaq1n0/robocopy-GUI" target="_blank"><text class="link">GitHub Page</text></a>
+        </div>
     </details><br>
 
     <details class="collapsible" id="project5"> 
         <summary class="header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </summary>
-        <br><p style="text-align: center;"><a class="link" href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1PL">GitHub Page</a></p><br>
+        <div class="text-box">
+            <a href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1P" target="_blank"><text class="link">GitHub Page</text></a>
+        </div>
     </details><br>
     
     <!-- JavaScript -->

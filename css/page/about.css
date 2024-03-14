@@ -1,10 +1,10 @@
 
-.welcome-center {
+.top-header {
     text-align: center;
     color: var(--theme-color-3-light);
 }
 
-.link {
+.text-box text {
     background-color: var(--theme-color-3-translucent);
 }
 
@@ -16,13 +16,11 @@
     background-color: var(--theme-color-3-light-translucent);
 }
 
-.subheading {
+.collapsible .subheading {
     text-align: center;
     color: var(--theme-color-3-light);
 }
 
-.subheading-small {
+.collapsible .subheading-small {
     color: var(--theme-color-3-light);
 }
-
-

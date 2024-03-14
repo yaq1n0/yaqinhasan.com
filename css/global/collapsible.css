@@ -25,6 +25,7 @@
 .collapsible .subheading {
   font-size: 1.5rem;
   font-weight: 400;
+  margin: 0.5rem 0rem;
 }
 
 /* usually a <p> or <text> element within the collapsible body */

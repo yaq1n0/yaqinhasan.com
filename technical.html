@@ -8,9 +8,11 @@
     <title>Yaqin</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/float_nav.css" />
-    <link rel="stylesheet" href="css/technical_styles.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/global/nav-bar.css">
+    <link rel="stylesheet" href="css/global/float-nav.css">
+    <link rel="stylesheet" href="css/global/collapsible.css">
+    <link rel="stylesheet" href="css/page/technical.css">
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" />
@@ -20,196 +22,126 @@
   </head>
 
   <body onresize="handlePortrait()">
+
     <!-- Top Navigation Bar -->
     <div class="nav">
       <!-- left-container of nav -->
-      <div class="left-container">
-        <!-- Primary Home Button -->
-        <a style="text-decoration: none" href="index.html">
-          <div class="item left-item show-landscape-only">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="left-icon bi bi-house-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"
-              />
-              <path
-                d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"
-              />
-            </svg>
-            <text class="left-text">Home</text>
-          </div>
-        </a>
+      <div class="left" id="left-container">
 
-        <!-- Dropdown Menu Button -->
-        <a style="text-decoration: none" href="#">
-          <div
-            class="item left-item show-portrait-only"
-            id="nav-dropdown-icon"
-            onclick="toggleNavDropdown()"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/sv"
-              class="left-icon bi bi-list"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-              />
-            </svg>
-            <text class="left-text">Menu</text>
+      <!-- Dropdown Menu Button -->
+      <a href="#">
+          <div class="item show-portrait-only" onclick="toggleNavDropdown()">
+              <svg xmlns="http://www.w3.org/2000/sv" class="icon" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+              </svg>
+              <text>Menu</text>
           </div>
-        </a>
+      </a>
 
-        <!-- Secondary Home Button (for dropdown) -->
-        <a style="text-decoration: none" href="index.html">
-          <div class="item left-item nav-dropdown-item" style="display: none">
-            <text class="left-text">Home</text>
+      <!-- Primary Home Button -->
+      <a href="index.html">
+          <div class="item show-landscape-only dropdown-item">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+              </svg>
+              <text>Home</text>
           </div>
-        </a>
+      </a>
 
-        <!-- About Me Button -->
-        <a style="text-decoration: none" href="about.html">
-          <div class="item left-item show-landscape-only nav-dropdown-item">
-            <text class="left-text">About</text>
+      <!-- About Me Button -->
+      <a href="about.html">
+          <div class="item show-landscape-only dropdown-item">
+              <text>About</text>
           </div>
-        </a>
+      </a>
 
-        <!-- Projects Button -->
-        <a style="text-decoration: none" href="projects.html">
-          <div class="item left-item show-landscape-only nav-dropdown-item">
-            <text class="left-text">Projects</text>
+      <!-- Projects Button -->
+      <a href="projects.html">
+          <div class="item show-landscape-only dropdown-item">
+              <text>Projects</text>
           </div>
-        </a>
+      </a>
 
-        <!-- Interests Button -->
-        <a style="text-decoration: none" href="interests.html">
-          <div class="item left-item show-landscape-only nav-dropdown-item">
-            <text class="left-text">Interests</text>
+      <!-- Interests Button -->
+      <a href="interests.html">
+          <div class="item show-landscape-only dropdown-item">
+              <text>Interests</text>
           </div>
-        </a>
+      </a>
+
       </div>
 
       <!-- right-container of nav -->
-      <div class="right-container">
-        <!-- Contact Information Button -->
-        <a
-          style="text-decoration: none"
-          class="right-align"
-          href="contact.html"
-        >
-          <div class="item right-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="right-icon bi bi-file-person-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"
-              />
-            </svg>
-            <text class="right-text">Contact</text>
+      <div class="right">
+
+      <!-- Contact Information Button -->
+      <a style="text-decoration: none;" href="contact.html">
+          <div class="item">
+              <text>Contact</text>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
+                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
+              </svg>
           </div>
-        </a>
+      </a>
       </div>
-    </div>
+  </div> 
 
     <!-- Floating Navigation Buttons -->
     <div>
-      <a href="#" class="stt">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          style="padding-left: 10%; padding-top: 10%"
-          width="80%"
-          height="80%"
-          fill="var(--site-black)"
-          class="bi bi-arrow-up"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"
-          />
-        </svg>
+      <a href="#" class="float-nav stt" >
+          <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+          </svg>
       </a>
 
-      <a onclick="openAll()" class="expand-all">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          style="padding-left: 20%; padding-top: 20%"
-          width="60%"
-          height="60%"
-          fill="var(--site-black)"
-          class="bi bi-arrows-angle-expand"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"
-          />
-        </svg>
+      <a onclick="openAll()" class="float-nav expand-all" >
+          <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
+          </svg>
       </a>
 
-      <a onclick="closeAll()" class="collapse-all">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          style="padding-left: 20%; padding-top: 20%"
-          width="60%"
-          height="60%"
-          fill="var(--site-black)"
-          class="bi bi-arrows-angle-contract"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"
-          />
-        </svg>
+      <a onclick="closeAll()" class="float-nav collapse-all" >
+          <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)"  viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+          </svg>
       </a>
-    </div>
+  </div>
 
     <!-- Welcome Section -->
-    <br><h1 class="title-text welcome-center">Technical Site Info</h1><br>
+    <p class="top-header"> Technical Site Info (For NERDS! xD) </p>
 
     <details class="collapsible" open>
       <summary class="header">
         Development status
       </summary>
-      <div>
-        <br />
-        <text class="subheading" id="status">
-          Current Status:
-        </text>
-        <ul class="list">
-          <li>
-            The general framework for the site is done, everything should be
-            responsive by design, though further testing is required to ensure
-            no visual bugs are present.
-          </li>
-          <li>index.html home page is ready.</li>
-          <li>resume.html CV/Resume page is ready.</li>
-          <li>contact.html contact information page is ready.</li>
-          <li>technical.html site technical information page is ready.</li>
-          <li>
-            projects.html projects list is ready (3 projects for now, many more
-            to come!)
-          </li>
-          <li>
-            about.html about me page is ready (might reformat, but information
-            is ready)
-          </li>
-          <li>TODO: interests.html</li>
-        </ul>
+      
+      <p class="subheading">
+        To be implemented soon:
+      </p>
+      <ul>
+        <li>Add more projects to the projects.html file.</li>
+        <li>Actually fill in the personal interests interests.html file.</li>
+        <li>
+          Add media to supplement index.html, projects.html, interests.html.
+        </li>
+      </ul>
+      
 
-        <text class="subheading" id="status">
+        <p class="subheading" id="status">
           Version History (reverse chronological)
-        </text>
-        <ul class="list">
+        </p>
+        <ul>
           <li>
             (upcoming) Release 1.0: Content complete
+          </li>
+          <li>
+            Beta 1.8: Another massive codebase refactoring, using individual css files for each component,
+            class names shortening, utilized more selector specificity, utilized more polymorphism. 
+            Fixed bugs with layout and font. 
+            Made entire site more consistently "responsive". 
+            Improved future code scalability. 
+            Changed background color. Reworked theming. 
           </li>
           <li>
             Beta 1.7: Massive codebase refactoring, future proofing, increased polymorphism, 
@@ -255,42 +187,15 @@
           </li>
         </ul>
 
-        <text class="subheading">
-          To be implemented soon:
-        </text>
-        <ul class="list">
-          <li>Add more projects to the projects.html file.</li>
-          <li>Actually fill in the personal interests interests.html file.</li>
-          <li>
-            Add media to supplement index.html, projects.html, interests.html.
-          </li>
-        </ul>
-
-        <text class="subheading">
+        <p class="subheading">
           Might be implemented eventually:
-        </text>
-        <ul class="list">
+        </p>
+        <ul>
           <li>
-            Remove google fonts API dependency, bundle the JetBrains Mono font
-            with the website in the site directory.
+            Remove google fonts API dependency, bundle fonts with the website in the site directory.
           </li>
           <li>Improve consistency in implementation of features</li>
-          <li>
-            Remove unnecessary CSS repetition where possible, increase the usage
-            of generics, without creating too much unnecessary polymorphism (
-            balance :D )
-          </li>
-          <li>
-            Expand theming with more base colors and complete color
-            variations(no skipped color permutations)
-          </li>
-          <li>
-            improve top navigation bar with a simple menu drop down for mobile
-            (though I might not do this if it takes some bloated JS module to do
-            so)
-          </li>
         </ul>
-      </div>
     </details>
     <br />
 
@@ -299,16 +204,8 @@
         Hosting details
       </summary>
       <br />
-      <text class="subheading"> Domain Name </text>
-      <p>
-        I knew that you could buy domain names from a bunch of different
-        providers, I decided to look around a bit and I found a few good
-        options. I eventually settled on AWS route 53 because the Name Servers
-        would be well distributed geographically, it included WHOIS lookup
-        protection, and I was already familiar with the AWS console.
-      </p>
 
-      <text class="subheading"> "Stack" Choice </text>
+      <p class="subheading"> "Stack" Choice </p>
       <p>
         I am using OVH as a cloud provider because they offer the best
         price/month for the specifications that I need. I initially used AWS EC2
@@ -331,7 +228,18 @@
         documented apache ecosystem.
       </p>
 
-      <text class="subheading"> HTTPS </text>
+
+      <p class="subheading"> Domain Name </p>
+      <p>
+        I knew that you could buy domain names from a bunch of different
+        providers, I decided to look around a bit and I found a few good
+        options. I eventually settled on AWS route 53 because the Name Servers
+        would be well distributed geographically, it included WHOIS lookup
+        protection, and I was already familiar with the AWS console.
+      </p>
+
+
+      <p class="subheading"> HTTPS </p>
       <p>
         I initially used an OVH SSL gateway to enable HTTPS on my website.
         However, I eventually scaled up to use virtual hosts so that I can host

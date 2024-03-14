@@ -24,8 +24,8 @@
 
 /* expand all */
 .expand-all {
-  right: calc(4rem + 4rem + var(--float-nav-button-size) );
-  bottom: 2rem;
+  left: 4rem;
+  bottom: calc(4rem + var(--float-nav-button-size) );
 }
 
 /* collapse-all */

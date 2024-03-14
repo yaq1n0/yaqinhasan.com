@@ -1,13 +1,11 @@
 
-.welcome-center {
+.top-header {
   text-align: center;
   color: var(--theme-color-3-light);
 }
 
-.link {
+.text-box text {
   background-color: var(--theme-color-3-translucent);
-  margin-right: 1rem;
-  overflow: auto;
 }
 
 .pdf-embed {

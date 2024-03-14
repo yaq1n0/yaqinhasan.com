@@ -10,8 +10,11 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/float_nav.css">
-    <link rel="stylesheet" href="css/about_styles.css">
+    <link rel="stylesheet" href="css/global/nav-bar.css">
+    <link rel="stylesheet" href="css/global/text-box.css">
+    <link rel="stylesheet" href="css/global/float-nav.css">
+    <link rel="stylesheet" href="css/global/collapsible.css">
+    <link rel="stylesheet" href="css/page/about.css">
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
@@ -22,72 +25,66 @@
 </head>
 
 <body onresize="handlePortrait()"> 
+
     <!-- Top Navigation Bar -->
     <div class="nav">
         <!-- left-container of nav -->
-        <div class="left-container">
+        <div class="left" id="left-container">
+
+        <!-- Dropdown Menu Button -->
+        <a href="#">
+            <div class="item show-portrait-only" onclick="toggleNavDropdown()">
+                <svg xmlns="http://www.w3.org/2000/sv" class="icon" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+                <text>Menu</text>
+            </div>
+        </a>
 
         <!-- Primary Home Button -->
-        <a style="text-decoration: none;" href="index.html">
-            <div class="item left-item show-landscape-only">
-                <svg xmlns="http://www.w3.org/2000/svg" class="left-icon bi bi-house-fill" viewBox="0 0 16 16">
+        <a href="index.html">
+            <div class="item show-landscape-only dropdown-item">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
                     <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                 </svg>
-                <text class="left-text">Home</text>
-            </div>
-        </a>
-
-        <!-- Dropdown Menu Button -->
-        <a style="text-decoration: none;" href="#">
-            <div class="item left-item show-portrait-only" id="nav-dropdown-icon" onclick="toggleNavDropdown()">
-                <svg xmlns="http://www.w3.org/2000/sv" class="left-icon bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                </svg>
-                <text class="left-text">Menu</text>
-            </div>
-        </a>
-
-        <!-- Secondary Home Button (for dropdown) -->
-        <a style="text-decoration: none;" href="index.html">
-            <div class="item left-item nav-dropdown-item" style="display: none;">
-                <text class="left-text">Home</text>
+                <text>Home</text>
             </div>
         </a>
 
         <!-- About Me Button -->
-        <a style="text-decoration: none;" href="about.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">About</text>
+        <a href="about.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>About</text>
             </div>
         </a>
 
         <!-- Projects Button -->
-        <a style="text-decoration: none;" href="projects.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">Projects</text>
+        <a href="projects.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>Projects</text>
             </div>
         </a>
 
         <!-- Interests Button -->
-        <a style="text-decoration: none;" href="interests.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">Interests</text>
+        <a href="interests.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>Interests</text>
             </div>
         </a>
 
         </div>
 
         <!-- right-container of nav -->
-        <div class="right-container">
+        <div class="right">
 
         <!-- Contact Information Button -->
-        <a style="text-decoration: none;" class="right-align" href="contact.html">
-            <div class="item right-item">
-                <svg xmlns="http://www.w3.org/2000/svg" class="right-icon bi bi-file-person-fill" viewBox="0 0 16 16">
+        <a style="text-decoration: none;" href="contact.html">
+            <div class="item">
+                <text>Contact</text>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
                 </svg>
-                <text class="right-text">Contact</text>
             </div>
         </a>
         </div>
@@ -95,217 +92,130 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-        <a href="#" class="stt" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" class="bi bi-arrow-up" viewBox="0 0 16 16">
+        <a href="#" class="float-nav stt" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
             </svg>
         </a>
 
-        <a onclick="openAll()" class="expand-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+        <a onclick="openAll()" class="float-nav expand-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
             </svg>
         </a>
 
-        <a onclick="closeAll()" class="collapse-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+        <a onclick="closeAll()" class="float-nav collapse-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)"  viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
             </svg>
         </a>
     </div>
 
     <!-- Welcome Section -->
-    <br><h1 class="title-text welcome-center"> Stuff About Me </h1><br>
+    <p class="top-header"> Stuff About Me </p>
 
-    <!-- Navigation Shortcuts -->
-    <div>        
-        <div class="shortcuts-list">
-        <div class="row">
-        <a class="link" onclick="gotoElement('languages')"> 
-            Languages
-        </a>
-
-        <a class="link" onclick="gotoElement('dev-tools')"> 
-            Dev Tools
-        </a>
-
-        <a class="link" onclick="gotoElement('dev-environments')"> 
-            Dev Environments
-        </a>
-        </div>
-    
-        <div class="row">
-        <a class="link" onclick="gotoElement('year1')"> 
-            year 1 modules
-        </a>
-
-        <a class="link" onclick="gotoElement('year2')"> 
-            year 2 modules
-        </a>
-
-        <a class="link" onclick="gotoElement('year3')"> 
-            year 3 modules
-        </a>
-        </div>
-        </div><br>
+    <!-- Navigation Shortcuts -->   
+    <div class="text-box">
+        <a onclick="gotoElement('degree'); gotoElement('year1')"><text class="link">year 1 modules</text></a>
+        <a onclick="gotoElement('degree'); gotoElement('year2')"><text class="link">year 2 modules</text></a>
+        <a onclick="gotoElement('degree'); gotoElement('year3')"><text class="link">year 3 modules</text></a>
     </div>
 
+    <br>
     <details class="collapsible" id="skills" open> 
         <summary class="header"> Programming Languages, Development Tools and Environments I have experience in </summary>
-        <br>
-        <details class="collapsible" id="languages" close> 
-            <summary class="header"> Languages </summary>
-            <p class="subheading"> Programming Languages </p>
-            <div class="keywords-list">
-                <div class="row">
-                    <text class="keyword">Assembly</text>
-                    <text class="keyword">&nbspC&nbsp</text>
-                    <text class="keyword">C++</text>
-                </div>
-                <div class="row">
-                    <text class="keyword">Java</text>
-                    <text class="keyword">Python</text>
-                    <text class="keyword">SQL</text>
-                </div>
-                <div class="row" >
-                    <text class="keyword">JavaScript</text>
-                    <text class="keyword">HTML</text>
-                    <text class="keyword">CSS</text>
-                </div>
-            </div>
-
-            <p class="subheading"> Scripting Languages </p>
-            <div class="keywords-list">
-                <div class="row">
+        <p class="subheading"> Programming Languages </p>
+        <div class="text-box">
+                <text class="keyword">Assembly</text>
+                <text class="keyword">&nbspC&nbsp</text>
+                <text class="keyword">C++</text>
+                <text class="keyword">Java</text>
                 <text class="keyword">Python</text>
-                <text class="keyword">Lua</text>
-                <text class="keyword">Bash</text>
-                <text class="keyword">Batch</text>
-                </div>
-            </div>
+                <text class="keyword">SQL</text>
+                <text class="keyword">JavaScript</text>
+                <text class="keyword">HTML</text>
+                <text class="keyword">CSS</text>
+        </div>
 
-            <p class="subheading"> Markup Languages </p>
-            <div class="keywords-list">
-                <div class="row">
-                <text class="keyword">XML</text>
-                <text class="keyword">JSON</text>
-                <text class="keyword">YAML</text>
-                <text class="keyword">Markdown</text>
-                </div>
-            </div>
+        <p class="subheading"> Scripting Languages </p>
+        <div class="text-box">
+            <text class="keyword">Python</text>
+            <text class="keyword">Lua</text>
+            <text class="keyword">Bash</text>
+            <text class="keyword">Batch</text>
+        </div>
 
-        </details><br>
-
-        <details class="collapsible" id="dev-tools" close> 
-            <summary class="header"> Tools </summary>
-            <br>
-            <p class="subheading"> Development tools </p>
-            <div class="keywords-list">
-                <div class="row">
-                    <text class="keyword">Git</text>
-                    <text class="keyword">GitHub</text>
-                    <text class="keyword">GitLab</text>
-                </div>
-                <div class="row">
-                    <text class="keyword">JetBrains</text>
-                    <text class="keyword">Visual Studio</text>
-                </div>
-                <div class="row" >
-                    <text class="keyword">Visual Studio Code</text>
-                    <text class="keyword">Sublime Text</text>
-                </div>
-            </div>
+        <p class="subheading"> Markup Languages </p>
+        <div class="text-box">
+            <text class="keyword">XML</text>
+            <text class="keyword">JSON</text>
+            <text class="keyword">YAML</text>
+            <text class="keyword">Markdown</text>
+        </div>
 
 
-            <p class="subheading"> Build tools </p>
-            <div class="keywords-list">
-                <div class="row">
-                    <text class="keyword">Cmake</text>
-                    <text class="keyword">GCC</text>
-                    <text class="keyword">Clang</text>
-                </div>
-                <div class="row">
-                    <text class="keyword">Maven</text>
-                    <text class="keyword">Gradle</text>
-                </div>
-            </div>
+        <p class="subheading"> Development tools </p>
+        <div class="text-box">
+            <text class="keyword">Git</text>
+            <text class="keyword">GitHub</text>
+            <text class="keyword">GitLab</text>
+            <text class="keyword">JetBrains</text>
+            <text class="keyword">Visual Studio</text>
+            <text class="keyword">Visual Studio Code</text>
+            <text class="keyword">Sublime Text</text>
+        </div>
 
-            <p class="subheading"> General tools </p>
-            <div class="keywords-list">
-                <div class="row">
-                    <text class="keyword">SSH</text>
-                    <text class="keyword">PuTTy</text>
-                    <text class="keyword">WinSCP/SCP</text>
-                </div>
-                <div class="row">
-                    <text class="keyword">VMware Workstation</text>
-                    <text class="keyword">VirtualBox</text>
-                </div>
-                <div class="row">
-                    <text class="keyword">WSL2</text>
-                    <text class="keyword">Docker</text>
-                </div>
-                <div class="row" >
-                    
-                    <text class="keyword">Sublime Text</text>
-                </div>
-            </div>
 
-            <p class="subheading"> Frameworks </p>
-            <div class="keywords-list">
-                <div class="row">
-                    <text class="keyword">&nbspQt&nbsp</text>
-                    <text class="keyword">&nbspTk&nbsp</text>
-                    <text class="keyword">JavaFX</text>
-                </div>
-                <div class="row">
-                    <text class="keyword">Flutter</text>
-                    <text class="keyword">React(learning)</text>
-                </div>
-            </div>
+        <p class="subheading"> Build tools </p>
+        <div class="text-box">
+            <text class="keyword">Cmake</text>
+            <text class="keyword">GCC</text>
+            <text class="keyword">Clang</text>
+            <text class="keyword">Maven</text>
+            <text class="keyword">Gradle</text>
+        </div>
 
-        </details><br>
+        <p class="subheading"> General tools </p>
+        <div class="text-box">
+            <text class="keyword">SSH</text>
+            <text class="keyword">PuTTy</text>
+            <text class="keyword">WinSCP/SCP</text>
+            <text class="keyword">VMware Workstation</text>
+            <text class="keyword">VirtualBox</text>
+            <text class="keyword">WSL2</text>
+            <text class="keyword">Docker</text>
+        </div>
 
-        <details class="collapsible" id="dev-environments" close> 
-            <summary class="header"> Development Environments </summary>
+        <p class="subheading"> Frameworks </p>
+        <div class="text-box">
+            <text class="keyword">&nbspQt&nbsp</text>
+            <text class="keyword">&nbspTk&nbsp</text>
+            <text class="keyword">JavaFX</text>
+            <text class="keyword">Flutter</text>
+            <text class="keyword">React(learning)</text>
+        </div>
 
-            <p class="subheading"> Desktop </p>
-            <div class="keywords-list">
-                <div class="row">
-                    <text class="keyword">Ubuntu 22 LTS</text>
-                    <text class="keyword">PopOS 22</text>
-                    <text class="keyword">Raspberry Pi OS</text>
-                </div>
-                <div class="row">
-                    <text class="keyword">Windows 10</text>
-                    <text class="keyword">MacOS</text>
-                </div>
-            </div>
+        <p class="subheading"> Desktop Environments </p>
+        <div class="text-box">
+            <text class="keyword">Ubuntu 22 LTS</text>
+            <text class="keyword">PopOS 22</text>
+            <text class="keyword">Raspberry Pi OS</text>
+            <text class="keyword">Windows 10</text>
+            <text class="keyword">MacOS</text>
+        </div>
 
-            <p class="subheading"> Cloud </p>
-            <div class="keywords-list">
-                <div class="row">
-                    <text class="keyword">AWS (EC2, Route 53 DNS, etc)</text>
-                    <text class="keyword">OVH (VPS, SSL Gateway, etc)</text>
-                </div>
-            </div>
+        <p class="subheading"> Cloud Service Providers </p>
+        <div class="text-box">
+            <text class="keyword">AWS (EC2, Route 53 DNS, etc)</text>
+            <text class="keyword">OVH (VPS, SSL Gateway, etc)</text>
+        </div>
 
         </details><br>
 
     </details><br>
 
-    <details class="collapsible" id="degree"open> 
+    <details class="collapsible" id="degree" close> 
         <summary class="header"> The BSc Computer Science experience briefly summarized </summary>
-        <p>
-            Here's a breakdown of what the modules I actually took were, their associated courseworks 
-            and how that related to my skill set and knowledge base. 
-        </p>
-
-        <br><p style="text-align: center; "><a href="projects.html#project1" class="link"> 
-            <!-- TODO: implement cross page open element -->
-                Final Year Project Page
-        </a></p><br>
-
         <p class="subheading">The inspiration for the tone of this section</p>
 
         <p>
@@ -347,11 +257,10 @@
                 We also each made a really bad clone of Tetris under the name TetrECS, 
                 which had multiplayer functionality which was really easy to cheat (I did no such thing :3). 
             </p>
-            
-            <br><p style="text-align: center; "><a class="link" href="https://github.com/yaq1n0/tetrecs"> 
-                GitHub Page 
-            </a></p><br>
 
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/tetrecs" target="_blank"><text class="link">GitHub Page</text></a>
+            </div>
 
             <p class="subheading-small"> Computer Systems 1 </p>
             <p>
@@ -407,7 +316,7 @@
         <details class="collapsible" id="year2" close> 
             <summary class="header"> Year 2 </summary>
             <p>
-                The best way to summarize the second year of my degree would be "oh you thought you knew <insert_topic_here>, you do not", this theme will pop up a lot when I actually break down the modules. 
+                The best way to summarize the second year of my degree would be "oh you thought you knew &lt;insert_topic_here&gt;, you do not", this theme will pop up a lot when I actually break down the modules. 
                 The courseworks get bigger and more open ended, which means they give you more room for creativity and develop your complex problem solving skills but that also means that if you get lost, you get really lost. 
             </p> 
 
@@ -446,17 +355,10 @@
                 Finally, we had to all use a single github repository and learn how to actually use git's version control beyond committing and pushing. 
             </p>
 
-            <br>
-            <p style="text-align: center; ">
-            <a class="link" href="projects.html#project3"> 
-                Project Page
-            </a>
-            <a class="link" href="https://github.com/yaq1n0/SEG-project-2021"> 
-                GitHub Page
-            </a>
-            </p>
-            <br>
-
+            <div class="text-box">
+                <a href="projects.html#project3"><text class="link">Project Page</text></a>
+                <a href="https://github.com/yaq1n0/SEG-project-2021" target="_blank"><text class="link">GitHub Page</text></a>
+            </div>
 
             <p class="subheading-small"> Theory of Computing </p>
             <p>
@@ -488,17 +390,11 @@
                 Initially, I thought that it was incredibly stupid that we do this using a functional language like haskell, but realizing that it was between that and C, I understand why the university chose haskell. 
                 Haskell's functional nature makes it really simple to manipulate data structures, like what you'd find in a parse tree, and then evaluate the tree systematically using defined rules. 
             </p>
-
-            <br>
-            <p style="text-align: center; ">
-                <a class="link" href="projects.html#project2"> 
-                Project Page
-            </a>
-            <a class="link" href="https://github.com/yaq1n0/STQL-haskell"> 
-                GitHub Page 
-            </a>
-            </p><br>
-
+            
+            <div class="text-box">
+                <a href="projects.html#project2"><text class="link">Project Page</text></a>
+                <a href="https://github.com/yaq1n0/STQL-haskell" target="_blank"><text class="link">GitHub Page</text></a>
+            </div>
 
             <p class="subheading-small"> Computer Systems 2 </p>
             <p>
@@ -561,7 +457,10 @@
                 You also get to do you dissertation, which is your first entirely unique piece of work you'll make in academia (in theory). 
             </p>
 
-            
+            <div class="text-box">
+                <a href="projects.html#project1"><text class="link">Final Year Project Page</text></a>
+            </div>
+
             <p class="subheading-small"> Advanced Computer Architecture </p>
             <p>
                 This was an optional module choice that I chose because I wanted to learn more about computer architectures and hardware. 

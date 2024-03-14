@@ -10,8 +10,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/contact_box.css">
-    <link rel="stylesheet" href="css/contact_styles.css">
+    <link rel="stylesheet" href="css/global/nav-bar.css">
+    <link rel="stylesheet" href="css/global/text-box.css">
+    <link rel="stylesheet" href="css/global/contact-box.css">
+    <link rel="stylesheet" href="css/page/contact.css">
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
@@ -26,121 +28,103 @@
     <!-- Top Navigation Bar -->
     <div class="nav">
         <!-- left-container of nav -->
-        <div class="left-container">
+        <div class="left" id="left-container">
+
+        <!-- Dropdown Menu Button -->
+        <a href="#">
+            <div class="item show-portrait-only" onclick="toggleNavDropdown()">
+                <svg xmlns="http://www.w3.org/2000/sv" class="icon" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+                <text>Menu</text>
+            </div>
+        </a>
 
         <!-- Primary Home Button -->
-        <a style="text-decoration: none;" href="index.html">
-            <div class="item left-item show-landscape-only">
-                <svg xmlns="http://www.w3.org/2000/svg" class="left-icon bi bi-house-fill" viewBox="0 0 16 16">
+        <a href="index.html">
+            <div class="item show-landscape-only dropdown-item">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
                     <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                 </svg>
-                <text class="left-text">Home</text>
-            </div>
-        </a>
-
-        <!-- Dropdown Menu Button -->
-        <a style="text-decoration: none;" href="#">
-            <div class="item left-item show-portrait-only" id="nav-dropdown-icon" onclick="toggleNavDropdown()">
-                <svg xmlns="http://www.w3.org/2000/sv" class="left-icon bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                </svg>
-                <text class="left-text">Menu</text>
-            </div>
-        </a>
-
-        <!-- Secondary Home Button (for dropdown) -->
-        <a style="text-decoration: none;" href="index.html">
-            <div class="item left-item nav-dropdown-item" style="display: none;">
-                <text class="left-text">Home</text>
+                <text>Home</text>
             </div>
         </a>
 
         <!-- About Me Button -->
-        <a style="text-decoration: none;" href="about.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">About</text>
+        <a href="about.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>About</text>
             </div>
         </a>
 
         <!-- Projects Button -->
-        <a style="text-decoration: none;" href="projects.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">Projects</text>
+        <a href="projects.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>Projects</text>
             </div>
         </a>
 
         <!-- Interests Button -->
-        <a style="text-decoration: none;" href="interests.html">
-            <div class="item left-item show-landscape-only nav-dropdown-item">
-                <text class="left-text">Interests</text>
+        <a href="interests.html">
+            <div class="item show-landscape-only dropdown-item">
+                <text>Interests</text>
             </div>
         </a>
 
         </div>
 
         <!-- right-container of nav -->
-        <div class="right-container">
+        <div class="right">
 
         <!-- Contact Information Button -->
-        <a style="text-decoration: none;" class="right-align" href="contact.html">
-            <div class="item right-item">
-                <svg xmlns="http://www.w3.org/2000/svg" class="right-icon bi bi-file-person-fill" viewBox="0 0 16 16">
+        <a style="text-decoration: none;" href="contact.html">
+            <div class="item">
+                <text>Contact</text>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
                 </svg>
-                <text class="right-text">Contact</text>
             </div>
         </a>
         </div>
     </div> 
 
-    <div>
-        <br><h1 class="title-text welcome-center">Contact Info, Social Links, Resume</h1><br>
+    <p class="top-header">Contact Info, Social Links, Resume</p>
 
-        <p class="welcome-paragraph">
-            Here are the links to my GitHub, Linkedin and Email (yaqin.k.hasan@gmail.com)
-        </p><br>
-    </div>
-
-    <div class="contact-list">
-        <a href="https://github.com/yaq1n0" class="item" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon bi bi-github" viewBox="0 0 16 16">
+    <!-- contact box -->
+    <p class="top-paragraph"> Here are the links to my GitHub, Linkedin and Email (yaqin.k.hasan@gmail.com) </p><br>
+    <div class="contact-box">
+        <a href="https://github.com/yaq1n0" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
             </svg>
         </a>
-        <a href="https://www.linkedin.com/in/yaqinhasan" class="item" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon bi bi-linkedin" viewBox="0 0 16 16">
+        <a href="https://www.linkedin.com/in/yaqinhasan" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
             <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
             </svg>                                        
         </a>
 
-        <a href="mailto:yaqin.k.hasan@gmail.com" class="item" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon bi bi-envelope" viewBox="0 0 16 16">
+        <a href="mailto:yaqin.k.hasan@gmail.com" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
             </svg>
         </a>
     </div>
 
-    <div>
-        <br><hr><br>
-        <p class="welcome-paragraph" style="color:yellow;">
-            I am planning to put a native web formatted version of my CV here eventually, but for now, I will simply embed a pdf version :)   
-            <br>Last CV update: 13th March 2024
-        </p>
+    <br><hr><br>
+    <p class="top-paragraph" style="color:yellow;">
+        I am planning to put a native web formatted version of my CV here eventually, but for now, I will simply embed a pdf version :)   
+        <br><u>Last CV update: 13th March 2024</u>
+    </p>
 
-        <p class="welcome-paragraph">
-            You can click the links below to download my CV in different formats. 
-            <br><br>
-            <a class="link" href="resources/CV_Yaqin_Hasan.pdf">Download as PDF</a>
-            <br><br>
-            <a class="link" href="resources/CV_Yaqin_Hasan.docx">Download as Word Document (.docx) </a> 
-        </p>
+    <!-- download links -->
+    <div class="text-box">
+        <a href="resources/CV_Yaqin_Hasan.pdf"><text class="link">Download as PDF</text></a>
+        <a href="resources/CV_Yaqin_Hasan.docx"><text class="link">Download as Word Document (.docx)</text></a> 
     </div>
 
-    <div>
-        <br>
-        <object data="resources/CV_Yaqin_Hasan.pdf" class="pdf-embed" width=>There's supposed to be my CV embedded here, but you got this instead :(</object> 
-    </div><br><br>
+    <br><object data="resources/CV_Yaqin_Hasan.pdf" class="pdf-embed" width=>There's supposed to be my CV embedded here, but you got this instead :(</object><br><br>
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>

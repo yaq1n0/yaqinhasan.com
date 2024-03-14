@@ -8,9 +8,12 @@
     <title>Yaqin</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/float_nav.css" />
-    <link rel="stylesheet" href="css/interests_styles.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/global/nav-bar.css">
+    <link rel="stylesheet" href="css/global/text-box.css">
+    <link rel="stylesheet" href="css/global/float-nav.css">
+    <link rel="stylesheet" href="css/global/collapsible.css">
+    <link rel="stylesheet" href="css/page/interests.css">
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" />
@@ -20,178 +23,106 @@
   </head>
 
   <body onresize="handlePortrait()">
+    
     <!-- Top Navigation Bar -->
     <div class="nav">
       <!-- left-container of nav -->
-      <div class="left-container">
-        <!-- Primary Home Button -->
-        <a style="text-decoration: none" href="index.html">
-          <div class="item left-item show-landscape-only">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="left-icon bi bi-house-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"
-              />
-              <path
-                d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"
-              />
-            </svg>
-            <text class="left-text">Home</text>
-          </div>
-        </a>
+      <div class="left" id="left-container">
 
-        <!-- Dropdown Menu Button -->
-        <a style="text-decoration: none" href="#">
-          <div
-            class="item left-item show-portrait-only"
-            id="nav-dropdown-icon"
-            onclick="toggleNavDropdown()"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/sv"
-              class="left-icon bi bi-list"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-              />
-            </svg>
-            <text class="left-text">Menu</text>
+      <!-- Dropdown Menu Button -->
+      <a href="#">
+          <div class="item show-portrait-only" onclick="toggleNavDropdown()">
+              <svg xmlns="http://www.w3.org/2000/sv" class="icon" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+              </svg>
+              <text>Menu</text>
           </div>
-        </a>
+      </a>
 
-        <!-- Secondary Home Button (for dropdown) -->
-        <a style="text-decoration: none" href="index.html">
-          <div class="item left-item nav-dropdown-item" style="display: none">
-            <text class="left-text">Home</text>
+      <!-- Primary Home Button -->
+      <a href="index.html">
+          <div class="item show-landscape-only dropdown-item">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+              </svg>
+              <text>Home</text>
           </div>
-        </a>
+      </a>
 
-        <!-- About Me Button -->
-        <a style="text-decoration: none" href="about.html">
-          <div class="item left-item show-landscape-only nav-dropdown-item">
-            <text class="left-text">About</text>
+      <!-- About Me Button -->
+      <a href="about.html">
+          <div class="item show-landscape-only dropdown-item">
+              <text>About</text>
           </div>
-        </a>
+      </a>
 
-        <!-- Projects Button -->
-        <a style="text-decoration: none" href="projects.html">
-          <div class="item left-item show-landscape-only nav-dropdown-item">
-            <text class="left-text">Projects</text>
+      <!-- Projects Button -->
+      <a href="projects.html">
+          <div class="item show-landscape-only dropdown-item">
+              <text>Projects</text>
           </div>
-        </a>
+      </a>
 
-        <!-- Interests Button -->
-        <a style="text-decoration: none" href="interests.html">
-          <div class="item left-item show-landscape-only nav-dropdown-item">
-            <text class="left-text">Interests</text>
+      <!-- Interests Button -->
+      <a href="interests.html">
+          <div class="item show-landscape-only dropdown-item">
+              <text>Interests</text>
           </div>
-        </a>
+      </a>
+
       </div>
 
       <!-- right-container of nav -->
-      <div class="right-container">
-        <!-- Contact Information Button -->
-        <a
-          style="text-decoration: none"
-          class="right-align"
-          href="contact.html"
-        >
-          <div class="item right-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="right-icon bi bi-file-person-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"
-              />
-            </svg>
-            <text class="right-text">Contact</text>
+      <div class="right">
+
+      <!-- Contact Information Button -->
+      <a style="text-decoration: none;" href="contact.html">
+          <div class="item">
+              <text>Contact</text>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
+                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
+              </svg>
           </div>
-        </a>
+      </a>
       </div>
-    </div>
+  </div> 
 
     <!-- Floating Navigation Buttons -->
     <div>
-      <a href="#" class="stt">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          style="padding-left: 10%; padding-top: 10%"
-          width="80%"
-          height="80%"
-          fill="var(--site-black)"
-          class="bi bi-arrow-up"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"
-          />
-        </svg>
-      </a>
+        <a href="#" class="float-nav stt" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+            </svg>
+        </a>
 
-      <a onclick="openAll()" class="expand-all">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          style="padding-left: 20%; padding-top: 20%"
-          width="60%"
-          height="60%"
-          fill="var(--site-black)"
-          class="bi bi-arrows-angle-expand"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"
-          />
-        </svg>
-      </a>
+        <a onclick="openAll()" class="float-nav expand-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
+            </svg>
+        </a>
 
-      <a onclick="closeAll()" class="collapse-all">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          style="padding-left: 20%; padding-top: 20%"
-          width="60%"
-          height="60%"
-          fill="var(--site-black)"
-          class="bi bi-arrows-angle-contract"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"
-          />
-        </svg>
-      </a>
+        <a onclick="closeAll()" class="float-nav collapse-all" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)"  viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+            </svg>
+        </a>
     </div>
 
     <!-- Welcome Section -->
-    <br><h1 class="title-text welcome-center">My Interests and Hobbies (WIP)</h1><br>
+    <p class="top-header"> My Interests (WIP) </p>
 
     <!-- Navigation Shortcuts -->
-    <div>
-      <div class="shortcuts-list">
-        <div class="row">
-          <a class="link" onclick="gotoElement('')"> shortcut 1a </a>
-
-          <a class="link" onclick="gotoElement('')"> shortcut 1b </a>
-        </div>
-
-        <div class="row">
-          <a class="link" onclick="gotoElement('')"> shortcut 2a </a>
-
-          <a class="link" onclick="gotoElement('')"> shortcut 2b </a>
-        </div>
-      </div>
-      <br />
+    <div class="text-box">
+      <a onclick="gotoElement('interest0')"><text class="link">Enthusiast PCs</text></a>
+      <a onclick="gotoElement('interest1')"><text class="link">Game Design and Modding</text></a>
+      <a onclick="gotoElement('interest2')"><text class="link">Extreme PC</text></a>
+      <a onclick="gotoElement('interest3')"><text class="link">Powerlifting</text></a>
+      <a onclick="gotoElement('interest4')"><text class="link">Electronics w/Raspberry Pi</text></a>
+      <a onclick="gotoElement('interest5')"><text class="link">HomeLab Servers</text></a>
     </div>
 
+    <br>
     <details class="collapsible" id="interest0" open>
       <summary class="header">
         Enthusiast Custom PCs
