@@ -10,7 +10,6 @@
 
 .collapsible {
     background-color: var(--theme-color-2-light-translucent);
-    color: var(--theme-color-3);
 }
 
 .collapsible .header {

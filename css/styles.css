@@ -1,5 +1,10 @@
+
+/* css file for site-wide fonts and colors */
+
+/* import Google Sans */
+@import url('https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i');
+
 /* import Jetbrains Mono font */
-/* for some reason, order doesn't matter in CSS, but imports do need to be first, which makes sense, but I don't like it :) */
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 :root {
@@ -7,9 +12,10 @@
   scroll-behavior: smooth;
 
   /* universal font-families */
-  --font-1: "JetBrains Mono", monospace;
+  --font-sans: "Google Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-  /* universal site color variables */
+    /* universal site color variables */
   --site-black: hsla(0, 0%, 10%, 1);
   --site-white: hsla(0, 0%, 90%, 1);
 
@@ -133,177 +139,32 @@
     calc(var(--theme-color-3-l) + 15%),
     calc(var(--theme-color-3-a) - 0.8)
   );
-
-  /* component colors */
-  --nav-bar-color: var(--theme-color-1-translucent);
-  --contact-bar-color: var(--theme-color-3-translucent);
-
-  /* "responsive" font sizing 
-    scale the max font size to 2% of the viewport width, but keep it above 12px and below 24px
-    in theory max(<minimum size in pixels>, min(<scaling to viewport width>, <max size in pixels>)) */
-  --base-font-size: 16px;
-  --large-font-size: calc(var(--base-font-size) * 1.5);
-  --larger-font-size: calc(var(--base-font-size) * 2);
-  --largest-font-size: calc(var(--base-font-size) * 3);
-  --small-font-size: calc(var(--base-font-size) * 0.8);
+  font-family: var(--font-sans);
 }
 
-* {
-  /* set wildcard (any) defaults */
-  font-family: var(--font-1);
-  font-size: var(--base-font-size);
-  font-weight: 200;
-  color: var(--text-color);
-
-  margin: 0px;
-  padding: 0px;
-}
-
+/* set site-wide body styling */
 body {
   background-color: var(--background-color);
-  font-size: var(--base-font-size);
+  color: var(--text-color);
+  font-size: 1rem;
+  margin: 0;
 }
 
-.title-text {
-  font-size: var(--larger-font-size);
+/* top level header */
+.top-header {
+  font-size: 2rem;
   font-weight: 800;
 }
 
-h1 {
-  font-size: var(--large-font-size);
-  font-weight: 400;
-}
-
-/* Welcome Section */
-.welcome-paragraph {
-  width: 80%;
+/* top level paragraph */
+.top-paragraph {
+  width: 90%;
   margin: auto;
   text-align: center;
+  font-size: 1.5rem;
 }
 
-.collapsible {
-    /* leave this red for debugging */
-    width: 90%;
-    margin: auto;
-    border-radius: 24px;
-    padding: 1rem;
-    background-color: red;
-}
-
-.collapsible .header {
-  font-weight: 400;
-  font-size: var(--large-font-size);
-
-  border-radius: 12px;
-  padding: 0.5rem;
-  padding-left: 1.5rem;
-}
-
-.collapsible .subheading {
-  font-size: var(--large-font-size);
-  font-weight: 400;
-}
-
-.collapsible .subheading-small {
-  font-size: calc(var(--base-font-size) * 1.2);
-  font-weight: 400;
-}
-
-.collapsible .list {
-    padding-left: 1.5rem;
-}
-
-.link {
-  text-align: center;
-  margin:auto;
-  text-decoration: none;
-  font-size: var(--base-font-size);
-  font-weight: 600;
-  color: var(--site-white);
-  padding: 4px;
-  border: solid 2px var(--site-white);
-  border-radius: 8px;
-  /* keep this red so that it shows when it needs to be configured */
-  background-color: red;
-}
-
-/* Top Navigation Bar */
-.nav {
-  /* add a custom background color to the top navigation bar */
-  background-color: var(--nav-bar-color);
-
-  /* handles the bottom margin for all child objects, 
-    prevents double margin stacking undesired behaviour.
-    */
-  padding: calc(var(--base-font-size) * 0.5) 4vw
-    calc(var(--base-font-size) * 0.5) 4vw;
-
-  display: flex;
-  flex-direction: row;
-  margin: 0px;
-}
-
-.nav .left-container {
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-items: start;
-  width: 70%;
-}
-
-.nav .right-container {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: start;
-  justify-items: start;
-  width: 30%;
-}
-
-.nav .item {
-  font-size: var(--large-font-size);
-  height: calc(var(--large-font-size) * 1.8);
-  padding: 2px 8px; /* padding between content and border [top] [side] */
-  margin: 8px 4px;
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: row;
-  justify-items: center;
-  align-items: center;
-}
-
-/* items in the left aligned container of the nav bar */
-.nav .left-item {
-  border: solid 2px var(--theme-color-1-light);
-  color: var(--theme-color-1-light);
-}
-
-.nav .left-icon {
-  height: calc(var(--base-font-size) * 1.5);
-  width: calc(var(--base-font-size) * 1.5);
-  fill: var(--theme-color-1-light);
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-.nav .left-text {
-  font-size: calc(var(--base-font-size) * 1.2);
-}
-
-/* items in the right aligned container of the nav bar */
-.nav .right-item {
-  border: solid 2px var(--theme-color-2-light);
-  color: var(--theme-color-2-light);
-}
-
-.nav .right-icon {
-  height: calc(var(--base-font-size) * 1.5);
-  width: calc(var(--base-font-size) * 1.5);
-  fill: var(--theme-color-2-light);
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-.nav .right-text {
-  font-size: calc(var(--base-font-size) * 1.2);
+/* all anchor tags */
+a {
+  text-decoration: none; /* have no underline by default*/
 }

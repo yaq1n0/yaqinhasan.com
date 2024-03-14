@@ -10,7 +10,7 @@ function handlePortrait() {
     let landscape_elements = document.getElementsByClassName('show-landscape-only');
     let portrait_elements = document.getElementsByClassName('show-portrait-only');
     let w = window.outerWidth;
-    let width_threshold = 600; /* above threshold = landscape, below threshold = portrait */
+    let width_threshold = 800; /* above threshold = landscape, below threshold = portrait */
     let width_warning = 300; /* warn user of really narrow viewport */
 
     /* warn user of really narrow viewport */
@@ -37,8 +37,8 @@ function handlePortrait() {
 
 
 /* code for the dropdown menu that's available in portrait mode */
-var dropdown_elements = document.getElementsByClassName('nav-dropdown-item');
-var left_containers = document.getElementsByClassName('left-container');
+var dropdown_elements = document.getElementsByClassName('dropdown-item');
+var left_container = document.getElementById('left-container');
 var nav_dropped = false; 
 
 function toggleNavDropdown() {
@@ -51,12 +51,10 @@ function toggleNavDropdown() {
 
 function showNavDropdown(){
     for (let i=0; i<dropdown_elements.length; i++) {
-        dropdown_elements[i].style.display = 'block';
+        dropdown_elements[i].style.display = 'flex';
     }
 
-    for (let i=0; i<left_containers.length; i++) {
-        left_containers[i].style.flexDirection = 'column';
-    }
+    left_container.style.flexDirection = 'column';
     nav_dropped = true;
 } 
 
@@ -65,9 +63,9 @@ function hideNavDropdown(){
         dropdown_elements[i].style.display = 'none';
     }
 
-    for (let i=0; i<left_containers.length; i++) {
-        left_containers[i].style.flexDirection = 'row';
-    }
+
+    left_container.style.flexDirection = 'row';
+    
     nav_dropped = false;
 }
 

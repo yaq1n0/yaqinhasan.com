@@ -1,0 +1,35 @@
+
+/* css file for floating navigation buttons */
+
+:root {
+  --float-nav-button-size: 4rem;
+}
+
+/* super class for all floating navigation buttons */
+.float-nav {
+  position: fixed;
+  width: var(--float-nav-button-size);
+  height: var(--float-nav-button-size);
+  border-radius: 50%;
+  background: var(--site-white);
+  box-shadow: 0 0.25rem 0.5rem 0 var(--site-black);
+  opacity: 0.7;
+}
+
+/* scroll to top */
+.stt {
+  right: 4rem;
+  bottom: 2rem;
+}
+
+/* expand all */
+.expand-all {
+  right: calc(4rem + 4rem + var(--float-nav-button-size) );
+  bottom: 2rem;
+}
+
+/* collapse-all */
+.collapse-all {
+  left: 4rem;
+  bottom: 2rem;
+}

@@ -1,0 +1,39 @@
+
+/* css file for the <details> collapsible element and its related elements*/
+
+/* <detail> element */
+.collapsible {
+    width: 90%;
+    margin: auto;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    /* keep this red so that it shows when it needs to be configured */
+    background-color: red;
+}
+
+/* <summary> element */
+.collapsible .header {
+  font-weight: 400;
+  font-size: 1.5rem;
+
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+/* usually a <p> or <text> element within the collapsible body */
+.collapsible .subheading {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* usually a <p> or <text> element within the collapsible body */
+.collapsible .subheading-small {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+/* unordered list elements within the collapsible body */
+.collapsible ul {
+    padding-left: 1.5rem;
+}

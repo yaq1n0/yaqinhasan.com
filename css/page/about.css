@@ -1,0 +1,28 @@
+
+.welcome-center {
+    text-align: center;
+    color: var(--theme-color-3-light);
+}
+
+.link {
+    background-color: var(--theme-color-3-translucent);
+}
+
+.collapsible {
+    background-color: var(--theme-color-3-light-translucent);
+}
+
+.collapsible .header {
+    background-color: var(--theme-color-3-light-translucent);
+}
+
+.subheading {
+    text-align: center;
+    color: var(--theme-color-3-light);
+}
+
+.subheading-small {
+    color: var(--theme-color-3-light);
+}
+
+

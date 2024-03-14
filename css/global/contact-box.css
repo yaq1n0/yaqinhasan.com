@@ -1,0 +1,28 @@
+
+/* css file for the contact-box element */
+
+:root {
+  --contact-box-color: var(--theme-color-3-translucent);
+  --contact-item-size: 5rem;
+  --contact-item-padding: 1rem;
+}
+
+/* contact-box container */
+.contact-box {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center;
+  margin: 0% 20%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--contact-box-color);
+}
+
+.contact-box .icon {
+  display: flex;
+  fill: var(--site-white);
+  height: var(--contact-item-size);
+  width: var(--contact-item-size);
+  padding-left: var(--contact-item-padding);
+  padding-right: var(--contact-item-padding);
+}

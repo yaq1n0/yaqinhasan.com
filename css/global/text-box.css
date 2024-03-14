@@ -1,0 +1,36 @@
+
+/* css file for text-box
+a text-box is a box that contains multiple <text> elements 
+it can also contain text elements wrapped in <a> elements */
+
+/* text-box container */
+.text-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5rem;
+    margin: auto;
+  }
+
+/* each text element in a text-box */
+.text-box text {
+  display: flex;
+  font-size: 1rem; 
+  border: 2px solid;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+  padding: 0.5rem;
+
+  /* keep red for debugging */
+  background-color: red;
+  border-color: var(--site-white);
+  color: var(--text-color);
+}
+
+/* each text element that's an instance of link class in a text-box */
+.text-box .link {
+  font-size: 1.5rem; 
+  text-decoration: none;
+}
+

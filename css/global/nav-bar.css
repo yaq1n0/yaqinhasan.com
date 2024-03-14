@@ -1,0 +1,71 @@
+
+/* css file for the top navigation bar */
+:root {
+    --nav-bar-color: var(--theme-color-1-translucent);
+}
+
+/* Top Navigation Bar */
+.nav {
+  background-color: var(--nav-bar-color);
+  display: flex;
+  flex-direction: row;
+  justify-items: stretch;
+}
+  
+.nav .left {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-items: start;
+}
+  
+.nav .right {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-items: start;
+}
+  
+.nav .item {
+  font-size: 2rem;
+  padding: .5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+}
+
+.nav .item .icon {
+  height: 2rem;
+  width: 2rem;
+  fill: var(--theme-color-1-light);
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+  
+/* items in the left aligned container of the nav bar */
+.nav .left .item {
+  border: solid 2px var(--theme-color-1-light);
+  color: var(--theme-color-1-light);
+}
+
+.nav .left .item .icon {
+  fill: var(--theme-color-1-light);
+}
+  
+/* items in the right aligned container of the nav bar */
+.nav .right .item {
+  border: solid 2px var(--theme-color-2-light);
+  color: var(--theme-color-2-light);
+}
+
+.nav .right .item .icon {
+  fill: var(--theme-color-2-light);
+}
+  
