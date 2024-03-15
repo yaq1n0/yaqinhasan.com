@@ -33,7 +33,7 @@
         <!-- Dropdown Menu Button -->
         <a href="#">
             <div class="item show-portrait-only" onclick="toggleNavDropdown()">
-                <svg xmlns="http://www.w3.org/2000/sv" class="icon" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/sv" class="icon" id="dropdown-icon" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
                 <text>Menu</text>
@@ -166,6 +166,11 @@
     </div>
     
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
+    <script defer src="js/portraitHandler.js"></script> 
+    <script src="js/shortcutsHandler.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/float-nav.js"></script>
+    
 </body>
 </html>

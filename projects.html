@@ -24,7 +24,7 @@
 
 </head>
 
-<body onresize="handlePortrait()"> 
+<body> 
 
     <!-- Top Navigation Bar -->
     <div class="nav">
@@ -34,7 +34,7 @@
         <!-- Dropdown Menu Button -->
         <a href="#">
             <div class="item show-portrait-only" onclick="toggleNavDropdown()">
-                <svg xmlns="http://www.w3.org/2000/sv" class="icon" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/sv" class="icon" id="dropdown-icon" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
                 <text>Menu</text>
@@ -192,6 +192,9 @@
                 <li> Having separate stylesheets for each page, to try and avoid having an massive abomination of a styles.css file. </li>
                 <li> Using consistent polymorphism concepts for UI elements, so that they can be reused and repurposed site-wide </li>
             </ul>
+        </p>
+
+        <p>
             It took me around 3 hours to go from nothing to having a responsive skeleton with a generic page template, reaching feature parity with the template branch of the site. 
         </p>
 
@@ -254,7 +257,9 @@
                 <li> Contextual AI: This wasn't really a thing that was on my mind as someone who wasn't really at the cutting edge of AI developments in 2023. 
                     Though writing this in 2024, it would likely not be long until someone trains an AI model to associate recognized objects with physical characteristics like mass, coefficient of friction and compliance</li>
             </ul>
+        </p>
 
+        <p>
             Obviously, I wouldn't have hard coded compliance for a set of recognized obstacles and called that a day, so I decided on using the second approach. 
         </p>
 
@@ -277,6 +282,9 @@
                 <li>Using a pressure sensor at the front of the robot, with increased pressure being indicative of lower compliance. </li>
                 <li>Using an accelerometer to measure deceleration on impact, with larger decelerations being indicative of lower compliance. </li>
             </ul>
+        </p>
+
+        <p>
             Ultimately, the final method was chosen. 
         </p>
 
@@ -401,7 +409,10 @@
                 <li>Programming 3: Which covered functional programming in Haskell</li>
                 <li>Programming Language Concepts: Which covered compiler/interpreter theory</li>
             </ul>
-            You can read more about them in my modules breakdown <a href="about.html#degree-year2">here</a>.                
+        </p>
+
+        <p>
+            You can read more about them in my modules breakdown <a class="inline-link" href="about.html#degree-year2">here</a>.                
         </p>
 
         <p>
@@ -412,7 +423,7 @@
         <text class="subheading">Coursework Scope</text>
         <p>
             The scope for the toy language was to act as a querying language for Turtle RDF files. 
-            The actual data type and file syntax is arbitrary, but if you'd like to learn more about it, <a href="https://www.w3.org/TR/turtle/">here</a>. 
+            The actual data type and file syntax is arbitrary, but if you'd like to learn more about it, <a class="inline-link" href="https://www.w3.org/TR/turtle/">here</a>. 
             The querying functionality was akin to a subset of common SQL-like functions, such as filtering, merging etc. 
         </p>
 
@@ -478,7 +489,12 @@
     </details><br>
     
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
-    <script src="js/float_nav.js"></script>
+    <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
+    <script defer src="js/portraitHandler.js"></script> 
+    <script src="js/shortcutsHandler.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/float-nav.js"></script>
+    <script src="js/projects.js"></script>
+
 </body>
 </html>

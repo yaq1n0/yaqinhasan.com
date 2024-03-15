@@ -31,10 +31,16 @@
 /* usually a <p> or <text> element within the collapsible body */
 .collapsible .subheading-small {
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 400; 
 }
 
 /* unordered list elements within the collapsible body */
 .collapsible ul {
-    padding-left: 1.5rem;
+  font-size: 1.2rem;
+  padding-left: 1.5rem;
+}
+
+/* paragraphs within the collapsible body */ 
+.collapsible p {
+  font-size: 1.2rem;
 }

@@ -167,3 +167,13 @@ body {
 a {
   text-decoration: none; /* have no underline by default*/
 }
+
+.inline-link {
+  font-weight: 400;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 4px;
+
+  display: inline-block;
+  padding: 0rem 0.25rem ;
+}
