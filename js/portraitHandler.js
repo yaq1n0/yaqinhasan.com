@@ -10,12 +10,6 @@ function handlePortrait() {
     let w = window.outerWidth;
     // above threshold = landscape, below threshold = portrait 
     let width_threshold = 800; 
-    
-    // warn user of really narrow viewport that might break the site 
-    let width_warning = 300; 
-    if (w <= width_warning) {
-      alert("your device's viewport is narrower than this site was designed and tested for, I suggest you try landscape mode. ");
-    }
   
     if (w >= width_threshold) {
       // landscape mode 

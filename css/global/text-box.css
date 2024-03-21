@@ -10,6 +10,8 @@ it can also contain text elements wrapped in <a> elements */
     flex-wrap: wrap;
     justify-content: center;
     padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     margin: auto;
   }
 
@@ -32,5 +34,6 @@ it can also contain text elements wrapped in <a> elements */
 .text-box .link {
   font-size: 2rem; 
   font-family: var(--font-mono);
+  white-space: nowrap; /* links should be single line */
 }
 

@@ -1,0 +1,97 @@
+
+/* css file for carousel design elements */
+
+/* <div class="carousel-item"> element */
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    /* keep this red so that it shows when it needs to be configured */
+    background-color: red;
+}
+
+/* <summary> element */
+.carousel-item .header {
+  font-weight: 400;
+  font-size: 2rem;
+  text-align: center;
+
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+/* usually a <p> or <text> element within the collapsible body */
+.carousel-item .subheading {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0.5rem 0rem;
+}
+
+/* usually a <p> or <text> element within the collapsible body */
+.carousel-item .subheading-small {
+  font-size: 1.2rem;
+  font-weight: 400; 
+}
+
+/* unordered list elements within the collapsible body */
+.carousel-item ul {
+  font-size: 1.2rem;
+  padding-left: 1.5rem;
+}
+
+/* paragraphs within the collapsible body */ 
+.carousel-item p {
+  font-size: 1.2rem;
+}
+
+/* carousel in a carousel (used in about page for years)
+/* <div class="sub-carousel-item"> element */
+.sub-carousel-item {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  /* keep this red so that it shows when it needs to be configured */
+  background-color: red;
+}
+
+/* <summary> element */
+.sub-carousel-item .header {
+font-weight: 400;
+font-size: 2rem;
+text-align: center;
+
+border-radius: 1rem;
+padding: 0.5rem;
+padding-left: 1.5rem;
+}
+
+/* usually a <p> or <text> element within the collapsible body */
+.sub-carousel-item .subheading {
+font-size: 1.5rem;
+font-weight: 400;
+margin: 0.5rem 0rem;
+}
+
+/* usually a <p> or <text> element within the collapsible body */
+.sub-carousel-item .subheading-small {
+font-size: 1.2rem;
+font-weight: 400; 
+}
+
+/* unordered list elements within the collapsible body */
+.sub-carousel-item ul {
+font-size: 1.2rem;
+padding-left: 1.5rem;
+}
+
+/* paragraphs within the collapsible body */ 
+.sub-carousel-item p {
+font-size: 1.2rem;
+}

@@ -8,19 +8,43 @@
     background-color: var(--theme-color-3-translucent);
 }
 
-.collapsible {
+.carousel-item {
     background-color: var(--theme-color-3-light-translucent);
+    margin-bottom: 1rem; 
+    display: none;
 }
 
-.collapsible .header {
+.carousel-item .header {
     background-color: var(--theme-color-3-light-translucent);
+    margin-top: 0;
 }
 
-.collapsible .subheading {
+.carousel-item .subheading {
     text-align: center;
     color: var(--theme-color-3-light);
 }
 
-.collapsible .subheading-small {
+.carousel-item .subheading-small {
+    color: var(--theme-color-3-light);
+}
+
+/* carousel item in a carousel item (used for years in the degree section */
+.sub-carousel-item {
+    background-color: var(--theme-color-3-light-translucent);
+    margin-bottom: 1rem; 
+    display: none;
+}
+
+.sub-carousel-item .header {
+    background-color: var(--theme-color-3-light-translucent);
+    margin-top: 0;
+}
+
+.sub-carousel-item .subheading {
+    text-align: center;
+    color: var(--theme-color-3-light);
+}
+
+.sub-carousel-item .subheading-small {
     color: var(--theme-color-3-light);
 }

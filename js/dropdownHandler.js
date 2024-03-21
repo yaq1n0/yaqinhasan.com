@@ -1,6 +1,6 @@
 
-// script file for the functions related to the dropdown menu
-
+// script file for the functions related to the dropdown menu 
+// in the navigation bar for portrait mode
 
 var dropdown_elements = document.getElementsByClassName('dropdown-item');
 var left_container = document.getElementById('left-container');

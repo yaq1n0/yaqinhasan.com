@@ -8,19 +8,22 @@
   background-color: var(--theme-color-1-translucent);
 }
 
-.collapsible {
+.carousel-item {
     background-color: var(--theme-color-1-light-translucent);
+    margin-bottom: 1rem; 
+    display: none;
 }
 
-.collapsible .header {
+.carousel-item .header {
     background-color: var(--theme-color-1-light-translucent);
+    margin-top: 0;
 }
 
-.collapsible .subheading {
+.carousel-item .subheading {
     text-align: center;
     color: var(--theme-color-1-light);
 }
 
-.collapsible .subheading-small {
+.carousel-item .subheading-small {
     color: var(--theme-color-1-light);
 }

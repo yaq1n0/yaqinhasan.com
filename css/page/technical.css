@@ -8,19 +8,19 @@
   background-color: var(--theme-color-1-translucent);
 }
 
-.collapsible {
+.carousel-item {
     background-color: var(--theme-color-1-light-translucent);
 }
 
-.collapsible .header {
+.carousel-item .header {
     background-color: var(--theme-color-1-light-translucent);
 }
 
-.collapsible .subheading {
+.carousel-item .subheading {
     text-align: left;
     color: var(--theme-color-1-light);
 }
 
-.collapsible .subheading-small {
+.carousel-item .subheading-small {
     color: var(--theme-color-1-light);
 }

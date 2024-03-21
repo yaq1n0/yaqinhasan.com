@@ -1,3 +1,4 @@
+
 <!-- Interests page -->
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="css/global/text-box.css">
     <link rel="stylesheet" href="css/global/float-nav.css">
     <link rel="stylesheet" href="css/global/collapsible.css">
+    <link rel="stylesheet" href="css/global/carousel.css">
     <link rel="stylesheet" href="css/page/interests.css">
 
     <!-- favicon -->
@@ -90,111 +92,99 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-        <a href="#" class="float-nav stt" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+      <a onclick="previousItem()" class="float-nav previous-item" >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
             </svg>
-        </a>
+      </a>
 
-        <a onclick="openAll()" class="float-nav expand-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
-            </svg>
-        </a>
-
-        <a onclick="closeAll()" class="float-nav collapse-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)"  viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
-            </svg>
-        </a>
-    </div>
+      <a onclick="nextItem()" class="float-nav next-item" >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+      </a>
+  </div>
 
     <!-- Welcome Section -->
     <p class="top-header"> My Interests (WIP) </p>
 
     <!-- Navigation Shortcuts -->
     <div class="text-box">
-      <a onclick="gotoElement('interest0')"><text class="link">Enthusiast PCs</text></a>
-      <a onclick="gotoElement('interest1')"><text class="link">Game Design and Modding</text></a>
-      <a onclick="gotoElement('interest2')"><text class="link">Extreme PC</text></a>
-      <a onclick="gotoElement('interest3')"><text class="link">Powerlifting</text></a>
-      <a onclick="gotoElement('interest4')"><text class="link">Electronics w/Raspberry Pi</text></a>
-      <a onclick="gotoElement('interest5')"><text class="link">HomeLab Servers</text></a>
+      <a onclick="cycleItem('interest0')"><text class="link">Enthusiast PCs</text></a>
+      <a onclick="cycleItem('interest1')"><text class="link">Game Design and Modding</text></a>
+      <a onclick="cycleItem('interest2')"><text class="link">Extreme PC</text></a>
+      <a onclick="cycleItem('interest3')"><text class="link">Powerlifting</text></a>
+      <a onclick="cycleItem('interest4')"><text class="link">Electronics w/Raspberry Pi</text></a>
+      <a onclick="cycleItem('interest5')"><text class="link">HomeLab Servers</text></a>
     </div>
 
     <br>
-    <details class="collapsible" id="interest0" open>
-      <summary class="header">
+    <div class="carousel-item" id="interest0">
+      <p class="header">
         Enthusiast Custom PCs
-      </summary>
+      </p>
       <p>
         Unfortunately, you have reached a part of this website I am yet to
         complete, do check back later for more content! :D
       </p>
-    </details>
-    <br />
+    </div>
 
-    <details class="collapsible" id="interest1">
-      <summary class="header">
+    <div class="carousel-item" id="interest1">
+      <p class="header">
         PC Gaming, Game/Level Design, Game Modding
-      </summary>
+      </p>
       <p>
         Unfortunately, you have reached a part of this website I am yet to
         complete, do check back later for more content! :D
       </p>
-    </details>
-    <br />
+    </div>
 
-    <details class="collapsible" id="interest2">
-      <summary class="header">
+    <div class="carousel-item" id="interest2">
+      <p class="header">
         Extreme Overclocking and PC modding
-      </summary>
+      </p>
       <p>
         Unfortunately, you have reached a part of this website I am yet to
         complete, do check back later for more content! :D
       </p>
-    </details>
-    <br />
+    </div>
 
-    <details class="collapsible" id="interest3">
-      <summary class="header">
+    <div class="carousel-item" id="interest3">
+      <p class="header">
         Southampton University Powerlifting
-      </summary>
+      </p>
       <p>
         Unfortunately, you have reached a part of this website I am yet to
         complete, do check back later for more content! :D
       </p>
-    </details>
-    <br />
+    </div>
 
-    <details class="collapsible" id="interest4">
-      <summary class="header">
+    <div class="carousel-item" id="interest4">
+      <p class="header">
         Hobbyist Electronics Projects
-      </summary>
+      </p>
       <p>
         Unfortunately, you have reached a part of this website I am yet to
         complete, do check back later for more content! :D
       </p>
-    </details>
-    <br />
+    </div>
 
-    <details class="collapsible" id="interest5">
-      <summary class="header">
+    <div class="carousel-item" id="interest5">
+      <p class="header">
         HomeLab server hosting
-      </summary>
+      </p>
       <p>
         Unfortunately, you have reached a part of this website I am yet to
         complete, do check back later for more content! :D
       </p>
-    </details>
-    <br />
+    </div>
 
     <!-- JavaScript -->
     <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
+    <script src="js/main.js"></script>
     <script defer src="js/portraitHandler.js"></script> 
-    <script src="js/shortcutsHandler.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="js/float-nav.js"></script>
+    <script src="js/dropdownHandler.js"></script>
+    <script src="js/page/interests.js"></script>
 
   </body>
 </html>

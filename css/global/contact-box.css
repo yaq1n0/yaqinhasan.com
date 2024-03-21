@@ -12,10 +12,18 @@
   display: flex; 
   flex-direction: row; 
   justify-content: center;
+  flex-wrap: wrap;
   margin: 0% 20%;
   padding: 1rem;
   border-radius: 1rem;
   background-color: var(--contact-box-color);
+}
+
+.contact-box .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .contact-box .icon {
@@ -25,4 +33,11 @@
   width: var(--contact-item-size);
   padding-left: var(--contact-item-padding);
   padding-right: var(--contact-item-padding);
+}
+
+.contact-box text {
+  color: var(--site-white);
+  padding-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
 }

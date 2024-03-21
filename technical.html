@@ -10,9 +10,11 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/global/nav-bar.css">
+    <link rel="stylesheet" href="css/global/text-box.css">
     <link rel="stylesheet" href="css/global/float-nav.css">
     <link rel="stylesheet" href="css/global/collapsible.css">
-    <link rel="stylesheet" href="css/page/technical.css">
+    <link rel="stylesheet" href="css/global/carousel.css">
+    <link rel="stylesheet" href="css/page/projects.css">
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" />
@@ -22,190 +24,207 @@
   </head>
 
   <body onresize="handlePortrait()">
-
     <!-- Top Navigation Bar -->
     <div class="nav">
       <!-- left-container of nav -->
       <div class="left" id="left-container">
-
-      <!-- Dropdown Menu Button -->
+        <!-- Dropdown Menu Button -->
         <a href="#">
           <div class="item show-portrait-only" onclick="toggleNavDropdown()">
-              <svg xmlns="http://www.w3.org/2000/sv" class="icon" id="dropdown-icon" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-              </svg>
-              <text>Menu</text>
+            <svg
+              xmlns="http://www.w3.org/2000/sv"
+              class="icon"
+              id="dropdown-icon"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+              />
+            </svg>
+            <text>Menu</text>
           </div>
-      </a>
+        </a>
 
-      <!-- Primary Home Button -->
-      <a href="index.html">
+        <!-- Primary Home Button -->
+        <a href="index.html">
           <div class="item show-landscape-only dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
-                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
-                  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
-              </svg>
-              <text>Home</text>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"
+              />
+              <path
+                d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"
+              />
+            </svg>
+            <text>Home</text>
           </div>
-      </a>
+        </a>
 
-      <!-- About Me Button -->
-      <a href="about.html">
+        <!-- About Me Button -->
+        <a href="about.html">
           <div class="item show-landscape-only dropdown-item">
-              <text>About</text>
+            <text>About</text>
           </div>
-      </a>
+        </a>
 
-      <!-- Projects Button -->
-      <a href="projects.html">
+        <!-- Projects Button -->
+        <a href="projects.html">
           <div class="item show-landscape-only dropdown-item">
-              <text>Projects</text>
+            <text>Projects</text>
           </div>
-      </a>
+        </a>
 
-      <!-- Interests Button -->
-      <a href="interests.html">
+        <!-- Interests Button -->
+        <a href="interests.html">
           <div class="item show-landscape-only dropdown-item">
-              <text>Interests</text>
+            <text>Interests</text>
           </div>
-      </a>
-
+        </a>
       </div>
 
       <!-- right-container of nav -->
       <div class="right">
-
-      <!-- Contact Information Button -->
-      <a style="text-decoration: none;" href="contact.html">
+        <!-- Contact Information Button -->
+        <a style="text-decoration: none" href="contact.html">
           <div class="item">
-              <text>Contact</text>
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
-                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
-              </svg>
+            <text>Contact</text>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"
+              />
+            </svg>
           </div>
-      </a>
+        </a>
       </div>
-  </div> 
+    </div>
 
     <!-- Floating Navigation Buttons -->
     <div>
-      <a href="#" class="float-nav stt" >
-          <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
-          </svg>
+      <a onclick="previousItem()" class="float-nav previous-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path
+            d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+          />
+        </svg>
       </a>
 
-      <a onclick="openAll()" class="float-nav expand-all" >
-          <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
-          </svg>
+      <a onclick="nextItem()" class="float-nav next-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path
+            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+          />
+        </svg>
       </a>
-
-      <a onclick="closeAll()" class="float-nav collapse-all" >
-          <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)"  viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
-          </svg>
-      </a>
-  </div>
+    </div>
 
     <!-- Welcome Section -->
-    <p class="top-header"> Technical Site Info (For NERDS! xD) </p>
+    <p class="top-header">Technical Site Info (For NERDS! xD)</p>
 
-    <details class="collapsible" open>
-      <summary class="header">
-        Development status
-      </summary>
-      
-      <p class="subheading">
-        To be implemented soon:
-      </p>
+    <!-- Navigation Shortcuts -->
+    <div class="text-box">
+      <a href="#" onclick="cycleItem('technical0')"
+        ><text class="link">TODO:</text></a
+      >
+      <a href="#" onclick="cycleItem('technical1')"
+        ><text class="link">Changelog</text></a
+      >
+      <a href="#" onclick="cycleItem('technical2')"
+        ><text class="link">Hosting Details</text></a
+      >
+    </div>
+
+    <div class="carousel-item" id="technical0">
+      <p class="header">TODO:</p>
+
       <ul>
         <li>Add more projects to the projects.html file.</li>
         <li>Actually fill in the personal interests interests.html file.</li>
         <li>
           Add media to supplement index.html, projects.html, interests.html.
         </li>
+        <li>
+          [MAYBE] Remove google fonts API dependency, bundle fonts with the website in
+          the site directory.
+        </li>
+        <li>[MAYBE] Improve consistency in implementation of features</li>
       </ul>
-      
+    </div>
 
-        <p class="subheading" id="status">
-          Version History (reverse chronological)
-        </p>
-        <ul>
-          <li>
-            (upcoming) Release 1.0: Content complete
-          </li>
-          <li>
-            Beta 1.8: Another massive codebase refactoring, using individual css files for each component,
-            class names shortening, utilized more selector specificity, utilized more polymorphism. 
-            Fixed bugs with layout and font. 
-            Made entire site more consistently "responsive". 
-            Improved future code scalability. 
-            Changed background color. Reworked theming. 
-          </li>
-          <li>
-            Beta 1.7: Massive codebase refactoring, future proofing, increased polymorphism, 
-            shortened class names, text pruning, readability improvements, bug fixes.  
-          </li>
-          <li>
-            Beta 1.6: Implemented adaptive navigation bar with a dropdown menu
-            for narrow screens.
-          </li>
-          <li>
-            Beta 1.5: Implemented updated navigation (scroll to top,
-            collapseall, expandall, shortcuts [about, projects, interests,
-            technical]).
-          </li>
-          <li>Beta 1.4: Updated about.html, ready for primetime! Updated CV</li>
-          <li>
-            Beta 1.3: Sanitizing site for upload to public repository
-            (separating development repository from public).
-          </li>
-          <li>
-            Beta 1.2.1: Updated projects titles, interests titles and about
-            sections.
-          </li>
-          <li>
-            Beta 1.2.0: Updated index.html landing page with a "For Employers"
-            site map/shortcuts section
-          </li>
-          <li>
-            Beta 1.2.0: Updated Projects.html with first 3 largest projects.
-          </li>
-          <li>
-            Beta 1.1.0: Added unformatted about.html sections "degree summary"
-            and "skills list"
-          </li>
-          <li>Beta 1.0.1: Updated CV.</li>
-          <li>
-            Beta 1.0: First version of the website, Index.html landing page has
-            projects and interests summaries, contacts and CV page implemented.
-          </li>
-          <li>
-            Alpha 1.0: Responsive UI framework implemented, file structure
-            created.
-          </li>
-        </ul>
+    <div class="carousel-item" id="technical1">
+      <p class="header">Version History (reverse chronological)</p>
 
-        <p class="subheading">
-          Might be implemented eventually:
-        </p>
-        <ul>
-          <li>
-            Remove google fonts API dependency, bundle fonts with the website in the site directory.
-          </li>
-          <li>Improve consistency in implementation of features</li>
-        </ul>
-    </details>
-    <br />
+      <ul>
+        <li>(upcoming) Release 1.0: Content complete</li>
+        <li>
+          Beta 1.9: Big feature release, changing layout from details vertical scroll to using a "carousel-item" pseudo-horizontal scroll layout. 
+          Added some nice to haves. 
+        </li>
+        <li>
+          Beta 1.8: Another massive codebase refactoring, using individual css
+          files for each component, class names shortening, utilized more
+          selector specificity, utilized more polymorphism. Fixed bugs with
+          layout and font. Made entire site more consistently "responsive".
+          Improved future code scalability. Changed background color. Reworked
+          theming.
+        </li>
+        <li>
+          Beta 1.7: Massive codebase refactoring, future proofing, increased
+          polymorphism, shortened class names, text pruning, readability
+          improvements, bug fixes.
+        </li>
+        <li>
+          Beta 1.6: Implemented adaptive navigation bar with a dropdown menu for
+          narrow screens.
+        </li>
+        <li>
+          Beta 1.5: Implemented updated navigation (scroll to top, collapseall,
+          expandall, shortcuts [about, projects, interests, technical]).
+        </li>
+        <li>Beta 1.4: Updated about.html, ready for primetime! Updated CV</li>
+        <li>
+          Beta 1.3: Sanitizing site for upload to public repository (separating
+          development repository from public).
+        </li>
+        <li>
+          Beta 1.2.1: Updated projects titles, interests titles and about
+          sections.
+        </li>
+        <li>
+          Beta 1.2.0: Updated index.html landing page with a "For Employers"
+          site map/shortcuts section
+        </li>
+        <li>
+          Beta 1.2.0: Updated Projects.html with first 3 largest projects.
+        </li>
+        <li>
+          Beta 1.1.0: Added unformatted about.html sections "degree summary" and
+          "skills list"
+        </li>
+        <li>Beta 1.0.1: Updated CV.</li>
+        <li>
+          Beta 1.0: First version of the website, Index.html landing page has
+          projects and interests summaries, contacts and CV page implemented.
+        </li>
+        <li>
+          Alpha 1.0: Responsive UI framework implemented, file structure
+          created.
+        </li>
+      </ul>
+    </div>
 
-    <details class="collapsible" open>
-      <summary class="header">
-        Hosting details
-      </summary>
-      <br />
+    <div class="carousel-item" id="technical2">
+      <p class="header">Hosting details</p>
 
-      <p class="subheading"> "Stack" Choice </p>
+      <p class="subheading">"Stack" Choice</p>
       <p>
         I am using OVH as a cloud provider because they offer the best
         price/month for the specifications that I need. I initially used AWS EC2
@@ -228,8 +247,7 @@
         documented apache ecosystem.
       </p>
 
-
-      <p class="subheading"> Domain Name </p>
+      <p class="subheading">Domain Name</p>
       <p>
         I knew that you could buy domain names from a bunch of different
         providers, I decided to look around a bit and I found a few good
@@ -238,8 +256,7 @@
         protection, and I was already familiar with the AWS console.
       </p>
 
-
-      <p class="subheading"> HTTPS </p>
+      <p class="subheading">HTTPS</p>
       <p>
         I initially used an OVH SSL gateway to enable HTTPS on my website.
         However, I eventually scaled up to use virtual hosts so that I can host
@@ -248,15 +265,14 @@
         renews SSL certificates from "Let's Encrypt" and would meet this
         requirement.
       </p>
-    </details>
-    <br>
+    </div>
+    <br />
 
     <!-- JavaScript -->
     <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
-    <script defer src="js/portraitHandler.js"></script> 
-    <script src="js/shortcutsHandler.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="js/float-nav.js"></script>
-
+    <script src="js/main.js"></script>
+    <script defer src="js/portraitHandler.js"></script>
+    <script src="js/dropdownHandler.js"></script>
+    <script src="js/page/technical.js"></script>
   </body>
 </html>

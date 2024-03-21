@@ -143,6 +143,7 @@
 /* set site-wide body styling */
 body {
   background: var(--background-color); 
+  min-height: 100vh; /* do this do that the background gradient doesn't look funky on short pages */
   color: var(--text-color);
   font-size: 1rem;
   margin: 0;

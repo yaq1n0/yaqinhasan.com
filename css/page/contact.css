@@ -1,4 +1,43 @@
 
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  gap: 2rem;
+}
+
+.contact-container .contact-box {
+  align-self: stretch;
+  margin: 0;
+}
+
+.contact-container .info {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+
+  font-size: 1.2rem;
+  font-weight: 400;
+
+  background: var(--theme-color-3-translucent);
+  border-radius: 1rem;
+  padding-right: 1rem;
+}
+
+.contact-container .info p{
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 1.6rem;
+}
+
+.contact-container .info li{
+  margin-bottom: 0.25rem;
+}
+
 .top-header {
   text-align: center;
   color: var(--theme-color-3-light);

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/global/text-box.css">
     <link rel="stylesheet" href="css/global/float-nav.css">
     <link rel="stylesheet" href="css/global/collapsible.css">
+    <link rel="stylesheet" href="css/global/carousel.css">
     <link rel="stylesheet" href="css/page/about.css">
 
     <!-- favicon -->
@@ -92,21 +93,15 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-        <a href="#" class="float-nav stt" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 10%; padding-top: 10%" width="80%" height="80%" fill="var(--site-black)" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
-            </svg>
+        <a onclick="previousItem()" class="float-nav previous-item" >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+              </svg>
         </a>
 
-        <a onclick="openAll()" class="float-nav expand-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
-            </svg>
-        </a>
-
-        <a onclick="closeAll()" class="float-nav collapse-all" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding-left: 20%; padding-top: 20%" width="60%" height="60%"  fill="var(--site-black)"  viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+        <a onclick="nextItem()" class="float-nav next-item" >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
             </svg>
         </a>
     </div>
@@ -116,14 +111,13 @@
 
     <!-- Navigation Shortcuts -->   
     <div class="text-box">
-        <a onclick="gotoElement('degree'); gotoElement('year1')"><text class="link">year 1 modules</text></a>
-        <a onclick="gotoElement('degree'); gotoElement('year2')"><text class="link">year 2 modules</text></a>
-        <a onclick="gotoElement('degree'); gotoElement('year3')"><text class="link">year 3 modules</text></a>
+        <a onclick="cycleItem('about0');"><text class="link">Skills Summary</text></a>
+        <a onclick="cycleItem('about1');"><text class="link">Degree Modules Summary</text></a>
     </div>
 
     <br>
-    <details class="collapsible" id="skills" open> 
-        <summary class="header"> Programming Languages, Development Tools and Environments I have experience in </summary>
+    <div class="carousel-item" id="about0"> 
+        <p class="header"> Programming Languages, Development Tools and Environments I have experience in </p>
         <p class="subheading"> Programming Languages </p>
         <div class="text-box">
                 <text class="keyword">Assembly</text>
@@ -210,12 +204,10 @@
             <text class="keyword">OVH (VPS, SSL Gateway, etc)</text>
         </div>
 
-        </details><br>
+    </div>
 
-    </details><br>
-
-    <details class="collapsible" id="degree" open> 
-        <summary class="header"> The BSc Computer Science experience briefly summarized </summary>
+    <div class="carousel-item" id="about1" > 
+        <p class="header"> The BSc Computer Science experience briefly summarized </p>
         <p class="subheading">The inspiration for the tone of this section</p>
 
         <p>
@@ -231,7 +223,13 @@
             </iframe>
         </p>
 
-        <details class="collapsible" id="year1" close> 
+        <div class="text-box">
+            <a onclick="cycleSubItem('year1');"><text class="link">Year 1</text></a>
+            <a onclick="cycleSubItem('year2');"><text class="link">Year 2</text></a>
+            <a onclick="cycleSubItem('year3');"><text class="link">Year 3</text></a>
+        </div>
+
+        <div class="sub-carousel-item" id="year1"> 
             <summary class="header"> Year 1 </summary>
             <p>
                 In first year, you are introduced to the very basics of computer science, and a lot of the modules here are foundational to every computer scientist's education. 
@@ -310,10 +308,10 @@
                 I think this module would have been way better conducted during second year before internship season or third year. 
             </p>
 
-        </details><br>
+        </div><br>
         
 
-        <details class="collapsible" id="year2" close> 
+        <div class="sub-carousel-item" id="year2"> 
             <summary class="header"> Year 2 </summary>
             <p>
                 The best way to summarize the second year of my degree would be "oh you thought you knew &lt;insert_topic_here&gt;, you do not", this theme will pop up a lot when I actually break down the modules. 
@@ -356,7 +354,7 @@
             </p>
 
             <div class="text-box">
-                <a href="projects.html#project3" onclick="openPageElement('projects', 'project3')"><text class="link">Project Page</text></a>
+                <a href="projects.html#project3" onclick="setPageCurrent('projects', 'project3')"><text class="link">Project Page</text></a>
                 <a href="https://github.com/yaq1n0/SEG-project-2021" target="_blank"><text class="link">GitHub Page</text></a>
             </div>
 
@@ -392,7 +390,7 @@
             </p>
             
             <div class="text-box">
-                <a href="projects.html#project2" onclick="openPageElement('projects', 'project2')"><text class="link">Project Page</text></a>
+                <a href="projects.html#project2" onclick="setPageCurrent('projects', 'project2')"><text class="link">Project Page</text></a>
                 <a href="https://github.com/yaq1n0/STQL-haskell" target="_blank"><text class="link">GitHub Page</text></a>
             </div>
 
@@ -445,11 +443,11 @@
                 A perfectly average module, does just about what it sets out to do and nothing more. 
             </p>
 
-        </details><br>
+        </div><br>
         
     
         
-        <details class="collapsible" id="year3" close> 
+        <div class="sub-carousel-item" id="year3"> 
             <summary class="header"> Year 3 </summary>
             <p>
                 If by some miracle, you've managed to survive the grade slump that is second year and pass. 
@@ -458,7 +456,7 @@
             </p>
 
             <div class="text-box">
-                <a href="projects.html#project1" onclick="openPageElement('projects', 'project1')"><text class="link">Final Year Project Page</text></a>
+                <a href="projects.html#project1" onclick="setPageCurrent('projects', 'project1')"><text class="link">Final Year Project Page</text></a>
                 <a href="https://github.com/yaq1n0/thymio-python" target="_blank"><text class="link">FYP GitHub Page</text></a>
             </div>
 
@@ -524,16 +522,16 @@
                 Though I found myself quite fond of the law aspect of this module as we had to read about past cases and learn about the concept of precedence in law. 
             </p>
 
-        </details><br>
+        </div><br>
 
-    </details><br>
+    </div>
 
     <!-- JavaScript -->
     <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
+    <script src="js/main.js"></script>
     <script defer src="js/portraitHandler.js"></script> 
-    <script src="js/shortcutsHandler.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="js/float-nav.js"></script>
+    <script src="js/dropdownHandler.js"></script>
+    <script src="js/page/about.js"></script>
 
 </body>
 </html>
