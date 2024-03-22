@@ -93,13 +93,13 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-        <a onclick="previousItem()" class="float-nav previous-item" >
+        <a onclick="carouselPrevious('projects')" class="float-nav previous-item" >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
               </svg>
         </a>
 
-        <a onclick="nextItem()" class="float-nav next-item" >
+        <a onclick="carouselNext('projects')" class="float-nav next-item" >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
             </svg>
@@ -111,17 +111,17 @@
 
     <!-- Navigation Shortcuts -->   
     <div class="text-box">
-        <a href="#" onclick="cycleItem('project0')"><text class="link">This Site!</text></a>
-        <a href="#" onclick="cycleItem('project1')"><text class="link">Final Year Project</text></a>
-        <a href="#" onclick="cycleItem('project2')"><text class="link">STQL-Haskell</text></a>
-        <a href="#" onclick="cycleItem('project3')"><text class="link">JavaFX AGILE App</text></a>
-        <a href="#" onclick="cycleItem('project4')"><text class="link">RoboCopy-GUI</text></a>
-        <a href="#" onclick="cycleItem('project5')"><text class="link">CyberVehiclesOverhaulFork</text></a>
+        <a href="#" onclick="carouselCycle('projects', '0')"><text class="link">This Site!</text></a>
+        <a href="#" onclick="carouselCycle('projects', '1')"><text class="link">Final Year Project</text></a>
+        <a href="#" onclick="carouselCycle('projects', '2')"><text class="link">STQL-Haskell</text></a>
+        <a href="#" onclick="carouselCycle('projects', '3')"><text class="link">JavaFX AGILE App</text></a>
+        <a href="#" onclick="carouselCycle('projects', '4')"><text class="link">RoboCopy-GUI</text></a>
+        <a href="#" onclick="carouselCycle('projects', '5')"><text class="link">CyberVehiclesOverhaulFork</text></a>
     </div>
 
     <br>
 
-    <div class="carousel-item" id="project0"> 
+    <div class="carousel-item" id="0"> 
         <p class="header">This Website!</p>
 
         <div class="text-box">
@@ -196,7 +196,7 @@
 
     </div>
 
-    <div class="carousel-item"  id="project1"> 
+    <div class="carousel-item"  id="1"> 
         <p class="header"> My Degree Final Year Project (FYP) </p>
 
         <div class="text-box">
@@ -390,7 +390,7 @@
 
     </div>
 
-    <div class="carousel-item"  id="project2"> 
+    <div class="carousel-item"  id="2"> 
         <p class="header"> Structured Turtle Query Language (STQL) </p>
 
         <div class="text-box">
@@ -463,21 +463,21 @@
         </p>
     </div>
 
-    <div class="carousel-item" id="project3"> 
+    <div class="carousel-item" id="3"> 
         <p class="header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</p>
         <div class="text-box">
             <a href="https://github.com/yaq1n0/SEG-project-2021" target="_blank"><text class="link">GitHub Page</text></a>
         </div>
     </div>
 
-    <div class="carousel-item" id="project4"> 
+    <div class="carousel-item" id="4"> 
         <p class="header"> RoboCopy GUI version using Google's Flutter Framework </p>
         <div class="text-box">
             <a href="https://github.com/yaq1n0/robocopy-GUI" target="_blank"><text class="link">GitHub Page</text></a>
         </div>
     </div>
 
-    <div class="carousel-item" id="project5"> 
+    <div class="carousel-item" id="5"> 
         <p class="header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </p>
         <div class="text-box">
             <a href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1P" target="_blank"><text class="link">GitHub Page</text></a>
@@ -485,10 +485,8 @@
     </div>
     
     <!-- JavaScript -->
-    <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
-    <script src="js/main.js"></script>
-    <script defer src="js/portraitHandler.js"></script> 
-    <script src="js/dropdownHandler.js"></script>
+    <script src="js/portraitHandler.js"></script>
+    <script src="js/carouselHandler.js"></script>
     <script src="js/page/projects.js"></script>
 
 </body>

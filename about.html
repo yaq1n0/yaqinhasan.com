@@ -93,13 +93,13 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-        <a onclick="previousItem()" class="float-nav previous-item" >
+        <a onclick="carouselPrevious('about')" class="float-nav previous-item" >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
               </svg>
         </a>
 
-        <a onclick="nextItem()" class="float-nav next-item" >
+        <a onclick="carouselNext('about')" class="float-nav next-item" >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
             </svg>
@@ -111,12 +111,12 @@
 
     <!-- Navigation Shortcuts -->   
     <div class="text-box">
-        <a onclick="cycleItem('about0');"><text class="link">Skills Summary</text></a>
-        <a onclick="cycleItem('about1');"><text class="link">Degree Modules Summary</text></a>
+        <a onclick="carouselCycle('about', '0');"><text class="link">Skills Summary</text></a>
+        <a onclick="carouselCycle('about', '1');"><text class="link">Degree Modules Summary</text></a>
     </div>
 
     <br>
-    <div class="carousel-item" id="about0"> 
+    <div class="carousel-item" id="0"> 
         <p class="header"> Programming Languages, Development Tools and Environments I have experience in </p>
         <p class="subheading"> Programming Languages </p>
         <div class="text-box">
@@ -206,7 +206,7 @@
 
     </div>
 
-    <div class="carousel-item" id="about1" > 
+    <div class="carousel-item" id="1" > 
         <p class="header"> The BSc Computer Science experience briefly summarized </p>
         <p class="subheading">The inspiration for the tone of this section</p>
 
@@ -224,9 +224,9 @@
         </p>
 
         <div class="text-box">
-            <a onclick="cycleSubItem('year1');"><text class="link">Year 1</text></a>
-            <a onclick="cycleSubItem('year2');"><text class="link">Year 2</text></a>
-            <a onclick="cycleSubItem('year3');"><text class="link">Year 3</text></a>
+            <a onclick="subCarouselCycle('year1');"><text class="link">Year 1</text></a>
+            <a onclick="subCarouselCycle('year2');"><text class="link">Year 2</text></a>
+            <a onclick="subCarouselCycle('year3');"><text class="link">Year 3</text></a>
         </div>
 
         <div class="sub-carousel-item" id="year1"> 
@@ -354,7 +354,7 @@
             </p>
 
             <div class="text-box">
-                <a href="projects.html#project3" onclick="setPageCurrent('projects', 'project3')"><text class="link">Project Page</text></a>
+                <a href="projects.html" onclick="setPageCurrent('projects', '3')"><text class="link">Project Page</text></a>
                 <a href="https://github.com/yaq1n0/SEG-project-2021" target="_blank"><text class="link">GitHub Page</text></a>
             </div>
 
@@ -390,7 +390,7 @@
             </p>
             
             <div class="text-box">
-                <a href="projects.html#project2" onclick="setPageCurrent('projects', 'project2')"><text class="link">Project Page</text></a>
+                <a href="projects.html" onclick="setPageCurrent('projects', '2')"><text class="link">Project Page</text></a>
                 <a href="https://github.com/yaq1n0/STQL-haskell" target="_blank"><text class="link">GitHub Page</text></a>
             </div>
 
@@ -456,7 +456,7 @@
             </p>
 
             <div class="text-box">
-                <a href="projects.html#project1" onclick="setPageCurrent('projects', 'project1')"><text class="link">Final Year Project Page</text></a>
+                <a href="projects.html" onclick="setPageCurrent('projects', '1')"><text class="link">Final Year Project Page</text></a>
                 <a href="https://github.com/yaq1n0/thymio-python" target="_blank"><text class="link">FYP GitHub Page</text></a>
             </div>
 
@@ -527,11 +527,9 @@
     </div>
 
     <!-- JavaScript -->
-    <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
-    <script src="js/main.js"></script>
-    <script defer src="js/portraitHandler.js"></script> 
-    <script src="js/dropdownHandler.js"></script>
+    <script src="js/portraitHandler.js"></script>
+    <script src="js/carouselHandler.js"></script>
     <script src="js/page/about.js"></script>
 
 </body>
-</html>
+</html> 

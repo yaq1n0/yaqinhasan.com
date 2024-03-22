@@ -109,7 +109,7 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-      <a onclick="previousItem()" class="float-nav previous-item">
+      <a onclick="carouselPrevious('technical')" class="float-nav previous-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path
             d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
@@ -117,7 +117,7 @@
         </svg>
       </a>
 
-      <a onclick="nextItem()" class="float-nav next-item">
+      <a onclick="carouselNext('technical')" class="float-nav next-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path
             d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
@@ -131,18 +131,18 @@
 
     <!-- Navigation Shortcuts -->
     <div class="text-box">
-      <a href="#" onclick="cycleItem('technical0')"
+      <a href="#" onclick="carouselCycle('technical', '0')"
         ><text class="link">TODO:</text></a
       >
-      <a href="#" onclick="cycleItem('technical1')"
+      <a href="#" onclick="subCarouselCycle('technical', '1')"
         ><text class="link">Changelog</text></a
       >
-      <a href="#" onclick="cycleItem('technical2')"
+      <a href="#" onclick="subCarouselCycle('technical', '2')"
         ><text class="link">Hosting Details</text></a
       >
     </div>
 
-    <div class="carousel-item" id="technical0">
+    <div class="carousel-item" id="0">
       <p class="header">TODO:</p>
 
       <ul>
@@ -159,7 +159,7 @@
       </ul>
     </div>
 
-    <div class="carousel-item" id="technical1">
+    <div class="carousel-item" id="1">
       <p class="header">Version History (reverse chronological)</p>
 
       <ul>
@@ -221,7 +221,7 @@
       </ul>
     </div>
 
-    <div class="carousel-item" id="technical2">
+    <div class="carousel-item" id="2">
       <p class="header">Hosting details</p>
 
       <p class="subheading">"Stack" Choice</p>
@@ -269,10 +269,8 @@
     <br />
 
     <!-- JavaScript -->
-    <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
-    <script src="js/main.js"></script>
-    <script defer src="js/portraitHandler.js"></script>
-    <script src="js/dropdownHandler.js"></script>
-    <script src="js/page/technical.js"></script>
+    <script src="js/portraitHandler.js"></script>
+    <script src="js/carouselHandler.js"></script>
+    <script src="js/page/projects.js"></script>
   </body>
 </html>

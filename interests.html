@@ -92,13 +92,13 @@
 
     <!-- Floating Navigation Buttons -->
     <div>
-      <a onclick="previousItem()" class="float-nav previous-item" >
+      <a onclick="carouselPrevious('interests')" class="float-nav previous-item" >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
             </svg>
       </a>
 
-      <a onclick="nextItem()" class="float-nav next-item" >
+      <a onclick="carouselNext('interests')" class="float-nav next-item" >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
           </svg>
@@ -110,16 +110,16 @@
 
     <!-- Navigation Shortcuts -->
     <div class="text-box">
-      <a onclick="cycleItem('interest0')"><text class="link">Enthusiast PCs</text></a>
-      <a onclick="cycleItem('interest1')"><text class="link">Game Design and Modding</text></a>
-      <a onclick="cycleItem('interest2')"><text class="link">Extreme PC</text></a>
-      <a onclick="cycleItem('interest3')"><text class="link">Powerlifting</text></a>
-      <a onclick="cycleItem('interest4')"><text class="link">Electronics w/Raspberry Pi</text></a>
-      <a onclick="cycleItem('interest5')"><text class="link">HomeLab Servers</text></a>
+      <a onclick="carouselCycle('interests', '0')"><text class="link">Enthusiast PCs</text></a>
+      <a onclick="carouselCycle('interests', '1')"><text class="link">Game Design and Modding</text></a>
+      <a onclick="carouselCycle('interests', '2')"><text class="link">Extreme PC</text></a>
+      <a onclick="carouselCycle('interests', '3')"><text class="link">Powerlifting</text></a>
+      <a onclick="carouselCycle('interests', '4')"><text class="link">Electronics w/Raspberry Pi</text></a>
+      <a onclick="carouselCycle('interests', '5')"><text class="link">HomeLab Servers</text></a>
     </div>
 
     <br>
-    <div class="carousel-item" id="interest0">
+    <div class="carousel-item" id="0">
       <p class="header">
         Enthusiast Custom PCs
       </p>
@@ -129,7 +129,7 @@
       </p>
     </div>
 
-    <div class="carousel-item" id="interest1">
+    <div class="carousel-item" id="1">
       <p class="header">
         PC Gaming, Game/Level Design, Game Modding
       </p>
@@ -139,7 +139,7 @@
       </p>
     </div>
 
-    <div class="carousel-item" id="interest2">
+    <div class="carousel-item" id="2">
       <p class="header">
         Extreme Overclocking and PC modding
       </p>
@@ -149,7 +149,7 @@
       </p>
     </div>
 
-    <div class="carousel-item" id="interest3">
+    <div class="carousel-item" id="3">
       <p class="header">
         Southampton University Powerlifting
       </p>
@@ -159,7 +159,7 @@
       </p>
     </div>
 
-    <div class="carousel-item" id="interest4">
+    <div class="carousel-item" id="4">
       <p class="header">
         Hobbyist Electronics Projects
       </p>
@@ -169,7 +169,7 @@
       </p>
     </div>
 
-    <div class="carousel-item" id="interest5">
+    <div class="carousel-item" id="5">
       <p class="header">
         HomeLab server hosting
       </p>
@@ -180,10 +180,8 @@
     </div>
 
     <!-- JavaScript -->
-    <!-- you need to defer portraitHandler so that it handles portrait on load properly -->
-    <script src="js/main.js"></script>
-    <script defer src="js/portraitHandler.js"></script> 
-    <script src="js/dropdownHandler.js"></script>
+    <script src="js/portraitHandler.js"></script>
+    <script src="js/carouselHandler.js"></script>
     <script src="js/page/interests.js"></script>
 
   </body>
