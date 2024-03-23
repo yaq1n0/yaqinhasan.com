@@ -33,19 +33,22 @@
 
 /* usually a <p> or <text> element within the collapsible body */
 .carousel-item .subheading-small {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 400; 
 }
 
 /* unordered list elements within the collapsible body */
 .carousel-item ul {
-  font-size: 1.2rem;
   padding-left: 1.5rem;
 }
 
+  .carousel-item li {
+    font-size: 1.25rem;
+  }
+
 /* paragraphs within the collapsible body */ 
 .carousel-item p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 /* carousel in a carousel (used in about page for years)
@@ -81,17 +84,20 @@ margin: 0.5rem 0rem;
 
 /* usually a <p> or <text> element within the collapsible body */
 .sub-carousel-item .subheading-small {
-font-size: 1.2rem;
+font-size: 1.25rem;
 font-weight: 400; 
 }
 
 /* unordered list elements within the collapsible body */
 .sub-carousel-item ul {
-font-size: 1.2rem;
 padding-left: 1.5rem;
 }
 
+  .sub-carousel-item li {
+    font-size: 1.25rem;
+    }
+
 /* paragraphs within the collapsible body */ 
 .sub-carousel-item p {
-font-size: 1.2rem;
+font-size: 1.25rem;
 }

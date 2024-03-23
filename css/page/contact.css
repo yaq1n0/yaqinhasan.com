@@ -5,38 +5,28 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   gap: 2rem;
 }
 
-.contact-container .contact-box {
-  align-self: stretch;
-  margin: 0;
-}
+  .contact-container .contact-box {
+    margin: 0;
+  }
 
-.contact-container .info {
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
+  .contact-container .info {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
 
-  font-size: 1.2rem;
-  font-weight: 400;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: center;
 
-  background: var(--theme-color-3-translucent);
-  border-radius: 1rem;
-  padding-right: 1rem;
-}
-
-.contact-container .info p{
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 1.6rem;
-}
-
-.contact-container .info li{
-  margin-bottom: 0.25rem;
-}
+    background: var(--theme-color-3-translucent);
+    border-radius: 1rem;
+    padding: 1rem;
+  }
 
 .top-header {
   text-align: center;
@@ -49,7 +39,7 @@
 
 .pdf-embed {
   display: block;
-  width: 80%;
+  width: 90%;
   height: 120vh;
   margin: auto;
 }

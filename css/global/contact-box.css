@@ -9,35 +9,38 @@
 
 /* contact-box container */
 .contact-box {
-  display: flex; 
+  display: flex;
   flex-direction: row; 
-  justify-content: center;
   flex-wrap: wrap;
-  margin: 0% 20%;
-  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: fit-content;
+  margin: auto;
+  
   border-radius: 1rem;
   background-color: var(--contact-box-color);
 }
 
-.contact-box .item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  .contact-box .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--contact-item-padding);
+  }
 
-.contact-box .icon {
-  display: flex;
-  fill: var(--site-white);
-  height: var(--contact-item-size);
-  width: var(--contact-item-size);
-  padding-left: var(--contact-item-padding);
-  padding-right: var(--contact-item-padding);
-}
+    .contact-box .item .icon {
+      display: flex;
+      fill: var(--site-white);
+      height: var(--contact-item-size);
+      width: var(--contact-item-size);
+    }
 
-.contact-box text {
-  color: var(--site-white);
-  padding-top: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
+    .contact-box .item text {
+      color: var(--site-white);
+      padding-top: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }

@@ -9,10 +9,15 @@ it can also contain text elements wrapped in <a> elements */
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center; 
+
+    box-sizing: border-box;
+    width: 100%;
+    margin: auto;
+
     padding: 0.5rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    margin: auto;
   }
 
 /* each text element in a text-box */

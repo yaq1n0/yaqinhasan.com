@@ -2,7 +2,7 @@
 /* css file for floating navigation buttons */
 
 :root {
-  --float-nav-button-size: 6rem;
+  --float-nav-button-size: 4rem;
 }
 
 /* super class for all floating navigation buttons */
@@ -24,12 +24,12 @@
 
 /* next item */
 .next-item {
-  right: 4rem;
+  right: 2rem;
   bottom: 2rem;
 }
 
 /* previous item */
 .previous-item {
-  left: 4rem;
+  left: 2rem;
   bottom: 2rem;
 }
