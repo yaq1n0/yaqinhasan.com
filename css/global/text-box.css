@@ -30,17 +30,10 @@ it can also contain text elements wrapped in <a> elements */
   color: var(--text-color);
 }
 
-@media (max-width: 600px) {
-  /* on phone or small viewport in general */
-  .text-box text {
-    font-size: 4rem;
-    padding: 1rem;
-  }
-}
-
 
 /* each text element that's an instance of link class in a text-box */
 .text-box .link {
+  font-size: 2rem; 
   font-family: var(--font-mono);
   white-space: nowrap; /* links should be single line */
 }
