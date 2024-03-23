@@ -140,6 +140,12 @@
   
 }
 
+
+/* set default font size to 1rem */ 
+* {
+  font-size: 1rem;
+}
+
 /* set site-wide body styling */
 body {
   background: var(--background-color); 

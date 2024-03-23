@@ -13,7 +13,7 @@ function handlePortrait() {
   // get viewport width
   let w = window.outerWidth;
   // above threshold = landscape, below threshold = portrait
-  let widthThreshold = 800;
+  let widthThreshold = 600;
 
   if (w >= widthThreshold) {
     // hide dropdown menu if it's down
