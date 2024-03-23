@@ -16,7 +16,7 @@
 /* <summary> element */
 .carousel-item .header {
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
 
   border-radius: 1rem;
@@ -67,7 +67,7 @@
 /* <summary> element */
 .sub-carousel-item .header {
 font-weight: 400;
-font-size: 2rem;
+font-size: 1.5rem;
 text-align: center;
 
 border-radius: 1rem;
