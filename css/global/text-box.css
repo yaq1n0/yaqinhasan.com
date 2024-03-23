@@ -18,7 +18,7 @@ it can also contain text elements wrapped in <a> elements */
 /* each text element in a text-box */
 .text-box text {
   display: flex;
-  font-size: 1.5rem; 
+  font-size: 1rem; 
   border: 2px solid;
   border-radius: 0.5rem;
   margin: 0.25rem;
@@ -33,7 +33,7 @@ it can also contain text elements wrapped in <a> elements */
 
 /* each text element that's an instance of link class in a text-box */
 .text-box .link {
-  font-size: 2rem; 
+  font-size: 1.25rem; 
   font-family: var(--font-mono);
   white-space: nowrap; /* links should be single line */
 }

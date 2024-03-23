@@ -41,15 +41,15 @@
 }
 
 .nav .item .icon {
-  height: 2rem;
-  width: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
   fill: var(--theme-color-1-light);
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
 
 .nav .item text {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 
