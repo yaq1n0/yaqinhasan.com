@@ -154,6 +154,10 @@ body {
   font-size: 1rem;
   margin: 0;
   padding-bottom: 12rem; /* "footer" */
+
+  /* this can make some things disappear if the layout breaks
+  but it's better than having unintended horizontal scrolling */
+  overflow-x: hidden; 
 }
 
 /* top level header */

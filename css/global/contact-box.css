@@ -4,7 +4,7 @@
 :root {
   --contact-box-color: var(--theme-color-3-translucent);
   --contact-item-size: 5rem;
-  --contact-item-padding: 1rem;
+  --contact-item-margin: 0.75rem;
 }
 
 /* contact-box container */
@@ -19,6 +19,7 @@
   width: fit-content;
   margin: auto;
   
+  border: 2px solid var(--site-white);
   border-radius: 1rem;
   background-color: var(--contact-box-color);
 }
@@ -28,7 +29,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: var(--contact-item-padding);
+    margin: var(--contact-item-margin);
   }
 
     .contact-box .item .icon {

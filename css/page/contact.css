@@ -24,6 +24,7 @@
     text-align: center;
 
     background: var(--theme-color-3-translucent);
+    border: 2px solid var(--site-white);
     border-radius: 1rem;
     padding: 1rem;
   }
