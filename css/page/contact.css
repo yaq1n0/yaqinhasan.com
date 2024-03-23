@@ -38,9 +38,9 @@
   background-color: var(--theme-color-3-translucent);
 }
 
-.pdf-embed {
+#pdf-embed {
   display: block;
   width: 90%;
-  height: 120vh;
+  height: 100vh;
   margin: auto;
 }

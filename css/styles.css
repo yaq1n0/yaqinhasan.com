@@ -149,11 +149,13 @@
 /* set site-wide body styling */
 body {
   background: var(--background-color); 
-  min-height: 100vh; /* do this do that the background gradient doesn't look funky on short pages */
   color: var(--text-color);
   font-size: 1rem;
+
   margin: 0;
-  padding-bottom: 12rem; /* "footer" */
+  box-sizing: border-box;
+  min-height: 100vh; /* do this do that the background gradient doesn't look funky on short pages */
+  padding-bottom: 10vh; /* "footer" */
 
   /* this can make some things disappear if the layout breaks
   but it's better than having unintended horizontal scrolling */
