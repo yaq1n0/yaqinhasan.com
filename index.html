@@ -94,9 +94,15 @@
 
     <!--Welcome Section-->
     <div>
-        <br><a href="technical.html"><p class="under-construction">
-        SITE IN BETA, CLICK HERE FOR DEVELOPMENT STATUS :)
-        </p></a>
+        <div id="under-construction">
+            <div><a href="technical.html"><p>
+            SITE IN BETA, CLICK HERE FOR DEVELOPMENT STATUS :)
+            </p></a></div>
+
+            <div><a href="#" onclick="hideDev()"><p>
+            Hide
+            </p></a></div>
+        </div>
         
         <div class="welcome">
         <img class="logo"src="resources/images/logo-no-background.svg"></img>
@@ -192,6 +198,7 @@
     <!-- JavaScript -->
     <script src="js/portraitHandler.js"></script>
     <script src="js/carouselHandler.js"></script>
+    <script src="js/page/index.js"></script>
     
 </body>
 </html>
