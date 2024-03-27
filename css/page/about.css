@@ -60,3 +60,14 @@ background-color: var(--theme-color-3-light-translucent);
 #page-shortcuts {
 margin-bottom: 1rem;
 }
+
+.carousel-item p.centered {
+    text-align: center;
+}
+
+.youtube-embed {
+    width: min(80vw, 1200px); 
+    height: min(45vw, 675px); 
+    border: 2px solid var(--theme-color-3-light);
+    border-radius: 2rem;
+}
