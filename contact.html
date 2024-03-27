@@ -9,10 +9,7 @@
     <title>Yaqin</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/global/nav-bar.css">
-    <link rel="stylesheet" href="css/global/text-box.css">
-    <link rel="stylesheet" href="css/global/contact-box.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/page/contact.css">
 
     <!-- favicon -->
@@ -30,22 +27,18 @@
 
     <!-- Top Navigation Bar -->
     <div class="nav">
-        <!-- left-container of nav -->
-        <div class="left" id="left-container">
-
-        <!-- Dropdown Menu Button -->
-        <a href="#">
-            <div class="item show-portrait-only" onclick="toggleNavDropdown()">
+        <!-- Menu Button -->
+        <a href="#" onclick="handleNavOverflow()">
+            <div class="item left show-portrait-only">
                 <svg xmlns="http://www.w3.org/2000/sv" class="icon" id="dropdown-icon" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
                 <text>Menu</text>
             </div>
         </a>
-
-        <!-- Primary Home Button -->
+        <!-- Home Button -->
         <a href="index.html">
-            <div class="item show-landscape-only dropdown-item">
+            <div class="item left show-landscape-only overflow-item">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
                     <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
@@ -56,40 +49,54 @@
 
         <!-- About Me Button -->
         <a href="about.html">
-            <div class="item show-landscape-only dropdown-item">
+            <div class="item left show-landscape-only overflow-item">
                 <text>About</text>
             </div>
         </a>
 
         <!-- Projects Button -->
         <a href="projects.html">
-            <div class="item show-landscape-only dropdown-item">
+            <div class="item left show-landscape-only overflow-item">
                 <text>Projects</text>
             </div>
         </a>
 
         <!-- Interests Button -->
         <a href="interests.html">
-            <div class="item show-landscape-only dropdown-item">
+            <div class="item left show-landscape-only overflow-item">
                 <text>Interests</text>
             </div>
         </a>
 
+        <div class="item" id="nav-divider">
         </div>
 
-        <!-- right-container of nav -->
-        <div class="right">
-
         <!-- Contact Information Button -->
-        <a style="text-decoration: none;" href="contact.html">
-            <div class="item">
+        <a href="contact.html">
+            <div class="item right show-landscape-only overflow-item">
                 <text>Contact</text>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
                 </svg>
             </div>
         </a>
-        </div>
+
+        <!-- Technical Button -->
+        <a href="technical.html">
+            <div class="item right show-dev-only show-landscape-only overflow-item">
+                <text>site_info</text>
+            </div>
+        </a>
+
+        <!-- dev toggle switch -->
+        <a href="#" onclick>
+            <div class="item right show-landscape-only overflow-item">
+            <text style="white-space: nowrap;">&lt;/&gt;</text>
+                <label class="switch">
+                    <input type="checkbox" id="dev-toggle" onclick="toggleDev()">
+                    <span class="slider round"></span>
+                </label>
+        </div></a>
     </div> 
 
     <p class="top-header">Contact Info, Other Site Links, Resume</p>
@@ -146,15 +153,14 @@
     <!-- download links -->
     <div class="text-box">
         <a href="resources/CV_Yaqin_Hasan.pdf"><text class="link">Download as PDF</text></a>
-        <a href="resources/CV_Yaqin_Hasan.docx"><text class="link">Download as Word Document (.docx)</text></a> 
+        <a href="resources/CV_Yaqin_Hasan.docx"><text class="link">Download as Word .docx</text></a> 
     </div>
 
     <br>
     <object data="resources/CV_Yaqin_Hasan.pdf" id="pdf-embed">There's supposed to be my CV embedded here, but you got this instead :(</object>
 
     <!-- JavaScript -->
-    <script src="js/portraitHandler.js"></script>
-    <script src="js/carouselHandler.js"></script>
+    <script src="js/main.js"></script>
     
 </body>
 </html>

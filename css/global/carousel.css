@@ -1,16 +1,15 @@
-
 /* css file for carousel design elements */
 
 /* <div class="carousel-item"> element */
 .carousel-item {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: auto;
-    border-radius: 1.5rem;
-    padding: 1rem;
-    /* keep this red so that it shows when it needs to be configured */
-    background-color: red;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0rem 2rem;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  /* keep this red so that it shows when it needs to be configured */
+  background-color: red;
 }
 
 /* <summary> element */
@@ -34,7 +33,7 @@
 /* usually a <p> or <text> element within the collapsible body */
 .carousel-item .subheading-small {
   font-size: 1.25rem;
-  font-weight: 400; 
+  font-weight: 400;
 }
 
 /* unordered list elements within the collapsible body */
@@ -42,11 +41,11 @@
   padding-left: 1.5rem;
 }
 
-  .carousel-item li {
-    font-size: 1.25rem;
-  }
+.carousel-item li {
+  font-size: 1.25rem;
+}
 
-/* paragraphs within the collapsible body */ 
+/* paragraphs within the collapsible body */
 .carousel-item p {
   font-size: 1.25rem;
 }
@@ -56,8 +55,8 @@
 .sub-carousel-item {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  margin: auto;
+  width: auto;
+  margin: 0rem 2rem;
   border-radius: 1.5rem;
   padding: 1rem;
   /* keep this red so that it shows when it needs to be configured */
@@ -66,38 +65,48 @@
 
 /* <summary> element */
 .sub-carousel-item .header {
-font-weight: 400;
-font-size: 1.5rem;
-text-align: center;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
 
-border-radius: 1rem;
-padding: 0.5rem;
-padding-left: 1.5rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
 }
 
 /* usually a <p> or <text> element within the collapsible body */
 .sub-carousel-item .subheading {
-font-size: 1.5rem;
-font-weight: 400;
-margin: 0.5rem 0rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0.5rem 0rem;
 }
 
 /* usually a <p> or <text> element within the collapsible body */
 .sub-carousel-item .subheading-small {
-font-size: 1.25rem;
-font-weight: 400; 
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
 /* unordered list elements within the collapsible body */
 .sub-carousel-item ul {
-padding-left: 1.5rem;
+  padding-left: 1.5rem;
 }
 
-  .sub-carousel-item li {
-    font-size: 1.25rem;
-    }
+.sub-carousel-item li {
+  font-size: 1.25rem;
+}
 
-/* paragraphs within the collapsible body */ 
+/* paragraphs within the collapsible body */
 .sub-carousel-item p {
-font-size: 1.25rem;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 850px) {
+  .carousel-item {
+    margin: 0rem 1rem;
+  }
+
+  .sub-carousel-item {
+    margin: 0rem 1rem;
+  }
 }

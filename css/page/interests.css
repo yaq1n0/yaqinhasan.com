@@ -27,3 +27,15 @@
 .carousel-item .subheading-small {
     color: var(--theme-color-2-light);
 }
+
+.collapsible {
+  background-color: var(--theme-color-2-light-translucent);
+}
+
+.collapsible .header {
+  background-color: var(--theme-color-2-light-translucent);
+}
+
+#page-shortcuts {
+  margin-bottom: 1rem;
+}

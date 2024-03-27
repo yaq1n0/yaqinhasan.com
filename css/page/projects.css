@@ -10,20 +10,33 @@
 
 .carousel-item {
     background-color: var(--theme-color-1-light-translucent);
-    margin-bottom: 1rem; 
     display: none;
 }
 
 .carousel-item .header {
     background-color: var(--theme-color-1-light-translucent);
-    margin-top: 0;
+    /* this gets rid of the paragraph padding */
+    margin-top: 0; 
+    margin-bottom: 0; 
 }
 
 .carousel-item .subheading {
-    text-align: center;
+    text-align: left;
     color: var(--theme-color-1-light);
 }
 
 .carousel-item .subheading-small {
     color: var(--theme-color-1-light);
+}
+
+.collapsible {
+  background-color: var(--theme-color-1-light-translucent);
+}
+
+.collapsible .header {
+  background-color: var(--theme-color-1-light-translucent);
+}
+
+#page-shortcuts {
+  margin-bottom: 1rem;
 }

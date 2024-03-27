@@ -155,7 +155,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   min-height: 100vh; /* do this do that the background gradient doesn't look funky on short pages */
-  padding-bottom: 10vh; /* "footer" */
+  padding-bottom: 20vh; /* "footer" */
 
   /* this can make some things disappear if the layout breaks
   but it's better than having unintended horizontal scrolling */
@@ -170,10 +170,24 @@ body {
 
 /* top level paragraph */
 .top-paragraph {
-  width: 90%;
-  margin: auto;
+  width: auto;
+  margin: 0rem 2rem;
   text-align: center;
   font-size: 1.25rem;
+}
+
+.top-paragraph.left {
+  text-align: left;
+}
+
+.top-paragraph.right {
+  text-align: right;
+}
+
+@media (max-width: 850px) {
+  .top-paragraph {
+    margin: 0rem 1rem;
+  }
 }
 
 /* all anchor tags */

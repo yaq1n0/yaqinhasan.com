@@ -3,12 +3,19 @@
 
 /* <detail> element */
 .collapsible {
-    width: 90%;
-    margin: auto;
+    width: auto;
+    margin: 0rem 2rem;
+    text-align: center;
     border-radius: 1.5rem;
     padding: 1rem;
     /* keep this red so that it shows when it needs to be configured */
     background-color: red;
+}
+
+@media (max-width: 850px) {
+  .collapsible { 
+    margin: 0rem 1rem;
+  }
 }
 
 /* <summary> element */
@@ -30,17 +37,17 @@
 
 /* usually a <p> or <text> element within the collapsible body */
 .collapsible .subheading-small {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 400; 
 }
 
 /* unordered list elements within the collapsible body */
 .collapsible ul {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   padding-left: 1.5rem;
 }
 
 /* paragraphs within the collapsible body */ 
 .collapsible p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }

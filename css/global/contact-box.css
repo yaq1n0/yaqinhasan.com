@@ -45,3 +45,12 @@
       font-size: 1.2rem;
       font-weight: 500;
     }
+
+@media (max-width: 850px) {
+  .contact-box .item .icon {
+    display: flex;
+    fill: var(--site-white);
+    height: calc(0.5 * var(--contact-item-size));
+    width: calc(0.5 * var(--contact-item-size));
+  }
+}

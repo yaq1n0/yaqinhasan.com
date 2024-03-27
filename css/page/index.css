@@ -1,32 +1,4 @@
 
-/* site under construction banner*/
-#under-construction {
-  width: fit-content;
-  margin: auto;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-
-  background-color: hsla(0, 100%, 20%, 0.3);
-  
-  border-radius: 1rem;
-  margin-top: 1rem;
-}
-
-#under-construction p {
-  color: yellow;
-  border-radius: 1rem;
-  border: 2px solid hsla(0, 100%, 40%, 0.3);
-
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0.5rem;
-  margin: 0;
-}
-
 /* Welcome/Intro Section */
 .welcome {
   display: flex;
@@ -60,21 +32,6 @@
 
 .text-box text {
   background-color: var(--theme-color-1-translucent);
-}
-
-#employers {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 0.5rem;
-  gap: 0.75rem;
-
-  border: 4px solid var(--theme-color-1-translucent);
-  border-radius: 2rem;
-  width: 90%;
-  margin: auto;
 }
 
 .contact-box {

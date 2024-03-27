@@ -12,13 +12,17 @@ it can also contain text elements wrapped in <a> elements */
     align-items: center; 
 
     box-sizing: border-box;
-    width: 100%;
-    margin: auto;
+    width: auto;
+    margin: 0rem 2rem;
 
     padding: 0.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+}
+
+@media (max-width: 850px) {
+  .text-box {
+    margin: 0rem 1rem;
   }
+}
 
 /* each text element in a text-box */
 .text-box text {

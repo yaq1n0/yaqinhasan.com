@@ -6,10 +6,13 @@
 
 /* Top Navigation Bar */
 .nav {
+  padding: 0.25rem 1rem;
   background-color: var(--nav-bar-color);
+  border-bottom: 2px solid var(--theme-color-1);
   display: flex;
   flex-direction: row;
-  justify-items: stretch;
+  flex-wrap: wrap;
+  justify-content: stretch;
 }
   
 .nav .left {
@@ -18,7 +21,6 @@
   flex-grow: 1;
   flex-wrap: wrap;
   align-items: start;
-  justify-items: start;
 }
   
 .nav .right {
@@ -27,25 +29,32 @@
   flex-grow: 1;
   flex-wrap: wrap;
   align-items: start;
-  justify-items: start;
 }
   
 .nav .item {
-  padding: 0.5rem;
-  margin: 0.5rem;
   border-radius: 0.5rem;
+  margin: 0.25rem;
+  padding: 0.25rem;
+  min-width: 2rem;
+  min-height: 2rem;
+
+  
   display: flex;
   flex-direction: row;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.nav #nav-divider {
+  border: none;
+  flex-grow: 1;
+  min-width: 0;
 }
 
 .nav .item .icon {
   height: 1.5rem;
   width: 1.5rem;
-  fill: var(--theme-color-1-light);
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 .nav .item text {
@@ -54,22 +63,22 @@
 }
 
 /* items in the left aligned container of the nav bar */
-.nav .left .item {
+.nav .item.left {
   border: solid 2px var(--theme-color-1-light);
   color: var(--theme-color-1-light);
 }
 
-.nav .left .item .icon {
+.nav .item.left .icon {
   fill: var(--theme-color-1-light);
 }
   
 /* items in the right aligned container of the nav bar */
-.nav .right .item {
+.nav .item.right {
   border: solid 2px var(--theme-color-2-light);
   color: var(--theme-color-2-light);
 }
 
-.nav .right .item .icon {
+.nav .item.right .icon {
   fill: var(--theme-color-2-light);
 }
   
