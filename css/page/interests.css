@@ -39,3 +39,43 @@
 #page-shortcuts {
   margin-bottom: 1rem;
 }
+
+#page-shortcuts .groups {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: stretch;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+  #page-shortcuts .groups .group {
+    display: flex;
+    flex-direction: row;  
+    border: 2px solid var(--theme-color-2);
+    border-radius: 1rem;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  #page-shortcuts .groups .group .title {
+    border: none;
+    border-bottom: 2px solid var(--theme-color-2);
+    border-radius: 0rem;
+    background-color: var(--theme-color-2-translucent);
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 1200px) {
+    #page-shortcuts .groups {
+      flex-direction: column;
+    }
+  }

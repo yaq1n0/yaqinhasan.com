@@ -22,7 +22,7 @@ function handlePortrait() {
     let w = window.outerWidth;
 
     // above threshold = landscape, below threshold = portrait
-    let widthThreshold = 800;
+    let widthThreshold = 900;
   
     if (w >= widthThreshold) {
       // show landscape items
@@ -30,9 +30,6 @@ function handlePortrait() {
   
       // hide portrait items
       for (let elem of portraitElements) elem.style.display = "none";
-  
-      // show the nav divider
-      navDivider.style.display = "flex";
 
       // show page shortcuts by default
       if (pageShortcutsMenu != null) pageShortcutsMenu.open = true;
@@ -42,9 +39,6 @@ function handlePortrait() {
   
       // show portrait items
       for (let elem of portraitElements) elem.style.display = "flex";
-  
-      // hide the nav divider
-      navDivider.style.display = "none";
 
       // hide page shortcuts by default
       if (pageShortcutsMenu != null) pageShortcutsMenu.open = false;

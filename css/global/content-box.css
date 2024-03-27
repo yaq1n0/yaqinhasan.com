@@ -15,7 +15,7 @@
     margin: 1rem 2rem;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
     .content-box {
         /* 1 rem spacing on larger screens */ 
         margin: 1rem 1rem;

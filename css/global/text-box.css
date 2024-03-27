@@ -18,7 +18,7 @@ it can also contain text elements wrapped in <a> elements */
     padding: 0.5rem;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .text-box {
     margin: 0rem 1rem;
   }

@@ -101,7 +101,7 @@
   font-size: 1.25rem;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .carousel-item {
     margin: 0rem 1rem;
   }

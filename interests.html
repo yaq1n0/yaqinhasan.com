@@ -23,7 +23,7 @@
     
   </head>
 
-  <body onresize="handlePortrait()">
+  <body>
     
     <!-- Top Navigation Bar -->
     <div class="nav">
@@ -119,14 +119,24 @@
 
     <!-- Navigation Shortcuts -->
     <details class="collapsible" id="page-shortcuts">   
-      <summary class="header">Page Shortcuts</summary>
-      <div class="text-box">
-        <a onclick="carouselCycle('interests', '0')"><text class="link">Enthusiast PCs</text></a>
-        <a onclick="carouselCycle('interests', '1')"><text class="link">Game Design and Modding</text></a>
-        <a onclick="carouselCycle('interests', '2')"><text class="link">Extreme PC</text></a>
-        <a onclick="carouselCycle('interests', '3')"><text class="link">Powerlifting</text></a>
-        <a onclick="carouselCycle('interests', '4')"><text class="link">Electronics w/Raspberry Pi</text></a>
-        <a onclick="carouselCycle('interests', '5')"><text class="link">HomeLab Servers</text></a>
+      <summary class="header">Interests List</summary>
+      <div class="groups">
+        <div class="text-box group">
+          <text class="title">Enthusiast PCs</text>
+          <a onclick="carouselCycle('interests', '0')"><text class="link">My Custom PCs</text></a>
+          <a onclick="carouselCycle('interests', '2')"><text class="link">Extreme Overclocking</text></a>
+        </div>
+        <div class="text-box group">
+          <text class="title">Other Tech Stuff</text>
+          <a onclick="carouselCycle('interests', '5')"><text class="link">"HomeLab" Server Hosting</text></a>
+          <a onclick="carouselCycle('interests', '4')"><text class="link">SBCs and Microelectronics</text></a>
+        </div>
+        <div class="text-box group">
+          <text class="title">Miscellaneous</text>
+          <a onclick="carouselCycle('interests', '1')"><text class="link">Game Design and Modding</text></a>
+          <a onclick="carouselCycle('interests', '3')"><text class="link">Powerlifting/Strength Sports</text></a>
+
+        </div>
       </div>
     </details>
 

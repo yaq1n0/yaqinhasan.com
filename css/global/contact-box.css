@@ -46,7 +46,7 @@
       font-weight: 500;
     }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .contact-box .item .icon {
     display: flex;
     fill: var(--site-white);

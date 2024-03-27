@@ -12,7 +12,7 @@
     background-color: red;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .collapsible { 
     margin: 0rem 1rem;
   }
