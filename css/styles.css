@@ -24,6 +24,8 @@
 
   --text-color: var(--site-white);
 
+  --dev-highlight: hsla(280, 66%, 33%, 1);
+
   /* theme color components */
   --theme-color-1-h: 210;
   --theme-color-1-s: 50%;
@@ -162,6 +164,10 @@ body {
   overflow-x: hidden; 
 }
 
+p.centered {
+  text-align: center;
+}
+
 /* top level header */
 .top-header {
   font-size: 2rem;
@@ -196,6 +202,7 @@ a {
 }
 
 .inline-link {
+  font-size: 1.25rem;
   font-weight: 400;
   color: var(--text-color);
   border: 2px solid var(--text-color);

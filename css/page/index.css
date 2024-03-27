@@ -37,3 +37,11 @@
 .contact-box {
   background-color: var(--theme-color-1-translucent);
 }
+
+.content-box.show-dev-only{
+  border-color: var(--dev-highlight);
+}
+
+.content-box.show-dev-only .top-header{
+  color: var(--dev-highlight);
+}

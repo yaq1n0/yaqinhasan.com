@@ -61,10 +61,6 @@ background-color: var(--theme-color-3-light-translucent);
 margin-bottom: 1rem;
 }
 
-.carousel-item p.centered {
-    text-align: center;
-}
-
 .youtube-embed {
     width: min(80vw, 1200px); 
     height: min(45vw, 675px); 

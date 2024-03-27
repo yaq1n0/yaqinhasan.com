@@ -50,6 +50,11 @@
   font-size: 1.25rem;
 }
 
+/* text within the collapsible body */
+.carousel-item text {
+  font-size: 1.25rem;
+}
+
 /* carousel in a carousel (used in about page for years)
 /* <div class="sub-carousel-item"> element */
 .sub-carousel-item {

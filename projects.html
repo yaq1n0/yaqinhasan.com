@@ -2,6 +2,7 @@
 <!-- Projects page -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- boilerplate garbage -->
     <meta charset="utf-8">
@@ -123,380 +124,392 @@
         <div class="groups">
         <div class="text-box group">
             <text class="title">WIP/Current Projects</text>
-            <a href="#" onclick="carouselCycle('projects', '0')"><text class="link">This Site!</text></a>
-            <a href="#" onclick="carouselCycle('projects', '4')"><text class="link">RoboCopy-GUI</text></a>
-            <a href="#" onclick="carouselCycle('projects', '5')"><text class="link">CyberVehiclesOverhaulFork</text></a>
+            <a href="#" onclick="carouselCycle('projects', '0')"><text class="link">yaqinhasan.com</text></a>
+            <a href="#" onclick="carouselCycle('projects', '1')"><text class="link">flopPy</text></a>
+            <a href="#" onclick="carouselCycle('projects', '2')"><text class="link">RoboCopyGUI</text></a>
+            <a href="#" onclick="carouselCycle('projects', '3')"><text class="link">Simple [REDACTED] Tracker</text></a>
         </div>
         <div class="text-box group">
             <text class="title">Completed/Archived Projects</text>
-            <a href="#" onclick="carouselCycle('projects', '1')"><text class="link">Final Year Project</text></a>
-            <a href="#" onclick="carouselCycle('projects', '2')"><text class="link">STQL-Haskell</text></a>
-            <a href="#" onclick="carouselCycle('projects', '3')"><text class="link">JavaFX AGILE App</text></a>
+            <a href="#" onclick="carouselCycle('projects', '4')"><text class="link">ThymPi - Final Year Project</text></a>
+            <a href="#" onclick="carouselCycle('projects', '5')"><text class="link">STQL - Haskell Interpreter</text></a>
+            <a href="#" onclick="carouselCycle('projects', '6')"><text class="link">Software Eng. Group Project</text></a>
         </div>
         </div>
     </details>
 
     <div class="carousel-item" id="0"> 
-        <p class="header">This Website!</p>
-
-        <div class="text-box">
-            <a href="https://github.com/yaq1n0/yaqinhasan.com" target="_blank"><text class="link">GitHub Page</text></a>
+        
+        <div class="header">
+            <text>yaqinhasan.com - This Website!</text>
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/yaqinhasan.com" target="_blank"><text class="link">Source Code (GitHub)</text></a>
+            </div>
         </div>
 
-        <text class="subheading"> Getting Started </text>
-        <p> 
-            After I finished my degree and began to look for a job, I realized that I would have to find a way to highlight my projects and experience beyond what could be reasonably detailed in a CV and cover letter. 
-            Every decent developer these days seems to have their own website, so I thought "how hard could it be" and got started researching how to go about creating one for myself. 
+        <p class="centered summary"> 
+            I wanted a personal portfolio website to showcase and document my projects, most developers have one so I asked myself "how hard could it be?". 
         </p>
 
-        <p>
-            I started by trying to define the functional goals for this website. 
+        <div class="show-dev-only" style="padding-right: 0.5rem; padding-left: 0.5rem;">
+            <text class="subheading">The functional development goals for this site are: </text>
             <ul>
-                <li> It should give people an idea of what I am like technically, professionally and personally. </li>
-                <li> It should implicitly showcase my full-stack (ish) web development skill and design ideologies. </li>
-                <li> It should list and explain what skills and experience I have, exhaustively if possible. </li>
-                <li> It should document and explain my projects that I have on GitHub in a way that recruiters can understand. </li>
-                <li> It should serve as further documentation for my GitHub projects, supplementing the readme.md files. </li>
-                <li> It should showcase my personal interests in way that allows me to share my passions for these things, instead of just name dropping them in a CV. </li>
-                <li> It should be a one-stop shop for people to find further information about me (link my socials and contact info). </li>
+                <li> Implicitly showcase my web dev and web hosting skills </li>
+                <li> List my technical skills </li>
+                <li> Showcase and document my projects </li>
+                <li> List some personal interests </li>
+                <li> Contain my contact info and a copy of my CV </li>
             </ul>
-        </p>
+        </div>
 
         <text class="subheading"> Initial Research, Abandoned Approaches </text>
         <p>
-            I have been able to write HTML, CSS and pure JS since I was in middle school. 
-            This meant that I wouldn't have to learn the actual website development part much. 
-            <br>I also knew about website templates, which I initially thought about using to simplify the creation process. 
-            <br>I have also used Flutter to develop desktop apps before, and knew that Flutter could be used to create websites.
-            And in the worst case, I could also use React, Angular, Vue or any other one of the million JS frameworks. 
-        </p>
-
-        <p>
-            I tried to build a flutter example app for web, it didn't immediately work, so I gave up on it. 
-            I probably could've gotten it to work but in hindsight, 
-            I'm glad I didn't use a JS framework as it would just be unnecessary code  overhead and web bloat. 
-        </p>
-
-        <p> 
-            I moved on to looking at html/css/js templates. 
-            I found one called "Monica." which looked to fit the description. 
-            I read through the source code and got to work changing stuff and adding context. 
-            I got to a point where had a solid landing page and generic template to start working off of, when I had an epiphany. 
+            I thought about using React or Flutter to make the site, 
+            but I wanted to challenge myself to make something that looks and functions like a modern site, 
+            using nothing but raw HTML, CSS and JS. 
+            I initially tried to use a HTML template I found online, but it was terribly written and a nightmare to work with, 
+            so I decided to go even more RAW and write everything from scratch. 
+            As a result, all the code for this site is written by yours truly (me) from scratch!
         </p>
 
         <text class="subheading"> A Minimalist Approach Begins </text>
         <p>
-            First, I realized that once I really thought about the functional requirements of this site, I didn't actually need a template. 
-            Secondly, the template was incredibly bloated with unnecessary JS dependencies, fluff UI animations and source code that was unnecessarily convoluted 
-            (a single 5000 line styles.css file that was a pain to work with).     
-            Thirdly, I personally believe in minimalist design as well as clean, simple, to the point software. 
-        </p>
-
-        <p> 
-            Realizing all of this, I decided to see how long it would actually take me to create the framework for the website I had in mind from scratch. 
-            Building everything from scratch, but also wanting to retain responsive UI design meant that I had to learn a few bits of new HTML and CSS. 
-            I also implemented some basic good coding practices that the template didn't such as: 
-            <ul>
-                <li> Creating global responsible font size variables. </li>
-                <li> Creating global theme color variables and variations for them. </li>
-                <li> Using entirely relative and responsive positioning, layout and sizing code. </li>
-                <li> Having separate stylesheets for each page, to try and avoid having an massive abomination of a styles.css file. </li>
-                <li> Using consistent polymorphism concepts for UI elements, so that they can be reused and repurposed site-wide </li>
-            </ul>
-        </p>
-
-        <p>
-            It took me around 3 hours to go from nothing to having a responsive skeleton with a generic page template, reaching feature parity with the template branch of the site. 
+            Writing everything from scratch meant learning the responsive CSS from scratch and 
+            developing a deep understanding of the responsive and adaptive layout tools. 
+            The initial versions of the site were made responsive using purely clever HTML and CSS. 
+            However, as I added more features to the site, I ended up using some plain ol' JavaScript. 
+            Such as for the mobile navigation bar overflow menu, carousel layout navigation logic and developer mode. 
+            I also took the liberty of splitting the files into more manageable sections and components, 
+            simplifying my workflow dramatically. 
         </p>
 
     </div>
 
-    <div class="carousel-item"  id="1"> 
-        <p class="header"> My Degree Final Year Project (FYP) </p>
+    <div class="carousel-item" id="1"> 
+        <div class="header">
+            <text>flopPy - A Simple Stateful Tk/Python GUI library</text>
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/flopPy" target="_blank"><text class="link">Source Code (GitHub)</text></a>
+            </div>
+        </div>  
 
-        <div class="text-box">
-            <a href="https://github.com/yaq1n0/thymio-python" target="_blank"><text class="link">GitHub Page</text></a>
+        <p class="centered summary">
+            Inspired by Flutter's stateful widgets, I decided to make a Python library that incorporates statefulness into Tkinter. 
+            The name comes from flop and Py, with flop apparently being a synonym of flutter and Py being an obvious shorthand for Python. 
+        </p>
+
+        <p> 
+            I will write more here once I have more implementation details
+        </p>
+
+    </div>
+
+    <div class="carousel-item" id="2"> 
+        <div class="header">
+            <text>RoboCopyGUI - Lightweight Windows File Backup App</text>
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/RoboCopyGUI" target="_blank"><text class="link">Source Code (GitHub)</text></a>
+            </div>
         </div>
 
-        <text class="subheading"> Intro </text>
+        <p class="centered summary">
+            I couldn't find a lightweight local file backup solution to backup my main Windows PC to my SMB NAS, so I decided to look around. 
+            I found RoboCopy, a windows CLI tool which provides the backend functionality for this. 
+            I then wanted to make a GUI for this so that I can use this in a bit more refined way. 
+        </p>
+
+        <p class="subheading">Flutter Solution</p>
         <p> 
-            A final year project, also known as an honours project has 2 parts, the actual project and the accompanying dissertation/report. 
-            I might eventually add my dissertation here if there's enough interest but at thousands of words long, I doubt many people would read it fully. 
-            Therefore, I will try to summarize things for the sake of brevity and to only include what I believe to be most relevant. 
+            The current solution is a Flutter windows app, which I chose because I was currently learning how to use Flutter at the time. 
+            This solution is around 50% complete, as it does work, but the layout is nonexistent and it's not very thoroughly tested. 
+            You can find this in the repo linked above. 
         </p>
 
-        <text class="subheading"> Project Selection/Project Brief </text>
-        <p>
-            The FYP process for a BSc Computer Science at the University of Southampton begins with a selection process that allows you to select topics that you are interested in. 
-            Each project topic is tied to a supervisor, and while you can't directly select a supervisor, you can see who your supervisor is likely to be when you select your topic. 
-            Your choices are then put through a matching algorithm to match you with a supervisor. 
+        <p class="subheading">Windows Tray Solution</p>
+        <p> 
+            I am planning to make another version of the app, that will be windows tray native, so that it will stay in your tray notifications area. 
+            This would make it even better for the intended purpose, 
+            as it could then be unintrusively launched at startup and stay in the background. 
+            With the option to be manually run when needed and opened up to configure settings. 
         </p>
 
-        <p>
-            After you're allocated a project topic and supervisor, you can then discuss with them about their current areas of interest. 
-            Hopefully, you'll be able to find some common ground between something you want to do and something they are able to help you with. 
-            Within a few weeks of the first semester of your 3rd year, you are expected to select a project title and project brief. 
+    </div>
+
+    <div class="carousel-item" id="3"> 
+        <div class="header">
+            <text>Simple [REDACTED] Tracker - An Android App</text>
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/SimpleTrack" target="_blank"><text class="link">Source Code (GitHub)</text></a>
+            </div>
+        </div>
+
+        <p class="centered summary">
+            I noticed a market gap for a certain kind of tracker app on the Google Play Store, 
+            I then decided to come up with a rough design for an app that could fill that niche. 
+            This project is highly speculative at this point. 
         </p>
 
-        <p>
-            The conventional wisdom is to select a vague yet believable project title that you can then eventually refine and narrow down over time. 
-            This wisdom extends to the project brief, which you are expected to produce alongside it, detailing what you wish to do.   
+        <p> 
+            I will write more here once I have more implementation details
         </p>
 
-        <p>
-            I didn't have any strong feelings or inspiration as to what project I actually wanted to make.
-            However, I knew early on that I wanted to do something that would allow me to explore unfamiliar fields and try out some new technologies. 
+    </div>
+
+    <div class="carousel-item"  id="4"> 
+        <div class="header">
+            <text>ThymPi - My Final Year Project</text>
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/ThymPi" target="_blank"><text class="link">Source Code (GitHub)</text></a>
+            </div>
+        </div>
+
+        <p class="centered summary"> 
+            The name of this project is a portmanteau of Thymio and Pi, 
+            with Thymio being the name of the robot platform that I used 
+            and Pi referencing the Raspberry Pi 3B+ that was the brains of the prototype.
         </p>
 
-        <p>
-            Eventually, I decided on a project titled "an intelligent approach to navigation in environments with compliant obstacles". 
-            Now lets break down what this intentionally vague and pretentiously academic title actually means. 
+        <text class="subheading">Project Definition</text>
+        <p> 
+            The official title of my dissertation was "An Intelligent Approach to Navigating Environments With Compliant Obstacles". 
+            Like most academic titles, it likely means very little to you. 
+            The gist of it is that obstacles fall on a spectrum of compliance, 
+            which is a fancy way of saying how easy they are to move aside or get through. 
         </p>
-
+        
         <p>
-            Obstacle compliance is just the term used to describe how easy it would be to either disregard and move through or to push aside an obstacle. 
-            A good example of a highly compliant obstacle would be grass, a moderately compliant one being a small branch that can be pushed aside, and a non-compliant one being a large immovable rock. 
-        </p>
-
-        <p>
-            The general gist of the project is that autonomous navigation algorithms don't intrinsically understand object compliance. 
-            Theoretically, this can be achieved in the following ways: 
-            
-            <ul>
-                <li> Hard coding compliance for expected obstacles: This requires the most developer/human effort, and is most likely to fail in the field </li>
-                <li> Test and learn compliance details for obstacles on the fly: This takes relatively little human effort, and in theory accounts for everything that could possibly be encountered. </li>
-                <li> Contextual AI: This wasn't really a thing that was on my mind as someone who wasn't really at the cutting edge of AI developments in 2023. 
-                    Though writing this in 2024, it would likely not be long until someone trains an AI model to associate recognized objects with physical characteristics like mass, coefficient of friction and compliance</li>
-            </ul>
-        </p>
-
-        <p>
-            Obviously, I wouldn't have hard coded compliance for a set of recognized obstacles and called that a day, so I decided on using the second approach. 
-        </p>
-
-        <text class="subheading">Compliance Testing </text>
-        <p>
-            The end goal of the project was to essentially develop a way to populate a data base of key-value pairs. 
-            Each key-value containing a value an obstacle_id and its associated compliance_value. 
-        </p>
-
-        <p>
-            Classifying objects and obtaining object_id will be done in the next section, in this we section we will cover obtaining compliance_value. 
-            There are a few ways to get a compliance value but all of them boil down to f(internal_variable) where a function is applied to some internal variable that the robot can measure. 
-        </p>
-
-        <p>
-            Quite a few internal values can be used to define compliance functionally.
-            Some of the methods evaluated were: 
-            <ul>
-                <li>Using the current draw of the robot's wheels/locomotion servos, with increased current draw being associated with lower compliance</li>
-                <li>Using a pressure sensor at the front of the robot, with increased pressure being indicative of lower compliance. </li>
-                <li>Using an accelerometer to measure deceleration on impact, with larger decelerations being indicative of lower compliance. </li>
-            </ul>
+            Essentially, if you have a robot that is navigating solely visually, it has no context for what an obstacle's compliance is. 
+            You would have to manually add compliance context to the object detection and classification model. 
+            This is suboptimal for many reasons, which is why you'd probably want to have the robot to be able to do this on its own. 
         </p>
 
         <p>
-            Ultimately, the final method was chosen. 
-        </p>
-
-        <text class="subheading">Sensor selection </text>
-        <p>
-            In order to be able to use a function to calculate a compliance_value from the deceleration on collision,
-            the sensor must have the following properties. 
-            <ul>
-                <li>A high enough polling rate to detect rapid spikes in deceleration. </li>
-                <li>A high enough precision to be used to meaningfully differentiate between different deceleration amounts. </li>
-                <li>A way to interface with the computer or microcontroller that's running the control software. </li>
-            </ul>
-        </p>
-
-        <p>
-            I played around with the following accelerometers before choosing one for the final approach. 
-            <ul>
-                <li>
-                    The robot I was using, the Thymio, has an internal accelerometer (read more in the next section). 
-                    I attempted to use this as it reported sensor data using the same bus as the control signals which I would have to use anyway. 
-                    However, it ended up not having a high enough polling rate and precision. 
-                    The reasons for why these are important are highlighted above. 
-                </li>
-                <li>
-                    I also had a Pico4ML microcontroller board on hand, which had an accelerometer on board that I thought could be repurposed to act like a USB accelerometer. 
-                    I wrote a lightweight program for the microcontroller that read the accelerometer data and outputted it to the serial (USB port) bus that connected it to the computer running the primary control software.  
-                    From there, it was just a simple matter of reading the serial bus, cleaning up the data and interfacing with the control code. 
-                    However, using the serial interface raw proved the be slightly unreliable. 
-                    I have no doubt that I could eventually find a way to make it consistent but I decided to try other options. 
-                </li>
-                <li>
-                    Eventually, I bought an MPU6050 Inertial Measurement Unit (IMU), 
-                    an IMU being a combination sensor with an 3-axis accelerometer and a 3-axis gyroscope. 
-                    It had a good amount of documentation, was pre-calibrated and had a pre-written library which would perform the raw input sanitation for me. 
-                </li>
-            </ul>
-        </p>
-
-        <text class="subheading">Test Platform and Thymio </text>
-        <p>
-            I would have needed some kind of mobile robotic test platform to develop the prototype on. 
-            In theory, I could've used anything that had the ability to move, a couple servos and wheels bolted to a slab. 
-        </p>
-
-        <p>
-            However, my supervisor had access and experience to Thymio robots, which were simple small robots with a few built in sensors. 
-            Most importantly though, they include a first party control library which meant that I won't have to directly control servos for movement. 
-        </p>
-
-        <text class="subheading">Obstacle detection and classification</text>
-        <p>
-            Up until this project, I had done some modules on ML theory, but I have never actually implemented or used anything in a practical setting. 
-            I did a lot of research and found out about OpenCV, which allowed me to use pre-trained object classification models to detect and classify objects. 
-            I eventually settled on using a model specifically for "everyday objects" which I believed would allow me to classify anything I would use in testing. 
-        </p>
-
-        <p>
-            Obviously running in object recognition model on a Raspberry Pi 3 single board computer was going to run into some performance constraints. 
-            I tried my best to optimize by disabling the preview and directly sending the camera input to the model.  
-            Eventually I had to sacrifice the input resolution to get the model to work in somewhat real-time, which meant less accurate object classification. 
-            However, I managed to get around this by caching the recognition data once and using it for subsequent frames. 
-            The final solution ended up with minimal recognition delay in the few hundred milliseconds range, but also being consistent and accurate enough practically. 
+            A side note, with recent advancements in AI, 
+            training a model with a limited set of known object/compliance pairs and 
+            having it extrapolate the data is a lot more realistic and robust of a solution. 
         </p>
 
         <text class="subheading">Summary of Final Prototype</text>
         <p>
-            I had a Raspberry Pi 3 running the control program, written in Python. 
-            The Pi 3 was also running the OpenCV object classification model using data from a Pi camera. 
-            The MPU6050 IMU was wired directly to the GPIO pins on the raspberry pi and transmitting data over the I2C bus. 
-            The Thymio robot was being controlled by the Pi 3 through their proprietary dbus Python library asebamedulla. 
-            Everything was powered off a standard USD-PD compatible battery pack. 
+            The goal of my project was to design, implement and test a prototype robotics platform to demonstrate 
+            "An Intelligent Approach to Navigating Environments With Compliant Obstacles". 
+        </p>
+
+        <p>
+            I had a Raspberry Pi 3 running the OpenCV object classification model, compliance testing logic and Thymio control program (asebamedulla). 
+            Everything was written in Python with the Pi 3 was connected to a Pi camera, the MPU6050 inertial measurement unit (accelerometer and gyroscope) and the Thymio robot. 
         </p>
 
         <p>
             The final prototype was able to identify and classify obstacles, then it would decide to test the compliance of the obstacle if it was unknown to it. 
-            In theory, this would then be coupled with a navigation algorithm, using the compliance values to augment the different path "weights" to come up with a more efficient path, 
-            not just by distance but also by obstacle compliance data along the way. 
+            In theory, this would then be coupled with a navigation algorithm, using the compliance values to augment the different path "weights" to come up with the most efficient real-life path. 
         </p>
 
-        <text class="subheading">Theoretical Improvements</text>
-        <p>
-            By calculating compliance_value from f(internal_variable), we are mapping a single sensor's data to a numerical value. 
-            This inherently has 2 issues, the first being that information is lost during the mapping process, regardless of what function is used. 
-            Secondly, using a single sensor value is inherently limiting, as it can often miss certain nuances. 
-        </p>
+        <div class="show-dev-only"style="padding-right: 0.5rem; padding-left: 0.5rem;">
+            <text class="subheading">Compliance Testing </text>
+            <p>
+                I considered several methods of determining compliance from sensor values: 
+                <ul>
+                    <li>Using the current draw of the robot's wheels/locomotion servos - higher current draw => lower compliance</li>
+                    <li>Using a pressure sensor at the front of the robot - higher pressure => lower compliance</li>
+                    <li>Using an accelerometer to measure deceleration on impact = higher deceleration => lower compliance</li>
+                </ul>
+                I started with an accelerometer because the Thymio had one builtin that I could access. 
+            </p>
 
-        <p>
-            On the function side, the simplest function used to turn a range of values, such as deceleration, into a single value is an average. 
-            This would lead to a sharp single spike such as when colliding with a completely immovable and non-compliant obstacle to return a lower compliance_value than
-            a prolonged deceleration as as from pushing a heavy but movable and slightly compliant obstacle. 
-        </p>
+            <text class="subheading">Accelerometer selection </text>
+            <p>
+                In order to be able to use a function to calculate a compliance_value from the deceleration on collision,
+                the sensor must have the following properties. 
+                <ul>
+                    <li>A high enough polling rate to detect rapid spikes in deceleration. </li>
+                    <li>A high enough precision to be used to meaningfully differentiate between different deceleration amounts. </li>
+                    <li>A way to interface with the computer or microcontroller that's running the control software. </li>
+                </ul>
+            </p>
 
-        <p>
-            Therefore, it becomes a task in itself to choose or create a function best suited for the job that consistently outputs obstacle compliance values that are representative and useable for comparison purposes. 
-        </p>
-    
-        <p>
-            On the variables side, using a single variable simplifies things but it can also be easily become inaccurate. 
-            For example, by only using a single accelerometer axis, if the robot tilts or otherwise doesn't collide with the obstacles directly every time, 
-            it will generate inconsistent data due to the vectoring of the values measured. 
-        </p>
+            <p>
+                I played around with the following accelerometers before choosing one for the final approach. 
+                <ul>
+                    <li>
+                        The robot I was using, the Thymio, has an internal accelerometer (read more in the next section). 
+                        I attempted to use this as it reported sensor data using the same bus as the control signals which I would have to use anyway. 
+                        However, it ended up not having a high enough polling rate and precision. 
+                        The reasons for why these are important are highlighted above. 
+                    </li>
+                    <li>
+                        I also had a Pico4ML microcontroller board on hand, which had an accelerometer on board that I thought could be repurposed to act like a USB accelerometer. 
+                        I wrote a lightweight program for the microcontroller that read the accelerometer data and outputted it to the serial (USB port) bus that connected it to the computer running the primary control software.  
+                        From there, it was just a simple matter of reading the serial bus, cleaning up the data and interfacing with the control code. 
+                        However, using the serial interface raw proved the be slightly unreliable. 
+                        I have no doubt that I could eventually find a way to make it consistent but I decided to try other options. 
+                    </li>
+                    <li>
+                        Eventually, I bought an MPU6050 Inertial Measurement Unit (IMU), 
+                        an IMU being a combination sensor with an 3-axis accelerometer and a 3-axis gyroscope. 
+                        It had a good amount of documentation, was pre-calibrated and had a pre-written library which would perform the raw input sanitation for me. 
+                    </li>
+                </ul>
+            </p>
 
-        <p>
-            Therefore, it makes sense to try and take into account as many variables as possible in calculating an obstacle's compliance_value,
-            to allow for errors like this to either be accounted for with erroneous data detection and correction or though simple mathematical redundancy. 
-        </p>
+            <text class="subheading">Test Platform and Thymio </text>
+            <p>
+                I would have needed some kind of mobile robotic test platform to develop the prototype on. 
+                In theory, I could've used anything that had the ability to move, a couple servos and wheels bolted to a slab. 
+            </p>
+
+            <p>
+                However, my supervisor had access and experience to Thymio robots, which were simple small robots with a few built in sensors. 
+                Most importantly though, they include a first party control library which meant that I won't have to directly control servos for movement. 
+            </p>
+
+            <text class="subheading">Obstacle detection and classification</text>
+            <p>
+                Up until this project, I had done some modules on ML theory, but I have never actually implemented or used anything in a practical setting. 
+                I did a lot of research and found out about OpenCV, which allowed me to use pre-trained object classification models to detect and classify objects. 
+                I eventually settled on using a model specifically for "everyday objects" which I believed would allow me to classify anything I would use in testing. 
+            </p>
+
+            <p>
+                Obviously running in object recognition model on a Raspberry Pi 3 single board computer was going to run into some performance constraints. 
+                I tried my best to optimize by disabling the preview and directly sending the camera input to the model.  
+                Eventually I had to sacrifice the input resolution to get the model to work in somewhat real-time, which meant less accurate object classification. 
+                However, I managed to get around this by caching the recognition data once and using it for subsequent frames. 
+                The final solution ended up with minimal recognition delay in the few hundred milliseconds range, but also being consistent and accurate enough practically. 
+            </p>
+
+            <text class="subheading">Summary of Final Prototype</text>
+            <p>
+                I had a Raspberry Pi 3 running the control program, written in Python. 
+                The Pi 3 was also running the OpenCV object classification model using data from a Pi camera. 
+                The MPU6050 IMU was wired directly to the GPIO pins on the raspberry pi and transmitting data over the I2C bus. 
+                The Thymio robot was being controlled by the Pi 3 through their proprietary dbus Python library asebamedulla. 
+                Everything was powered off a standard USD-PD compatible battery pack. 
+            </p>
+
+            <p>
+                The final prototype was able to identify and classify obstacles, then it would decide to test the compliance of the obstacle if it was unknown to it. 
+                In theory, this would then be coupled with a navigation algorithm, using the compliance values to augment the different path "weights" to come up with a more efficient path, 
+                not just by distance but also by obstacle compliance data along the way. 
+            </p>
+
+            <text class="subheading">Theoretical Improvements</text>
+            <p>
+                By calculating compliance_value from f(internal_variable), we are mapping a single sensor's data to a numerical value. 
+                This inherently has 2 issues, the first being that information is lost during the mapping process, regardless of what function is used. 
+                Secondly, using a single sensor value is inherently limiting, as it can often miss certain nuances. 
+            </p>
+
+            <p>
+                On the function side, the simplest function used to turn a range of values, such as deceleration, into a single value is an average. 
+                This would lead to a sharp single spike such as when colliding with a completely immovable and non-compliant obstacle to return a lower compliance_value than
+                a prolonged deceleration as as from pushing a heavy but movable and slightly compliant obstacle. 
+            </p>
+
+            <p>
+                Therefore, it becomes a task in itself to choose or create a function best suited for the job that consistently outputs obstacle compliance values that are representative and useable for comparison purposes. 
+            </p>
+        
+            <p>
+                On the variables side, using a single variable simplifies things but it can also be easily become inaccurate. 
+                For example, by only using a single accelerometer axis, if the robot tilts or otherwise doesn't collide with the obstacles directly every time, 
+                it will generate inconsistent data due to the vectoring of the values measured. 
+            </p>
+
+            <p>
+                Therefore, it makes sense to try and take into account as many variables as possible in calculating an obstacle's compliance_value,
+                to allow for errors like this to either be accounted for with erroneous data detection and correction or though simple mathematical redundancy. 
+            </p>
+
+        </div>
 
     </div>
 
-    <div class="carousel-item"  id="2"> 
-        <p class="header"> Structured Turtle Query Language (STQL) </p>
-
-        <div class="text-box">
-            <a href="https://github.com/yaq1n0/STQL-haskell" target="_blank"><text class="link">GitHub Page</text></a>
+    <div class="carousel-item"  id="5"> 
+        <div class="header">
+            <text>Structured Turtle Querying Language</text>
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/STQL-haskell" target="_blank"><text class="link">Source Code (GitHub)</text></a>
+            </div>
         </div>
+        
 
-        <text class="subheading">Intro</text>
-        <p>
-            As part of the second year of my computer science degree, I took the following modules:
-            <ul>
-                <li>Theory of Computing: Which covered computability and complexity theory</li>
-                <li>Programming 3: Which covered functional programming in Haskell</li>
-                <li>Programming Language Concepts: Which covered compiler/interpreter theory</li>
-            </ul>
+        <p class="centered summary">
+            The goal of this project was to design a querying language for Turtle RDF files 
+            (read more <a class="inline-link" href="https://www.w3.org/TR/turtle/">here</a> ), 
+            then implementing an interpreter for that language using Haskell. 
+            The name is a play on SQL, or structured querying language, which this querying language strongly resembled. 
         </p>
 
-        <p>
-            You can read more about them in my modules breakdown <a class="inline-link" href="about.html#degree-year2">here</a>.                
-        </p>
-
-        <p>
-            While those modules were technically separate, I have a strong hunch that they were all taught in the same year in order to provide the theoretical background required for the coursework. 
-            The coursework was meant to be done in a group of 3, and the goal was the design a Toy language and accompanying interpreter in Haskell. 
-        </p>
-
-        <text class="subheading">Coursework Scope</text>
-        <p>
-            The scope for the toy language was to act as a querying language for Turtle RDF files. 
-            The actual data type and file syntax is arbitrary, but if you'd like to learn more about it, <a class="inline-link" href="https://www.w3.org/TR/turtle/">here</a>. 
-            The querying functionality was akin to a subset of common SQL-like functions, such as filtering, merging etc. 
-        </p>
-
+        <text class="subheading">Group Shenanigans</text>
         <p>
             The coursework was meant to be done in a group of 3. 
-            I proposed that we split it such that one person designs the Toy language and interpreter, one person does the underlying logic, and another person links the 2 together. 
-        </p>
-
-        <text class="subheading">Group Difficulties</text>
-        <p>
-            However, it turned out that one of my groupmates ended being incredibly uncooperative, not showing up to "scrum" meetings and ended up contributing less than 10% of the total group effort. 
-            The other 2 of us attempted to resolve this issue by helping to break down the tasks for him and make them more straightforward, followed by explaining out predicament to the Module Lead. 
-            Eventually, we realized that we were spending more time and effort trying to incorporate him into the workflows and agreed to simply pick up his responsibilities between the 2 of us, as we had a rapidly approaching deadline. 
+            I proposed that we split it such that one person designs the Toy language and interpreter, 
+            one person does the underlying querying logic, 
+            and another person links the 2 together and codes the evaluation logic. 
+            This would split the workload relatively evenly. 
         </p>
 
         <p>
-            Therefore, it ended up with me designing the Toy language, the accompanying interpreter and the interfacing code. 
-            While my other groupmate ended up implementing the entire backend functionality and the actual execution in Haskell. 
+            However, one of my group members didn't show up to any of the "scrum" meetings, or contribute code at all. 
+            Despite confronting him about the lack of contribution and eventually reporting this to the module lead, we didn't get anywhere. 
         </p>
 
-        <text class="subheading">What My Groupmate Implemented</text>
         <p>
-            Due to this division of duty, the 2 of us worked on roughly half of the total work amount each. 
-            However, my understanding of the backend functionality is limited as I let her do the backend independently. 
-            As I understand it, she used a Haskell library which did the raw interfacing with the Turtle files, and she implemented a bunch of high-level functions based on the low-level library functions. 
-            The end result being that she essentially provided me with an API that I can make function calls to from the interpreter.  
+            Eventually, the other 2 of us decided to just split the work into 2, with me designing the Toy language, and coding the interpreter and evaluation logic.
+            While my other groupmate ended up implementing the entire backend querying functionality and the actual execution in Haskell. 
         </p>
 
         <text class="subheading">What I Implemented</text>
         <p>
-            For my responsibilities, I designed the language around the library's functionality. 
+            While my groupmate worked on the backend logic, I requested that everything be encapsulated and available through an API that I could make function calls to. 
             As the library was initially meant to modify files, I realized that I wouldn't actually need to implement runtime variables and I could instead use intermediary files as pseudo-variables. 
+        </p>
+
+        <p>
             The second thing I realized was that the actual functionality could be implemented using a combination of simpler functions rather than using a larger set of more complex functions. 
             Essentially reducing the interpreter complexity at the "cost" of requiring more effort to write the code in the Toy language. 
         </p>
+    </div>
 
-        <text class="subheading">About The Name</text>
-        <p>
-            Me and the other groupmate that actually did their part eventually realized the coincidental syntactic and functional similarity of our Toy language to SQL. 
-            Knowing that SQL stood for structured querying language, we then named our language structured turtle querying language, or STQL for short.
+    <div class="carousel-item" id="6"> 
+        <div class="header">
+            <text>AGILE Software Engineering Group Project</text>
+            <div class="text-box">
+                <a href="https://github.com/yaq1n0/SEG-project-2021" target="_blank"><text class="link">Source Code (GitHub)</text></a>
+            </div>
+        </div>
+
+        <p class="centered summary">
+            The goal of this project was to work in a group of 6 developers, 
+            using AGILE project management and development practices to deliver a software product to "customers". 
+            With the customers being seniors who would give up feedback on deliverables. 
         </p>
-    </div>
 
-    <div class="carousel-item" id="3"> 
-        <p class="header"> Runway Redeclaration Java/JavaFX Desktop App Group Project with AGILE</p>
-        <div class="text-box">
-            <a href="https://github.com/yaq1n0/SEG-project-2021" target="_blank"><text class="link">GitHub Page</text></a>
-        </div>
-    </div>
+        <p>
+            The software product in question was a "runway redeclaration" application.
+            Essentially, when there is an obstacle on the runway, instead of shutting down the runway, 
+            the airport can choose to "redeclare" its values instead, to avoid the obstacle. 
+            The application would have to recalculate these values and visualize these changes for the user. 
+        </p>
 
-    <div class="carousel-item" id="4"> 
-        <p class="header"> RoboCopy GUI version using Google's Flutter Framework </p>
-        <div class="text-box">
-            <a href="https://github.com/yaq1n0/robocopy-GUI" target="_blank"><text class="link">GitHub Page</text></a>
-        </div>
-    </div>
+        <p> 
+            This project had us using a lot of industry standard things and some not so standard things:
+            <ul>
+                <li>Git/GitHub for collaborative version control</li>
+                <li>UML class diagrams for data modelling</li>
+                <li>An MVC design pattern to decouple user interface and backend logic </li>
+                <li>A Discord server (instead of Slack) for communications</li>
+            </ul>
+        </p>
 
-    <div class="carousel-item" id="5"> 
-        <p class="header"> Cyberpunk 2077 CyberVehiclesOverhaul Mod Fork </p>
-        <div class="text-box">
-            <a href="https://github.com/yaq1n0/cyber-vehicles-overhaul-mod-2.1P" target="_blank"><text class="link">GitHub Page</text></a>
-        </div>
+        <p class="subheading">What I did</p>
+        <p>
+            The 6 of us were split into pairs to work on the Model, View and Controller code respectively. 
+            Initially, I was the main person who did the data modelling with UML class diagrams and the backend calculation logic. 
+            However, as the project progressed and the backend functionality reached completion ahead of the frontend, 
+            I switched over to help integrate the frontend with the backend. 
+        </p>
     </div>
     
     <!-- JavaScript -->
