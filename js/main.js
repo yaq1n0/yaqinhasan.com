@@ -107,12 +107,12 @@ function handleDev() {
             item.style.display = 'flex';
         }
         toggle.checked = true;
-    } else if (devMode == 'false' || devMode == 'null') {
+    } else if (devMode == 'false') {
         for (item of devItems) {
             item.style.display = 'none';
         }
         toggle.checked = false;
-    }
+    } 
 }
 
 function toggleDev() {
@@ -213,6 +213,7 @@ function subCarouselCycle(id) {
 /*==== listener binding ====*/
 // handle dev mode on window load
 // do this first so that dev items get hidden properly 
+sessionStorage.setItem('devMode', 'false');
 window.addEventListener("load", handleDev);
 
 // handle portrait mode on load and on resize
