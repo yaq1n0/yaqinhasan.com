@@ -54,11 +54,17 @@ function handlePortrait() {
 // show nav bar overflow icons
 function showNavOverflow() {
   let overflowItems = document.getElementsByClassName('overflow-item');
+  let devItems = document.getElementsByClassName('show-dev-only');
   let dropdownIcon = document.getElementById('dropdown-icon');
 
   // show all dropdown elements
-  for (let elem of overflowItems) {
-    elem.style.display = 'flex';
+  for (let item of overflowItems) {
+    item.style.display = 'flex';
+  }
+
+  // handle hide dev pages
+  for (let item of devItems) {
+    item.style.display = 'none';
   }
 
   dropdownIcon.style.transform = 'rotate(90deg)'; // rotate icon to dropped down
@@ -71,8 +77,8 @@ function hideNavOverflow() {
   let dropdownIcon = document.getElementById('dropdown-icon');
 
   // hide all dropdown elements
-  for (let elem of overflowItems) {
-    elem.style.display = 'none';
+  for (let item of overflowItems) {
+    item.style.display = 'none';
   } 
 
   dropdownIcon.style.transform = 'none'; // revert icon to normal 
