@@ -15,8 +15,33 @@
 }
 
 .carousel-item .header {
-    background-color: var(--theme-color-2-light-translucent);
-    margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  background-color: var(--theme-color-2-light-translucent);
+}
+
+  .carousel-item .header text {
+    font-size: 1.5rem;
+    color: var(--theme-color-2-light);
+  }
+
+  .carousel-item .header .text-box {
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+  }
+
+  .carousel-item .header .text-box text {
+    padding: 0.25rem;
+  }
+
+.carousel-item p.summary {
+  color: var(--theme-color-2);
 }
 
 .carousel-item .subheading {
