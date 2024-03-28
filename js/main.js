@@ -2,50 +2,69 @@
 /* main JavaScript file for yaqinhasan.com */
 
 /*==== "globals" ====*/
+var portraitMode = false; 
 var overflowShown = false;
 
 /*==== portrait mode related JavaScript ====*/
+function getPortraitElems() {
+  let portraitElems = document.getElementsByClassName("show-portrait-only");
+  return portraitElems;
+}
+
+function getLandscapeElems() {
+  let landscapeElems = document.getElementsByClassName("show-landscape-only");
+  return landscapeElems;
+}
+
 function handlePortrait() {
-    // elements that only show in landscape
-    let landscapeElements = document.getElementsByClassName("show-landscape-only");
+  // elements that only show in portrait
+  let portraitElems = getPortraitElems();
 
-    // elements that only show in portrait
-    let portraitElements = document.getElementsByClassName("show-portrait-only");
+  // elements that only show in landscape
+  let landscapeElems = getLandscapeElems();
 
-    // nav divider item
-    let navDivider = document.getElementById("nav-divider");
+    
+  // nav divider item
+  let navDivider = document.getElementById("nav-divider");
 
-    // page shortcuts menus
-    let pageShortcutsMenu = document.getElementById("page-shortcuts")
+  // page shortcuts menus (for about, projects, interestes, technical)
+  let pageShortcutsMenu = document.getElementById("page-shortcuts");
 
-    // get viewport width
-    let w = window.outerWidth;
 
-    // above threshold = landscape, below threshold = portrait
-    let widthThreshold = 900;
+  // get viewport width
+  let w = window.outerWidth;
+
+  // above threshold = landscape, below threshold = portrait
+  let widthThreshold = 900;
   
     if (w >= widthThreshold) {
       // show landscape items
-      for (let elem of landscapeElements) elem.style.display = "flex";
+      for (let elem of landscapeElems) elem.style.display = "flex";
   
       // hide portrait items
-      for (let elem of portraitElements) elem.style.display = "none";
+      for (let elem of portraitElems) elem.style.display = "none";
 
       // show page shortcuts by default
       if (pageShortcutsMenu != null) pageShortcutsMenu.open = true;
+
+      // show nav bar divider
+      navDivider.style.display = 'flex';
     } else {
       // hide landscape items
-      for (let elem of landscapeElements) elem.style.display = "none";
+      for (let elem of landscapeElems) elem.style.display = "none";
   
       // show portrait items
-      for (let elem of portraitElements) elem.style.display = "flex";
+      for (let elem of portraitElems) elem.style.display = "flex";
 
       // hide page shortcuts by default
       if (pageShortcutsMenu != null) pageShortcutsMenu.open = false;
 
+      // hide nav bar divider
+      navDivider.style.display = 'none';
+
       // hide nav overflow
       hideNavOverflow();
-}
+    }
 }
 
 
@@ -54,7 +73,6 @@ function handlePortrait() {
 // show nav bar overflow icons
 function showNavOverflow() {
   let overflowItems = document.getElementsByClassName('overflow-item');
-  let devItems = document.getElementsByClassName('show-dev-only');
   let dropdownIcon = document.getElementById('dropdown-icon');
 
   // show all dropdown elements
@@ -62,10 +80,8 @@ function showNavOverflow() {
     item.style.display = 'flex';
   }
 
-  // handle hide dev pages
-  for (let item of devItems) {
-    item.style.display = 'none';
-  }
+  // handle dev only items
+  handleDev();
 
   dropdownIcon.style.transform = 'rotate(90deg)'; // rotate icon to dropped down
   overflowShown = true;
@@ -80,7 +96,7 @@ function hideNavOverflow() {
   for (let item of overflowItems) {
     item.style.display = 'none';
   } 
-
+  
   dropdownIcon.style.transform = 'none'; // revert icon to normal 
   overflowShown = false;
 }
@@ -98,10 +114,26 @@ function handleNavOverflow() {
 
 
 /*==== developer mode related JavaScript ====*/
+function getDev() {
+  let devMode = sessionStorage.getItem('devMode');
+  return devMode;
+}
+
+function setDev(val) {
+  sessionStorage.setItem('devMode', val);
+}
+
+function getDevItems() {
+  let devItems = document.getElementsByClassName('show-dev-only');
+  return devItems;
+}
+
+// call this to handle hiding and showing dev items
 function handleDev() {
-    let devMode = sessionStorage.getItem('devMode');    
+    let devMode = getDev(); 
+    let devItems = getDevItems()
     let toggle = document.getElementById('dev-toggle');
-    let devItems = document.getElementsByClassName('show-dev-only');
+
     if (devMode == 'true') {
         for (item of devItems) {
             item.style.display = 'flex';
@@ -119,9 +151,9 @@ function toggleDev() {
     let toggle = document.getElementById('dev-toggle');
 
     if (toggle.checked == true) {
-        sessionStorage.setItem('devMode', 'true');
+        setDev('true');
     } else if (toggle.checked == false) {
-        sessionStorage.setItem('devMode', 'false');
+        setDev('false');
     }
 
     handleDev();
