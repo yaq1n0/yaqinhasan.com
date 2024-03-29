@@ -243,17 +243,16 @@ function subCarouselCycle(id) {
 
 
 /*==== listener binding ====*/
-// handle dev mode on window load
-// do this first so that dev items get hidden properly 
-
 // set devMode if it's null
 if (sessionStorage.getItem('devMode') == null) {
   sessionStorage.setItem('devMode', 'false');
 }
-window.addEventListener("load", handleDev);
 
 // handle portrait mode on load and on resize
 window.addEventListener("load", handlePortrait);
 window.addEventListener("resize", handlePortrait);
+
+// do this last so that dev items get hidden properly 
+window.addEventListener("load", handleDev);
 
 
