@@ -1,4 +1,27 @@
 
+/* banner joke section */ 
+#banner-joke {
+  margin:auto;
+  width: fit-content;
+  display: flex;
+} 
+
+#banner-joke p {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--theme-color-1-dark);
+  background-color: var(--theme-color-1-translucent);
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  #banner-joke p {
+    font-size: 1.25rem;
+  }
+}
+
 /* Welcome/Intro Section */
 .welcome {
   display: flex;
