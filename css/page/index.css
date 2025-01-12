@@ -1,9 +1,9 @@
-
 /* banner joke section */ 
 #banner-joke {
-  margin:auto;
+  margin: 1rem auto;
   width: fit-content;
   display: flex;
+  animation: fadeIn 0.5s ease-in;
 } 
 
 #banner-joke p {
@@ -13,7 +13,13 @@
   color: var(--theme-color-1-dark);
   background-color: var(--theme-color-1-translucent);
   border-radius: 2rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+#banner-joke p:hover {
+  transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {
@@ -26,8 +32,11 @@
 .welcome {
   display: flex;
   width: 90vw;
-  margin: auto;
+  margin: 2rem auto;
   justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  animation: slideUp 0.8s ease-out;
 }
 
 .welcome .logo {
@@ -35,6 +44,13 @@
   padding: 1rem;
   width: 40vw;
   max-width: 40rem;
+  animation: fadeIn 1s ease-in;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.welcome .logo:hover {
+  transform: scale(1.02);
 }
 
 .welcome .text {
@@ -45,26 +61,176 @@
   font-weight: 800;
   font-family: var(--font-mono);
   color: var(--theme-color-2-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.8s ease-out;
 }
 
 .top-header{
   text-align: center;
   color: var(--theme-color-1-dark);
-  margin: 0%;
+  margin: 2rem 0;
+  font-size: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+.top-paragraph {
+  animation: fadeIn 1s ease-in;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 2rem auto !important;
 }
 
 .text-box text {
   background-color: var(--theme-color-1-translucent);
+  transition: all 0.2s ease;
+}
+
+.text-box text:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-box {
   background-color: var(--theme-color-1-translucent);
+  animation: fadeIn 1s ease-in;
+  transition: transform 0.3s ease;
+}
+
+.contact-box:hover {
+  transform: translateY(-4px);
 }
 
 .content-box.show-dev-only{
   border-color: var(--dev-highlight);
+  animation: slideUp 0.8s ease-out;
 }
 
 .content-box.show-dev-only .top-header{
   color: var(--dev-highlight);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .welcome {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem auto;
+  }
+
+  .welcome .logo {
+    width: 60vw;
+  }
+
+  .welcome .text {
+    text-align: center;
+    font-size: min(3rem, 6vw);
+  }
+
+  .top-header {
+    font-size: 2rem;
+  }
+}
+
+.collapsible {
+  background-color: var(--theme-color-1-light-translucent);
+  box-sizing: border-box;
+  width: min(calc(100% - 4rem), 1200px);
+  margin: 1rem auto;
+  animation: fadeIn 0.5s ease-in;
+  padding: 2rem;
+}
+
+.collapsible .header {
+  background-color: var(--theme-color-1-light-translucent);
+  color: var(--theme-color-1-light);
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: -2rem -2rem 1rem -2rem;
+  padding: 1rem 2rem;
+}
+
+.collapsible .header:hover {
+  background-color: var(--theme-color-1-translucent);
+}
+
+.collapsible[open] .header {
+  margin-bottom: 2rem;
+}
+
+.collapsible .text-box {
+  margin: 1rem auto;
+}
+
+.collapsible .contact-box {
+  margin: 1.5rem auto;
+}
+
+/* Mobile styles */
+@media (max-width: 900px) {
+  .collapsible {
+    width: min(calc(100% - 2rem), 1200px);
+  }
+
+  .content-box.show-portrait-only {
+    box-sizing: border-box;
+    width: min(calc(100% - 2rem), 1200px);
+    margin: 1rem auto;
+    animation: fadeIn 0.5s ease-in;
+    padding: 2rem;
+  }
+
+  .content-box.show-portrait-only .top-header {
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .content-box.show-portrait-only .text-box {
+    margin: 1rem auto;
+  }
+
+  .content-box.show-portrait-only .contact-box {
+    margin: 1.5rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .collapsible,
+  .content-box.show-portrait-only {
+    padding: 1.5rem;
+  }
+
+  .collapsible .header {
+    margin: -1.5rem -1.5rem 1rem -1.5rem;
+    padding: 1rem 1.5rem;
+  }
 }
