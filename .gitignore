@@ -1,0 +1,33 @@
+# Build output
+dist/
+build/
+public/
+_site/
+.tmp/
+
+# Dependencies
+node_modules/
+bower_components/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.settings/
+
+# System Files
+.DS_Store
+Thumbs.db
+*.log
+*.lock
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+.sass-cache/
