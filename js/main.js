@@ -1,290 +1,364 @@
 /* main JavaScript file for yaqinhasan.com */
 
-/*==== "globals" ====*/
-var portraitMode = false; 
-var overflowShown = false;
+/**
+ * Core site configuration
+ */
+export const CONFIG = {
+  PORTRAIT_THRESHOLD: 900,
+  ANIMATION_SPEEDS: {
+    NORMAL: '1',
+    FAST: '0.5'
+  }
+};
 
-/*==== portrait mode related JavaScript ====*/
-function getPortraitElems() {
-  let portraitElems = document.getElementsByClassName("show-portrait-only");
-  return portraitElems;
-}
+/**
+ * State management
+ */
+export const State = {
+  portraitMode: false,
+  overflowShown: false,
 
-function getLandscapeElems() {
-  let landscapeElems = document.getElementsByClassName("show-landscape-only");
-  return landscapeElems;
-}
+  // Dev mode
+  getDev() {
+    return sessionStorage.getItem('devMode');
+  },
 
-function handlePortrait() {
-  // elements that only show in portrait
-  let portraitElems = getPortraitElems();
+  setDev(val) {
+    sessionStorage.setItem('devMode', val);
+  },
 
-  // elements that only show in landscape
-  let landscapeElems = getLandscapeElems();
+  initDevMode() {
+    if (sessionStorage.getItem('devMode') === null) {
+      this.setDev('false');
+    }
+  }
+};
 
+// Initialize dev mode immediately
+State.initDevMode();
+
+/**
+ * DOM Helper functions
+ */
+export const DOMHelpers = {
+  getPortraitElems() {
+    return document.getElementsByClassName("show-portrait-only");
+  },
+
+  getLandscapeElems() {
+    return document.getElementsByClassName("show-landscape-only");
+  },
+
+  getDevItems() {
+    return document.getElementsByClassName('show-dev-only');
+  },
+
+  getNavElements() {
+    return {
+      overflowItems: document.getElementsByClassName('overflow-item'),
+      dropdownIcon: document.getElementById('dropdown-icon'),
+      navDivider: document.getElementById('nav-divider'),
+      pageShortcuts: document.getElementById('page-shortcuts'),
+      devToggle: document.getElementById('dev-toggle')
+    };
+  }
+};
+
+/**
+ * Responsive layout management
+ */
+export const ResponsiveManager = {
+  handlePortrait() {
+    const { navDivider, pageShortcuts } = DOMHelpers.getNavElements();
+    const portraitElems = DOMHelpers.getPortraitElems();
+    const landscapeElems = DOMHelpers.getLandscapeElems();
+    const viewportWidth = document.documentElement.clientWidth;
     
-  // nav divider item
-  let navDivider = document.getElementById("nav-divider");
+    const isLandscape = viewportWidth >= CONFIG.PORTRAIT_THRESHOLD;
 
-  // page shortcuts menus (for about, projects, interestes, technical)
-  let pageShortcutsMenu = document.getElementById("page-shortcuts");
-
-
-  // get viewport width
-  let w = document.documentElement.clientWidth;
-
-  // above threshold = landscape, below threshold = portrait
-  let widthThreshold = 900;
-  
-    if (w >= widthThreshold) {
-      // show landscape items (but respect dev mode)
-      for (let elem of landscapeElems) {
-        if (!elem.classList.contains('show-dev-only') || getDev() === 'true') {
-          elem.style.display = "flex";
-        }
-      }
-  
-      // hide portrait items
-      for (let elem of portraitElems) elem.style.display = "none";
-
-      // show page shortcuts by default
-      if (pageShortcutsMenu != null) pageShortcutsMenu.open = true;
-
-      // show nav bar divider
+    // Handle landscape mode
+    if (isLandscape) {
+      this._showLandscapeElements(landscapeElems);
+      this._hideMobileElements(portraitElems);
+      if (pageShortcuts) pageShortcuts.open = true;
       navDivider.style.display = 'flex';
-    } else {
-      // hide landscape items
-      for (let elem of landscapeElems) elem.style.display = "none";
-  
-      // show portrait items (but respect dev mode)
-      for (let elem of portraitElems) {
-        if (!elem.classList.contains('show-dev-only') || getDev() === 'true') {
-          elem.style.display = "flex";
-        }
-      }
-
-      // hide page shortcuts by default
-      if (pageShortcutsMenu != null) pageShortcutsMenu.open = false;
-
-      // hide nav bar divider
-      navDivider.style.display = 'none';
-
-      // hide nav overflow
-      hideNavOverflow();
-    }
-}
-
-
-
-/*==== dropdown/overflow nav bar related JavaScript ====*/
-// show nav bar overflow icons
-function showNavOverflow() {
-  let overflowItems = document.getElementsByClassName('overflow-item');
-  let dropdownIcon = document.getElementById('dropdown-icon');
-
-  // show all dropdown elements
-  for (let item of overflowItems) {
-    item.style.display = 'flex';
-  }
-
-  // handle dev only items
-  handleDev();
-
-  dropdownIcon.style.transform = 'rotate(90deg)'; // rotate icon to dropped down
-  overflowShown = true;
-}
-
-// hide nav var overflow icons
-function hideNavOverflow() {
-  let overflowItems = document.getElementsByClassName('overflow-item');
-  let dropdownIcon = document.getElementById('dropdown-icon');
-
-  // hide all dropdown elements
-  for (let item of overflowItems) {
-    item.style.display = 'none';
-  } 
-  
-  dropdownIcon.style.transform = 'none'; // revert icon to normal 
-  overflowShown = false;
-}
-
-// toggle the dropdown menu
-function handleNavOverflow() {
-  if (overflowShown) {
-    hideNavOverflow();
-  }  else{
-    showNavOverflow();
-  }
-}
-
-
-
-
-/*==== developer mode related JavaScript ====*/
-function getDev() {
-  let devMode = sessionStorage.getItem('devMode');
-  return devMode;
-}
-
-function setDev(val) {
-  sessionStorage.setItem('devMode', val);
-}
-
-function getDevItems() {
-  let devItems = document.getElementsByClassName('show-dev-only');
-  return devItems;
-}
-
-// call this to handle hiding and showing dev items
-function handleDev() {
-    let devMode = getDev(); 
-    let devItems = getDevItems()
-    let toggle = document.getElementById('dev-toggle');
-
-    if (devMode == 'true') {
-        for (item of devItems) {
-            item.style.display = 'flex';
-        }
-        toggle.checked = true;
-    } else if (devMode == 'false') {
-        for (item of devItems) {
-            item.style.display = 'none';
-        }
-        toggle.checked = false;
     } 
-}
-
-function toggleDev() {
-    let toggle = document.getElementById('dev-toggle');
-
-    if (toggle.checked == true) {
-        setDev('true');
-    } else if (toggle.checked == false) {
-        setDev('false');
+    // Handle portrait/mobile mode
+    else {
+      this._hideLandscapeElements(landscapeElems);
+      this._showMobileElements(portraitElems);
+      if (pageShortcuts) pageShortcuts.open = false;
+      navDivider.style.display = 'none';
+      NavManager.hideNavOverflow();
     }
+  },
 
-    handleDev();
-}
+  _showLandscapeElements(elements) {
+    for (let elem of elements) {
+      if (!elem.classList.contains('show-dev-only') || State.getDev() === 'true') {
+        elem.style.display = "flex";
+      }
+    }
+  },
 
+  _hideLandscapeElements(elements) {
+    for (let elem of elements) {
+      elem.style.display = "none";
+    }
+  },
 
+  _showMobileElements(elements) {
+    for (let elem of elements) {
+      if (!elem.classList.contains('show-dev-only') || State.getDev() === 'true') {
+        elem.style.display = "flex";
+      }
+    }
+  },
 
+  _hideMobileElements(elements) {
+    for (let elem of elements) {
+      elem.style.display = "none";
+    }
+  }
+};
 
-/*==== carousel related JavaScript ====*/
-// set pageCurrent object
-// this can be called from other pages to enable cross-page shortcuts
-function setPageCurrent(pageName, current) {
-    sessionStorage.setItem(`${pageName}Current`, current);
-    // console.log("[carouselHandler.js]");
-}
-
-// get pageCurrent object
-// not a strictly necessary function, but useful for encapsulation and logging
-function getPageCurrent(pageName) {
-    let current = sessionStorage.getItem(`${pageName}Current`);
+/**
+ * Navigation menu management
+ */
+export const NavManager = {
+  showNavOverflow() {
+    const { overflowItems, dropdownIcon } = DOMHelpers.getNavElements();
     
-    if (current == null) {
-      setPageCurrent(pageName, "0");
-      current = sessionStorage.getItem(`${pageName}Current`);
+    for (let item of overflowItems) {
+      item.style.display = 'flex';
     }
 
-    // console.log("[carouselHandler.js]");
+    DevManager.handleDev();
+    dropdownIcon.style.transform = 'rotate(90deg)';
+    State.overflowShown = true;
+  },
+
+  hideNavOverflow() {
+    const { overflowItems, dropdownIcon } = DOMHelpers.getNavElements();
+    
+    for (let item of overflowItems) {
+      item.style.display = 'none';
+    }
+    
+    dropdownIcon.style.transform = 'none';
+    State.overflowShown = false;
+  },
+
+  handleNavOverflow() {
+    State.overflowShown ? this.hideNavOverflow() : this.showNavOverflow();
+  }
+};
+
+/**
+ * Developer mode management
+ */
+export const DevManager = {
+  handleDev() {
+    const devMode = State.getDev();
+    const devItems = DOMHelpers.getDevItems();
+    const { devToggle } = DOMHelpers.getNavElements();
+    const root = document.documentElement;
+
+    if (devMode === 'true') {
+      this._enableDevMode(devItems, devToggle, root);
+    } else {
+      this._disableDevMode(devItems, devToggle, root);
+    }
+  },
+
+  _enableDevMode(items, toggle, root) {
+    for (let item of items) {
+      item.style.display = 'flex';
+    }
+    if (toggle) {
+      toggle.checked = true;
+    }
+    root.style.setProperty('--animation-speed-base', CONFIG.ANIMATION_SPEEDS.FAST);
+  },
+
+  _disableDevMode(items, toggle, root) {
+    for (let item of items) {
+      item.style.display = 'none';
+    }
+    if (toggle) {
+      toggle.checked = false;
+    }
+    root.style.setProperty('--animation-speed-base', CONFIG.ANIMATION_SPEEDS.NORMAL);
+  },
+
+  toggleDev() {
+    const { devToggle } = DOMHelpers.getNavElements();
+    const newState = devToggle.checked ? 'true' : 'false';
+    State.setDev(newState);
+    this.handleDev();
+  }
+};
+
+/**
+ * Carousel functionality
+ */
+export const CarouselManager = {
+  initializePage(pageName, defaultId = "0") {
+    // Get current state from session storage or use provided default
+    const current = sessionStorage.getItem(`${pageName}Current`) || defaultId;
+    // Show the current item
+    this.carouselCycle(pageName, current);
     return current;
-}
+  },
 
+  setPageCurrent(pageName, current) {
+    sessionStorage.setItem(`${pageName}Current`, current);
+  },
 
-// go to specific carousel-item
-function carouselCycle(pageName, id) {
-  let items = document.getElementsByClassName('carousel-item');
-
-  for (let item of items) {
-    item.style.display = "none";
-  }
-
-  document.getElementById(id).style.display = "flex";
-
-  sessionStorage.setItem(`${pageName}Current`, id); // set current item in sessionStorage
-}
-
-
-// go to the previous carousel-item, handle loopback
-function carouselPrevious(pageName) {
-  let current = sessionStorage.getItem(`${pageName}Current`);
-  let items = document.getElementsByClassName('carousel-item');
-  let last = items.length - 1; 
-
-  if (current != null) {
-    let previous = parseInt(current) - 1;
-    if (previous < 0) previous = last;
-    carouselCycle(pageName, previous);
-  }
-}
-
-
-// go to the next carousel-item, handle loopback
-function carouselNext(pageName) {
+  getPageCurrent(pageName) {
     let current = sessionStorage.getItem(`${pageName}Current`);
-    let items = document.getElementsByClassName('carousel-item');
-    let last = items.length - 1; 
+    if (current === null) {
+      this.setPageCurrent(pageName, "0");
+      current = "0";
+    }
+    return current;
+  },
 
-    if (current != null) {
-        let next = parseInt(current) + 1;
-        if (next > last) next = "0";
-        carouselCycle(pageName, next);
-  }
-}
-
-
-
-// go to specific sub-carousel-item (nested carousel item)
-// currently doesn't have 'state' in sessionStorage 
-function subCarouselCycle(id) {
-    let items = document.getElementsByClassName("sub-carousel-item");  
-    
+  carouselCycle(pageName, id) {
+    const items = document.getElementsByClassName('carousel-item');
     for (let item of items) {
       item.style.display = "none";
     }
-  
     document.getElementById(id).style.display = "flex";
-}
+    this.setPageCurrent(pageName, id);
+  },
 
+  carouselPrevious(pageName) {
+    const current = this.getPageCurrent(pageName);
+    const items = document.getElementsByClassName('carousel-item');
+    const last = items.length - 1;
+    
+    if (current !== null) {
+      let previous = parseInt(current) - 1;
+      if (previous < 0) previous = last;
+      this.carouselCycle(pageName, previous);
+    }
+  },
 
+  carouselNext(pageName) {
+    const current = this.getPageCurrent(pageName);
+    const items = document.getElementsByClassName('carousel-item');
+    const last = items.length - 1;
+    
+    if (current !== null) {
+      let next = parseInt(current) + 1;
+      if (next > last) next = 0;
+      this.carouselCycle(pageName, next);
+    }
+  },
 
-/*==== listener binding ====*/
+  subCarouselCycle(id) {
+    const items = document.getElementsByClassName("sub-carousel-item");
+    for (let item of items) {
+      item.style.display = "none";
+    }
+    document.getElementById(id).style.display = "flex";
+  }
+};
+
+/**
+ * Initialize event listeners and setup
+ */
 function initializeEventListeners() {
   try {
-    // Initialize dev mode if not set
-    if (sessionStorage.getItem('devMode') === null) {
-      sessionStorage.setItem('devMode', 'false');
-    }
+    // Initialize dev mode
+    State.initDevMode();
+    DevManager.handleDev();
 
     // Portrait mode handling
     if (window.matchMedia) {
-      // Use modern matchMedia if available
-      const mediaQuery = window.matchMedia('(min-width: 900px)');
-      mediaQuery.addEventListener('change', handlePortrait);
+      const mediaQuery = window.matchMedia(`(min-width: ${CONFIG.PORTRAIT_THRESHOLD}px)`);
+      mediaQuery.addEventListener('change', () => ResponsiveManager.handlePortrait());
     }
     
-    // Fallback to resize event if matchMedia not supported
-    window.addEventListener('resize', handlePortrait);
+    window.addEventListener('resize', () => ResponsiveManager.handlePortrait());
     
-    // Initial portrait check and dev mode setup
-    document.addEventListener('DOMContentLoaded', () => {
-      handlePortrait();
-      // Additional initialization can go here
-    });
+    // Only add DOMContentLoaded listener if not in test environment
+    if (typeof jest === 'undefined') {
+      document.addEventListener('DOMContentLoaded', () => {
+        // Set up responsive layout
+        ResponsiveManager.handlePortrait();
+        
+        // Set up dev toggle
+        const devToggle = document.getElementById('dev-toggle');
+        if (devToggle) {
+          devToggle.checked = State.getDev() === 'true';
+          devToggle.addEventListener('click', () => DevManager.toggleDev());
+        }
 
-    // Final initialization after all resources are loaded
-    window.addEventListener('load', () => {
-      handleDev();
-      handlePortrait(); // One final check to ensure correct display
-    });
+        // Apply current dev mode state
+        DevManager.handleDev();
+      });
+
+      window.addEventListener('load', () => {
+        DevManager.handleDev();
+        ResponsiveManager.handlePortrait();
+      });
+    }
 
   } catch (error) {
     console.error('Error initializing event listeners:', error);
   }
 }
 
-// Initialize all event listeners
+// Make functions available globally for HTML event handlers
+Object.assign(window, {
+  handlePortrait: () => ResponsiveManager.handlePortrait(),
+  toggleDev: () => DevManager.toggleDev(),
+  handleNavOverflow: () => NavManager.handleNavOverflow(),
+  setPageCurrent: (page, current) => CarouselManager.setPageCurrent(page, current),
+  carouselCycle: (page, id) => CarouselManager.carouselCycle(page, id),
+  carouselPrevious: (page) => CarouselManager.carouselPrevious(page),
+  carouselNext: (page) => CarouselManager.carouselNext(page),
+  subCarouselCycle: (id) => CarouselManager.subCarouselCycle(id),
+  // Expose managers directly for HTML onclick handlers
+  DevManager,
+  ResponsiveManager,
+  NavManager,
+  CarouselManager
+});
+
+// Initialize
 initializeEventListeners();
+
+// Hot Module Replacement (HMR) support
+if (import.meta.hot) {
+  import.meta.hot.accept((newModule) => {
+    if (newModule) {
+      // Re-run initialization when module updates
+      newModule.initializeEventListeners();
+      
+      // Re-apply current state
+      const devMode = State.getDev();
+      if (devMode === 'true') {
+        DevManager.handleDev();
+      }
+      ResponsiveManager.handlePortrait();
+    }
+  });
+}
+
+// Export for testing
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    CONFIG,
+    State,
+    DOMHelpers,
+    ResponsiveManager,
+    NavManager,
+    DevManager,
+    CarouselManager
+  };
+}
 
 

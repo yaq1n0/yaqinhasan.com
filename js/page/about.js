@@ -7,3 +7,8 @@ window.addEventListener("load", () => {
 window.addEventListener("load", () => {
   subCarouselCycle("year3");
 });
+
+// Initialize about page carousel
+document.addEventListener('DOMContentLoaded', () => {
+    CarouselManager.initializePage('about', '0'); // Default to skills summary (id="0")
+});
