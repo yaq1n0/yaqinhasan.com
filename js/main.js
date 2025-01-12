@@ -1,4 +1,3 @@
-
 /* main JavaScript file for yaqinhasan.com */
 
 /*==== "globals" ====*/
@@ -38,8 +37,12 @@ function handlePortrait() {
   let widthThreshold = 900;
   
     if (w >= widthThreshold) {
-      // show landscape items
-      for (let elem of landscapeElems) elem.style.display = "flex";
+      // show landscape items (but respect dev mode)
+      for (let elem of landscapeElems) {
+        if (!elem.classList.contains('show-dev-only') || getDev() === 'true') {
+          elem.style.display = "flex";
+        }
+      }
   
       // hide portrait items
       for (let elem of portraitElems) elem.style.display = "none";
@@ -53,8 +56,12 @@ function handlePortrait() {
       // hide landscape items
       for (let elem of landscapeElems) elem.style.display = "none";
   
-      // show portrait items
-      for (let elem of portraitElems) elem.style.display = "flex";
+      // show portrait items (but respect dev mode)
+      for (let elem of portraitElems) {
+        if (!elem.classList.contains('show-dev-only') || getDev() === 'true') {
+          elem.style.display = "flex";
+        }
+      }
 
       // hide page shortcuts by default
       if (pageShortcutsMenu != null) pageShortcutsMenu.open = false;
