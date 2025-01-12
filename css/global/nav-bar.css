@@ -46,7 +46,8 @@
   transition: all 0.2s ease;
 }
 
-.nav .item:hover {
+/* Add hover animation for all nav items except dev toggle */
+.nav .item:not(.dev-toggle):hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
