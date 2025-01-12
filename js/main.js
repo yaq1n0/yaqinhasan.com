@@ -31,7 +31,7 @@ function handlePortrait() {
 
 
   // get viewport width
-  let w = window.outerWidth;
+  let w = document.documentElement.clientWidth;
 
   // above threshold = landscape, below threshold = portrait
   let widthThreshold = 900;
@@ -250,16 +250,41 @@ function subCarouselCycle(id) {
 
 
 /*==== listener binding ====*/
-// set devMode if it's null
-if (sessionStorage.getItem('devMode') == null) {
-  sessionStorage.setItem('devMode', 'false');
+function initializeEventListeners() {
+  try {
+    // Initialize dev mode if not set
+    if (sessionStorage.getItem('devMode') === null) {
+      sessionStorage.setItem('devMode', 'false');
+    }
+
+    // Portrait mode handling
+    if (window.matchMedia) {
+      // Use modern matchMedia if available
+      const mediaQuery = window.matchMedia('(min-width: 900px)');
+      mediaQuery.addEventListener('change', handlePortrait);
+    }
+    
+    // Fallback to resize event if matchMedia not supported
+    window.addEventListener('resize', handlePortrait);
+    
+    // Initial portrait check and dev mode setup
+    document.addEventListener('DOMContentLoaded', () => {
+      handlePortrait();
+      // Additional initialization can go here
+    });
+
+    // Final initialization after all resources are loaded
+    window.addEventListener('load', () => {
+      handleDev();
+      handlePortrait(); // One final check to ensure correct display
+    });
+
+  } catch (error) {
+    console.error('Error initializing event listeners:', error);
+  }
 }
 
-// handle portrait mode on load and on resize
-window.addEventListener("load", handlePortrait);
-window.addEventListener("resize", handlePortrait);
-
-// do this last so that dev items get hidden properly 
-window.addEventListener("load", handleDev);
+// Initialize all event listeners
+initializeEventListeners();
 
 
