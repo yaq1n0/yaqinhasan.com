@@ -139,8 +139,28 @@
     calc(var(--theme-color-3-a) - 0.8)
   );
   
+  /* Animation timing variables */
+  --animation-speed-base: 1;
+  --animation-duration-fast: calc(0.5s * var(--animation-speed-base));
+  --animation-duration-medium: calc(0.8s * var(--animation-speed-base));
+  --animation-duration-slow: calc(1s * var(--animation-speed-base));
+  --animation-timing-function-in: ease-in;
+  --animation-timing-function-out: ease-out;
 }
 
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-speed-base: 0;
+    scroll-behavior: auto;
+  }
+  
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
 
 /* set default font size to 1rem */ 
 * {
@@ -210,4 +230,91 @@ a {
 
   display: inline-block;
   padding: 0rem 0.25rem ;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fade-in {
+  animation: fadeIn var(--animation-duration-slow) var(--animation-timing-function-in);
+}
+
+.animate-slide-up {
+  animation: slideUp var(--animation-duration-medium) var(--animation-timing-function-out);
+}
+
+.animate-slide-in {
+  animation: slideIn var(--animation-duration-medium) var(--animation-timing-function-out);
+}
+
+/* Common animated elements */
+.top-header {
+  animation: fadeIn var(--animation-duration-medium) var(--animation-timing-function-in);
+}
+
+.top-paragraph {
+  animation: fadeIn var(--animation-duration-slow) var(--animation-timing-function-in);
+}
+
+.content-box {
+  animation: slideUp var(--animation-duration-medium) var(--animation-timing-function-out);
+}
+
+.content-box.show-dev-only {
+  animation: slideUp var(--animation-duration-medium) var(--animation-timing-function-out);
+}
+
+.carousel-item {
+  animation: fadeIn var(--animation-duration-fast) var(--animation-timing-function-in);
+}
+
+.text-box {
+  animation: slideUp var(--animation-duration-medium) var(--animation-timing-function-out);
+}
+
+.contact-box {
+  animation: fadeIn var(--animation-duration-slow) var(--animation-timing-function-in);
+}
+
+.collapsible {
+  animation: slideUp var(--animation-duration-medium) var(--animation-timing-function-out);
+}
+
+#page-shortcuts {
+  animation: slideUp var(--animation-duration-medium) var(--animation-timing-function-out);
+}
+
+/* Ensure animations play when elements become visible */
+.carousel-item.active {
+  animation: fadeIn var(--animation-duration-fast) var(--animation-timing-function-in);
+}
+
+.collapsible[open] > *:not(summary) {
+  animation: slideUp calc(var(--animation-duration-fast) * 0.8) var(--animation-timing-function-out);
 }
