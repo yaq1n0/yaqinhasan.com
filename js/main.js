@@ -6,9 +6,9 @@
 export const CONFIG = {
   PORTRAIT_THRESHOLD: 900,
   ANIMATION_SPEEDS: {
-    NORMAL: '1',
-    FAST: '0.5'
-  }
+    NORMAL: "1",
+    FAST: "0.5",
+  },
 };
 
 /**
@@ -20,18 +20,18 @@ export const State = {
 
   // Dev mode
   getDev() {
-    return sessionStorage.getItem('devMode');
+    return sessionStorage.getItem("devMode");
   },
 
   setDev(val) {
-    sessionStorage.setItem('devMode', val);
+    sessionStorage.setItem("devMode", val);
   },
 
   initDevMode() {
-    if (sessionStorage.getItem('devMode') === null) {
-      this.setDev('false');
+    if (sessionStorage.getItem("devMode") === null) {
+      this.setDev("false");
     }
-  }
+  },
 };
 
 // Initialize dev mode immediately
@@ -50,18 +50,18 @@ export const DOMHelpers = {
   },
 
   getDevItems() {
-    return document.getElementsByClassName('show-dev-only');
+    return document.getElementsByClassName("show-dev-only");
   },
 
   getNavElements() {
     return {
-      overflowItems: document.getElementsByClassName('overflow-item'),
-      dropdownIcon: document.getElementById('dropdown-icon'),
-      navDivider: document.getElementById('nav-divider'),
-      pageShortcuts: document.getElementById('page-shortcuts'),
-      devToggle: document.getElementById('dev-toggle')
+      overflowItems: document.getElementsByClassName("overflow-item"),
+      dropdownIcon: document.getElementById("dropdown-icon"),
+      navDivider: document.getElementById("nav-divider"),
+      pageShortcuts: document.getElementById("page-shortcuts"),
+      devToggle: document.getElementById("dev-toggle"),
     };
-  }
+  },
 };
 
 /**
@@ -73,7 +73,7 @@ export const ResponsiveManager = {
     const portraitElems = DOMHelpers.getPortraitElems();
     const landscapeElems = DOMHelpers.getLandscapeElems();
     const viewportWidth = document.documentElement.clientWidth;
-    
+
     const isLandscape = viewportWidth >= CONFIG.PORTRAIT_THRESHOLD;
 
     // Handle landscape mode
@@ -81,21 +81,24 @@ export const ResponsiveManager = {
       this._showLandscapeElements(landscapeElems);
       this._hideMobileElements(portraitElems);
       if (pageShortcuts) pageShortcuts.open = true;
-      navDivider.style.display = 'flex';
-    } 
+      navDivider.style.display = "flex";
+    }
     // Handle portrait/mobile mode
     else {
       this._hideLandscapeElements(landscapeElems);
       this._showMobileElements(portraitElems);
       if (pageShortcuts) pageShortcuts.open = false;
-      navDivider.style.display = 'none';
+      navDivider.style.display = "none";
       NavManager.hideNavOverflow();
     }
   },
 
   _showLandscapeElements(elements) {
     for (let elem of elements) {
-      if (!elem.classList.contains('show-dev-only') || State.getDev() === 'true') {
+      if (
+        !elem.classList.contains("show-dev-only") ||
+        State.getDev() === "true"
+      ) {
         elem.style.display = "flex";
       }
     }
@@ -109,7 +112,10 @@ export const ResponsiveManager = {
 
   _showMobileElements(elements) {
     for (let elem of elements) {
-      if (!elem.classList.contains('show-dev-only') || State.getDev() === 'true') {
+      if (
+        !elem.classList.contains("show-dev-only") ||
+        State.getDev() === "true"
+      ) {
         elem.style.display = "flex";
       }
     }
@@ -119,7 +125,7 @@ export const ResponsiveManager = {
     for (let elem of elements) {
       elem.style.display = "none";
     }
-  }
+  },
 };
 
 /**
@@ -128,30 +134,30 @@ export const ResponsiveManager = {
 export const NavManager = {
   showNavOverflow() {
     const { overflowItems, dropdownIcon } = DOMHelpers.getNavElements();
-    
+
     for (let item of overflowItems) {
-      item.style.display = 'flex';
+      item.style.display = "flex";
     }
 
     DevManager.handleDev();
-    dropdownIcon.style.transform = 'rotate(90deg)';
+    dropdownIcon.style.transform = "rotate(90deg)";
     State.overflowShown = true;
   },
 
   hideNavOverflow() {
     const { overflowItems, dropdownIcon } = DOMHelpers.getNavElements();
-    
+
     for (let item of overflowItems) {
-      item.style.display = 'none';
+      item.style.display = "none";
     }
-    
-    dropdownIcon.style.transform = 'none';
+
+    dropdownIcon.style.transform = "none";
     State.overflowShown = false;
   },
 
   handleNavOverflow() {
     State.overflowShown ? this.hideNavOverflow() : this.showNavOverflow();
-  }
+  },
 };
 
 /**
@@ -164,7 +170,7 @@ export const DevManager = {
     const { devToggle } = DOMHelpers.getNavElements();
     const root = document.documentElement;
 
-    if (devMode === 'true') {
+    if (devMode === "true") {
       this._enableDevMode(devItems, devToggle, root);
     } else {
       this._disableDevMode(devItems, devToggle, root);
@@ -173,30 +179,36 @@ export const DevManager = {
 
   _enableDevMode(items, toggle, root) {
     for (let item of items) {
-      item.style.display = 'flex';
+      item.style.display = "flex";
     }
     if (toggle) {
       toggle.checked = true;
     }
-    root.style.setProperty('--animation-speed-base', CONFIG.ANIMATION_SPEEDS.FAST);
+    root.style.setProperty(
+      "--animation-speed-base",
+      CONFIG.ANIMATION_SPEEDS.FAST
+    );
   },
 
   _disableDevMode(items, toggle, root) {
     for (let item of items) {
-      item.style.display = 'none';
+      item.style.display = "none";
     }
     if (toggle) {
       toggle.checked = false;
     }
-    root.style.setProperty('--animation-speed-base', CONFIG.ANIMATION_SPEEDS.NORMAL);
+    root.style.setProperty(
+      "--animation-speed-base",
+      CONFIG.ANIMATION_SPEEDS.NORMAL
+    );
   },
 
   toggleDev() {
     const { devToggle } = DOMHelpers.getNavElements();
-    const newState = devToggle.checked ? 'true' : 'false';
+    const newState = devToggle.checked ? "true" : "false";
     State.setDev(newState);
     this.handleDev();
-  }
+  },
 };
 
 /**
@@ -225,7 +237,7 @@ export const CarouselManager = {
   },
 
   carouselCycle(pageName, id) {
-    const items = document.getElementsByClassName('carousel-item');
+    const items = document.getElementsByClassName("carousel-item");
     for (let item of items) {
       item.style.display = "none";
     }
@@ -235,9 +247,9 @@ export const CarouselManager = {
 
   carouselPrevious(pageName) {
     const current = this.getPageCurrent(pageName);
-    const items = document.getElementsByClassName('carousel-item');
+    const items = document.getElementsByClassName("carousel-item");
     const last = items.length - 1;
-    
+
     if (current !== null) {
       let previous = parseInt(current) - 1;
       if (previous < 0) previous = last;
@@ -247,9 +259,9 @@ export const CarouselManager = {
 
   carouselNext(pageName) {
     const current = this.getPageCurrent(pageName);
-    const items = document.getElementsByClassName('carousel-item');
+    const items = document.getElementsByClassName("carousel-item");
     const last = items.length - 1;
-    
+
     if (current !== null) {
       let next = parseInt(current) + 1;
       if (next > last) next = 0;
@@ -263,7 +275,7 @@ export const CarouselManager = {
       item.style.display = "none";
     }
     document.getElementById(id).style.display = "flex";
-  }
+  },
 };
 
 /**
@@ -277,37 +289,40 @@ function initializeEventListeners() {
 
     // Portrait mode handling
     if (window.matchMedia) {
-      const mediaQuery = window.matchMedia(`(min-width: ${CONFIG.PORTRAIT_THRESHOLD}px)`);
-      mediaQuery.addEventListener('change', () => ResponsiveManager.handlePortrait());
+      const mediaQuery = window.matchMedia(
+        `(min-width: ${CONFIG.PORTRAIT_THRESHOLD}px)`
+      );
+      mediaQuery.addEventListener("change", () =>
+        ResponsiveManager.handlePortrait()
+      );
     }
-    
-    window.addEventListener('resize', () => ResponsiveManager.handlePortrait());
-    
+
+    window.addEventListener("resize", () => ResponsiveManager.handlePortrait());
+
     // Only add DOMContentLoaded listener if not in test environment
-    if (typeof jest === 'undefined') {
-      document.addEventListener('DOMContentLoaded', () => {
+    if (typeof jest === "undefined") {
+      document.addEventListener("DOMContentLoaded", () => {
         // Set up responsive layout
         ResponsiveManager.handlePortrait();
-        
+
         // Set up dev toggle
-        const devToggle = document.getElementById('dev-toggle');
+        const devToggle = document.getElementById("dev-toggle");
         if (devToggle) {
-          devToggle.checked = State.getDev() === 'true';
-          devToggle.addEventListener('click', () => DevManager.toggleDev());
+          devToggle.checked = State.getDev() === "true";
+          devToggle.addEventListener("click", () => DevManager.toggleDev());
         }
 
         // Apply current dev mode state
         DevManager.handleDev();
       });
 
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         DevManager.handleDev();
         ResponsiveManager.handlePortrait();
       });
     }
-
   } catch (error) {
-    console.error('Error initializing event listeners:', error);
+    console.error("Error initializing event listeners:", error);
   }
 }
 
@@ -316,7 +331,8 @@ Object.assign(window, {
   handlePortrait: () => ResponsiveManager.handlePortrait(),
   toggleDev: () => DevManager.toggleDev(),
   handleNavOverflow: () => NavManager.handleNavOverflow(),
-  setPageCurrent: (page, current) => CarouselManager.setPageCurrent(page, current),
+  setPageCurrent: (page, current) =>
+    CarouselManager.setPageCurrent(page, current),
   carouselCycle: (page, id) => CarouselManager.carouselCycle(page, id),
   carouselPrevious: (page) => CarouselManager.carouselPrevious(page),
   carouselNext: (page) => CarouselManager.carouselNext(page),
@@ -325,7 +341,7 @@ Object.assign(window, {
   DevManager,
   ResponsiveManager,
   NavManager,
-  CarouselManager
+  CarouselManager,
 });
 
 // Initialize
@@ -337,10 +353,10 @@ if (import.meta.hot) {
     if (newModule) {
       // Re-run initialization when module updates
       newModule.initializeEventListeners();
-      
+
       // Re-apply current state
       const devMode = State.getDev();
-      if (devMode === 'true') {
+      if (devMode === "true") {
         DevManager.handleDev();
       }
       ResponsiveManager.handlePortrait();
@@ -349,7 +365,7 @@ if (import.meta.hot) {
 }
 
 // Export for testing
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     CONFIG,
     State,
@@ -357,8 +373,6 @@ if (typeof module !== 'undefined' && module.exports) {
     ResponsiveManager,
     NavManager,
     DevManager,
-    CarouselManager
+    CarouselManager,
   };
 }
-
-
