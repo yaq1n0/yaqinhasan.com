@@ -1,0 +1,62 @@
+@use 'variables' as *;
+
+// Media Queries
+@mixin breakpoint($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+// Typography
+@mixin font-size($size) {
+  font-size: map-get($font-sizes, $size);
+}
+
+// Flexbox
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: map-get($spacing, $gap);
+}
+
+// Grid
+@mixin grid($columns: 1, $gap: 'base') {
+  display: grid;
+  grid-template-columns: repeat($columns, minmax(0, 1fr));
+  gap: map-get($spacing, $gap);
+}
+
+// Gradients
+@mixin gradient-text($direction: 45deg, $start-color: map-get(map-get($colors, 'primary'), 'base'), $end-color: map-get(map-get($colors, 'primary'), 'light')) {
+  background: linear-gradient($direction, $start-color, $end-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Transitions
+@mixin transition($properties...) {
+  $result: ();
+  @each $property in $properties {
+    $result: append($result, $property map-get($transitions, 'base') ease, comma);
+  }
+  transition: $result;
+}
+
+// Container
+@mixin container($max-width: map-get($breakpoints, 'xl')) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: map-get($spacing, 'base');
+  padding-right: map-get($spacing, 'base');
+  max-width: $max-width;
+}
+
+// Glass Effect
+@mixin glass-effect($opacity: 0.05) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+} 

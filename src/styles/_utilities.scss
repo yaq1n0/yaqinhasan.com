@@ -1,0 +1,93 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Text Utilities
+@each $size, $value in $font-sizes {
+  .text-#{$size} {
+    font-size: $value;
+  }
+}
+
+// Spacing Utilities
+@each $size, $value in $spacing {
+  .m-#{$size} { margin: $value; }
+  .mx-#{$size} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  .my-#{$size} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .p-#{$size} { padding: $value; }
+  .px-#{$size} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+  .py-#{$size} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}
+
+// Flex Utilities
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.flex-1 { flex: 1; }
+.flex-wrap { flex-wrap: wrap; }
+
+// Grid Utilities
+.grid { display: grid; }
+@for $i from 1 through 12 {
+  .grid-cols-#{$i} {
+    grid-template-columns: repeat($i, minmax(0, 1fr));
+  }
+}
+
+// Text Colors
+@each $color-name, $color-variants in $colors {
+  @each $variant-name, $value in $color-variants {
+    .text-#{$color-name}-#{$variant-name} {
+      color: $value;
+    }
+  }
+}
+
+// Background Colors
+@each $color-name, $color-variants in $colors {
+  @each $variant-name, $value in $color-variants {
+    .bg-#{$color-name}-#{$variant-name} {
+      background-color: $value;
+    }
+  }
+}
+
+// Border Radius
+@each $size, $value in $border-radius {
+  .rounded-#{$size} {
+    border-radius: $value;
+  }
+}
+
+// Container
+.container {
+  @include container;
+}
+
+// Responsive Hide/Show
+@each $breakpoint in map-keys($breakpoints) {
+  .hidden-#{$breakpoint} {
+    @include breakpoint($breakpoint) {
+      display: none;
+    }
+  }
+  .show-#{$breakpoint} {
+    display: none;
+    @include breakpoint($breakpoint) {
+      display: block;
+    }
+  }
+} 
