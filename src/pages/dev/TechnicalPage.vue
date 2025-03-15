@@ -34,7 +34,7 @@
           <ul>
             <li>GitHub Pages</li>
             <li>GitHub Actions for CI/CD</li>
-          </ul>
+        </ul>
         </div>
       </div>
     </section>
