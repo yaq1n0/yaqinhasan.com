@@ -7,28 +7,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import NavBar from "./components/NavBar.vue";
-
-export default defineComponent({
-  name: "App",
-  components: {
-    NavBar,
-  },
-});
 </script>
 
 <style lang="scss">
 @forward "@/styles/main";
 
 .app-container {
-  @include flex(column);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content {
-  @include flex(column);
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }
 </style>

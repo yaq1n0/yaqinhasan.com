@@ -66,6 +66,7 @@
 </script>
 
 <style lang="scss" scoped>
+
 .home {
   flex: 1;
   display: flex;

@@ -527,46 +527,47 @@ const previousSection = () => {
 </script>
 
 <style lang="scss" scoped>
+
 .about-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: map-get($spacing, "xl");
+  padding: map.get($spacing, "xl");
   position: relative;
 
-  @media (max-width: map-get($breakpoints, "md")) {
-    padding: map-get($spacing, "lg");
+  @media (max-width: map.get($breakpoints, "md")) {
+    padding: map.get($spacing, "lg");
   }
 
-  @media (max-width: map-get($breakpoints, "sm")) {
-    padding: map-get($spacing, "md");
+  @media (max-width: map.get($breakpoints, "sm")) {
+    padding: map.get($spacing, "md");
   }
 }
 
 .page-header {
-  margin-bottom: map-get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
   text-align: center;
 
   h1 {
-    font-size: map-get($font-sizes, "3xl");
+    font-size: map.get($font-sizes, "3xl");
     color: var(--color-accent);
-    margin-bottom: map-get($spacing, "sm");
+    margin-bottom: map.get($spacing, "sm");
   }
 }
 
 .collapsible {
   background-color: var(--color-bg-tertiary);
-  border-radius: map-get($border-radius, "lg");
-  margin: map-get($spacing, "md") 0;
-  padding: map-get($spacing, "lg");
+  border-radius: map.get($border-radius, "lg");
+  margin: map.get($spacing, "md") 0;
+  padding: map.get($spacing, "lg");
 
   .header {
     background-color: var(--color-bg-tertiary);
-    padding: map-get($spacing, "md");
-    margin: -#{map-get($spacing, "lg")} -#{map-get($spacing, "lg")}
-      map-get($spacing, "md") -#{map-get($spacing, "lg")};
-    border-radius: map-get($border-radius, "lg") map-get($border-radius, "lg") 0
+    padding: map.get($spacing, "md");
+    margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")}
+      map.get($spacing, "md") -#{map.get($spacing, "lg")};
+    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0
       0;
-    font-size: map-get($font-sizes, "xl");
+    font-size: map.get($font-sizes, "xl");
     font-weight: 600;
     cursor: pointer;
 
@@ -576,7 +577,7 @@ const previousSection = () => {
 
     &::before {
       content: "▼";
-      margin-right: map-get($spacing, "sm");
+      margin-right: map.get($spacing, "sm");
     }
   }
 
@@ -591,32 +592,32 @@ const previousSection = () => {
 
 .content-section {
   background-color: var(--color-bg-tertiary);
-  border-radius: map-get($border-radius, "lg");
-  padding: map-get($spacing, "xl");
-  margin-bottom: map-get($spacing, "xl");
+  border-radius: map.get($border-radius, "lg");
+  padding: map.get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
   animation: fadeIn 0.5s ease;
 
   h2 {
-    font-size: map-get($font-sizes, "2xl");
+    font-size: map.get($font-sizes, "2xl");
     color: var(--color-accent);
-    margin-bottom: map-get($spacing, "lg");
+    margin-bottom: map.get($spacing, "lg");
     text-align: center;
   }
 
   h3 {
-    font-size: map-get($font-sizes, "xl");
+    font-size: map.get($font-sizes, "xl");
     color: var(--color-accent-light);
-    margin: map-get($spacing, "lg") 0 map-get($spacing, "md");
+    margin: map.get($spacing, "lg") 0 map.get($spacing, "md");
   }
 
   h4 {
-    font-size: map-get($font-sizes, "lg");
+    font-size: map.get($font-sizes, "lg");
     color: var(--color-accent-light);
-    margin: map-get($spacing, "lg") 0 map-get($spacing, "sm");
+    margin: map.get($spacing, "lg") 0 map.get($spacing, "sm");
   }
 
   p {
-    margin-bottom: map-get($spacing, "md");
+    margin-bottom: map.get($spacing, "md");
     line-height: 1.6;
   }
 
@@ -628,14 +629,14 @@ const previousSection = () => {
 .keyword-container {
   display: flex;
   flex-wrap: wrap;
-  gap: map-get($spacing, "sm");
-  margin-bottom: map-get($spacing, "lg");
+  gap: map.get($spacing, "sm");
+  margin-bottom: map.get($spacing, "lg");
 
   .keyword {
     background-color: var(--color-accent-translucent);
-    padding: map-get($spacing, "xs") map-get($spacing, "sm");
-    border-radius: map-get($border-radius, "sm");
-    font-size: map-get($font-sizes, "sm");
+    padding: map.get($spacing, "xs") map.get($spacing, "sm");
+    border-radius: map.get($border-radius, "sm");
+    font-size: map.get($font-sizes, "sm");
     white-space: nowrap;
   }
 }
@@ -643,16 +644,16 @@ const previousSection = () => {
 .link-container {
   display: flex;
   flex-wrap: wrap;
-  gap: map-get($spacing, "md");
-  margin: map-get($spacing, "md") 0;
+  gap: map.get($spacing, "md");
+  margin: map.get($spacing, "md") 0;
 
   .link {
     display: inline-flex;
     align-items: center;
-    gap: map-get($spacing, "xs");
+    gap: map.get($spacing, "xs");
     background-color: var(--color-accent-translucent);
-    padding: map-get($spacing, "xs") map-get($spacing, "md");
-    border-radius: map-get($border-radius, "md");
+    padding: map.get($spacing, "xs") map.get($spacing, "md");
+    border-radius: map.get($border-radius, "md");
     transition: all 0.2s ease;
 
     &:hover {
@@ -667,13 +668,13 @@ const previousSection = () => {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: map-get($spacing, "md");
-  margin: map-get($spacing, "md") 0;
+  gap: map.get($spacing, "md");
+  margin: map.get($spacing, "md") 0;
 
   .link {
     background-color: var(--color-accent-translucent);
-    padding: map-get($spacing, "xs") map-get($spacing, "md");
-    border-radius: map-get($border-radius, "md");
+    padding: map.get($spacing, "xs") map.get($spacing, "md");
+    border-radius: map.get($border-radius, "md");
     transition: all 0.2s ease;
 
     &:hover {
@@ -687,15 +688,15 @@ const previousSection = () => {
 .year-navigation {
   display: flex;
   justify-content: center;
-  gap: map-get($spacing, "lg");
-  margin: map-get($spacing, "xl") 0;
+  gap: map.get($spacing, "lg");
+  margin: map.get($spacing, "xl") 0;
 
   .link {
-    font-size: map-get($font-sizes, "lg");
+    font-size: map.get($font-sizes, "lg");
     font-weight: 600;
-    padding: map-get($spacing, "sm") map-get($spacing, "lg");
+    padding: map.get($spacing, "sm") map.get($spacing, "lg");
     background-color: var(--color-accent-translucent);
-    border-radius: map-get($border-radius, "md");
+    border-radius: map.get($border-radius, "md");
     transition: all 0.2s ease;
 
     &:hover {
@@ -713,20 +714,20 @@ const previousSection = () => {
 .video-container {
   display: flex;
   justify-content: center;
-  margin: map-get($spacing, "lg") 0;
+  margin: map.get($spacing, "lg") 0;
 
   .youtube-embed {
     width: 100%;
     max-width: 800px;
     height: 450px;
-    border-radius: map-get($border-radius, "lg");
+    border-radius: map.get($border-radius, "lg");
     border: 2px solid var(--color-accent-light);
 
-    @media (max-width: map-get($breakpoints, "md")) {
+    @media (max-width: map.get($breakpoints, "md")) {
       height: 350px;
     }
 
-    @media (max-width: map-get($breakpoints, "sm")) {
+    @media (max-width: map.get($breakpoints, "sm")) {
       height: 250px;
     }
   }
@@ -757,7 +758,7 @@ const previousSection = () => {
     transition: all 0.2s ease;
     pointer-events: auto;
     opacity: 0.7;
-    margin: 0 map-get($spacing, "md");
+    margin: 0 map.get($spacing, "md");
 
     &:hover {
       opacity: 1;
@@ -766,11 +767,11 @@ const previousSection = () => {
     }
 
     &.prev {
-      margin-left: map-get($spacing, "lg");
+      margin-left: map.get($spacing, "lg");
     }
 
     &.next {
-      margin-right: map-get($spacing, "lg");
+      margin-right: map.get($spacing, "lg");
     }
   }
 }
@@ -786,18 +787,18 @@ const previousSection = () => {
   }
 }
 
-@media (max-width: map-get($breakpoints, "md")) {
+@media (max-width: map.get($breakpoints, "md")) {
   .navigation-controls {
     .nav-button {
       width: 40px;
       height: 40px;
 
       &.prev {
-        margin-left: map-get($spacing, "sm");
+        margin-left: map.get($spacing, "sm");
       }
 
       &.next {
-        margin-right: map-get($spacing, "sm");
+        margin-right: map.get($spacing, "sm");
       }
     }
   }

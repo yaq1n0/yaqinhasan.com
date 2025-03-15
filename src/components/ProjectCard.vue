@@ -41,11 +41,12 @@ defineProps<{
 </script>
 
 <style lang="scss" scoped>
+
 .project-card {
   background-color: var(--color-bg-tertiary);
-  border-radius: map-get($border-radius, "lg");
-  padding: map-get($spacing, "xl");
-  margin-bottom: map-get($spacing, "xl");
+  border-radius: map.get($border-radius, "lg");
+  padding: map.get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
   animation: fadeIn 0.5s ease;
 
   .project-header {
@@ -54,13 +55,13 @@ defineProps<{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: map-get($spacing, "lg");
-    margin-bottom: map-get($spacing, "lg");
-    padding-bottom: map-get($spacing, "md");
+    gap: map.get($spacing, "lg");
+    margin-bottom: map.get($spacing, "lg");
+    padding-bottom: map.get($spacing, "md");
     border-bottom: 1px solid var(--color-border);
 
     h3 {
-      font-size: map-get($font-sizes, "xl");
+      font-size: map.get($font-sizes, "xl");
       color: var(--color-accent);
       margin: 0;
     }
@@ -68,24 +69,24 @@ defineProps<{
     .links {
       display: flex;
       flex-wrap: wrap;
-      gap: map-get($spacing, "sm");
+      gap: map.get($spacing, "sm");
     }
   }
 
   .summary {
-    font-size: map-get($font-sizes, "lg");
+    font-size: map.get($font-sizes, "lg");
     text-align: center;
-    margin-bottom: map-get($spacing, "lg");
+    margin-bottom: map.get($spacing, "lg");
     color: var(--color-accent-light);
   }
 
   .link {
     display: inline-flex;
     align-items: center;
-    gap: map-get($spacing, "xs");
+    gap: map.get($spacing, "xs");
     background-color: var(--color-accent-translucent);
-    padding: map-get($spacing, "xs") map-get($spacing, "md");
-    border-radius: map-get($border-radius, "md");
+    padding: map.get($spacing, "xs") map.get($spacing, "md");
+    border-radius: map.get($border-radius, "md");
     transition: all 0.2s ease;
 
     &:hover {
@@ -96,29 +97,29 @@ defineProps<{
   }
 
   .dev-content {
-    margin-top: map-get($spacing, "xl");
-    padding: map-get($spacing, "lg");
+    margin-top: map.get($spacing, "xl");
+    padding: map.get($spacing, "lg");
     border: 2px solid var(--color-dev-highlight);
-    border-radius: map-get($border-radius, "md");
+    border-radius: map.get($border-radius, "md");
   }
 
   h4 {
-    font-size: map-get($font-sizes, "lg");
+    font-size: map.get($font-sizes, "lg");
     color: var(--color-accent-light);
-    margin: map-get($spacing, "lg") 0 map-get($spacing, "sm");
+    margin: map.get($spacing, "lg") 0 map.get($spacing, "sm");
   }
 
   p {
-    margin-bottom: map-get($spacing, "md");
+    margin-bottom: map.get($spacing, "md");
     line-height: 1.6;
   }
 
   ul {
-    margin-bottom: map-get($spacing, "md");
-    padding-left: map-get($spacing, "xl");
+    margin-bottom: map.get($spacing, "md");
+    padding-left: map.get($spacing, "xl");
 
     li {
-      margin-bottom: map-get($spacing, "xs");
+      margin-bottom: map.get($spacing, "xs");
     }
   }
 }
@@ -134,9 +135,9 @@ defineProps<{
   }
 }
 
-@media (max-width: map-get($breakpoints, "md")) {
+@media (max-width: map.get($breakpoints, "md")) {
   .project-card {
-    padding: map-get($spacing, "lg");
+    padding: map.get($spacing, "lg");
   }
 }
 </style>

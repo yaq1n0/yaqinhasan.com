@@ -17,13 +17,14 @@
 </script>
 
 <style lang="scss" scoped>
+
 .not-found-page {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 70vh;
   text-align: center;
-  padding: map-get($spacing, "xl");
+  padding: map.get($spacing, "xl");
 
   .content {
     max-width: 600px;
@@ -37,28 +38,28 @@
     }
 
     h2 {
-      font-size: map-get($font-sizes, "3xl");
-      margin-bottom: map-get($spacing, "lg");
+      font-size: map.get($font-sizes, "3xl");
+      margin-bottom: map.get($spacing, "lg");
       color: var(--color-text-primary);
     }
 
     p {
-      font-size: map-get($font-sizes, "lg");
-      margin-bottom: map-get($spacing, "xl");
+      font-size: map.get($font-sizes, "lg");
+      margin-bottom: map.get($spacing, "xl");
       color: var(--color-text-secondary);
     }
 
     .home-button {
       display: inline-flex;
       align-items: center;
-      gap: map-get($spacing, "sm");
-      padding: map-get($spacing, "md") map-get($spacing, "lg");
+      gap: map.get($spacing, "sm");
+      padding: map.get($spacing, "md") map.get($spacing, "lg");
       background-color: var(--color-accent);
       color: white;
-      border-radius: map-get($border-radius, "md");
+      border-radius: map.get($border-radius, "md");
       text-decoration: none;
       font-weight: 500;
-      transition: background-color map-get($transitions, "base") ease;
+      transition: background-color map.get($transitions, "base") ease;
 
       &:hover {
         background-color: var(--color-accent-dark);
@@ -66,19 +67,19 @@
     }
   }
 
-  @media (max-width: map-get($breakpoints, "md")) {
+  @media (max-width: map.get($breakpoints, "md")) {
     .content {
       h1 {
         font-size: 6rem;
       }
 
       h2 {
-        font-size: map-get($font-sizes, "2xl");
+        font-size: map.get($font-sizes, "2xl");
       }
     }
   }
 
-  @media (max-width: map-get($breakpoints, "sm")) {
+  @media (max-width: map.get($breakpoints, "sm")) {
     .content {
       h1 {
         font-size: 4rem;

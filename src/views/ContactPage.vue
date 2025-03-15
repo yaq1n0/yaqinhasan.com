@@ -42,6 +42,7 @@
 </script>
 
 <style lang="scss" scoped>
+
 .contact {
   min-height: 100vh;
   background-color: #13141f;

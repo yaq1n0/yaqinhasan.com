@@ -117,70 +117,71 @@
 </script>
 
 <style lang="scss" scoped>
+
 .technical-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: map-get($spacing, "xl");
+  padding: map.get($spacing, "xl");
 
-  @media (max-width: map-get($breakpoints, "md")) {
-    padding: map-get($spacing, "lg");
+  @media (max-width: map.get($breakpoints, "md")) {
+    padding: map.get($spacing, "lg");
   }
 
-  @media (max-width: map-get($breakpoints, "sm")) {
-    padding: map-get($spacing, "md");
+  @media (max-width: map.get($breakpoints, "sm")) {
+    padding: map.get($spacing, "md");
   }
 }
 
 .page-header {
-  margin-bottom: map-get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
   text-align: center;
 
   h1 {
     font-family: var(--font-mono);
-    font-size: map-get($font-sizes, "3xl");
+    font-size: map.get($font-sizes, "3xl");
     color: var(--color-accent);
-    margin-bottom: map-get($spacing, "sm");
+    margin-bottom: map.get($spacing, "sm");
   }
 
   .subtitle {
-    font-size: map-get($font-sizes, "lg");
+    font-size: map.get($font-sizes, "lg");
     color: var(--color-text-secondary);
   }
 }
 
 .content-section {
-  margin-bottom: map-get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
 
   h2 {
-    font-size: map-get($font-sizes, "2xl");
-    margin-bottom: map-get($spacing, "md");
+    font-size: map.get($font-sizes, "2xl");
+    margin-bottom: map.get($spacing, "md");
     color: var(--color-text-primary);
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: map-get($spacing, "xs");
+    padding-bottom: map.get($spacing, "xs");
   }
 }
 
 .tech-stack {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: map-get($spacing, "lg");
+  gap: map.get($spacing, "lg");
 
   .tech-item {
     background-color: var(--color-bg-tertiary);
-    border-radius: map-get($border-radius, "md");
-    padding: map-get($spacing, "lg");
+    border-radius: map.get($border-radius, "md");
+    padding: map.get($spacing, "lg");
 
     h3 {
-      font-size: map-get($font-sizes, "xl");
-      margin-bottom: map-get($spacing, "md");
+      font-size: map.get($font-sizes, "xl");
+      margin-bottom: map.get($spacing, "md");
       color: var(--color-accent);
     }
 
     ul {
-      padding-left: map-get($spacing, "lg");
+      padding-left: map.get($spacing, "lg");
 
       li {
-        margin-bottom: map-get($spacing, "sm");
+        margin-bottom: map.get($spacing, "sm");
         color: var(--color-text-primary);
       }
     }
@@ -188,10 +189,10 @@
 }
 
 .features-list {
-  padding-left: map-get($spacing, "lg");
+  padding-left: map.get($spacing, "lg");
 
   li {
-    margin-bottom: map-get($spacing, "md");
+    margin-bottom: map.get($spacing, "md");
     color: var(--color-text-primary);
 
     strong {
@@ -203,12 +204,12 @@
 .metrics {
   .metric-item {
     background-color: var(--color-bg-tertiary);
-    border-radius: map-get($border-radius, "md");
-    padding: map-get($spacing, "lg");
+    border-radius: map.get($border-radius, "md");
+    padding: map.get($spacing, "lg");
 
     h3 {
-      font-size: map-get($font-sizes, "xl");
-      margin-bottom: map-get($spacing, "md");
+      font-size: map.get($font-sizes, "xl");
+      margin-bottom: map.get($spacing, "md");
       color: var(--color-accent);
     }
   }
@@ -216,7 +217,7 @@
   .score-container {
     display: flex;
     flex-wrap: wrap;
-    gap: map-get($spacing, "md");
+    gap: map.get($spacing, "md");
 
     .score {
       flex: 1;
@@ -225,12 +226,12 @@
 
       span {
         display: block;
-        margin-bottom: map-get($spacing, "xs");
+        margin-bottom: map.get($spacing, "xs");
         color: var(--color-text-secondary);
       }
 
       .score-value {
-        font-size: map-get($font-sizes, "2xl");
+        font-size: map.get($font-sizes, "2xl");
         font-weight: bold;
         color: var(--color-accent);
       }
@@ -241,12 +242,12 @@
 .hint {
   font-style: italic;
   color: var(--color-text-secondary);
-  margin-top: map-get($spacing, "md");
+  margin-top: map.get($spacing, "md");
 
   code {
     background-color: var(--color-bg-tertiary);
-    padding: map-get($spacing, "xs") map-get($spacing, "sm");
-    border-radius: map-get($border-radius, "sm");
+    padding: map.get($spacing, "xs") map.get($spacing, "sm");
+    border-radius: map.get($border-radius, "sm");
     font-family: var(--font-mono);
   }
 }

@@ -122,12 +122,13 @@ const overflowItems = computed(() =>
 </script>
 
 <style lang="scss" scoped>
+
 .nav-bar {
   @include flex(column);
   position: relative;
   background: var(--color-bg-secondary);
-  border-radius: map-get($border-radius, "base");
-  margin: map-get($spacing, "base");
+  border-radius: map.get($border-radius, "base");
+  margin: map.get($spacing, "base");
 
   // Main navigation row
   &::before {
@@ -142,7 +143,7 @@ const overflowItems = computed(() =>
   > div:first-of-type {
     @include flex(row, space-between, center);
     width: 100%;
-    padding: map-get($spacing, "base");
+    padding: map.get($spacing, "base");
   }
 
   .nav-section {
@@ -153,7 +154,7 @@ const overflowItems = computed(() =>
     }
 
     .hide-on-mobile {
-      @media (max-width: map-get($breakpoints, "md") - 1px) {
+      @media (max-width: map.get($breakpoints, "md") - 1px) {
         display: none;
       }
     }
@@ -162,18 +163,18 @@ const overflowItems = computed(() =>
   .menu-toggle {
     @include flex(row, center, center);
     color: var(--color-text-primary);
-    font-size: map-get($font-sizes, "xl");
-    padding: map-get($spacing, "sm");
-    margin-right: map-get($spacing, "base");
+    font-size: map.get($font-sizes, "xl");
+    padding: map.get($spacing, "sm");
+    margin-right: map.get($spacing, "base");
     cursor: pointer;
-    transition: color map-get($transitions, "base") ease;
+    transition: color map.get($transitions, "base") ease;
     display: none;
 
     &:hover {
       color: var(--color-accent-light);
     }
 
-    @media (max-width: map-get($breakpoints, "md") - 1px) {
+    @media (max-width: map.get($breakpoints, "md") - 1px) {
       display: flex;
     }
   }
@@ -181,21 +182,21 @@ const overflowItems = computed(() =>
   // Dev banner
   .dev-banner {
     width: 100%;
-    padding: map-get($spacing, "base");
+    padding: map.get($spacing, "base");
     background-color: var(--color-accent-translucent);
     text-align: center;
     animation: fadeIn 0.3s ease-in;
 
     p {
-      font-size: map-get($font-sizes, "lg");
+      font-size: map.get($font-sizes, "lg");
       font-weight: 600;
       color: var(--color-accent-dark);
       margin: 0;
     }
 
-    @media (max-width: map-get($breakpoints, "md")) {
+    @media (max-width: map.get($breakpoints, "md")) {
       p {
-        font-size: map-get($font-sizes, "base");
+        font-size: map.get($font-sizes, "base");
       }
     }
   }
@@ -204,18 +205,18 @@ const overflowItems = computed(() =>
 .overflow-menu {
   position: absolute;
   top: 100%;
-  left: map-get($spacing, "base");
+  left: map.get($spacing, "base");
   background: var(--color-bg-secondary);
-  border-radius: map-get($border-radius, "base");
-  padding: map-get($spacing, "base");
-  margin-top: map-get($spacing, "xs");
+  border-radius: map.get($border-radius, "base");
+  padding: map.get($spacing, "base");
+  margin-top: map.get($spacing, "xs");
   min-width: 200px;
   @include flex(column);
-  gap: map-get($spacing, "sm");
+  gap: map.get($spacing, "sm");
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: map-get($z-index, "dropdown");
+  z-index: map.get($z-index, "dropdown");
 
-  @media (min-width: map-get($breakpoints, "md")) {
+  @media (min-width: map.get($breakpoints, "md")) {
     display: none;
   }
 }

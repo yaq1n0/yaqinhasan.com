@@ -570,46 +570,47 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+
 .projects-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: map-get($spacing, "xl");
+  padding: map.get($spacing, "xl");
   position: relative;
 
-  @media (max-width: map-get($breakpoints, "md")) {
-    padding: map-get($spacing, "lg");
+  @media (max-width: map.get($breakpoints, "md")) {
+    padding: map.get($spacing, "lg");
   }
 
-  @media (max-width: map-get($breakpoints, "sm")) {
-    padding: map-get($spacing, "md");
+  @media (max-width: map.get($breakpoints, "sm")) {
+    padding: map.get($spacing, "md");
   }
 }
 
 .page-header {
-  margin-bottom: map-get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
   text-align: center;
 
   h1 {
-    font-size: map-get($font-sizes, "3xl");
+    font-size: map.get($font-sizes, "3xl");
     color: var(--color-accent);
-    margin-bottom: map-get($spacing, "sm");
+    margin-bottom: map.get($spacing, "sm");
   }
 }
 
 .collapsible {
   background-color: var(--color-bg-tertiary);
-  border-radius: map-get($border-radius, "lg");
-  margin: map-get($spacing, "md") 0;
-  padding: map-get($spacing, "lg");
+  border-radius: map.get($border-radius, "lg");
+  margin: map.get($spacing, "md") 0;
+  padding: map.get($spacing, "lg");
 
   .header {
     background-color: var(--color-bg-tertiary);
-    padding: map-get($spacing, "md");
-    margin: -#{map-get($spacing, "lg")} -#{map-get($spacing, "lg")}
-      map-get($spacing, "md") -#{map-get($spacing, "lg")};
-    border-radius: map-get($border-radius, "lg") map-get($border-radius, "lg") 0
+    padding: map.get($spacing, "md");
+    margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")}
+      map.get($spacing, "md") -#{map.get($spacing, "lg")};
+    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0
       0;
-    font-size: map-get($font-sizes, "xl");
+    font-size: map.get($font-sizes, "xl");
     font-weight: 600;
     cursor: pointer;
 
@@ -619,7 +620,7 @@ onMounted(() => {
 
     &::before {
       content: "▼";
-      margin-right: map-get($spacing, "sm");
+      margin-right: map.get($spacing, "sm");
     }
   }
 
@@ -636,22 +637,22 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: map-get($spacing, "lg");
-  margin-top: map-get($spacing, "md");
+  gap: map.get($spacing, "lg");
+  margin-top: map.get($spacing, "md");
 
   .group {
     flex: 1;
     min-width: 250px;
     background-color: var(--color-bg-secondary);
-    border-radius: map-get($border-radius, "md");
+    border-radius: map.get($border-radius, "md");
     overflow: hidden;
     border: 1px solid var(--color-border);
 
     .title {
       background-color: var(--color-accent-translucent);
-      padding: map-get($spacing, "md");
+      padding: map.get($spacing, "md");
       margin: 0;
-      font-size: map-get($font-sizes, "lg");
+      font-size: map.get($font-sizes, "lg");
       color: var(--color-accent);
       text-align: center;
       border-bottom: 1px solid var(--color-border);
@@ -660,13 +661,13 @@ onMounted(() => {
     .links {
       display: flex;
       flex-direction: column;
-      padding: map-get($spacing, "md");
-      gap: map-get($spacing, "sm");
+      padding: map.get($spacing, "md");
+      gap: map.get($spacing, "sm");
 
       .link {
         background-color: var(--color-accent-translucent);
-        padding: map-get($spacing, "xs") map-get($spacing, "md");
-        border-radius: map-get($border-radius, "md");
+        padding: map.get($spacing, "xs") map.get($spacing, "md");
+        border-radius: map.get($border-radius, "md");
         transition: all 0.2s ease;
         text-align: center;
 
@@ -681,7 +682,7 @@ onMounted(() => {
 }
 
 .project-content {
-  margin-top: map-get($spacing, "xl");
+  margin-top: map.get($spacing, "xl");
   animation: fadeIn 0.5s ease;
 }
 
@@ -710,7 +711,7 @@ onMounted(() => {
     transition: all 0.2s ease;
     pointer-events: auto;
     opacity: 0.7;
-    margin: 0 map-get($spacing, "md");
+    margin: 0 map.get($spacing, "md");
 
     &:hover {
       opacity: 1;
@@ -719,11 +720,11 @@ onMounted(() => {
     }
 
     &.prev {
-      margin-left: map-get($spacing, "lg");
+      margin-left: map.get($spacing, "lg");
     }
 
     &.next {
-      margin-right: map-get($spacing, "lg");
+      margin-right: map.get($spacing, "lg");
     }
   }
 }
@@ -739,18 +740,18 @@ onMounted(() => {
   }
 }
 
-@media (max-width: map-get($breakpoints, "md")) {
+@media (max-width: map.get($breakpoints, "md")) {
   .navigation-controls {
     .nav-button {
       width: 40px;
       height: 40px;
 
       &.prev {
-        margin-left: map-get($spacing, "sm");
+        margin-left: map.get($spacing, "sm");
       }
 
       &.next {
-        margin-right: map-get($spacing, "sm");
+        margin-right: map.get($spacing, "sm");
       }
     }
   }

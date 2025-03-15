@@ -143,24 +143,24 @@
 .home {
   max-width: 1200px;
   margin: 0 auto;
-  padding: map-get($spacing, "base");
+  padding: map.get($spacing, "base");
 }
 
 /* Collapsible section */
 .collapsible {
   background-color: var(--color-bg-tertiary);
-  border-radius: map-get($border-radius, "lg");
-  margin: map-get($spacing, "md") 0;
-  padding: map-get($spacing, "lg");
+  border-radius: map.get($border-radius, "lg");
+  margin: map.get($spacing, "md") 0;
+  padding: map.get($spacing, "lg");
 
   .header {
     background-color: var(--color-bg-tertiary);
-    padding: map-get($spacing, "md");
-    margin: -#{map-get($spacing, "lg")} -#{map-get($spacing, "lg")}
-      map-get($spacing, "md") -#{map-get($spacing, "lg")};
-    border-radius: map-get($border-radius, "lg") map-get($border-radius, "lg") 0
+    padding: map.get($spacing, "md");
+    margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")}
+      map.get($spacing, "md") -#{map.get($spacing, "lg")};
+    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0
       0;
-    font-size: map-get($font-sizes, "xl");
+    font-size: map.get($font-sizes, "xl");
     font-weight: 600;
     cursor: pointer;
 
@@ -170,7 +170,7 @@
 
     &::before {
       content: "▼";
-      margin-right: map-get($spacing, "sm");
+      margin-right: map.get($spacing, "sm");
     }
   }
 
@@ -186,9 +186,9 @@
 /* Content box for mobile */
 .content-box {
   background-color: var(--color-bg-tertiary);
-  border-radius: map-get($border-radius, "lg");
-  margin: map-get($spacing, "md") 0;
-  padding: map-get($spacing, "lg");
+  border-radius: map.get($border-radius, "lg");
+  margin: map.get($spacing, "md") 0;
+  padding: map.get($spacing, "lg");
 
   &.show-dev-only {
     border: 2px solid var(--color-dev-highlight);
@@ -199,14 +199,14 @@
 .top-header {
   text-align: center;
   color: var(--color-accent);
-  margin: map-get($spacing, "lg") 0;
-  font-size: map-get($font-sizes, "2xl");
+  margin: map.get($spacing, "lg") 0;
+  font-size: map.get($font-sizes, "2xl");
 }
 
 .top-paragraph {
   line-height: 1.6;
   max-width: 800px;
-  margin: map-get($spacing, "lg") auto;
+  margin: map.get($spacing, "lg") auto;
   animation: fadeIn 1s ease-in;
 }
 
@@ -215,13 +215,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: map-get($spacing, "md");
-  margin: map-get($spacing, "lg") 0;
+  gap: map.get($spacing, "md");
+  margin: map.get($spacing, "lg") 0;
 
   .link {
     background-color: var(--color-accent-translucent);
-    padding: map-get($spacing, "sm") map-get($spacing, "md");
-    border-radius: map-get($border-radius, "md");
+    padding: map.get($spacing, "sm") map.get($spacing, "md");
+    border-radius: map.get($border-radius, "md");
     color: var(--color-text-primary);
     text-decoration: none;
     transition: all 0.2s ease;
@@ -238,18 +238,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: map-get($spacing, "lg");
-  margin: map-get($spacing, "lg") 0;
-  padding: map-get($spacing, "md");
+  gap: map.get($spacing, "lg");
+  margin: map.get($spacing, "lg") 0;
+  padding: map.get($spacing, "md");
   background-color: var(--color-accent-translucent);
-  border-radius: map-get($border-radius, "lg");
+  border-radius: map.get($border-radius, "lg");
   animation: fadeIn 1s ease-in;
 
   .item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: map-get($spacing, "xs");
+    gap: map.get($spacing, "xs");
 
     a {
       display: flex;
@@ -275,7 +275,7 @@
     }
 
     span {
-      font-size: map-get($font-sizes, "sm");
+      font-size: map.get($font-sizes, "sm");
     }
   }
 }
@@ -284,15 +284,15 @@
 .welcome {
   display: flex;
   width: 90%;
-  margin: map-get($spacing, "xl") auto;
+  margin: map.get($spacing, "xl") auto;
   justify-content: center;
   align-items: center;
-  gap: map-get($spacing, "xl");
+  gap: map.get($spacing, "xl");
   animation: slideUp 0.8s ease-out;
 
   .logo {
     display: flex;
-    padding: map-get($spacing, "md");
+    padding: map.get($spacing, "md");
     width: 40%;
     max-width: 40rem;
     animation: fadeIn 1.2s ease-in;
@@ -311,7 +311,7 @@
 
   .text {
     display: flex;
-    padding: map-get($spacing, "md");
+    padding: map.get($spacing, "md");
     text-align: right;
     font-size: clamp(2rem, 4vw, 4rem);
     font-weight: 800;
@@ -323,11 +323,11 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: map-get($breakpoints, "md")) {
+@media (max-width: map.get($breakpoints, "md")) {
   .welcome {
     flex-direction: column;
-    gap: map-get($spacing, "md");
-    margin: map-get($spacing, "md") auto;
+    gap: map.get($spacing, "md");
+    margin: map.get($spacing, "md") auto;
 
     .logo {
       width: 60%;
@@ -340,30 +340,30 @@
   }
 
   .top-header {
-    font-size: map-get($font-sizes, "xl");
+    font-size: map.get($font-sizes, "xl");
   }
 
   .collapsible,
   .content-box {
-    padding: map-get($spacing, "md");
+    padding: map.get($spacing, "md");
   }
 
   .collapsible .header {
-    margin: -#{map-get($spacing, "md")} -#{map-get($spacing, "md")}
-      map-get($spacing, "sm") -#{map-get($spacing, "md")};
-    padding: map-get($spacing, "sm") map-get($spacing, "md");
+    margin: -#{map.get($spacing, "md")} -#{map.get($spacing, "md")}
+      map.get($spacing, "sm") -#{map.get($spacing, "md")};
+    padding: map.get($spacing, "sm") map.get($spacing, "md");
   }
 }
 
 /* Display utilities */
 .show-landscape-only {
-  @media (max-width: map-get($breakpoints, "md")) {
+  @media (max-width: map.get($breakpoints, "md")) {
     display: none !important;
   }
 }
 
 .show-portrait-only {
-  @media (min-width: map-get($breakpoints, "md") + 1px) {
+  @media (min-width: map.get($breakpoints, "md")) {
     display: none !important;
   }
 }

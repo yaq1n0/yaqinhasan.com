@@ -37,6 +37,7 @@
 </script>
 
 <style lang="scss" scoped>
+
 .projects {
   min-height: 100vh;
   background-color: #13141f;
