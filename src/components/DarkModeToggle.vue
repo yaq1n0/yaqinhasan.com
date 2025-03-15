@@ -54,14 +54,15 @@ const applyTheme = () => {
 </script>
 
 <style lang="scss" scoped>
+
 .theme-toggle {
   position: relative;
   width: 3rem;
   height: 1.75rem;
-  border-radius: map-get($border-radius, "full");
+  border-radius: map.get($border-radius, "full");
   background: linear-gradient(
     to right,
-    map-get(map-get($colors, "primary"), "light"),
+    map.get(map.get($colors, "primary"), "light"),
     #4a90e2
   );
   cursor: pointer;
@@ -105,7 +106,7 @@ const applyTheme = () => {
     border-radius: 50%;
     background: #ffd700;
     transform: translateX(0);
-    transition: transform map-get($transitions, "base") ease;
+    transition: transform map.get($transitions, "base") ease;
   }
 
   &__sun {
@@ -117,7 +118,7 @@ const applyTheme = () => {
     color: #ff9800;
     transform: scale(1);
     opacity: 1;
-    transition: all map-get($transitions, "base") ease;
+    transition: all map.get($transitions, "base") ease;
   }
 
   &__moon {
@@ -129,7 +130,7 @@ const applyTheme = () => {
     color: #fff;
     transform: scale(0);
     opacity: 0;
-    transition: all map-get($transitions, "base") ease;
+    transition: all map.get($transitions, "base") ease;
   }
 
   &__stars {
@@ -137,7 +138,7 @@ const applyTheme = () => {
     top: -0.5rem;
     right: -0.5rem;
     opacity: 0;
-    transition: opacity map-get($transitions, "base") ease;
+    transition: opacity map.get($transitions, "base") ease;
 
     .star {
       position: absolute;
@@ -146,7 +147,7 @@ const applyTheme = () => {
       background: #fff;
       border-radius: 50%;
       transform: scale(0);
-      transition: transform map-get($transitions, "base") ease;
+      transition: transform map.get($transitions, "base") ease;
 
       &:nth-child(1) {
         top: 0;

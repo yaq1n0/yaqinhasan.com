@@ -75,28 +75,29 @@
 </script>
 
 <style lang="scss" scoped>
+
 .contact-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: map-get($spacing, "xl");
+  padding: map.get($spacing, "xl");
 
-  @media (max-width: map-get($breakpoints, "md")) {
-    padding: map-get($spacing, "lg");
+  @media (max-width: map.get($breakpoints, "md")) {
+    padding: map.get($spacing, "lg");
   }
 
-  @media (max-width: map-get($breakpoints, "sm")) {
-    padding: map-get($spacing, "md");
+  @media (max-width: map.get($breakpoints, "sm")) {
+    padding: map.get($spacing, "md");
   }
 }
 
 .page-header {
-  margin-bottom: map-get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
   text-align: center;
 
   h1 {
-    font-size: map-get($font-sizes, "3xl");
+    font-size: map.get($font-sizes, "3xl");
     color: var(--color-accent);
-    margin-bottom: map-get($spacing, "sm");
+    margin-bottom: map.get($spacing, "sm");
   }
 }
 
@@ -106,11 +107,11 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: map-get($spacing, "xl");
-  margin-bottom: map-get($spacing, "xl");
+  gap: map.get($spacing, "xl");
+  margin-bottom: map.get($spacing, "xl");
 
-  @media (max-width: map-get($breakpoints, "md")) {
-    gap: map-get($spacing, "lg");
+  @media (max-width: map.get($breakpoints, "md")) {
+    gap: map.get($spacing, "lg");
   }
 }
 
@@ -118,17 +119,17 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: map-get($spacing, "lg");
+  gap: map.get($spacing, "lg");
   justify-content: center;
 
   .contact-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: map-get($spacing, "xs");
-    padding: map-get($spacing, "md");
+    gap: map.get($spacing, "xs");
+    padding: map.get($spacing, "md");
     background-color: var(--color-bg-tertiary);
-    border-radius: map-get($border-radius, "md");
+    border-radius: map.get($border-radius, "md");
     min-width: 100px;
     transition: transform 0.2s ease;
 
@@ -146,16 +147,16 @@
     }
 
     span {
-      font-size: map-get($font-sizes, "sm");
-      margin-top: map-get($spacing, "xs");
+      font-size: map.get($font-sizes, "sm");
+      margin-top: map.get($spacing, "xs");
     }
   }
 }
 
 .info-box {
   background-color: var(--color-bg-tertiary);
-  border-radius: map-get($border-radius, "md");
-  padding: map-get($spacing, "lg");
+  border-radius: map.get($border-radius, "md");
+  padding: map.get($spacing, "lg");
   border: 1px solid var(--color-border);
   max-width: 500px;
 
@@ -168,29 +169,29 @@
 .divider {
   height: 1px;
   background-color: var(--color-border);
-  margin: map-get($spacing, "xl") 0;
+  margin: map.get($spacing, "xl") 0;
 }
 
 .dev-note {
   text-align: center;
   color: var(--color-dev-highlight);
-  margin-bottom: map-get($spacing, "lg");
+  margin-bottom: map.get($spacing, "lg");
 }
 
 .download-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: map-get($spacing, "md");
-  margin-bottom: map-get($spacing, "xl");
+  gap: map.get($spacing, "md");
+  margin-bottom: map.get($spacing, "xl");
 
   .download-link {
     display: inline-flex;
     align-items: center;
-    gap: map-get($spacing, "xs");
+    gap: map.get($spacing, "xs");
     background-color: var(--color-accent-translucent);
-    padding: map-get($spacing, "sm") map-get($spacing, "lg");
-    border-radius: map-get($border-radius, "md");
+    padding: map.get($spacing, "sm") map.get($spacing, "lg");
+    border-radius: map.get($border-radius, "md");
     transition: all 0.2s ease;
     font-weight: 500;
 
@@ -205,7 +206,7 @@
 .pdf-container {
   display: flex;
   justify-content: center;
-  margin-top: map-get($spacing, "lg");
+  margin-top: map.get($spacing, "lg");
 }
 
 .pdf-embed {
@@ -213,14 +214,14 @@
   max-width: 800px;
   height: 1000px;
   border: none;
-  border-radius: map-get($border-radius, "md");
+  border-radius: map.get($border-radius, "md");
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: map-get($breakpoints, "md")) {
+  @media (max-width: map.get($breakpoints, "md")) {
     height: 800px;
   }
 
-  @media (max-width: map-get($breakpoints, "sm")) {
+  @media (max-width: map.get($breakpoints, "sm")) {
     height: 600px;
   }
 }

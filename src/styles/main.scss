@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "variables" as *;
 @use "mixins" as *;
 @use "utilities";
@@ -5,14 +6,14 @@
 // CSS Variables for Theming
 :root {
   // Light theme colors
-  --color-bg-primary: #{map-get(map-get($colors, "background"), "base")};
-  --color-bg-secondary: #{map-get(map-get($colors, "background"), "light")};
-  --color-bg-tertiary: #{map-get(map-get($colors, "background"), "dark")};
-  --color-text-primary: #{map-get(map-get($colors, "text"), "primary")};
-  --color-text-secondary: #{map-get(map-get($colors, "text"), "secondary")};
-  --color-accent: #{map-get(map-get($colors, "primary"), "base")};
-  --color-accent-light: #{map-get(map-get($colors, "primary"), "light")};
-  --color-accent-dark: #{map-get(map-get($colors, "primary"), "dark")};
+  --color-bg-primary: #{map.get(map.get($colors, "background"), "base")};
+  --color-bg-secondary: #{map.get(map.get($colors, "background"), "light")};
+  --color-bg-tertiary: #{map.get(map.get($colors, "background"), "dark")};
+  --color-text-primary: #{map.get(map.get($colors, "text"), "primary")};
+  --color-text-secondary: #{map.get(map.get($colors, "text"), "secondary")};
+  --color-accent: #{map.get(map.get($colors, "primary"), "base")};
+  --color-accent-light: #{map.get(map.get($colors, "primary"), "light")};
+  --color-accent-dark: #{map.get(map.get($colors, "primary"), "dark")};
   --color-accent-translucent: rgba(79, 209, 197, 0.15);
   --color-border: rgba(255, 255, 255, 0.1);
 
@@ -52,8 +53,8 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   transition:
-    background-color map-get($transitions, "base") ease,
-    color map-get($transitions, "base") ease;
+    background-color map.get($transitions, "base") ease,
+    color map.get($transitions, "base") ease;
 }
 
 #app {
@@ -66,7 +67,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color map-get($transitions, "base") ease;
+  transition: color map.get($transitions, "base") ease;
 
   &:hover {
     color: var(--color-accent-light);
@@ -99,7 +100,7 @@ button {
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
-  border-radius: map-get($border-radius, "full");
+  border-radius: map.get($border-radius, "full");
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);
@@ -108,13 +109,13 @@ button {
 
 // Responsive Display Utilities
 .show-landscape-only {
-  @media (max-width: map-get($breakpoints, "md")) {
+  @media (max-width: map.get($breakpoints, "md")) {
     display: none !important;
   }
 }
 
 .show-portrait-only {
-  @media (min-width: map-get($breakpoints, "md")) {
+  @media (min-width: map.get($breakpoints, "md")) {
     display: none !important;
   }
 }

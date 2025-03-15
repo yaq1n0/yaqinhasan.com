@@ -59,13 +59,14 @@ const applyDevMode = () => {
 </script>
 
 <style lang="scss" scoped>
+
 .dev-toggle {
   @include flex(row, center, center);
   cursor: pointer;
   background: transparent;
   border: none;
-  padding: map-get($spacing, "sm");
-  transition: all map-get($transitions, "base") ease;
+  padding: map.get($spacing, "sm");
+  transition: all map.get($transitions, "base") ease;
 
   &__container {
     @include flex(row, center, center, "xs");
@@ -74,7 +75,7 @@ const applyDevMode = () => {
   &__code {
     font-family: var(--font-mono);
     font-weight: bold;
-    font-size: map-get($font-sizes, "base");
+    font-size: map.get($font-sizes, "base");
     color: var(--color-text-primary);
     white-space: nowrap;
   }
@@ -85,7 +86,7 @@ const applyDevMode = () => {
     height: 20px;
     background-color: var(--color-bg-tertiary);
     border-radius: 10px;
-    transition: all map-get($transitions, "base") ease;
+    transition: all map.get($transitions, "base") ease;
 
     .slider {
       position: absolute;
@@ -95,7 +96,7 @@ const applyDevMode = () => {
       height: 16px;
       background-color: var(--color-text-primary);
       border-radius: 50%;
-      transition: all map-get($transitions, "base") ease;
+      transition: all map.get($transitions, "base") ease;
 
       &.active {
         left: 22px;

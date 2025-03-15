@@ -37,26 +37,27 @@ const componentType = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+
 .nav-item {
   @include flex(row, center, center);
   text-decoration: none;
-  color: map-get(map-get($colors, "text"), "primary");
-  padding: map-get($spacing, "sm") map-get($spacing, "base");
-  margin: 0 map-get($spacing, "xs");
-  border-radius: map-get($border-radius, "sm");
+  color: map.get(map.get($colors, "text"), "primary");
+  padding: map.get($spacing, "sm") map.get($spacing, "base");
+  margin: 0 map.get($spacing, "xs");
+  border-radius: map.get($border-radius, "sm");
   @include font-size("sm");
   border: none;
   background: none;
   cursor: pointer;
-  transition: all map-get($transitions, "base") ease;
+  transition: all map.get($transitions, "base") ease;
 
   &:hover {
-    background-color: map-get(map-get($colors, "background"), "light");
+    background-color: map.get(map.get($colors, "background"), "light");
     transform: translateY(-1px);
   }
 
   &.nav-button {
-    background: map-get(map-get($colors, "background"), "light");
+    background: map.get(map.get($colors, "background"), "light");
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
@@ -64,11 +65,11 @@ const componentType = computed(() => {
   }
 
   .icon-left {
-    margin-right: map-get($spacing, "sm");
+    margin-right: map.get($spacing, "sm");
   }
 
   .icon-right {
-    margin-left: map-get($spacing, "sm");
+    margin-left: map.get($spacing, "sm");
   }
 }
 
