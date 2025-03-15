@@ -6,7 +6,7 @@ export type IconType = {
   position?: "left" | "right";
 };
 
-export type DisplayPolicy = "always-show" | "overflow";
+export type DisplayPolicy = "always-show" | "overflow" | "dev-only";
 
 export interface NavBarItem {
   label: string;

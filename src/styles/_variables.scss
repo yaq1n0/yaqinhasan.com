@@ -1,79 +1,95 @@
 // Colors
 $colors: (
-  'primary': (
-    'base': #4fd1c5,
-    'light': #63b3ed,
-    'dark': #2c5282
+  "primary": (
+    "base": #4fd1c5,
+    "light": #63b3ed,
+    "dark": #2c5282
   ),
-  'background': (
-    'base': #13141f,
-    'light': rgba(255, 255, 255, 0.05),
-    'dark': rgba(19, 20, 31, 0.95)
+  "background": (
+    "base": #13141f,
+    "light": rgba(255, 255, 255, 0.05),
+    "dark": rgba(19, 20, 31, 0.95)
   ),
-  'text': (
-    'primary': #ffffff,
-    'secondary': rgba(255, 255, 255, 0.8),
-    'accent': #9f7aea
+  "text": (
+    "primary": #ffffff,
+    "secondary": rgba(255, 255, 255, 0.8),
+    "accent": #9f7aea
   )
 );
 
 // Typography
-$font-family-base: 'Avenir', Helvetica, Arial, sans-serif;
+$font-family-base: "Avenir", Helvetica, Arial, sans-serif;
+$font-family-mono: "Courier New", Courier, monospace;
 $font-sizes: (
-  'xs': 0.75rem,    // 12px
-  'sm': 0.875rem,   // 14px
-  'base': 1rem,     // 16px
-  'lg': 1.125rem,   // 18px
-  'xl': 1.25rem,    // 20px
-  '2xl': 1.5rem,    // 24px
-  '3xl': 1.875rem,  // 30px
-  '4xl': 2.25rem,   // 36px
-  '5xl': 3rem,      // 48px
-  '6xl': 4rem       // 64px
+  "xs": 0.75rem,
+  // 12px
+  "sm": 0.875rem,
+  // 14px
+  "base": 1rem,
+  // 16px
+  "lg": 1.125rem,
+  // 18px
+  "xl": 1.25rem,
+  // 20px
+  "2xl": 1.5rem,
+  // 24px
+  "3xl": 1.875rem,
+  // 30px
+  "4xl": 2.25rem,
+  // 36px
+  "5xl": 3rem,
+  // 48px
+  "6xl": 4rem // 64px
 );
 
 // Spacing
 $spacing: (
-  'xs': 0.25rem,    // 4px
-  'sm': 0.5rem,     // 8px
-  'base': 1rem,     // 16px
-  'lg': 1.5rem,     // 24px
-  'xl': 2rem,       // 32px
-  '2xl': 3rem,      // 48px
-  '3xl': 4rem       // 64px
+  "xs": 0.25rem,
+  // 4px
+  "sm": 0.5rem,
+  // 8px
+  "base": 1rem,
+  // 16px
+  "lg": 1.5rem,
+  // 24px
+  "xl": 2rem,
+  // 32px
+  "2xl": 3rem,
+  // 48px
+  "3xl": 4rem // 64px
 );
 
 // Breakpoints
 $breakpoints: (
-  'sm': 640px,
-  'md': 768px,
-  'lg': 1024px,
-  'xl': 1280px,
-  '2xl': 1536px
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1536px
 );
 
 // Border Radius
 $border-radius: (
-  'sm': 0.25rem,
-  'base': 0.5rem,
-  'lg': 0.75rem,
-  'xl': 1rem,
-  'full': 9999px
+  "sm": 0.25rem,
+  "base": 0.5rem,
+  "lg": 0.75rem,
+  "xl": 1rem,
+  "full": 9999px
 );
 
 // Transitions
 $transitions: (
-  'fast': 150ms,
-  'base': 300ms,
-  'slow': 500ms
+  "fast": 150ms,
+  "base": 300ms,
+  "slow": 500ms
 );
 
 // Z-index
 $z-index: (
-  'base': 1,
-  'dropdown': 10,
-  'sticky': 20,
-  'fixed': 30,
-  'modal': 40,
-  'popover': 50
-); 
+  "base": 1,
+  "dropdown": 10,
+  "sticky": 20,
+  "fixed": 30,
+  "modal": 40,
+  "popover": 50
+);

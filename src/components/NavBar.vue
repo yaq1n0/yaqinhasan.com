@@ -18,11 +18,12 @@
     <!-- Right Section -->
     <div class="nav-section right">
       <NavBarItem
-        v-for="item in structure.right.filter((item) => !item.isButton)"
+        v-for="item in visibleRightItems"
         :key="item.label"
         :item="item"
       />
       <DarkModeToggle />
+      <DevModeToggle />
     </div>
 
     <!-- Mobile Overflow Menu -->
@@ -34,17 +35,39 @@
         @click="isMenuOpen = false"
       />
     </div>
+
+    <!-- Site Banner (Dev Joke) - Only visible in dev mode -->
+    <div v-if="isDevMode" class="dev-banner">
+      <p>
+        "All programming languages are just wrappers for assembly" - Yaqin
+        (2024)
+      </p>
+    </div>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import type { NavBarStructure } from "@/types/navbar";
 import NavBarItemComponent from "./NavBarItem.vue";
 import DarkModeToggle from "./DarkModeToggle.vue";
+import DevModeToggle from "./DevModeToggle.vue";
 
 const NavBarItem = NavBarItemComponent;
 const isMenuOpen = ref(false);
+const isDevMode = ref(false);
+
+// Initialize dev mode state
+onMounted(() => {
+  const savedMode = sessionStorage.getItem("devMode");
+  isDevMode.value = savedMode === "true";
+
+  // Listen for dev mode changes
+  window.addEventListener("devModeChanged", (event: Event) => {
+    const customEvent = event as CustomEvent;
+    isDevMode.value = customEvent.detail.isDevMode;
+  });
+});
 
 const structure: NavBarStructure = {
   left: [
@@ -77,8 +100,21 @@ const structure: NavBarStructure = {
       icon: { name: "envelope", position: "right" },
       displayPolicy: "always-show",
     },
+    {
+      label: "site_info",
+      to: "/technical",
+      displayPolicy: "dev-only",
+    },
   ],
 };
+
+const visibleRightItems = computed(() =>
+  structure.right.filter(
+    (item) =>
+      item.displayPolicy !== "dev-only" ||
+      (item.displayPolicy === "dev-only" && isDevMode.value),
+  ),
+);
 
 const overflowItems = computed(() =>
   structure.left.filter((item) => item.displayPolicy === "overflow"),
@@ -87,12 +123,27 @@ const overflowItems = computed(() =>
 
 <style lang="scss" scoped>
 .nav-bar {
-  @include flex(row, space-between, center);
+  @include flex(column);
   position: relative;
-  padding: map-get($spacing, "base");
   background: var(--color-bg-secondary);
   border-radius: map-get($border-radius, "base");
   margin: map-get($spacing, "base");
+
+  // Main navigation row
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+  }
+
+  // Navigation items container
+  > div:first-of-type {
+    @include flex(row, space-between, center);
+    width: 100%;
+    padding: map-get($spacing, "base");
+  }
 
   .nav-section {
     @include flex(row, flex-start, center, "sm");
@@ -126,6 +177,28 @@ const overflowItems = computed(() =>
       display: flex;
     }
   }
+
+  // Dev banner
+  .dev-banner {
+    width: 100%;
+    padding: map-get($spacing, "base");
+    background-color: var(--color-accent-translucent);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in;
+
+    p {
+      font-size: map-get($font-sizes, "lg");
+      font-weight: 600;
+      color: var(--color-accent-dark);
+      margin: 0;
+    }
+
+    @media (max-width: map-get($breakpoints, "md")) {
+      p {
+        font-size: map-get($font-sizes, "base");
+      }
+    }
+  }
 }
 
 .overflow-menu {
@@ -144,6 +217,15 @@ const overflowItems = computed(() =>
 
   @media (min-width: map-get($breakpoints, "md")) {
     display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

@@ -1,5 +1,5 @@
-@use 'variables' as *;
-@use 'mixins' as *;
+@use "variables" as *;
+@use "mixins" as *;
 
 // Text Utilities
 @each $size, $value in $font-sizes {
@@ -10,7 +10,9 @@
 
 // Spacing Utilities
 @each $size, $value in $spacing {
-  .m-#{$size} { margin: $value; }
+  .m-#{$size} {
+    margin: $value;
+  }
   .mx-#{$size} {
     margin-left: $value;
     margin-right: $value;
@@ -19,7 +21,9 @@
     margin-top: $value;
     margin-bottom: $value;
   }
-  .p-#{$size} { padding: $value; }
+  .p-#{$size} {
+    padding: $value;
+  }
   .px-#{$size} {
     padding-left: $value;
     padding-right: $value;
@@ -31,16 +35,32 @@
 }
 
 // Flex Utilities
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.flex-1 { flex: 1; }
-.flex-wrap { flex-wrap: wrap; }
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
 
 // Grid Utilities
-.grid { display: grid; }
+.grid {
+  display: grid;
+}
 @for $i from 1 through 12 {
   .grid-cols-#{$i} {
     grid-template-columns: repeat($i, minmax(0, 1fr));
@@ -90,4 +110,4 @@
       display: block;
     }
   }
-} 
+}
