@@ -122,7 +122,6 @@ const overflowItems = computed(() =>
 </script>
 
 <style lang="scss" scoped>
-
 .nav-bar {
   @include flex(column);
   position: relative;

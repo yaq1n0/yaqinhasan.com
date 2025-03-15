@@ -527,7 +527,6 @@ const previousSection = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .about-page {
   max-width: 1200px;
   margin: 0 auto;

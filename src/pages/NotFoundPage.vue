@@ -17,7 +17,6 @@
 </script>
 
 <style lang="scss" scoped>
-
 .not-found-page {
   display: flex;
   justify-content: center;

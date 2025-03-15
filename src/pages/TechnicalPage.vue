@@ -117,7 +117,6 @@
 </script>
 
 <style lang="scss" scoped>
-
 .technical-page {
   max-width: 1200px;
   margin: 0 auto;

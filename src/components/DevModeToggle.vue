@@ -59,7 +59,6 @@ const applyDevMode = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .dev-toggle {
   @include flex(row, center, center);
   cursor: pointer;
