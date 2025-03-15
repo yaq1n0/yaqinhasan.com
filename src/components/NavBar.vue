@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import type { NavBarStructure } from "@/types/navbar";
+import type { NavBarStructure } from "@/data/navbar";
 import NavBarItemComponent from "./NavBarItem.vue";
 import DarkModeToggle from "./DarkModeToggle.vue";
 import DevModeToggle from "./DevModeToggle.vue";

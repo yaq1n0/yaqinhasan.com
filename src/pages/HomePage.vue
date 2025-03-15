@@ -97,7 +97,7 @@
     <!-- Welcome Section -->
     <div class="welcome">
       <div class="logo">
-        <img src="/logo-no-background.svg" alt="Yaqin Hasan Logo" />
+        <img :src="logoSrc" alt="Yaqin Hasan Logo" />
       </div>
       <p class="text">
         Yet
@@ -136,7 +136,7 @@
 </template>
 
 <script setup lang="ts">
-// No additional script needed for this page
+import logoSrc from '/logo-no-background.svg';
 </script>
 
 <style lang="scss" scoped>
