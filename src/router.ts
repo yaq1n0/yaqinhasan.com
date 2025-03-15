@@ -30,7 +30,15 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/technical",
     name: "technical",
-    component: () => import("@/pages/TechnicalPage.vue"),
+    component: () => import("@/pages/dev/TechnicalPage.vue"),
+  },
+  {
+    path: "/debug",
+    name: "debug",
+    component: () => import("@/pages/dev/DebugPage.vue"),
+    meta: {
+      hideInNav: true // Ensure it doesn't show up in navigation
+    }
   },
   {
     path: "/:pathMatch(.*)*",

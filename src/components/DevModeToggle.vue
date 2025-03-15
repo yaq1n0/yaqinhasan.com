@@ -6,9 +6,17 @@
     aria-label="Toggle developer mode"
   >
     <div class="dev-toggle__container">
-      <div class="dev-toggle__code">&lt;/&gt;</div>
-      <div class="dev-toggle__switch">
-        <div class="slider" :class="{ active: isDevMode }"></div>
+      <!-- Normal Mode -->
+      <div class="dev-toggle__normal">
+        <font-awesome-icon :icon="['fas', 'code']" />
+      </div>
+      <!-- Dev Mode -->
+      <div class="dev-toggle__dev">
+        <font-awesome-icon :icon="['fas', 'terminal']" />
+      </div>
+      <!-- Code Bits -->
+      <div class="dev-toggle__bits">
+        <div class="bit" v-for="n in 3" :key="n">{ }</div>
       </div>
     </div>
   </button>
@@ -60,70 +68,122 @@ const applyDevMode = () => {
 
 <style lang="scss" scoped>
 .dev-toggle {
-  @include flex(row, center, center);
+  position: relative;
+  width: 3rem;
+  height: 1.75rem;
+  border-radius: map.get($border-radius, "full");
+  background: linear-gradient(
+    to right,
+    #6b46c1,
+    #805ad5
+  );
   cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: map.get($spacing, "sm");
-  transition: all map.get($transitions, "base") ease;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  @include transition(background-color, transform);
 
-  &__container {
-    @include flex(row, center, center, "xs");
+  &:hover {
+    transform: scale(1.05);
   }
 
-  &__code {
-    font-family: var(--font-mono);
-    font-weight: bold;
-    font-size: map.get($font-sizes, "base");
-    color: var(--color-text-primary);
-    white-space: nowrap;
-  }
+  &--active {
+    background: linear-gradient(to right, #38a169, #48bb78);
 
-  &__switch {
-    position: relative;
-    width: 40px;
-    height: 20px;
-    background-color: var(--color-bg-tertiary);
-    border-radius: 10px;
-    transition: all map.get($transitions, "base") ease;
+    .dev-toggle__container {
+      transform: translateX(1.25rem);
+    }
 
-    .slider {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 16px;
-      height: 16px;
-      background-color: var(--color-text-primary);
-      border-radius: 50%;
-      transition: all map.get($transitions, "base") ease;
+    .dev-toggle__normal {
+      transform: scale(0);
+      opacity: 0;
+    }
 
-      &.active {
-        left: 22px;
-        background-color: var(--color-accent);
+    .dev-toggle__dev {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .dev-toggle__bits {
+      opacity: 1;
+      .bit {
+        transform: scale(1);
       }
     }
   }
 
-  &--active {
-    .dev-toggle__code {
-      color: var(--color-accent);
-    }
-
-    .dev-toggle__switch {
-      background-color: var(--color-accent-light);
-    }
+  &__container {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: #e2e8f0;
+    transform: translateX(0);
+    transition: transform map.get($transitions, "base") ease;
   }
 
-  &:hover {
-    .dev-toggle__code {
-      color: var(--color-accent-light);
+  &__normal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b46c1;
+    transform: scale(1);
+    opacity: 1;
+    transition: all map.get($transitions, "base") ease;
+  }
+
+  &__dev {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38a169;
+    transform: scale(0);
+    opacity: 0;
+    transition: all map.get($transitions, "base") ease;
+  }
+
+  &__bits {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    opacity: 0;
+    transition: opacity map.get($transitions, "base") ease;
+
+    .bit {
+      position: absolute;
+      font-size: 0.5rem;
+      font-family: var(--font-mono);
+      color: #48bb78;
+      transform: scale(0);
+      transition: transform map.get($transitions, "base") ease;
+
+      &:nth-child(1) {
+        top: 0;
+        right: 0;
+        transition-delay: 0.1s;
+      }
+
+      &:nth-child(2) {
+        top: 0.5rem;
+        right: 0.5rem;
+        transition-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        top: 0.25rem;
+        right: 1rem;
+        transition-delay: 0.3s;
+      }
     }
   }
 }
 
 // Add styles for dev mode elements
 :global(.dev-mode) {
-  --color-dev-highlight: #9c27b0;
+  --color-dev-highlight: #38a169;
 
   .show-dev-only {
     display: block !important;

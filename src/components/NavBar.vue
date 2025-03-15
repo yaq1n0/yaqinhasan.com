@@ -1,37 +1,62 @@
 <template>
-  <nav class="nav-bar">
-    <!-- Overflow Menu Button (Mobile Only) -->
-    <button class="menu-toggle" @click="isMenuOpen = !isMenuOpen">
-      <font-awesome-icon :icon="['fas', 'bars']" />
-    </button>
-
-    <!-- Left Section -->
-    <div class="nav-section left">
-      <NavBarItem
-        v-for="item in structure.left"
-        :key="item.label"
-        :item="item"
-        :class="{ 'hide-on-mobile': item.displayPolicy === 'overflow' }"
+  <nav class="nav-bar" ref="navBarRef" :class="{ 'menu-open': isMenuOpen }">
+    <div class="nav-content">
+      <!-- Overflow Menu Button (Mobile Only) -->
+      <Button 
+        class="menu-toggle" 
+        @click="isMenuOpen = !isMenuOpen"
+        icon="bars"
+        border="none"
+        background="transparent"
+        label=""
+        aria-label="Toggle menu"
       />
-    </div>
 
-    <!-- Right Section -->
-    <div class="nav-section right">
-      <NavBarItem
-        v-for="item in visibleRightItems"
-        :key="item.label"
-        :item="item"
-      />
-      <DarkModeToggle />
-      <DevModeToggle />
+      <!-- Left Section -->
+      <div class="nav-section left">
+        <Button
+          v-for="item in structure.left"
+          :key="item.label"
+          :label="item.label"
+          :to="item.to"
+          :icon="item.icon?.name || ''"
+          :iconPrefix="item.icon?.prefix || 'fas'"
+          border="none"
+          background="transparent"
+          :class="{ 'hide-on-mobile': item.displayPolicy === 'overflow' }"
+        />
+      </div>
+
+      <!-- Right Section -->
+      <div class="nav-section right">
+        <Button
+          v-for="item in visibleRightItems"
+          :key="item.label"
+          :label="item.label"
+          :to="item.to"
+          :icon="item.icon?.name || ''"
+          :iconPrefix="item.icon?.prefix || 'fas'"
+          :labelPos="item.icon?.position === 'right' ? 'left' : 'right'"
+          border="none"
+          background="transparent"
+        />
+        <DarkModeToggle />
+        <DevModeToggle />
+      </div>
     </div>
 
     <!-- Mobile Overflow Menu -->
     <div v-if="isMenuOpen" class="overflow-menu">
-      <NavBarItem
+      <Button
         v-for="item in overflowItems"
         :key="item.label"
-        :item="item"
+        :label="item.label"
+        :to="item.to"
+        :icon="item.icon?.name || ''"
+        :iconPrefix="item.icon?.prefix || 'fas'"
+        border="none"
+        background="transparent"
+        class="overflow-item"
         @click="isMenuOpen = false"
       />
     </div>
@@ -47,25 +72,86 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import type { NavBarStructure } from "@/data/navbar";
-import NavBarItemComponent from "./NavBarItem.vue";
+import Button from "./Button.vue";
 import DarkModeToggle from "./DarkModeToggle.vue";
 import DevModeToggle from "./DevModeToggle.vue";
 
-const NavBarItem = NavBarItemComponent;
+const navBarRef = ref<HTMLElement | null>(null);
 const isMenuOpen = ref(false);
 const isDevMode = ref(false);
+const isNarrowView = ref(false);
+const NARROW_THRESHOLD = 768; // Width threshold for narrow view
 
 // Initialize dev mode state
 onMounted(() => {
   const savedMode = sessionStorage.getItem("devMode");
   isDevMode.value = savedMode === "true";
 
-  // Listen for dev mode changes
-  window.addEventListener("devModeChanged", (event: Event) => {
+  // Define event handlers
+  const handleDevModeChange = (event: Event) => {
     const customEvent = event as CustomEvent;
     isDevMode.value = customEvent.detail.isDevMode;
+  };
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (isMenuOpen.value && !target.closest('.nav-bar')) {
+      isMenuOpen.value = false;
+    }
+  };
+
+  // Listen for dev mode changes
+  window.addEventListener("devModeChanged", handleDevModeChange);
+
+  // Close menu when clicking outside
+  document.addEventListener('click', handleOutsideClick);
+
+  // Create ResizeObserver
+  let resizeObserver: ResizeObserver | null = null;
+  
+  // Use ResizeObserver to detect container width changes
+  if (navBarRef.value) {
+    const checkWidth = () => {
+      if (navBarRef.value) {
+        // Check if we're in a narrow demo via data attribute
+        const isInNarrowDemo = navBarRef.value.dataset.narrowDemo === 'true';
+        
+        // Get the actual width of the navbar
+        const navBarWidth = navBarRef.value.getBoundingClientRect().width;
+        
+        // Set narrow view if width is below threshold or if we're in a narrow demo
+        isNarrowView.value = navBarWidth < NARROW_THRESHOLD || isInNarrowDemo;
+        
+        // Close menu when resizing to desktop size
+        if (!isNarrowView.value && isMenuOpen.value) {
+          isMenuOpen.value = false;
+        }
+      }
+    };
+    
+    // Initial check
+    checkWidth();
+    
+    // Create and start observing
+    resizeObserver = new ResizeObserver(checkWidth);
+    resizeObserver.observe(navBarRef.value);
+  }
+  
+  // Clean up all event listeners and observers
+  onUnmounted(() => {
+    // Clean up ResizeObserver
+    if (resizeObserver) {
+      if (navBarRef.value) {
+        resizeObserver.unobserve(navBarRef.value);
+      }
+      resizeObserver.disconnect();
+    }
+    
+    // Clean up other event listeners
+    window.removeEventListener('devModeChanged', handleDevModeChange);
+    document.removeEventListener('click', handleOutsideClick);
   });
 });
 
@@ -80,16 +166,19 @@ const structure: NavBarStructure = {
     {
       label: "About",
       to: "/about",
+      icon: { name: "user" },
       displayPolicy: "overflow",
     },
     {
       label: "Projects",
       to: "/projects",
+      icon: { name: "code" },
       displayPolicy: "overflow",
     },
     {
       label: "Interests",
       to: "/interests",
+      icon: { name: "star" },
       displayPolicy: "overflow",
     },
   ],
@@ -103,6 +192,7 @@ const structure: NavBarStructure = {
     {
       label: "site_info",
       to: "/technical",
+      icon: { name: "info-circle" },
       displayPolicy: "dev-only",
     },
   ],
@@ -112,120 +202,166 @@ const visibleRightItems = computed(() =>
   structure.right.filter(
     (item) =>
       item.displayPolicy !== "dev-only" ||
-      (item.displayPolicy === "dev-only" && isDevMode.value),
+      (item.displayPolicy === "dev-only" && isDevMode.value && !isNarrowView.value)
   ),
 );
 
-const overflowItems = computed(() =>
-  structure.left.filter((item) => item.displayPolicy === "overflow"),
-);
+const overflowItems = computed(() => [
+  ...structure.left.filter((item) => item.displayPolicy === "overflow"),
+  ...structure.right.filter(
+    (item) => 
+      item.displayPolicy === "dev-only" && 
+      isDevMode.value && 
+      isNarrowView.value
+  ),
+]);
 </script>
 
 <style lang="scss" scoped>
 .nav-bar {
-  @include flex(column);
   position: relative;
   background: var(--color-bg-secondary);
-  border-radius: map.get($border-radius, "base");
-  margin: map.get($spacing, "base");
-
-  // Main navigation row
-  &::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-border);
+  border-radius: 0.5rem;
+  margin: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-radius 0.2s ease, box-shadow 0.2s ease;
+  z-index: 100;
+  
+  // Remove bottom border radius when overflow menu is open
+  &.menu-open {
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0); // Remove bottom shadow when menu is open
   }
+}
 
-  // Navigation items container
-  > div:first-of-type {
-    @include flex(row, space-between, center);
-    width: 100%;
-    padding: map.get($spacing, "base");
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  min-height: 60px;
+}
+
+.nav-section {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &.right {
+    margin-left: auto;
   }
+}
 
-  .nav-section {
-    @include flex(row, flex-start, center, "sm");
-
-    &.right {
-      margin-left: auto;
-    }
-
-    .hide-on-mobile {
-      @media (max-width: map.get($breakpoints, "md") - 1px) {
-        display: none;
-      }
-    }
+.menu-toggle {
+  display: none;
+  min-width: auto !important;
+  min-height: auto !important;
+  padding: 0.5rem !important;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    order: -1;
   }
-
-  .menu-toggle {
-    @include flex(row, center, center);
-    color: var(--color-text-primary);
-    font-size: map.get($font-sizes, "xl");
-    padding: map.get($spacing, "sm");
-    margin-right: map.get($spacing, "base");
-    cursor: pointer;
-    transition: color map.get($transitions, "base") ease;
+  
+  // Hide the empty label
+  :deep(.btn-label) {
     display: none;
-
-    &:hover {
-      color: var(--color-accent-light);
-    }
-
-    @media (max-width: map.get($breakpoints, "md") - 1px) {
-      display: flex;
-    }
   }
+}
 
-  // Dev banner
-  .dev-banner {
-    width: 100%;
-    padding: map.get($spacing, "base");
-    background-color: var(--color-accent-translucent);
-    text-align: center;
-    animation: fadeIn 0.3s ease-in;
-
-    p {
-      font-size: map.get($font-sizes, "lg");
-      font-weight: 600;
-      color: var(--color-accent-dark);
-      margin: 0;
-    }
-
-    @media (max-width: map.get($breakpoints, "md")) {
-      p {
-        font-size: map.get($font-sizes, "base");
-      }
-    }
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
   }
 }
 
 .overflow-menu {
   position: absolute;
   top: 100%;
-  left: map.get($spacing, "base");
+  left: 0;
+  width: 100%;
   background: var(--color-bg-secondary);
-  border-radius: map.get($border-radius, "base");
-  padding: map.get($spacing, "base");
-  margin-top: map.get($spacing, "xs");
-  min-width: 200px;
-  @include flex(column);
-  gap: map.get($spacing, "sm");
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: map.get($z-index, "dropdown");
+  border-radius: 0 0 0.5rem 0.5rem;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 99; // Slightly lower than navbar to ensure proper stacking
+  animation: slideDown 0.2s ease-out;
+  max-height: 80vh;
+  overflow-y: auto;
+  
+  // Create a seamless connection with the navbar
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--color-bg-secondary);
+  }
+}
 
-  @media (min-width: map.get($breakpoints, "md")) {
-    display: none;
+.overflow-item {
+  width: 100%;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  
+  :deep(.btn-content) {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  :deep(.btn-icon) {
+    width: 1.2em;
+    margin-right: 0.5rem;
+  }
+}
+
+// Override Button component styles for navbar
+:deep(.btn) {
+  min-width: auto !important;
+  min-height: auto !important;
+  padding: 0.5rem 0.75rem !important;
+  
+  &:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background-color: var(--color-bg-tertiary) !important;
+  }
+}
+
+// Dev banner
+.dev-banner {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-accent-translucent);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent-dark);
+    margin: 0;
   }
 }
 
 @keyframes fadeIn {
-  from {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { 
     opacity: 0;
+    transform: translateY(-10px);
   }
-  to {
+  to { 
     opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

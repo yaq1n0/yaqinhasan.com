@@ -1,70 +1,109 @@
 <template>
-  <details 
-    class="rounded-lg my-4 mx-0 py-4 px-6" 
-    :open="modelValue"
-    :style="{ 
-      backgroundColor: backgroundColorStyle,
-      '--header-bg-color': backgroundColorStyle
-    }"
-  >
-    <summary class="bg-[var(--header-bg-color)] p-4 -mx-6 -mt-4 mb-4 rounded-t-lg text-xl font-semibold cursor-pointer list-none text-left" @click.prevent="toggleOpen">
-      <div class="flex items-center gap-2">
-        <span class="inline-flex transition-transform duration-300 ease-in-out text-primary w-5 h-5 justify-center items-center" :class="{ 'rotate-90': modelValue }">
-          <fa-icon :icon="['fas', 'caret-right']" size="lg" />
-        </span>
-        <span class="flex items-center gap-1">
-          <slot name="title">{{ title }}</slot>
-        </span>
+  <div class="collapsible-section">
+    <div 
+      class="collapsible-header" 
+      @click="toggleOpen"
+      :class="{ 'active': modelValue }"
+    >
+      <div class="caret-container">
+        <font-awesome-icon 
+          :icon="['fas', 'caret-right']" 
+          class="caret-icon"
+          :class="{ 'rotate': modelValue }"
+        />
       </div>
-    </summary>
-    <div class="pt-4 animate-fadeIn">
-      <slot></slot>
+      <h3 class="header-title">{{ title }}</h3>
     </div>
-  </details>
+    <transition name="slide">
+      <div v-if="modelValue" class="collapsible-content">
+        <slot></slot>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { type ColorVariant, type ColorIntensity, getBackgroundColorVar } from '@/types/colors';
-
-interface Props {
+defineProps<{
   title: string;
-  backgroundColor?: ColorVariant;
-  colorIntensity?: ColorIntensity;
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  backgroundColor: 'background',
-  colorIntensity: 'dark'
-});
+}>();
 
 const modelValue = defineModel<boolean>({ required: true });
 
-const toggleOpen = () => modelValue.value = !modelValue.value;
-
-const backgroundColorStyle = computed(() => {
-  return getBackgroundColorVar(props.backgroundColor, props.colorIntensity);
-});
+const toggleOpen = () => {
+  modelValue.value = !modelValue.value;
+};
 </script>
 
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+<style scoped>
+.collapsible-section {
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-in;
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-bg-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.caret-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.caret-icon {
+  transition: transform 0.3s ease;
+  color: var(--color-accent);
+}
+
+.caret-icon.rotate {
+  transform: rotate(90deg);
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.collapsible-content {
+  padding: 1rem 1.25rem 1.25rem 1.25rem;
+  background-color: var(--color-bg-tertiary);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease-out;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  details {
-    padding: 1rem;
+  .collapsible-header {
+    padding: 0.75rem 1rem;
   }
   
-  details summary {
-    margin: -1rem -1rem 0.5rem -1rem;
-    padding: 0.5rem 1rem;
+  .collapsible-content {
+    padding: 1rem;
   }
 }
 </style> 

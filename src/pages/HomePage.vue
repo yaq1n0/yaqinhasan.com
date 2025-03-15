@@ -2,7 +2,12 @@
   <div class="home">
     <!-- For Employers Section (Desktop) -->
     <details class="collapsible show-landscape-only" open>
-      <summary class="header">For Employers!</summary>
+      <summary class="header">
+        <span class="caret-icon transition-transform duration-300 ease-in-out">
+          <font-awesome-icon :icon="['fas', 'caret-right']" />
+        </span>
+        <span>For Employers!</span>
+      </summary>
 
       <p class="top-paragraph">
         If you got here from a job application I made, here are some things you
@@ -10,40 +15,75 @@
       </p>
 
       <div class="text-box">
-        <router-link to="/about" class="link">Skills List</router-link>
-        <router-link to="/about" class="link">Modules List</router-link>
-        <router-link to="/projects" class="link">Projects List</router-link>
-        <router-link to="/interests" class="link">Interests List</router-link>
+        <Button 
+          label="Skills List" 
+          to="/about" 
+          icon="list-check" 
+          shape="rounded" 
+          border="thin"
+        />
+        <Button 
+          label="Modules List" 
+          to="/about" 
+          icon="book" 
+          shape="rounded" 
+          border="thin"
+        />
+        <Button 
+          label="Projects List" 
+          to="/projects" 
+          icon="code" 
+          shape="rounded" 
+          border="thin"
+        />
+        <Button 
+          label="Interests List" 
+          to="/interests" 
+          icon="heart" 
+          shape="rounded" 
+          border="thin"
+        />
       </div>
 
       <div class="contact-box">
-        <div class="item">
-          <a href="https://github.com/yaq1n0" target="_blank">
-            <font-awesome-icon :icon="['fab', 'github']" />
-          </a>
-          <span>GitHub</span>
-        </div>
-
-        <div class="item">
-          <a href="https://www.linkedin.com/in/yaqinhasan" target="_blank">
-            <font-awesome-icon :icon="['fab', 'linkedin']" />
-          </a>
-          <span>LinkedIn</span>
-        </div>
-
-        <div class="item">
-          <a href="mailto:yaqin.k.hasan@gmail.com">
-            <font-awesome-icon :icon="['fas', 'envelope']" />
-          </a>
-          <span>Email</span>
-        </div>
-
-        <div class="item">
-          <router-link to="/contact">
-            <font-awesome-icon :icon="['fas', 'file-alt']" />
-          </router-link>
-          <span>CV</span>
-        </div>
+        <Button 
+          label="GitHub" 
+          href="https://github.com/yaq1n0" 
+          icon="github" 
+          iconPrefix="fab"
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
+        <Button 
+          label="LinkedIn" 
+          href="https://www.linkedin.com/in/yaqinhasan" 
+          icon="linkedin" 
+          iconPrefix="fab"
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
+        <Button 
+          label="Email" 
+          href="mailto:yaqin.k.hasan@gmail.com" 
+          icon="envelope" 
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
+        <Button 
+          label="CV" 
+          to="/contact" 
+          icon="file-alt" 
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
       </div>
     </details>
 
@@ -57,47 +97,82 @@
       </p>
 
       <div class="text-box">
-        <router-link to="/about" class="link">Skills List</router-link>
-        <router-link to="/about" class="link">Modules List</router-link>
-        <router-link to="/projects" class="link">Projects List</router-link>
-        <router-link to="/interests" class="link">Interests List</router-link>
+        <Button 
+          label="Skills List" 
+          to="/about" 
+          icon="list-check" 
+          shape="rounded" 
+          border="thin"
+        />
+        <Button 
+          label="Modules List" 
+          to="/about" 
+          icon="book" 
+          shape="rounded" 
+          border="thin"
+        />
+        <Button 
+          label="Projects List" 
+          to="/projects" 
+          icon="code" 
+          shape="rounded" 
+          border="thin"
+        />
+        <Button 
+          label="Interests List" 
+          to="/interests" 
+          icon="heart" 
+          shape="rounded" 
+          border="thin"
+        />
       </div>
 
       <div class="contact-box">
-        <div class="item">
-          <a href="https://github.com/yaq1n0" target="_blank">
-            <font-awesome-icon :icon="['fab', 'github']" />
-          </a>
-          <span>GitHub</span>
-        </div>
-
-        <div class="item">
-          <a href="https://www.linkedin.com/in/yaqinhasan" target="_blank">
-            <font-awesome-icon :icon="['fab', 'linkedin']" />
-          </a>
-          <span>LinkedIn</span>
-        </div>
-
-        <div class="item">
-          <a href="mailto:yaqin.k.hasan@gmail.com">
-            <font-awesome-icon :icon="['fas', 'envelope']" />
-          </a>
-          <span>Email</span>
-        </div>
-
-        <div class="item">
-          <router-link to="/contact">
-            <font-awesome-icon :icon="['fas', 'file-alt']" />
-          </router-link>
-          <span>CV</span>
-        </div>
+        <Button 
+          label="GitHub" 
+          href="https://github.com/yaq1n0" 
+          icon="github" 
+          iconPrefix="fab"
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
+        <Button 
+          label="LinkedIn" 
+          href="https://www.linkedin.com/in/yaqinhasan" 
+          icon="linkedin" 
+          iconPrefix="fab"
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
+        <Button 
+          label="Email" 
+          href="mailto:yaqin.k.hasan@gmail.com" 
+          icon="envelope" 
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
+        <Button 
+          label="CV" 
+          to="/contact" 
+          icon="file-alt" 
+          labelPos="below" 
+          shape="squircle" 
+          border="none"
+          background="var(--color-bg-secondary)"
+        />
       </div>
     </div>
 
     <!-- Welcome Section -->
     <div class="welcome">
       <div class="logo">
-        <img :src="logoSrc" alt="Yaqin Hasan Logo" />
+        <img src="/logo-no-background.svg" alt="Yaqin Hasan Logo" />
       </div>
       <p class="text">
         Yet
@@ -136,7 +211,7 @@
 </template>
 
 <script setup lang="ts">
-import logoSrc from '/logo-no-background.svg';
+import Button from '@/components/Button.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -151,35 +226,45 @@ import logoSrc from '/logo-no-background.svg';
   background-color: var(--color-bg-tertiary);
   border-radius: map.get($border-radius, "lg");
   margin: map.get($spacing, "md") 0;
-  padding: map.get($spacing, "lg");
+  overflow: hidden;
 
   .header {
     background-color: var(--color-bg-tertiary);
-    padding: map.get($spacing, "md");
-    margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")}
-      map.get($spacing, "md") -#{map.get($spacing, "lg")};
-    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0
-      0;
+    padding: map.get($spacing, "md") map.get($spacing, "lg");
+    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0 0;
     font-size: map.get($font-sizes, "xl");
     font-weight: 600;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, "sm");
 
     &::-webkit-details-marker {
       display: none;
     }
 
-    &::before {
-      content: "▼";
-      margin-right: map.get($spacing, "sm");
+    &::marker {
+      display: none;
     }
   }
 
-  &[open] .header::before {
-    content: "▼";
+  &[open] .caret-icon {
+    transform: rotate(90deg);
   }
-
-  &:not([open]) .header::before {
-    content: "►";
+  
+  .top-paragraph {
+    padding: 0 map.get($spacing, "lg");
+    padding-top: map.get($spacing, "md");
+  }
+  
+  .text-box {
+    padding: 0 map.get($spacing, "lg");
+  }
+  
+  .contact-box {
+    margin-left: map.get($spacing, "lg");
+    margin-right: map.get($spacing, "lg");
+    margin-bottom: map.get($spacing, "lg");
   }
 }
 
@@ -217,20 +302,6 @@ import logoSrc from '/logo-no-background.svg';
   justify-content: center;
   gap: map.get($spacing, "md");
   margin: map.get($spacing, "lg") 0;
-
-  .link {
-    background-color: var(--color-accent-translucent);
-    padding: map.get($spacing, "sm") map.get($spacing, "md");
-    border-radius: map.get($border-radius, "md");
-    color: var(--color-text-primary);
-    text-decoration: none;
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-  }
 }
 
 /* Contact box with social links */
@@ -366,6 +437,17 @@ import logoSrc from '/logo-no-background.svg';
   @media (min-width: map.get($breakpoints, "md")) {
     display: none !important;
   }
+}
+
+/* Caret icon styling */
+.caret-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
 }
 
 /* Animations */
