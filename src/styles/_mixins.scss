@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use "variables" as *;
 
 // Media Queries
 @mixin breakpoint($size) {
@@ -22,14 +22,18 @@
 }
 
 // Grid
-@mixin grid($columns: 1, $gap: 'base') {
+@mixin grid($columns: 1, $gap: "base") {
   display: grid;
   grid-template-columns: repeat($columns, minmax(0, 1fr));
   gap: map-get($spacing, $gap);
 }
 
 // Gradients
-@mixin gradient-text($direction: 45deg, $start-color: map-get(map-get($colors, 'primary'), 'base'), $end-color: map-get(map-get($colors, 'primary'), 'light')) {
+@mixin gradient-text(
+  $direction: 45deg,
+  $start-color: map-get(map-get($colors, "primary"), "base"),
+  $end-color: map-get(map-get($colors, "primary"), "light")
+) {
   background: linear-gradient($direction, $start-color, $end-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -39,18 +43,18 @@
 @mixin transition($properties...) {
   $result: ();
   @each $property in $properties {
-    $result: append($result, $property map-get($transitions, 'base') ease, comma);
+    $result: append($result, $property map-get($transitions, "base") ease, comma);
   }
   transition: $result;
 }
 
 // Container
-@mixin container($max-width: map-get($breakpoints, 'xl')) {
+@mixin container($max-width: map-get($breakpoints, "xl")) {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: map-get($spacing, 'base');
-  padding-right: map-get($spacing, 'base');
+  padding-left: map-get($spacing, "base");
+  padding-right: map-get($spacing, "base");
   max-width: $max-width;
 }
 
@@ -59,4 +63,4 @@
   background: rgba(255, 255, 255, $opacity);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-} 
+}

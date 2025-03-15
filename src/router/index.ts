@@ -27,6 +27,16 @@ const routes: Array<RouteRecordRaw> = [
     name: "contact",
     component: () => import("../pages/ContactPage.vue"),
   },
+  {
+    path: "/technical",
+    name: "technical",
+    component: () => import("../pages/TechnicalPage.vue"),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    component: () => import("../pages/NotFoundPage.vue"),
+  },
 ];
 
 const router = createRouter({
