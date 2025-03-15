@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomePage from "../pages/HomePage.vue";
+import HomePage from "@/pages/HomePage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,32 +10,32 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/about",
     name: "about",
-    component: () => import("../pages/AboutPage.vue"),
+    component: () => import("@/pages/AboutPage.vue"),
   },
   {
     path: "/projects",
     name: "projects",
-    component: () => import("../pages/ProjectsPage.vue"),
+    component: () => import("@/pages/ProjectsPage.vue"),
   },
   {
     path: "/interests",
     name: "interests",
-    component: () => import("../pages/InterestsPage.vue"),
+    component: () => import("@/pages/InterestsPage.vue"),
   },
   {
     path: "/contact",
     name: "contact",
-    component: () => import("../pages/ContactPage.vue"),
+    component: () => import("@/pages/ContactPage.vue"),
   },
   {
     path: "/technical",
     name: "technical",
-    component: () => import("../pages/TechnicalPage.vue"),
+    component: () => import("@/pages/TechnicalPage.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
     name: "not-found",
-    component: () => import("../pages/NotFoundPage.vue"),
+    component: () => import("@/pages/NotFoundPage.vue"),
   },
 ];
 

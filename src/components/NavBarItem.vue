@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { NavBarItem } from "@/types/navbar";
+import type { NavBarItem } from "@/data/navbar";
 
 const props = defineProps<{
   item: NavBarItem;

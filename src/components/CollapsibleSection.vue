@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { type ColorVariant, type ColorIntensity, getBackgroundColorVar } from '../types/colors';
+import { type ColorVariant, type ColorIntensity, getBackgroundColorVar } from '@/types/colors';
 
 interface Props {
   title: string;
