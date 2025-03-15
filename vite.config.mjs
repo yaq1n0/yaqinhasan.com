@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { fileURLToPath, URL } from "node:url";
-import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,6 +10,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       "~@": fileURLToPath(new URL("./src", import.meta.url)),
     },
+  },
+  server: {
+    port: 3000,
   },
   css: {
     preprocessorOptions: {
@@ -22,6 +24,14 @@ export default defineConfig({
           @use "@/styles/_mixins.scss" as *;
         `,
       },
+    },
+  },
+  test: {
+    globals: true,
+    environment: "happy-dom",
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
     },
   },
 });

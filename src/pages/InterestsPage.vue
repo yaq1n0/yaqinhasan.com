@@ -333,7 +333,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-
 .interests-page {
   max-width: 1200px;
   margin: 0 auto;

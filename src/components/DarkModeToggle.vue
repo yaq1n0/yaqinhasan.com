@@ -54,7 +54,6 @@ const applyTheme = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .theme-toggle {
   position: relative;
   width: 3rem;

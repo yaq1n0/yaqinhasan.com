@@ -41,7 +41,6 @@ defineProps<{
 </script>
 
 <style lang="scss" scoped>
-
 .project-card {
   background-color: var(--color-bg-tertiary);
   border-radius: map.get($border-radius, "lg");

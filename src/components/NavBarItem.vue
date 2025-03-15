@@ -37,7 +37,6 @@ const componentType = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-
 .nav-item {
   @include flex(row, center, center);
   text-decoration: none;
