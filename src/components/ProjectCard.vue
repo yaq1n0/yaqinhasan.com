@@ -26,7 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 
 interface Project {
   title: string;
