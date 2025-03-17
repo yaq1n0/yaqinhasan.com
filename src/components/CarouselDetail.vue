@@ -1,28 +1,19 @@
 <template>
-  <div class="project-card">
-    <div class="project-header">
-      <h3>{{ project.title }}</h3>
-      <div class="links">
-        <Button 
-          v-if="project.githubUrl"
-          :href="project.githubUrl"
-          label="Source Code (GitHub)"
-          icon="github"
-          iconPrefix="fab"
-          shape="squircle"
-          border="thin"
-        />
-        <slot name="extra-links"></slot>
+  <div class="carousel-detail">
+    <div class="detail-header">
+      <h2>{{ title }}</h2>
+      <div class="actions">
+        <slot name="actions"></slot>
       </div>
     </div>
 
-    <p v-if="project.summary" class="summary">{{ project.summary }}</p>
+    <p v-if="summary" class="summary">{{ summary }}</p>
 
-    <div class="project-content">
+    <div class="detail-content">
       <slot></slot>
     </div>
 
-    <div v-if="project.showDevContent" class="dev-content show-dev-only">
+    <div v-if="showDevContent" class="dev-content show-dev-only">
       <div class="dev-content-header">
         <font-awesome-icon :icon="['fas', 'code']" class="dev-icon" />
         <h4>Developer Content</h4>
@@ -35,22 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import Button from './Button.vue';
-
-interface Project {
+defineProps<{
   title: string;
-  githubUrl?: string;
   summary?: string;
   showDevContent?: boolean;
-}
-
-defineProps<{
-  project: Project;
 }>();
 </script>
 
 <style lang="scss" scoped>
-.project-card {
+.carousel-detail {
   background-color: var(--color-bg-tertiary);
   border-radius: map.get($border-radius, "lg");
   padding: map.get($spacing, "xl");
@@ -59,7 +43,7 @@ defineProps<{
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 
-  .project-header {
+  .detail-header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -71,19 +55,25 @@ defineProps<{
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-bg-secondary);
     margin: -#{map.get($spacing, "xl")} -#{map.get($spacing, "xl")} map.get($spacing, "lg") -#{map.get($spacing, "xl")};
-    padding: map.get($spacing, "lg") map.get($spacing, "xl");
+    padding: map.get($spacing, "xl");
     border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0 0;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
 
-    h3 {
-      font-size: map.get($font-sizes, "xl");
+    h2 {
+      font-size: map.get($font-sizes, "2xl");
       color: var(--color-accent);
       margin: 0;
+      line-height: 1.3;
+      flex: 1;
     }
 
-    .links {
+    .actions {
       display: flex;
       flex-wrap: wrap;
       gap: map.get($spacing, "sm");
+      align-self: center;
     }
   }
 
@@ -96,7 +86,7 @@ defineProps<{
     border-bottom: 1px solid var(--color-border-light);
   }
 
-  .project-content {
+  .detail-content {
     padding: map.get($spacing, "md") 0;
   }
 
@@ -132,6 +122,12 @@ defineProps<{
     }
   }
 
+  h3 {
+    font-size: map.get($font-sizes, "xl");
+    color: var(--color-accent-light);
+    margin: map.get($spacing, "lg") 0 map.get($spacing, "md");
+  }
+
   h4 {
     font-size: map.get($font-sizes, "lg");
     color: var(--color-accent-light);
@@ -165,16 +161,20 @@ defineProps<{
 }
 
 @media (max-width: map.get($breakpoints, "md")) {
-  .project-card {
+  .carousel-detail {
     padding: map.get($spacing, "lg");
     
-    .project-header {
+    .detail-header {
       margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")} map.get($spacing, "lg") -#{map.get($spacing, "lg")};
-      padding: map.get($spacing, "md") map.get($spacing, "lg");
+      padding: map.get($spacing, "lg");
       flex-direction: column;
       align-items: center;
       text-align: center;
+      
+      h2 {
+        margin-bottom: map.get($spacing, "md");
+      }
     }
   }
 }
-</style>
+</style> 
