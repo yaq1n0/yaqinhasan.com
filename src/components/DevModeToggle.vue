@@ -2,8 +2,8 @@
   <button
     class="dev-toggle"
     :class="{ 'dev-toggle--active': isDevMode }"
-    @click="toggleDevMode"
     aria-label="Toggle developer mode"
+    @click="toggleDevMode"
   >
     <div class="dev-toggle__container">
       <!-- Normal Mode -->
@@ -16,7 +16,13 @@
       </div>
       <!-- Code Bits -->
       <div class="dev-toggle__bits">
-        <div class="bit" v-for="n in 3" :key="n">{ }</div>
+        <div
+          v-for="n in 3"
+          :key="n"
+          class="bit"
+        >
+          { }
+        </div>
       </div>
     </div>
   </button>

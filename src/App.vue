@@ -2,13 +2,13 @@
   <div class="app-container">
     <NavBar />
     <main class="main-content">
-      <router-view></router-view>
+      <router-view />
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import NavBar from "./components/NavBar.vue";
+import NavBar from "./components/navbar/NavBar.vue";
 </script>
 
 <style lang="scss">

@@ -18,10 +18,14 @@
       <font-awesome-icon 
         v-if="icon" 
         :icon="[iconPrefix, icon]" 
-        class="btn-icon" 
+        class="btn-icon"
+        :class="`icon-${iconSize}`"
       />
       
-      <span v-if="label" class="btn-label">{{ label }}</span>
+      <span
+        v-if="label"
+        class="btn-label"
+      >{{ label }}</span>
     </div>
   </component>
 </template>
@@ -34,6 +38,7 @@ interface ButtonProps {
   labelPos?: 'left' | 'right' | 'above' | 'below';
   icon?: string;
   iconPrefix?: 'fas' | 'fab' | 'far';
+  iconSize?: 'sm' | 'md' | 'lg';
   border?: 'thin' | 'thick' | 'none';
   shape?: 'rounded' | 'squircle';
   background?: string;
@@ -45,6 +50,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   labelPos: 'right',
   icon: '',
   iconPrefix: 'fas',
+  iconSize: 'sm',
   border: 'thin',
   shape: 'squircle',
   background: 'var(--color-accent-translucent)',
@@ -74,6 +80,8 @@ const isLink = computed(() => !!props.to || !!props.href);
   outline: none;
   min-width: 120px;
   min-height: 40px;
+  max-width: 100%;
+  width: auto;
   
   &:hover {
     transform: translateY(-2px);
@@ -90,6 +98,8 @@ const isLink = computed(() => !!props.to || !!props.href);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
   }
   
   &.shape-rounded {
@@ -144,13 +154,32 @@ const isLink = computed(() => !!props.to || !!props.href);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.2em;
-    height: 1.2em;
+    flex-shrink: 0;
+    
+    &.icon-sm {
+      width: 1.2em;
+      height: 1.2em;
+    }
+    
+    &.icon-md {
+      width: 1.5em;
+      height: 1.5em;
+    }
+    
+    &.icon-lg {
+      width: 2em;
+      height: 2em;
+    }
   }
   
   .btn-label {
     font-weight: 500;
     letter-spacing: 0.02em;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    max-width: 100%;
+    line-height: 1.2;
   }
 }
 

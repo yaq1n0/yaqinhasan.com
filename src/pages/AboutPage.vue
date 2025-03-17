@@ -1,22 +1,14 @@
 <template>
   <CarouselLayout 
     title="Stuff About Me" 
-    pickerTitle="About Me Sections" 
-    :items="sections"
-    v-model:activeItem="activeSection"
+    :items="sectionItems"
+    :initial-item-id="activeSection"
+    minimal
+    :scroll-speed="40"
   >
-    <template #picker>
-      <CarouselPicker 
-        :groups="sectionGroups" 
-        v-model="activeSection"
-        minimal
-        :showGroupTitles="false"
-      />
-    </template>
-    
-    <template #content>
+    <template #default="{ activeItem }">
       <!-- Skills Section -->
-      <div v-show="activeSection === 'skills'">
+      <div v-show="activeItem.id === 'skills'">
         <CarouselDetail 
           title="Programming Languages, Development Tools and Environments I have experience in"
         >
@@ -107,7 +99,7 @@
       </div>
 
       <!-- Modules Section -->
-      <div v-show="activeSection === 'modules'">
+      <div v-show="activeItem.id === 'modules'">
         <CarouselDetail 
           title="The BSc Computer Science experience briefly summarized"
         >
@@ -126,23 +118,33 @@
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
-            ></iframe>
+            />
           </div>
 
           <div class="year-navigation">
-            <a href="#year1" @click.prevent="activeYear = 'year1'" class="link"
-              >Year 1</a
-            >
-            <a href="#year2" @click.prevent="activeYear = 'year2'" class="link"
-              >Year 2</a
-            >
-            <a href="#year3" @click.prevent="activeYear = 'year3'" class="link"
-              >Year 3</a
-            >
+            <a
+              href="#year1"
+              class="link"
+              @click.prevent="activeYear = 'year1'"
+            >Year 1</a>
+            <a
+              href="#year2"
+              class="link"
+              @click.prevent="activeYear = 'year2'"
+            >Year 2</a>
+            <a
+              href="#year3"
+              class="link"
+              @click.prevent="activeYear = 'year3'"
+            >Year 3</a>
           </div>
 
           <!-- Year 1 -->
-          <div v-show="activeYear === 'year1'" id="year1" class="year-section">
+          <div
+            v-show="activeYear === 'year1'"
+            id="year1"
+            class="year-section"
+          >
             <h3>Year 1</h3>
             <p>
               You are introduced to the basics of every CS degree. The courseworks
@@ -231,7 +233,11 @@
           </div>
 
           <!-- Year 2 -->
-          <div v-show="activeYear === 'year2'" id="year2" class="year-section">
+          <div
+            v-show="activeYear === 'year2'"
+            id="year2"
+            class="year-section"
+          >
             <h3>Year 2</h3>
             <p>
               Here you build on the basics of CS that you learned in the previous
@@ -287,9 +293,12 @@
             </p>
 
             <div class="link-container">
-              <router-link to="/projects" class="link"
-                >SEGP Project Page</router-link
+              <router-link
+                to="/projects"
+                class="link"
               >
+                SEGP Project Page
+              </router-link>
               <a
                 href="https://github.com/yaq1n0/SEG-project-2021"
                 target="_blank"
@@ -325,9 +334,12 @@
             </p>
 
             <div class="link-container">
-              <router-link to="/projects" class="link"
-                >STQL Project Page</router-link
+              <router-link
+                to="/projects"
+                class="link"
               >
+                STQL Project Page
+              </router-link>
               <a
                 href="https://github.com/yaq1n0/STQL-haskell"
                 target="_blank"
@@ -399,7 +411,11 @@
           </div>
 
           <!-- Year 3 -->
-          <div v-show="activeYear === 'year3'" id="year3" class="year-section">
+          <div
+            v-show="activeYear === 'year3'"
+            id="year3"
+            class="year-section"
+          >
             <h3>Year 3</h3>
             <p>
               Here you get to be completely independent, you get to choose your own
@@ -410,9 +426,12 @@
             </p>
 
             <div class="link-container">
-              <router-link to="/projects" class="link"
-                >Final Year Project Page</router-link
+              <router-link
+                to="/projects"
+                class="link"
               >
+                Final Year Project Page
+              </router-link>
               <a
                 href="https://github.com/yaq1n0/ThymPi"
                 target="_blank"
@@ -483,27 +502,13 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import CarouselLayout from '@/components/CarouselLayout.vue';
-import CarouselPicker from '@/components/CarouselPicker.vue';
-import CarouselDetail from '@/components/CarouselDetail.vue';
+import CarouselLayout from '@/components/carousel/CarouselLayout.vue';
+import CarouselDetail from '@/components/carousel/CarouselDetail.vue';
 
-// State for active section and year
-const activeSection = ref("skills");
+// State for active year
 const activeYear = ref("year3");
+const activeSection = ref("skills");
 
-// Sections for the carousel
-const sections = ["skills", "modules"];
-
-// Section groups for the picker
-const sectionGroups = [
-  {
-    title: "About Me Sections",
-    items: [
-      { id: "skills", label: "Skills Summary" },
-      { id: "modules", label: "Degree Modules Summary" }
-    ]
-  }
-];
 </script>
 
 <style lang="scss" scoped>
