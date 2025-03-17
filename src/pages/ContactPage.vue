@@ -7,7 +7,7 @@
     <!-- Contact Container -->
     <div class="contact-container">
       <!-- Contact Box -->
-      <ContactBoxSecondary />
+      <ContactBox :items="['linkedin', 'email', 'github']" />
 
       <div class="info-box">
         <p>
@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import ContactBoxSecondary from '@/components/ContactBoxSecondary.vue';
+import ContactBox from '@/components/ContactBox.vue';
 import Button from '@/components/GButton.vue';
 </script>
 
