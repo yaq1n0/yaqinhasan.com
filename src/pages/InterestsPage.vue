@@ -203,7 +203,7 @@
 import { ref, onMounted } from "vue";
 import CarouselLayout from '@/components/carousel/CarouselLayout.vue';
 import CarouselDetail from '@/components/carousel/CarouselDetail.vue';
-import { CarouselItem } from '@/components/carousel/useCarouselLogic';
+import { CarouselItem } from '@/components/carousel/types';
 
 // State for active interest
 const activeInterest = ref("custom-pcs");

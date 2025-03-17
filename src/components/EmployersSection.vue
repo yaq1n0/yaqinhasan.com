@@ -40,7 +40,7 @@
       />
     </div>
 
-    <ContactBoxPrimary />
+    <ContactBox />
   </CollapsibleSection>
 
   <!-- For Employers Section (Mobile) -->
@@ -85,7 +85,7 @@
       />
     </div>
 
-    <ContactBoxPrimary />
+    <ContactBox />
   </div>
 </template>
 
@@ -93,7 +93,7 @@
 import { ref } from 'vue';
 import CollapsibleSection from '@/components/CollapsibleSection.vue';
 import Button from '@/components/GButton.vue';
-import ContactBoxPrimary from '@/components/ContactBoxPrimary.vue';
+import ContactBox from '@/components/ContactBox.vue';
 
 const isOpen = ref(true);
 </script>

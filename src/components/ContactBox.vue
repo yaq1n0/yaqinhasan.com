@@ -1,6 +1,7 @@
 <template>
   <div class="contact-box">
     <Button 
+      v-if="showItem('cv')"
       label="CV" 
       to="/contact" 
       icon="file-alt" 
@@ -11,6 +12,7 @@
       background="transparent"
     />
     <Button 
+      v-if="showItem('linkedin')"
       label="LinkedIn" 
       href="https://www.linkedin.com/in/yaqinhasan" 
       icon="linkedin" 
@@ -22,6 +24,7 @@
       background="transparent"
     />
     <Button 
+      v-if="showItem('email')"
       label="Email" 
       href="mailto:redacted@example.com" 
       icon="envelope" 
@@ -32,6 +35,7 @@
       background="transparent"
     />
     <Button 
+      v-if="showItem('github')"
       label="GitHub" 
       href="https://github.com/yaq1n0" 
       icon="github" 
@@ -47,6 +51,14 @@
 
 <script setup lang="ts">
 import Button from '@/components/GButton.vue';
+
+type ContactItem = "cv" | "linkedin" | "email" | "github";
+const props = defineProps<{
+  items?: ContactItem[];
+}>();
+
+const showItem = (item: ContactItem) => props.items ? props.items.includes(item) : true;
+
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 <template>
   <CarouselLayout 
     title="Stuff About Me" 
-    :items="sectionItems"
+    :items="aboutItems"
     :initial-item-id="activeSection"
     minimal
     :scroll-speed="40"
@@ -509,6 +509,17 @@ import CarouselDetail from '@/components/carousel/CarouselDetail.vue';
 const activeYear = ref("year3");
 const activeSection = ref("skills");
 
+// About items for the carousel
+const aboutItems = [
+  {
+    id: "skills",   
+    label: "Skills",
+  }, 
+  {
+    id: "modules",
+    label: "Degree Modules",
+  },
+]
 </script>
 
 <style lang="scss" scoped>
