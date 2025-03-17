@@ -1,67 +1,19 @@
 <template>
-  <div class="projects-page">
-    <section class="page-header">
-      <h1>My Projects</h1>
-    </section>
-
-    <!-- Navigation Shortcuts -->
-    <details class="collapsible" id="page-shortcuts" open>
-      <summary class="header">Projects List</summary>
-      <div class="groups">
-        <div class="group">
-          <h3 class="title">WIP/Current Projects</h3>
-          <div class="links">
-            <a
-              href="#website"
-              @click.prevent="activeProject = 'website'"
-              class="link"
-              >yaqinhasan.com</a
-            >
-            <a
-              href="#floppy"
-              @click.prevent="activeProject = 'floppy'"
-              class="link"
-              >flopPy</a
-            >
-            <a
-              href="#robocopy"
-              @click.prevent="activeProject = 'robocopy'"
-              class="link"
-              >RoboCopyGUI</a
-            >
-            <a
-              href="#tracker"
-              @click.prevent="activeProject = 'tracker'"
-              class="link"
-              >Simple [REDACTED] Tracker</a
-            >
-          </div>
-        </div>
-        <div class="group">
-          <h3 class="title">Completed/Archived Projects</h3>
-          <div class="links">
-            <a
-              href="#thympi"
-              @click.prevent="activeProject = 'thympi'"
-              class="link"
-              >ThymPi - Final Year Project</a
-            >
-            <a href="#stql" @click.prevent="activeProject = 'stql'" class="link"
-              >STQL - Haskell Interpreter</a
-            >
-            <a href="#segp" @click.prevent="activeProject = 'segp'" class="link"
-              >Software Eng. Group Project</a
-            >
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <!-- Project Content -->
-    <div class="project-content">
+  <CarouselLayout 
+    title="My Projects" 
+    :items="projectItems"
+    :initial-item-id="activeProject"
+    minimal
+    :scroll-speed="40"
+  >
+    <template #default="{ activeItem }">
       <!-- Website Project -->
-      <div v-show="activeProject === 'website'">
-        <ProjectCard :project="projects.website">
+      <div v-show="activeItem.id === 'website'">
+        <CarouselDetail 
+          :title="projects.website.title"
+          :summary="projects.website.summary"
+          :show-dev-content="projects.website.showDevContent"
+        >
           <p>
             I wanted a personal portfolio website to showcase and document my
             projects, most developers have one so I asked myself "how hard could
@@ -102,12 +54,15 @@
               <li>Contain my contact info and a copy of my CV</li>
             </ul>
           </template>
-        </ProjectCard>
+        </CarouselDetail>
       </div>
 
       <!-- flopPy Project -->
-      <div v-show="activeProject === 'floppy'">
-        <ProjectCard :project="projects.floppy">
+      <div v-show="activeItem.id === 'floppy'">
+        <CarouselDetail 
+          :title="projects.floppy.title"
+          :summary="projects.floppy.summary"
+        >
           <p>
             Inspired by Flutter's stateful widgets, I decided to make a Python
             library that incorporates statefulness into Tkinter. The name comes
@@ -115,12 +70,15 @@
             and Py being an obvious shorthand for Python.
           </p>
           <p>I will write more here once I have more implementation details.</p>
-        </ProjectCard>
+        </CarouselDetail>
       </div>
 
       <!-- RoboCopyGUI Project -->
-      <div v-show="activeProject === 'robocopy'">
-        <ProjectCard :project="projects.robocopy">
+      <div v-show="activeItem.id === 'robocopy'">
+        <CarouselDetail 
+          :title="projects.robocopy.title"
+          :summary="projects.robocopy.summary"
+        >
           <p>
             I couldn't find a lightweight local file backup solution to backup
             my main Windows PC to my SMB NAS, so I decided to look around. I
@@ -147,12 +105,15 @@
             background. With the option to be manually run when needed and
             opened up to configure settings.
           </p>
-        </ProjectCard>
+        </CarouselDetail>
       </div>
 
       <!-- Tracker Project -->
-      <div v-show="activeProject === 'tracker'">
-        <ProjectCard :project="projects.tracker">
+      <div v-show="activeItem.id === 'tracker'">
+        <CarouselDetail 
+          :title="projects.tracker.title"
+          :summary="projects.tracker.summary"
+        >
           <p>
             I noticed a market gap for a certain kind of tracker app on the
             Google Play Store, I then decided to come up with a rough design for
@@ -160,12 +121,16 @@
             speculative at this point.
           </p>
           <p>I will write more here once I have more implementation details.</p>
-        </ProjectCard>
+        </CarouselDetail>
       </div>
 
       <!-- ThymPi Project -->
-      <div v-show="activeProject === 'thympi'">
-        <ProjectCard :project="projects.thympi">
+      <div v-show="activeItem.id === 'thympi'">
+        <CarouselDetail 
+          :title="projects.thympi.title"
+          :summary="projects.thympi.summary"
+          :show-dev-content="projects.thympi.showDevContent"
+        >
           <h4>Project Definition</h4>
           <p>
             The official title of my dissertation was "An Intelligent Approach
@@ -381,12 +346,15 @@
               though simple mathematical redundancy.
             </p>
           </template>
-        </ProjectCard>
+        </CarouselDetail>
       </div>
 
       <!-- STQL Project -->
-      <div v-show="activeProject === 'stql'">
-        <ProjectCard :project="projects.stql">
+      <div v-show="activeItem.id === 'stql'">
+        <CarouselDetail 
+          :title="projects.stql.title"
+          :summary="projects.stql.summary"
+        >
           <h4>Group Shenanigans</h4>
           <p>
             The coursework was meant to be done in a group of 3. I proposed that
@@ -428,12 +396,15 @@
             the interpreter complexity at the "cost" of requiring more effort to
             write the code in the Toy language.
           </p>
-        </ProjectCard>
+        </CarouselDetail>
       </div>
 
       <!-- SEGP Project -->
-      <div v-show="activeProject === 'segp'">
-        <ProjectCard :project="projects.segp">
+      <div v-show="activeItem.id === 'segp'">
+        <CarouselDetail 
+          :title="projects.segp.title"
+          :summary="projects.segp.summary"
+        >
           <p>
             The software product in question was a "runway redeclaration"
             application. Essentially, when there is an obstacle on the runway,
@@ -465,25 +436,17 @@
             backend functionality reached completion ahead of the frontend, I
             switched over to help integrate the frontend with the backend.
           </p>
-        </ProjectCard>
+        </CarouselDetail>
       </div>
-    </div>
-
-    <!-- Navigation Controls -->
-    <div class="navigation-controls">
-      <button @click="previousProject" class="nav-button prev">
-        <font-awesome-icon :icon="['fas', 'chevron-left']" />
-      </button>
-      <button @click="nextProject" class="nav-button next">
-        <font-awesome-icon :icon="['fas', 'chevron-right']" />
-      </button>
-    </div>
-  </div>
+    </template>
+  </CarouselLayout>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import ProjectCard from "@/components/ProjectCard.vue";
+import CarouselLayout from '@/components/carousel/CarouselLayout.vue';
+import CarouselDetail from '@/components/carousel/CarouselDetail.vue';
+import { CarouselItem } from '@/components/carousel/useCarouselLogic';
 
 // State for active project
 const activeProject = ref("website");
@@ -536,194 +499,61 @@ const projects = {
   },
 };
 
-// Navigation functions
-const projectOrder = [
-  "website",
-  "floppy",
-  "robocopy",
-  "tracker",
-  "thympi",
-  "stql",
-  "segp",
+// Project items for the carousel
+const projectItems: CarouselItem[] = [
+  { id: "website", label: "This Website" },
+  { id: "floppy", label: "flopPy" },
+  { id: "robocopy", label: "RoboCopyGUI" },
+  { id: "tracker", label: "Tracker App" },
+  { id: "thympi", label: "ThymPi" },
+  { id: "segp", label: "SEGP" },
+  { id: "stql", label: "STQL" }
 ];
-
-const nextProject = () => {
-  const currentIndex = projectOrder.indexOf(activeProject.value);
-  const nextIndex = (currentIndex + 1) % projectOrder.length;
-  activeProject.value = projectOrder[nextIndex];
-};
-
-const previousProject = () => {
-  const currentIndex = projectOrder.indexOf(activeProject.value);
-  const prevIndex =
-    (currentIndex - 1 + projectOrder.length) % projectOrder.length;
-  activeProject.value = projectOrder[prevIndex];
-};
 
 // Initialize with URL hash if present
 onMounted(() => {
   const hash = window.location.hash.substring(1);
-  if (hash && projectOrder.includes(hash)) {
+  if (hash && projectItems.some(item => item.id === hash)) {
     activeProject.value = hash;
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.projects-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: map.get($spacing, "xl");
-  position: relative;
-
-  @media (max-width: map.get($breakpoints, "md")) {
-    padding: map.get($spacing, "lg");
-  }
-
-  @media (max-width: map.get($breakpoints, "sm")) {
-    padding: map.get($spacing, "md");
-  }
-}
-
-.page-header {
-  margin-bottom: map.get($spacing, "xl");
-  text-align: center;
-
-  h1 {
-    font-size: map.get($font-sizes, "3xl");
-    color: var(--color-accent);
-    margin-bottom: map.get($spacing, "sm");
-  }
-}
-
-.collapsible {
-  background-color: var(--color-bg-tertiary);
-  border-radius: map.get($border-radius, "lg");
-  margin: map.get($spacing, "md") 0;
-  padding: map.get($spacing, "lg");
-
-  .header {
-    background-color: var(--color-bg-tertiary);
-    padding: map.get($spacing, "md");
-    margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")}
-      map.get($spacing, "md") -#{map.get($spacing, "lg")};
-    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0
-      0;
-    font-size: map.get($font-sizes, "xl");
-    font-weight: 600;
-    cursor: pointer;
-
-    &::-webkit-details-marker {
-      display: none;
-    }
-
-    &::before {
-      content: "▼";
-      margin-right: map.get($spacing, "sm");
-    }
-  }
-
-  &[open] .header::before {
-    content: "▼";
-  }
-
-  &:not([open]) .header::before {
-    content: "►";
-  }
-}
-
-.groups {
+.keyword-container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: map.get($spacing, "lg");
-  margin-top: map.get($spacing, "md");
+  gap: map.get($spacing, "sm");
+  margin-bottom: map.get($spacing, "lg");
 
-  .group {
-    flex: 1;
-    min-width: 250px;
-    background-color: var(--color-bg-secondary);
-    border-radius: map.get($border-radius, "md");
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-
-    .title {
-      background-color: var(--color-accent-translucent);
-      padding: map.get($spacing, "md");
-      margin: 0;
-      font-size: map.get($font-sizes, "lg");
-      color: var(--color-accent);
-      text-align: center;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .links {
-      display: flex;
-      flex-direction: column;
-      padding: map.get($spacing, "md");
-      gap: map.get($spacing, "sm");
-
-      .link {
-        background-color: var(--color-accent-translucent);
-        padding: map.get($spacing, "xs") map.get($spacing, "md");
-        border-radius: map.get($border-radius, "md");
-        transition: all 0.2s ease;
-        text-align: center;
-
-        &:hover {
-          transform: translateY(-2px);
-          background-color: var(--color-accent-light);
-          color: var(--color-bg-primary);
-        }
-      }
-    }
+  .keyword {
+    background-color: var(--color-accent-translucent);
+    padding: map.get($spacing, "xs") map.get($spacing, "sm");
+    border-radius: map.get($border-radius, "sm");
+    font-size: map.get($font-sizes, "sm");
+    white-space: nowrap;
   }
 }
 
-.project-content {
-  margin-top: map.get($spacing, "xl");
-  animation: fadeIn 0.5s ease;
-}
-
-.navigation-controls {
-  position: fixed;
-  top: 50%;
-  width: 100%;
-  left: 0;
-  transform: translateY(-50%);
+.link-container {
   display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 10;
+  flex-wrap: wrap;
+  gap: map.get($spacing, "md");
+  margin: map.get($spacing, "md") 0;
 
-  .nav-button {
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text-primary);
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
+  .link {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    gap: map.get($spacing, "xs");
+    background-color: var(--color-accent-translucent);
+    padding: map.get($spacing, "xs") map.get($spacing, "md");
+    border-radius: map.get($border-radius, "md");
     transition: all 0.2s ease;
-    pointer-events: auto;
-    opacity: 0.7;
-    margin: 0 map.get($spacing, "md");
 
     &:hover {
-      opacity: 1;
-      background-color: var(--color-accent);
+      transform: translateY(-2px);
+      background-color: var(--color-accent-light);
       color: var(--color-bg-primary);
-    }
-
-    &.prev {
-      margin-left: map.get($spacing, "lg");
-    }
-
-    &.next {
-      margin-right: map.get($spacing, "lg");
     }
   }
 }
@@ -739,19 +569,63 @@ onMounted(() => {
   }
 }
 
-@media (max-width: map.get($breakpoints, "md")) {
-  .navigation-controls {
-    .nav-button {
-      width: 40px;
-      height: 40px;
-
-      &.prev {
-        margin-left: map.get($spacing, "sm");
+.projects-picker {
+  :deep(.groups) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: map.get($spacing, "xl");
+    
+    .group {
+      flex: 1;
+      min-width: 250px;
+      max-width: 48%;
+      
+      .title {
+        font-weight: 600;
+        color: var(--color-accent);
+        font-size: map.get($font-sizes, "md");
       }
-
-      &.next {
-        margin-right: map.get($spacing, "sm");
+      
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: map.get($spacing, "md");
+        
+        :deep(.btn) {
+          flex: 1 0 calc(50% - #{map.get($spacing, "md")});
+          min-width: 140px;
+          max-width: none;
+          height: 40px;
+          margin: map.get($spacing, "xs");
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
+    }
+  }
+  
+  @media (max-width: map.get($breakpoints, "md")) {
+    :deep(.groups) {
+      flex-direction: column;
+      
+      .group {
+        max-width: 100%;
+        margin-bottom: map.get($spacing, "md");
+        
+        .links :deep(.btn) {
+          flex: 1 0 calc(50% - #{map.get($spacing, "md")});
+        }
+      }
+    }
+  }
+  
+  @media (max-width: map.get($breakpoints, "sm")) {
+    :deep(.groups .group .links :deep(.btn)) {
+      flex: 1 0 calc(50% - #{map.get($spacing, "md")});
     }
   }
 }

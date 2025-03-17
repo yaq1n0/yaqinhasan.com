@@ -4,7 +4,10 @@
       <h1>404</h1>
       <h2>Page Not Found</h2>
       <p>The page you're looking for doesn't exist or has been moved.</p>
-      <router-link to="/" class="home-button">
+      <router-link
+        to="/"
+        class="home-button"
+      >
         <font-awesome-icon :icon="['fas', 'home']" />
         Return to Home
       </router-link>

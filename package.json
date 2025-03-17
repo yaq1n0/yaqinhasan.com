@@ -7,13 +7,16 @@
     "build": "vite build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint --ext .ts,.vue src/",
+    "lint:fix": "eslint --ext .ts,.vue --fix src/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "swiper": "^11.2.5",
     "vue": "^3.4.21",
     "vue-router": "^4.5.0"
   },
@@ -33,6 +36,7 @@
     "sass-loader": "^14.2.0",
     "typescript": "^5.4.5",
     "vite": "^6.2.2",
+    "vite-svg-loader": "^5.1.0",
     "vitest": "^3.0.8"
   }
 }

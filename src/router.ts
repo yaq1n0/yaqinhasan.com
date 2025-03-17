@@ -1,5 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
+import AboutPage from "@/pages/AboutPage.vue";
+import ProjectsPage from "@/pages/ProjectsPage.vue";
+import InterestsPage from "@/pages/InterestsPage.vue";
+import ContactPage from "@/pages/ContactPage.vue";
+import DebugPage from "@/pages/dev/DebugPage.vue";
+import DebugCarouselPage from "@/pages/dev/DebugCarouselPage.vue";
+import NotFoundPage from "@/pages/NotFoundPage.vue";
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,40 +18,37 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/about",
     name: "about",
-    component: () => import("@/pages/AboutPage.vue"),
+    component: AboutPage,
   },
   {
     path: "/projects",
     name: "projects",
-    component: () => import("@/pages/ProjectsPage.vue"),
+    component: ProjectsPage,
   },
   {
     path: "/interests",
     name: "interests",
-    component: () => import("@/pages/InterestsPage.vue"),
+    component: InterestsPage,
   },
   {
     path: "/contact",
     name: "contact",
-    component: () => import("@/pages/ContactPage.vue"),
-  },
-  {
-    path: "/technical",
-    name: "technical",
-    component: () => import("@/pages/dev/TechnicalPage.vue"),
+    component: ContactPage,
   },
   {
     path: "/debug",
     name: "debug",
-    component: () => import("@/pages/dev/DebugPage.vue"),
-    meta: {
-      hideInNav: true // Ensure it doesn't show up in navigation
-    }
+    component: DebugPage
+  },
+  {
+    path: "/debug-carousel",
+    name: "debug-carousel",
+    component: DebugCarouselPage
   },
   {
     path: "/:pathMatch(.*)*",
     name: "not-found",
-    component: () => import("@/pages/NotFoundPage.vue"),
+    component: NotFoundPage,
   },
 ];
 

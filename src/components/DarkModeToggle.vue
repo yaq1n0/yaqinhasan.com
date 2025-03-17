@@ -2,8 +2,8 @@
   <button
     class="theme-toggle"
     :class="{ 'theme-toggle--dark': isDark }"
-    @click="toggleTheme"
     aria-label="Toggle dark mode"
+    @click="toggleTheme"
   >
     <div class="theme-toggle__container">
       <!-- Sun -->
@@ -16,7 +16,11 @@
       </div>
       <!-- Stars -->
       <div class="theme-toggle__stars">
-        <div class="star" v-for="n in 3" :key="n"></div>
+        <div
+          v-for="n in 3"
+          :key="n"
+          class="star"
+        />
       </div>
     </div>
   </button>

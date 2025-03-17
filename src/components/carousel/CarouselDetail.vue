@@ -3,29 +3,34 @@
     <div class="detail-header">
       <h2>{{ title }}</h2>
       <div class="actions">
-        <slot name="actions"></slot>
+        <slot name="actions" />
       </div>
     </div>
 
-    <p v-if="summary" class="summary">{{ summary }}</p>
+    <p
+      v-if="summary"
+      class="summary"
+    >
+      {{ summary }}
+    </p>
 
     <div class="detail-content">
-      <slot></slot>
+      <slot />
     </div>
 
-    <div v-if="showDevContent" class="dev-content show-dev-only">
-      <div class="dev-content-header">
-        <font-awesome-icon :icon="['fas', 'code']" class="dev-icon" />
-        <h4>Developer Content</h4>
-      </div>
-      <div class="dev-content-body">
-        <slot name="dev-content"></slot>
-      </div>
-    </div>
+    <DevContent
+      v-if="showDevContent"
+      title="Developer Content"
+      :show="true"
+    >
+      <slot name="dev-content" />
+    </DevContent>
   </div>
 </template>
 
 <script setup lang="ts">
+import DevContent from '@/components/DevContent.vue';
+
 defineProps<{
   title: string;
   summary?: string;
@@ -42,6 +47,9 @@ defineProps<{
   animation: fadeIn 0.5s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   .detail-header {
     display: flex;
@@ -88,38 +96,8 @@ defineProps<{
 
   .detail-content {
     padding: map.get($spacing, "md") 0;
-  }
-
-  .dev-content {
-    margin-top: map.get($spacing, "xl");
-    border: 1px solid var(--color-dev-highlight);
-    border-radius: map.get($border-radius, "md");
-    overflow: hidden;
-    transition: all 0.3s ease;
-    
-    .dev-content-header {
-      display: flex;
-      align-items: center;
-      gap: map.get($spacing, "md");
-      background-color: var(--color-bg-secondary);
-      padding: map.get($spacing, "md");
-      border-bottom: 1px solid var(--color-dev-highlight);
-      
-      .dev-icon {
-        color: var(--color-dev-highlight);
-        font-size: 1.2rem;
-      }
-      
-      h4 {
-        margin: 0;
-        color: var(--color-dev-highlight);
-        font-size: map.get($font-sizes, "lg");
-      }
-    }
-    
-    .dev-content-body {
-      padding: map.get($spacing, "lg");
-    }
+    flex: 1;
+    overflow-y: auto;
   }
 
   h3 {

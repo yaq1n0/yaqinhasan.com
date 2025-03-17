@@ -1,15 +1,19 @@
 <template>
-  <nav class="nav-bar" ref="navBarRef" :class="{ 'menu-open': isMenuOpen }">
+  <nav
+    ref="navBarRef"
+    class="nav-bar"
+    :class="{ 'menu-open': isMenuOpen }"
+  >
     <div class="nav-content">
       <!-- Overflow Menu Button (Mobile Only) -->
       <Button 
         class="menu-toggle" 
-        @click="isMenuOpen = !isMenuOpen"
         icon="bars"
         border="none"
         background="transparent"
         label=""
         aria-label="Toggle menu"
+        @click="isMenuOpen = !isMenuOpen"
       />
 
       <!-- Left Section -->
@@ -20,7 +24,7 @@
           :label="item.label"
           :to="item.to"
           :icon="item.icon?.name || ''"
-          :iconPrefix="item.icon?.prefix || 'fas'"
+          :icon-prefix="item.icon?.prefix || 'fas'"
           border="none"
           background="transparent"
           :class="{ 'hide-on-mobile': item.displayPolicy === 'overflow' }"
@@ -35,8 +39,8 @@
           :label="item.label"
           :to="item.to"
           :icon="item.icon?.name || ''"
-          :iconPrefix="item.icon?.prefix || 'fas'"
-          :labelPos="item.icon?.position === 'right' ? 'left' : 'right'"
+          :icon-prefix="item.icon?.prefix || 'fas'"
+          :label-pos="item.icon?.position === 'right' ? 'left' : 'right'"
           border="none"
           background="transparent"
         />
@@ -46,14 +50,17 @@
     </div>
 
     <!-- Mobile Overflow Menu -->
-    <div v-if="isMenuOpen" class="overflow-menu">
+    <div
+      v-if="isMenuOpen"
+      class="overflow-menu"
+    >
       <Button
         v-for="item in overflowItems"
         :key="item.label"
         :label="item.label"
         :to="item.to"
         :icon="item.icon?.name || ''"
-        :iconPrefix="item.icon?.prefix || 'fas'"
+        :icon-prefix="item.icon?.prefix || 'fas'"
         border="none"
         background="transparent"
         class="overflow-item"
@@ -62,7 +69,10 @@
     </div>
 
     <!-- Site Banner (Dev Joke) - Only visible in dev mode -->
-    <div v-if="isDevMode" class="dev-banner">
+    <div
+      v-if="isDevMode"
+      class="dev-banner"
+    >
       <p>
         "All programming languages are just wrappers for assembly" - Yaqin
         (2024)
@@ -73,10 +83,10 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import type { NavBarStructure } from "@/data/navbar";
-import Button from "./Button.vue";
-import DarkModeToggle from "./DarkModeToggle.vue";
-import DevModeToggle from "./DevModeToggle.vue";
+import type { NavBarStructure } from "@/components/navbar/navbar";
+import Button from "@/components/GButton.vue";
+import DarkModeToggle from "@/components/DarkModeToggle.vue";
+import DevModeToggle from "@/components/DevModeToggle.vue";
 
 const navBarRef = ref<HTMLElement | null>(null);
 const isMenuOpen = ref(false);
@@ -190,8 +200,8 @@ const structure: NavBarStructure = {
       displayPolicy: "always-show",
     },
     {
-      label: "site_info",
-      to: "/technical",
+      label: "debug",
+      to: "/debug",
       icon: { name: "info-circle" },
       displayPolicy: "dev-only",
     },
