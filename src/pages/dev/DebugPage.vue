@@ -220,17 +220,76 @@
         </div>
       </div>
     </section>
+
+    <!-- Carousel Components -->
+    <section>
+      <h2>Carousel Components</h2>
+      
+      <div class="component-variant wide">
+        <h3>Carousel Layout with Picker and Detail</h3>
+        <div class="carousel-demo">
+          <CarouselLayout 
+            title="Demo Carousel" 
+            pickerTitle="Select an Item" 
+            :items="carouselItems.map(item => item.id)"
+            v-model:activeItem="activeCarouselItem"
+          >
+            <template #picker>
+              <CarouselPicker 
+                :groups="carouselGroups" 
+                v-model="activeCarouselItem"
+              />
+            </template>
+            
+            <template #content>
+              <div v-for="item in carouselItems" :key="item.id" v-show="activeCarouselItem === item.id">
+                <CarouselDetail 
+                  :title="item.title" 
+                  :summary="item.summary"
+                  :showDevContent="item.showDevContent"
+                >
+                  <template #actions>
+                    <Button 
+                      v-if="item.githubUrl"
+                      :href="item.githubUrl"
+                      label="Source Code"
+                      icon="github"
+                      iconPrefix="fab"
+                    />
+                    <Button 
+                      v-if="item.demoUrl"
+                      :href="item.demoUrl"
+                      label="Live Demo"
+                      icon="globe"
+                    />
+                  </template>
+                  
+                  <div v-html="item.content"></div>
+                  
+                  <template #dev-content v-if="item.devContent">
+                    <div v-html="item.devContent"></div>
+                  </template>
+                </CarouselDetail>
+              </div>
+            </template>
+          </CarouselLayout>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, nextTick } from 'vue';
+import { onMounted, nextTick, ref } from 'vue';
 import Button from '@/components/Button.vue';
 import CollapsibleSection from '@/components/CollapsibleSection.vue';
 import DarkModeToggle from '@/components/DarkModeToggle.vue';
 import DevModeToggle from '@/components/DevModeToggle.vue';
 import NavBar from '@/components/NavBar.vue';
 import ProjectCard from '@/components/ProjectCard.vue';
+import CarouselLayout from '@/components/CarouselLayout.vue';
+import CarouselPicker from '@/components/CarouselPicker.vue';
+import CarouselDetail from '@/components/CarouselDetail.vue';
 
 // Sample projects for ProjectCard component
 const projects = {
@@ -254,6 +313,93 @@ const projects = {
     summary: 'This project demonstrates the extra-links slot'
   }
 }
+
+// Sample data for Carousel components
+const activeCarouselItem = ref('item1');
+
+const carouselItems = [
+  {
+    id: 'item1',
+    title: 'First Project',
+    summary: 'This is the first project in our carousel',
+    githubUrl: 'https://github.com/username/project1',
+    demoUrl: 'https://example.com/demo1',
+    content: `
+      <h3>Project Overview</h3>
+      <p>This is a sample project to demonstrate the carousel components.</p>
+      <p>You can navigate between items using the picker or the arrow buttons.</p>
+      <h4>Features</h4>
+      <ul>
+        <li>Feature 1: Lorem ipsum dolor sit amet</li>
+        <li>Feature 2: Consectetur adipiscing elit</li>
+        <li>Feature 3: Sed do eiusmod tempor incididunt</li>
+      </ul>
+    `,
+    showDevContent: true,
+    devContent: `
+      <h4>Developer Notes</h4>
+      <p>These notes are only visible when dev mode is enabled.</p>
+      <pre>const code = "This is some example code for project 1";</pre>
+    `
+  },
+  {
+    id: 'item2',
+    title: 'Second Project',
+    summary: 'A more complex project with additional details',
+    githubUrl: 'https://github.com/username/project2',
+    content: `
+      <h3>Project Details</h3>
+      <p>This is the second project in our carousel demonstration.</p>
+      <p>It has different content to show how the carousel handles various items.</p>
+    `
+  },
+  {
+    id: 'item3',
+    title: 'Third Project',
+    summary: 'A project with minimal information',
+    demoUrl: 'https://example.com/demo3',
+    content: `
+      <p>This project has minimal content but still works perfectly in the carousel.</p>
+    `
+  },
+  {
+    id: 'item4',
+    title: 'Fourth Project',
+    summary: 'Another project with dev content',
+    content: `
+      <h3>Project Information</h3>
+      <p>This is the fourth project in our carousel.</p>
+      <p>It demonstrates how multiple items can be managed in the carousel.</p>
+    `,
+    showDevContent: true,
+    devContent: `
+      <h4>Technical Implementation</h4>
+      <p>This project uses the following technologies:</p>
+      <ul>
+        <li>Vue.js for the frontend</li>
+        <li>Node.js for the backend</li>
+        <li>MongoDB for the database</li>
+      </ul>
+    `
+  }
+];
+
+const carouselGroups = [
+  {
+    title: 'Group 1',
+    items: [
+      { id: 'item1', label: 'First Project' },
+      { id: 'item2', label: 'Second Project' }
+    ]
+  },
+  {
+    title: 'Group 2',
+    items: [
+      { id: 'item3', label: 'Third Project' },
+      { id: 'item4', label: 'Fourth Project' }
+    ]
+  }
+];
 
 </script>
 
@@ -347,6 +493,13 @@ const projects = {
         order: -1;
       }
     }
+  }
+
+  .carousel-demo {
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-top: 1rem;
   }
 }
 

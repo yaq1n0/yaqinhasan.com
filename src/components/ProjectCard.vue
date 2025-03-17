@@ -3,29 +3,39 @@
     <div class="project-header">
       <h3>{{ project.title }}</h3>
       <div class="links">
-        <a
+        <Button 
           v-if="project.githubUrl"
           :href="project.githubUrl"
-          target="_blank"
-          class="link"
-        >
-          <font-awesome-icon :icon="['fab', 'github']" /> Source Code (GitHub)
-        </a>
+          label="Source Code (GitHub)"
+          icon="github"
+          iconPrefix="fab"
+          shape="squircle"
+          border="thin"
+        />
         <slot name="extra-links"></slot>
       </div>
     </div>
 
     <p v-if="project.summary" class="summary">{{ project.summary }}</p>
 
-    <slot></slot>
+    <div class="project-content">
+      <slot></slot>
+    </div>
 
     <div v-if="project.showDevContent" class="dev-content show-dev-only">
-      <slot name="dev-content"></slot>
+      <div class="dev-content-header">
+        <font-awesome-icon :icon="['fas', 'code']" class="dev-icon" />
+        <h4>Developer Content</h4>
+      </div>
+      <div class="dev-content-body">
+        <slot name="dev-content"></slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import Button from './Button.vue';
 
 interface Project {
   title: string;
@@ -46,17 +56,23 @@ defineProps<{
   padding: map.get($spacing, "xl");
   margin-bottom: map.get($spacing, "xl");
   animation: fadeIn 0.5s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
   .project-header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: map.get($spacing, "lg");
     margin-bottom: map.get($spacing, "lg");
     padding-bottom: map.get($spacing, "md");
     border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+    margin: -#{map.get($spacing, "xl")} -#{map.get($spacing, "xl")} map.get($spacing, "lg") -#{map.get($spacing, "xl")};
+    padding: map.get($spacing, "lg") map.get($spacing, "xl");
+    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0 0;
 
     h3 {
       font-size: map.get($font-sizes, "xl");
@@ -76,29 +92,44 @@ defineProps<{
     text-align: center;
     margin-bottom: map.get($spacing, "lg");
     color: var(--color-accent-light);
+    padding: map.get($spacing, "md") 0;
+    border-bottom: 1px solid var(--color-border-light);
   }
 
-  .link {
-    display: inline-flex;
-    align-items: center;
-    gap: map.get($spacing, "xs");
-    background-color: var(--color-accent-translucent);
-    padding: map.get($spacing, "xs") map.get($spacing, "md");
-    border-radius: map.get($border-radius, "md");
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      background-color: var(--color-accent-light);
-      color: var(--color-bg-primary);
-    }
+  .project-content {
+    padding: map.get($spacing, "md") 0;
   }
 
   .dev-content {
     margin-top: map.get($spacing, "xl");
-    padding: map.get($spacing, "lg");
-    border: 2px solid var(--color-dev-highlight);
+    border: 1px solid var(--color-dev-highlight);
     border-radius: map.get($border-radius, "md");
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    .dev-content-header {
+      display: flex;
+      align-items: center;
+      gap: map.get($spacing, "md");
+      background-color: var(--color-bg-secondary);
+      padding: map.get($spacing, "md");
+      border-bottom: 1px solid var(--color-dev-highlight);
+      
+      .dev-icon {
+        color: var(--color-dev-highlight);
+        font-size: 1.2rem;
+      }
+      
+      h4 {
+        margin: 0;
+        color: var(--color-dev-highlight);
+        font-size: map.get($font-sizes, "lg");
+      }
+    }
+    
+    .dev-content-body {
+      padding: map.get($spacing, "lg");
+    }
   }
 
   h4 {
@@ -136,6 +167,14 @@ defineProps<{
 @media (max-width: map.get($breakpoints, "md")) {
   .project-card {
     padding: map.get($spacing, "lg");
+    
+    .project-header {
+      margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")} map.get($spacing, "lg") -#{map.get($spacing, "lg")};
+      padding: map.get($spacing, "md") map.get($spacing, "lg");
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
   }
 }
 </style>
