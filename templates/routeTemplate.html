@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yaqin Hasan</title>
+    <link rel="icon" href="/favicon.ico" />
+    <!-- This is a SSG copy of the main index.html -->
+    <!-- The main Vue app will correctly route to: {{ROUTE_PATH}} -->
+  </head>
+  <body>
+    <noscript>
+      <strong>
+        We're sorry but this site doesn't work properly without JavaScript
+        enabled. Please enable it to continue.
+      </strong>
+    </noscript>
+    <div id="app"></div>
+    <script type="module" src="/assets/main.js"></script>
+    <link rel="stylesheet" href="/assets/main.css" />
+    <script>
+      // Set initial route path
+      window.__INITIAL_ROUTE__ = "{{ROUTE_PATH}}";
+    </script>
+  </body>
+</html>

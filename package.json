@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "npm run build && npx serve dist",
+    "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -37,6 +38,7 @@
     "sass-loader": "^14.2.0",
     "typescript": "^5.4.5",
     "vite": "^6.2.2",
+    "vite-plugin-static-copy": "^2.3.1",
     "vitest": "^3.0.8"
   }
 }

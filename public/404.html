@@ -5,23 +5,21 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found | Yaqin Hasan</title>
-    <script>
-      (function handleRedirect() {
-        var path = window.location.pathname;
-        if (path.endsWith("404.html")) path = path.replace("/404.html", "");
-        sessionStorage.setItem(
-          "redirect",
-          path + (window.location.search || "") + (window.location.hash || "")
-        );
-        window.location.replace(window.location.origin + "/");
-      })();
-    </script>
+    <!-- This is a SSG copy for 404 page -->
   </head>
   <body>
-    <div>
-      <h1>404</h1>
-      <p>Page not found. Redirecting...</p>
-      <a href="/">Return to Home</a>
-    </div>
+    <noscript>
+      <strong>
+        We're sorry but this site doesn't work properly without JavaScript
+        enabled. Please enable it to continue.
+      </strong>
+    </noscript>
+    <div id="app"></div>
+    <script type="module" src="/assets/main.js"></script>
+    <link rel="stylesheet" href="/assets/main.css" />
+    <script>
+      // Show 404 page
+      window.__INITIAL_ROUTE__ = "/not-found";
+    </script>
   </body>
 </html>
