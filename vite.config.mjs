@@ -27,6 +27,16 @@ export default defineConfig({
       },
     },
   },
+  // Ensure all files in public folder are copied
+  publicDir: "public",
+  build: {
+    assetsInlineLimit: 0, // Disable asset inlining
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL("./index.html", import.meta.url)),
+      },
+    },
+  },
   test: {
     globals: true,
     environment: "happy-dom",

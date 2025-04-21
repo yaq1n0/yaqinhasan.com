@@ -4,19 +4,18 @@
       <h1>404</h1>
       <h2>Page Not Found</h2>
       <p>The page you're looking for doesn't exist or has been moved.</p>
-      <router-link
+      <GButton
+        label="Return to Home"
         to="/"
-        class="home-button"
-      >
-        <font-awesome-icon :icon="['fas', 'home']" />
-        Return to Home
-      </router-link>
+        icon="home"
+        icon-prefix="fas"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// No additional script needed for this page
+import GButton from '@/components/GButton.vue';
 </script>
 
 <style lang="scss" scoped>

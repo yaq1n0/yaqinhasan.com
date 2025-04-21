@@ -1,29 +1,21 @@
 # yaqinhasan.com
 
-## Project setup
+## Install dependencies
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm ci
 ```
 
-### Compiles and minifies for production
+### Run the vite dev server with HMR for dev
+```
+npm run dev
+```
+
+### Compile to dist for production
 ```
 npm run build
 ```
 
-### Run your unit tests
+### Compile to dist for prod and serves dist (mimic prod)
 ```
-npm run test:unit
+npm run serve
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
