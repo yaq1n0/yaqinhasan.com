@@ -21,4 +21,14 @@ const app = createApp(App);
 
 app.component("FontAwesomeIcon", FontAwesomeIcon);
 app.use(router);
-app.mount("#app");
+
+// Handle initial route for SSG pages
+if (window.__INITIAL_ROUTE__ && window.__INITIAL_ROUTE__ !== '/') {
+  // Wait for router to be ready before setting the route
+  router.isReady().then(() => {
+    router.push(window.__INITIAL_ROUTE__);
+    app.mount("#app");
+  });
+} else {
+  app.mount("#app");
+}

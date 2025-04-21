@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yaqin Hasan</title>
-    <!-- This is the main entry point -->
+    <link rel="icon" href="/favicon.ico" />
+    <!-- This is a SSG copy of the main index.html -->
+    <!-- The main Vue app will correctly route to: {{ROUTE_PATH}} -->
   </head>
   <body>
     <noscript>
@@ -15,10 +16,11 @@
       </strong>
     </noscript>
     <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/assets/main.js"></script>
+    <link rel="stylesheet" href="/assets/main.css" />
     <script>
-      // Root route
-      window.__INITIAL_ROUTE__ = "/";
+      // Set initial route path
+      window.__INITIAL_ROUTE__ = "{{ROUTE_PATH}}";
     </script>
   </body>
 </html>
