@@ -4,12 +4,7 @@
       <h1>404</h1>
       <h2>Page Not Found</h2>
       <p>The page you're looking for doesn't exist or has been moved.</p>
-      <GButton
-        label="Return to Home"
-        to="/"
-        icon="home"
-        icon-prefix="fas"
-      />
+      <g-button label="Return to Home" to="/" icon="home" icon-prefix="fas" />
     </div>
   </div>
 </template>

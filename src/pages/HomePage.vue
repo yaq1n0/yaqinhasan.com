@@ -1,54 +1,38 @@
 <template>
   <div class="home">
     <!-- For Employers Section -->
-    <EmployersSection />
+    <employers-section />
 
     <!-- Welcome Section -->
     <div class="welcome">
       <div class="logo">
-        <img
-          src="/logo-no-background.svg"
-          alt="Yaqin Hasan Logo"
-        >
+        <img src="/logo-no-background.svg" alt="Yaqin Hasan Logo" />
       </div>
       <p class="text">
         Yet
-        <br>another <br>developer <br>portfolio <br>site :D
+        <br />another <br />developer <br />portfolio <br />site :D
       </p>
     </div>
 
     <p class="top-paragraph">
-      Computer Science graduate from the University of Southampton, passionate
-      about creating elegant solutions to complex problems. Currently developing
+      Computer Science graduate from the University of Southampton, passionate about creating elegant solutions to complex problems. Currently developing
       Kinabase at Cambridge Kinetics.
     </p>
 
     <!-- "For Developers" section - Only visible in dev mode -->
-    <CollapsibleSection
-      v-model="devModeOpen"
-      title="for_developers"
-      class="show-dev-only"
-    >
-      <p
-        class="top-paragraph"
-        style="font-weight: 600"
-      >
-        I see you like to hit random toggles..
+    <collapsible-section v-model="devModeOpen" title="for_developers" class="show-dev-only">
+      <p class="top-paragraph" style="font-weight: 600">I see you like to hit random toggles..</p>
+
+      <p class="top-paragraph">
+        You have enabled "developer mode" on this site, which basically means that you have access to more content than is shown by default. You can turn this
+        off by hitting that toggle button again. Additional content will be in the vivid purple you can see here.
       </p>
 
       <p class="top-paragraph">
-        You have enabled "developer mode" on this site, which basically means
-        that you have access to more content than is shown by default. You can
-        turn this off by hitting that toggle button again. Additional content
-        will be in the vivid purple you can see here.
+        I added this feature because I wanted the site to be trimmed down for a general audience by default, but also be technically comprehensive for those who
+        can appreciate it.
       </p>
-
-      <p class="top-paragraph">
-        I added this feature because I wanted the site to be trimmed down for a
-        general audience by default, but also be technically comprehensive for
-        those who can appreciate it.
-      </p>
-    </CollapsibleSection>
+    </collapsible-section>
   </div>
 </template>
 

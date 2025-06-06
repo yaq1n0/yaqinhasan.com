@@ -6,18 +6,12 @@ export function useDarkMode() {
   };
 
   // Get system preference as default value
-  const systemPrefersDark = window.matchMedia(
-    "(prefers-color-scheme: dark)",
-  ).matches;
+  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  const { state: isDark, toggleState: toggleDarkMode } = useBooleanState(
-    "theme",
-    applyDarkMode,
-    {
-      storage: localStorage,
-      defaultValue: systemPrefersDark,
-    },
-  );
+  const { state: isDark, toggleState: toggleDarkMode } = useBooleanState("theme", applyDarkMode, {
+    storage: localStorage,
+    defaultValue: systemPrefersDark
+  });
 
   return { isDark, toggleDarkMode };
 }

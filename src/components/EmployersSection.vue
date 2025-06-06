@@ -1,98 +1,38 @@
 <template>
-  <CollapsibleSection
-    v-model="isOpen"
-    title="For Employers!"
-    class="show-landscape-only"
-  >
-    <p class="top-paragraph">
-      If you got here from a job application I made, here are some things you
-      might be looking for.
-    </p>
+  <collapsible-section v-model="isOpen" title="For Employers!" class="show-landscape-only">
+    <p class="top-paragraph">If you got here from a job application I made, here are some things you might be looking for.</p>
 
     <div class="text-box">
-      <Button
-        label="Skills List"
-        to="/about"
-        icon="list-check"
-        shape="rounded"
-        border="thin"
-      />
-      <Button
-        label="Modules List"
-        to="/about"
-        icon="book"
-        shape="rounded"
-        border="thin"
-      />
-      <Button
-        label="Projects List"
-        to="/projects"
-        icon="code"
-        shape="rounded"
-        border="thin"
-      />
-      <Button
-        label="Interests List"
-        to="/interests"
-        icon="heart"
-        shape="rounded"
-        border="thin"
-      />
+      <g-button label="Skills List" to="/about" icon="list-check" shape="rounded" border="thin" />
+      <g-button label="Modules List" to="/about" icon="book" shape="rounded" border="thin" />
+      <g-button label="Projects List" to="/projects" icon="code" shape="rounded" border="thin" />
+      <g-button label="Interests List" to="/interests" icon="heart" shape="rounded" border="thin" />
     </div>
 
-    <ContactBox />
-  </CollapsibleSection>
+    <contact-box />
+  </collapsible-section>
 
   <!-- For Employers Section (Mobile) -->
   <div class="content-box show-portrait-only">
-    <p class="top-header">
-      For Employers!
-    </p>
+    <p class="top-header">For Employers!</p>
 
-    <p class="top-paragraph">
-      If you got here from a job application I made, here are some things you
-      might be looking for.
-    </p>
+    <p class="top-paragraph">If you got here from a job application I made, here are some things you might be looking for.</p>
 
     <div class="text-box">
-      <Button
-        label="Skills List"
-        to="/about"
-        icon="list-check"
-        shape="rounded"
-        border="thin"
-      />
-      <Button
-        label="Modules List"
-        to="/about"
-        icon="book"
-        shape="rounded"
-        border="thin"
-      />
-      <Button
-        label="Projects List"
-        to="/projects"
-        icon="code"
-        shape="rounded"
-        border="thin"
-      />
-      <Button
-        label="Interests List"
-        to="/interests"
-        icon="heart"
-        shape="rounded"
-        border="thin"
-      />
+      <g-button label="Skills List" to="/about" icon="list-check" shape="rounded" border="thin" />
+      <g-button label="Modules List" to="/about" icon="book" shape="rounded" border="thin" />
+      <g-button label="Projects List" to="/projects" icon="code" shape="rounded" border="thin" />
+      <g-button label="Interests List" to="/interests" icon="heart" shape="rounded" border="thin" />
     </div>
 
-    <ContactBox />
+    <contact-box />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
-import Button from "@/components/GButton.vue";
+import GButton from "@/components/GButton.vue";
 import ContactBox from "@/components/ContactBox.vue";
 
 const isOpen = ref(true);

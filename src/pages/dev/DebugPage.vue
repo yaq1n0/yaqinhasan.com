@@ -1,15 +1,10 @@
 <template>
   <div class="debug-page">
     <h1>Component Debug Page</h1>
-    <p class="description">
-      This page demonstrates all components in isolation with their variants.
-    </p>
+    <p class="description">This page demonstrates all components in isolation with their variants.</p>
 
     <div class="debug-links">
-      <router-link
-        to="/debug-carousel"
-        class="debug-link"
-      >
+      <router-link to="/debug-carousel" class="debug-link">
         <font-awesome-icon :icon="['fas', 'sliders-h']" />
         Carousel Debug Page
       </router-link>
@@ -23,168 +18,103 @@
         <!-- Default Button -->
         <div class="component-variant">
           <h3>Default Button</h3>
-          <Button label="Default Button" />
+          <g-button label="Default Button" />
         </div>
 
         <!-- Default Button with Icon -->
         <div class="component-variant">
           <h3>Default Button with Icon</h3>
-          <Button
-            label="Default Button"
-            icon="close"
-          />
+          <g-button label="Default Button" icon="close" />
         </div>
 
         <!-- Button with Icon -->
         <div class="component-variant">
           <h3>Label Right + Icon</h3>
-          <Button
-            label="Label Right"
-            icon="arrow-right"
-            label-pos="right"
-          />
+          <g-button label="Label Right" icon="arrow-right" label-pos="right" />
         </div>
 
         <!-- Button with Icon Left -->
         <div class="component-variant">
           <h3>Label Left + Icon</h3>
-          <Button
-            label="Label Left"
-            icon="arrow-left"
-            label-pos="left"
-          />
+          <g-button label="Label Left" icon="arrow-left" label-pos="left" />
         </div>
 
         <!-- Button with Icon Above -->
         <div class="component-variant">
           <h3>Label Above + Icon</h3>
-          <Button
-            label="Label Above"
-            icon="arrow-up"
-            label-pos="above"
-          />
+          <g-button label="Label Above" icon="arrow-up" label-pos="above" />
         </div>
 
         <!-- Button with Icon Below -->
         <div class="component-variant">
           <h3>Label Below + Icon</h3>
-          <Button
-            label="Label Below"
-            icon="arrow-down"
-            label-pos="below"
-          />
+          <g-button label="Label Below" icon="arrow-down" label-pos="below" />
         </div>
 
         <!-- Button Shapes -->
         <div class="component-variant">
           <h3>Shape: Rounded</h3>
-          <Button
-            label="Rounded Button"
-            shape="rounded"
-          />
+          <g-button label="Rounded Button" shape="rounded" />
         </div>
 
         <div class="component-variant">
           <h3>Shape: Squircle (Default)</h3>
-          <Button
-            label="Squircle Button"
-            shape="squircle"
-          />
+          <g-button label="Squircle Button" shape="squircle" />
         </div>
 
         <!-- Button Borders -->
         <div class="component-variant">
           <h3>Border: Thin</h3>
-          <Button
-            label="Thin Border"
-            border="thin"
-          />
+          <g-button label="Thin Border" border="thin" />
         </div>
 
         <!-- Icon Sizes -->
         <div class="component-variant">
           <h3>Icon Size: Small (Default)</h3>
-          <Button
-            label="Small Icon"
-            icon="star"
-            icon-size="sm"
-          />
+          <g-button label="Small Icon" icon="star" icon-size="sm" />
         </div>
 
         <div class="component-variant">
           <h3>Icon Size: Medium</h3>
-          <Button
-            label="Medium Icon"
-            icon="star"
-            icon-size="md"
-          />
+          <g-button label="Medium Icon" icon="star" icon-size="md" />
         </div>
 
         <div class="component-variant">
           <h3>Icon Size: Large</h3>
-          <Button
-            label="Large Icon"
-            icon="star"
-            icon-size="lg"
-          />
+          <g-button label="Large Icon" icon="star" icon-size="lg" />
         </div>
 
         <!-- Icon Size with Different Label Positions -->
         <div class="component-variant">
           <h3>Large Icon + Label Below</h3>
-          <Button
-            label="Label Below"
-            icon="star"
-            icon-size="lg"
-            label-pos="below"
-            background="transparent"
-            border="none"
-          />
+          <g-button label="Label Below" icon="star" icon-size="lg" label-pos="below" background="transparent" border="none" />
         </div>
 
         <div class="component-variant">
           <h3>Border: Thick</h3>
-          <Button
-            label="Thick Border"
-            border="thick"
-          />
+          <g-button label="Thick Border" border="thick" />
         </div>
 
         <div class="component-variant">
           <h3>Border: None</h3>
-          <Button
-            label="No Border"
-            border="none"
-          />
+          <g-button label="No Border" border="none" />
         </div>
 
         <!-- Button as Link -->
         <div class="component-variant">
           <h3>Router Link (to="/")</h3>
-          <Button
-            label="Go to Home"
-            to="/"
-            icon="home"
-          />
+          <g-button label="Go to Home" to="/" icon="home" />
         </div>
 
         <div class="component-variant">
           <h3>External Link (href)</h3>
-          <Button
-            label="GitHub"
-            href="https://github.com"
-            icon="code-branch"
-            icon-prefix="fab"
-          />
+          <g-button label="GitHub" href="https://github.com" icon="code-branch" icon-prefix="fab" />
         </div>
 
         <!-- Custom Background -->
         <div class="component-variant">
           <h3>Custom Background</h3>
-          <Button
-            label="Custom Color"
-            background="rgba(255, 0, 0, 0.3)"
-          />
+          <g-button label="Custom Color" background="rgba(255, 0, 0, 0.3)" />
         </div>
       </div>
     </section>
@@ -195,26 +125,17 @@
 
       <div class="component-grid">
         <div class="wide">
-          <CollapsibleSection
-            title="Closed by default"
-            :model-value="false"
-          >
-            <p>
-              This is the content of the collapsible section. It can contain any
-              content.
-            </p>
+          <collapsible-section title="Closed by default" :model-value="false">
+            <p>This is the content of the collapsible section. It can contain any content.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </CollapsibleSection>
+          </collapsible-section>
         </div>
 
         <div class="wide">
-          <CollapsibleSection
-            title="Open by default"
-            :model-value="true"
-          >
+          <collapsible-section title="Open by default" :model-value="true">
             <p>This section is initially open.</p>
             <p>You can toggle it by clicking on the header.</p>
-          </CollapsibleSection>
+          </collapsible-section>
         </div>
       </div>
     </section>
@@ -226,10 +147,8 @@
       <div class="component-grid">
         <div class="component-variant">
           <h3>Dark Mode Toggle</h3>
-          <DarkModeToggle />
-          <p class="mt-4">
-            Current theme is stored in localStorage
-          </p>
+          <dark-mode-toggle />
+          <p class="mt-4">Current theme is stored in localStorage</p>
         </div>
       </div>
     </section>
@@ -241,10 +160,8 @@
       <div class="component-grid">
         <div class="component-variant">
           <h3>Dev Mode Toggle</h3>
-          <DevModeToggle />
-          <p class="mt-4">
-            Toggle to show developer-only content
-          </p>
+          <dev-mode-toggle />
+          <p class="mt-4">Toggle to show developer-only content</p>
           <div class="show-dev-only mt-4 p-4 border rounded">
             <p>This content is only visible in dev mode</p>
           </div>
@@ -260,22 +177,17 @@
         <div class="component-variant wide">
           <h3>Navigation Bar (Normal)</h3>
           <div class="nav-container">
-            <NavBar />
+            <nav-bar />
           </div>
-          <p class="mt-4">
-            Try toggling dev mode to see additional nav items
-          </p>
+          <p class="mt-4">Try toggling dev mode to see additional nav items</p>
         </div>
 
         <div class="component-variant wide narrow-demo-container">
           <h3>Navigation Bar (Narrow/Mobile View)</h3>
           <div class="nav-container narrow-demo">
-            <NavBar />
+            <nav-bar />
           </div>
-          <p class="mt-4">
-            This demonstrates how the navbar appears on mobile devices with the
-            overflow menu
-          </p>
+          <p class="mt-4">This demonstrates how the navbar appears on mobile devices with the overflow menu</p>
         </div>
       </div>
     </section>
@@ -283,7 +195,7 @@
 </template>
 
 <script setup lang="ts">
-import Button from "@/components/GButton.vue";
+import GButton from "@/components/GButton.vue";
 import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
 import DevModeToggle from "@/components/DevModeToggle.vue";

@@ -1,13 +1,7 @@
 <template>
-  <div
-    v-if="show"
-    class="dev-content show-dev-only"
-  >
+  <div v-if="show" class="dev-content show-dev-only">
     <div class="dev-content-header">
-      <font-awesome-icon
-        :icon="['fas', 'code']"
-        class="dev-icon"
-      />
+      <font-awesome-icon :icon="['fas', 'code']" class="dev-icon" />
       <h4>{{ title }}</h4>
     </div>
     <div class="dev-content-body">

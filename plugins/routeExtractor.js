@@ -12,9 +12,7 @@ export function extractRoutes() {
     const routerContent = fs.readFileSync(routerFilePath, "utf-8");
 
     // Find the routes array in the router file
-    const routeMatches = routerContent.match(
-      /const\s+routes\s*:\s*Array<RouteRecordRaw>\s*=\s*\[([\s\S]*?)\];/,
-    );
+    const routeMatches = routerContent.match(/const\s+routes\s*:\s*Array<RouteRecordRaw>\s*=\s*\[([\s\S]*?)\];/);
 
     if (!routeMatches || !routeMatches[1]) {
       console.warn("Could not find routes array in router.ts");

@@ -31,11 +31,7 @@
 }
 
 // Gradients
-@mixin gradient-text(
-  $direction: 45deg,
-  $start-color: map.get(map.get($colors, "primary"), "base"),
-  $end-color: map.get(map.get($colors, "primary"), "light")
-) {
+@mixin gradient-text($direction: 45deg, $start-color: map.get(map.get($colors, "primary"), "base"), $end-color: map.get(map.get($colors, "primary"), "light")) {
   background: linear-gradient($direction, $start-color, $end-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -45,11 +41,7 @@
 @mixin transition($properties...) {
   $result: ();
   @each $property in $properties {
-    $result: list.append(
-      $result,
-      $property map.get($transitions, "base") ease,
-      comma
-    );
+    $result: list.append($result, $property map.get($transitions, "base") ease, comma);
   }
   transition: $result;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="debug-carousel-page">
-    <CarouselLayout
+    <carousel-layout
       ref="carouselRef"
       title="Swiper Carousel Demo"
       :items="carouselItems"
@@ -10,14 +10,9 @@
     >
       <template #default="{ activeItem }">
         <!-- Item 1 -->
-        <div
-          v-show="activeItem.id === 'item1'"
-          class="carousel-content"
-        >
+        <div v-show="activeItem.id === 'item1'" class="carousel-content">
           <h2>Basic Content</h2>
-          <p>
-            This is a basic content slide demonstrating text in the carousel.
-          </p>
+          <p>This is a basic content slide demonstrating text in the carousel.</p>
           <ul>
             <li>Simple list item 1</li>
             <li>Simple list item 2</li>
@@ -26,42 +21,24 @@
         </div>
 
         <!-- Item 2 -->
-        <div
-          v-show="activeItem.id === 'item2'"
-          class="carousel-content"
-        >
+        <div v-show="activeItem.id === 'item2'" class="carousel-content">
           <h2>Rich Content</h2>
           <p>This slide demonstrates rich content with buttons and links.</p>
           <div class="button-row">
-            <button class="demo-button">
-              Demo Button
-            </button>
-            <a
-              href="#"
-              class="demo-link"
-            >Demo Link</a>
+            <button class="demo-button">Demo Button</button>
+            <a href="#" class="demo-link">Demo Link</a>
           </div>
         </div>
 
         <!-- Item 3 -->
-        <div
-          v-show="activeItem.id === 'item3'"
-          class="carousel-content"
-        >
+        <div v-show="activeItem.id === 'item3'" class="carousel-content">
           <h2>Media Content</h2>
           <p>This slide demonstrates media content.</p>
-          <img
-            src="https://via.placeholder.com/600x300"
-            alt="Placeholder"
-            class="demo-image"
-          >
+          <img src="https://via.placeholder.com/600x300" alt="Placeholder" class="demo-image" />
         </div>
 
         <!-- Item 4 -->
-        <div
-          v-show="activeItem.id === 'item4'"
-          class="carousel-content"
-        >
+        <div v-show="activeItem.id === 'item4'" class="carousel-content">
           <h2>Layout Example</h2>
           <div class="two-columns">
             <div class="column">
@@ -76,10 +53,7 @@
         </div>
 
         <!-- Item 5 -->
-        <div
-          v-show="activeItem.id === 'item5'"
-          class="carousel-content"
-        >
+        <div v-show="activeItem.id === 'item5'" class="carousel-content">
           <h2>Card Example</h2>
           <div class="demo-card">
             <h3>Card Title</h3>
@@ -87,7 +61,7 @@
           </div>
         </div>
       </template>
-    </CarouselLayout>
+    </carousel-layout>
   </div>
 </template>
 
@@ -106,7 +80,7 @@ const carouselItems: CarouselItem[] = [
   { id: "item2", label: "Rich Content" },
   { id: "item3", label: "Media Content" },
   { id: "item4", label: "Layout Example" },
-  { id: "item5", label: "Card Example" },
+  { id: "item5", label: "Card Example" }
 ];
 </script>
 

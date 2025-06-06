@@ -5,11 +5,8 @@
     </section>
 
     <!-- Carousel Picker (Top Navigation) -->
-    <div
-      class="carousel-picker"
-      :class="{ minimal: minimal }"
-    >
-      <Swiper
+    <div class="carousel-picker" :class="{ minimal: minimal }">
+      <swiper
         :modules="swiperModules"
         :slides-per-view="'auto'"
         :space-between="0"
@@ -21,48 +18,31 @@
           320: { slidesPerView: 'auto', spaceBetween: 0 },
           480: { slidesPerView: 'auto', spaceBetween: 0 },
           640: { slidesPerView: 'auto', spaceBetween: 0 },
-          1024: { slidesPerView: 'auto', spaceBetween: 0 },
+          1024: { slidesPerView: 'auto', spaceBetween: 0 }
         }"
         :free-mode="{ enabled: true, sticky: true }"
         class="carousel-swiper"
         @swiper="onSwiperInit"
         @slide-change="onSlideChange"
       >
-        <SwiperSlide
-          v-for="item in items"
-          :key="item.id"
-          :class="{ 'active-item': activeItemId === item.id }"
-          class="carousel-item"
-        >
-          <slot
-            name="carousel-item"
-            :item="item"
-            :active="activeItemId === item.id"
-          >
-            <Button
+        <swiper-slide v-for="item in items" :key="item.id" :class="{ 'active-item': activeItemId === item.id }" class="carousel-item">
+          <slot name="carousel-item" :item="item" :active="activeItemId === item.id">
+            <g-button
               :label="item.label"
               shape="rounded"
               border="thin"
-              :background="
-                activeItemId === item.id
-                  ? 'var(--color-accent)'
-                  : 'var(--color-bg-secondary)'
-              "
-              :color="
-                activeItemId === item.id
-                  ? 'var(--color-bg-primary)'
-                  : 'var(--color-text)'
-              "
+              :background="activeItemId === item.id ? 'var(--color-accent)' : 'var(--color-bg-secondary)'"
+              :color="activeItemId === item.id ? 'var(--color-bg-primary)' : 'var(--color-text)'"
               @click="selectItem(item.id)"
             />
           </slot>
-        </SwiperSlide>
-      </Swiper>
+        </swiper-slide>
+      </swiper>
     </div>
 
     <!-- Content Display -->
     <div class="carousel-content">
-      <Swiper
+      <swiper
         :modules="swiperContentModules"
         :slides-per-view="1"
         :space-between="30"
@@ -72,7 +52,7 @@
         :pagination="{
           el: '.swiper-pagination',
           clickable: true,
-          dynamicBullets: isMobile,
+          dynamicBullets: isMobile
         }"
         :allow-touch-move="true"
         :grab-cursor="true"
@@ -80,16 +60,10 @@
         @swiper="onContentSwiperInit"
         @slide-change="onContentSlideChange"
       >
-        <SwiperSlide
-          v-for="item in items"
-          :key="item.id"
-        >
-          <slot
-            :active-item="item"
-            :items="items"
-          />
-        </SwiperSlide>
-      </Swiper>
+        <swiper-slide v-for="item in items" :key="item.id">
+          <slot :active-item="item" :items="items" />
+        </swiper-slide>
+      </swiper>
 
       <div class="swiper-pagination" />
     </div>
@@ -98,7 +72,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch, computed, onUnmounted } from "vue";
-import Button from "@/components/GButton.vue";
+import GButton from "@/components/GButton.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Autoplay, A11y, EffectFade } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -124,7 +98,7 @@ const props = withDefaults(defineProps<CarouselLayoutProps>(), {
   minimal: false,
   scrollSpeed: 30,
   pauseOnHover: true,
-  forceCarouselMode: false,
+  forceCarouselMode: false
 });
 
 // Swiper modules
@@ -158,9 +132,7 @@ const onSwiperInit = (swiper: SwiperType) => {
 
   // Set initial slide
   if (props.initialItemId) {
-    const initialIndex = props.items.findIndex(
-      (item) => item.id === props.initialItemId,
-    );
+    const initialIndex = props.items.findIndex((item) => item.id === props.initialItemId);
     if (initialIndex !== -1) {
       swiper.slideTo(initialIndex, 0);
     }
@@ -172,9 +144,7 @@ const onContentSwiperInit = (swiper: SwiperType) => {
 
   // Set initial slide
   if (props.initialItemId) {
-    const initialIndex = props.items.findIndex(
-      (item) => item.id === props.initialItemId,
-    );
+    const initialIndex = props.items.findIndex((item) => item.id === props.initialItemId);
     if (initialIndex !== -1) {
       swiper.slideTo(initialIndex, 0);
     }
@@ -188,10 +158,7 @@ const onSlideChange = (swiper: SwiperType) => {
     activeItemId.value = props.items[activeIndex].id;
 
     // Sync content swiper
-    if (
-      contentSwiper.value &&
-      contentSwiper.value.activeIndex !== activeIndex
-    ) {
+    if (contentSwiper.value && contentSwiper.value.activeIndex !== activeIndex) {
       contentSwiper.value.slideTo(activeIndex);
     }
   }
@@ -264,13 +231,13 @@ watch(
     if (newId && newId !== activeItemId.value) {
       selectItem(newId);
     }
-  },
+  }
 );
 
 // Expose methods for parent components
 defineExpose({
   selectItem,
-  visibleItems,
+  visibleItems
 });
 </script>
 
@@ -337,20 +304,12 @@ defineExpose({
 
   &::before {
     left: 0;
-    background: linear-gradient(
-      to right,
-      var(--color-bg-primary) 0%,
-      transparent 100%
-    );
+    background: linear-gradient(to right, var(--color-bg-primary) 0%, transparent 100%);
   }
 
   &::after {
     right: 0;
-    background: linear-gradient(
-      to left,
-      var(--color-bg-primary) 0%,
-      transparent 100%
-    );
+    background: linear-gradient(to left, var(--color-bg-primary) 0%, transparent 100%);
   }
 
   @media (max-width: map.get($breakpoints, "md")) {

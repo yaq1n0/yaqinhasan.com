@@ -3,12 +3,12 @@
   "env": {
     "node": true
   },
-  "extends": ["plugin:vue/vue3-recommended", "eslint:recommended"],
+  "extends": ["plugin:vue/vue3-recommended", "eslint:recommended", "prettier"],
   "parserOptions": {
     "ecmaVersion": 2020,
     "parser": "@typescript-eslint/parser"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "vue/no-undef-components": [
       "error",
@@ -16,15 +16,14 @@
         "ignorePatterns": ["router-link", "router-view", "font-awesome-icon"]
       }
     ],
+    "vue/component-name-in-template-casing": ["warn", "kebab-case", { "registeredComponentsOnly": false }],
     "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/ban-types": "warn"
+    "@typescript-eslint/ban-types": "warn",
+    "prettier/prettier": "error"
   },
   "overrides": [
     {
-      "files": [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)"
-      ],
+      "files": ["**/__tests__/*.{j,t}s?(x)", "**/tests/unit/**/*.spec.{j,t}s?(x)"],
       "env": {
         "jest": true
       }
