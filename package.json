@@ -10,6 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "prettier": "prettier --check ./",
+    "prettier:fix": "prettier --write ./",
     "lint": "eslint --ext .ts,.vue src/",
     "lint:fix": "eslint --ext .ts,.vue --fix src/"
   },

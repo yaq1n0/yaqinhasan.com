@@ -1,6 +1,6 @@
 <template>
-  <CarouselLayout 
-    title="My Projects" 
+  <CarouselLayout
+    title="My Projects"
     :items="projectItems"
     :initial-item-id="activeProject"
     minimal
@@ -9,7 +9,7 @@
     <template #default="{ activeItem }">
       <!-- Website Project -->
       <div v-show="activeItem.id === 'website'">
-        <CarouselDetail 
+        <CarouselDetail
           :title="projects.website.title"
           :summary="projects.website.summary"
           :show-dev-content="projects.website.showDevContent"
@@ -59,7 +59,7 @@
 
       <!-- flopPy Project -->
       <div v-show="activeItem.id === 'floppy'">
-        <CarouselDetail 
+        <CarouselDetail
           :title="projects.floppy.title"
           :summary="projects.floppy.summary"
         >
@@ -75,7 +75,7 @@
 
       <!-- RoboCopyGUI Project -->
       <div v-show="activeItem.id === 'robocopy'">
-        <CarouselDetail 
+        <CarouselDetail
           :title="projects.robocopy.title"
           :summary="projects.robocopy.summary"
         >
@@ -110,7 +110,7 @@
 
       <!-- Tracker Project -->
       <div v-show="activeItem.id === 'tracker'">
-        <CarouselDetail 
+        <CarouselDetail
           :title="projects.tracker.title"
           :summary="projects.tracker.summary"
         >
@@ -126,7 +126,7 @@
 
       <!-- ThymPi Project -->
       <div v-show="activeItem.id === 'thympi'">
-        <CarouselDetail 
+        <CarouselDetail
           :title="projects.thympi.title"
           :summary="projects.thympi.summary"
           :show-dev-content="projects.thympi.showDevContent"
@@ -351,7 +351,7 @@
 
       <!-- STQL Project -->
       <div v-show="activeItem.id === 'stql'">
-        <CarouselDetail 
+        <CarouselDetail
           :title="projects.stql.title"
           :summary="projects.stql.summary"
         >
@@ -401,7 +401,7 @@
 
       <!-- SEGP Project -->
       <div v-show="activeItem.id === 'segp'">
-        <CarouselDetail 
+        <CarouselDetail
           :title="projects.segp.title"
           :summary="projects.segp.summary"
         >
@@ -444,9 +444,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import CarouselLayout from '@/components/carousel/CarouselLayout.vue';
-import CarouselDetail from '@/components/carousel/CarouselDetail.vue';
-import {type CarouselItem } from '@/components/carousel/types';
+import CarouselLayout from "@/components/carousel/CarouselLayout.vue";
+import CarouselDetail from "@/components/carousel/CarouselDetail.vue";
+import { type CarouselItem } from "@/components/carousel/types";
 
 // State for active project
 const activeProject = ref("website");
@@ -507,13 +507,13 @@ const projectItems: CarouselItem[] = [
   { id: "tracker", label: "Tracker App" },
   { id: "thympi", label: "ThymPi" },
   { id: "segp", label: "SEGP" },
-  { id: "stql", label: "STQL" }
+  { id: "stql", label: "STQL" },
 ];
 
 // Initialize with URL hash if present
 onMounted(() => {
   const hash = window.location.hash.substring(1);
-  if (hash && projectItems.some(item => item.id === hash)) {
+  if (hash && projectItems.some((item) => item.id === hash)) {
     activeProject.value = hash;
   }
 });
@@ -575,24 +575,24 @@ onMounted(() => {
     flex-direction: row;
     justify-content: space-between;
     gap: map.get($spacing, "xl");
-    
+
     .group {
       flex: 1;
       min-width: 250px;
       max-width: 48%;
-      
+
       .title {
         font-weight: 600;
         color: var(--color-accent);
         font-size: map.get($font-sizes, "md");
       }
-      
+
       .links {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: map.get($spacing, "md");
-        
+
         :deep(.btn) {
           flex: 1 0 calc(50% - #{map.get($spacing, "md")});
           min-width: 140px;
@@ -607,22 +607,22 @@ onMounted(() => {
       }
     }
   }
-  
+
   @media (max-width: map.get($breakpoints, "md")) {
     :deep(.groups) {
       flex-direction: column;
-      
+
       .group {
         max-width: 100%;
         margin-bottom: map.get($spacing, "md");
-        
+
         .links :deep(.btn) {
           flex: 1 0 calc(50% - #{map.get($spacing, "md")});
         }
       }
     }
   }
-  
+
   @media (max-width: map.get($breakpoints, "sm")) {
     :deep(.groups .group .links :deep(.btn)) {
       flex: 1 0 calc(50% - #{map.get($spacing, "md")});

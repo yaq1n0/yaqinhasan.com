@@ -8,7 +8,6 @@ import DebugPage from "@/pages/dev/DebugPage.vue";
 import DebugCarouselPage from "@/pages/dev/DebugCarouselPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -38,12 +37,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/debug",
     name: "debug",
-    component: DebugPage
+    component: DebugPage,
   },
   {
     path: "/debug-carousel",
     name: "debug-carousel",
-    component: DebugCarouselPage
+    component: DebugCarouselPage,
   },
   {
     path: "/:pathMatch(.*)*",

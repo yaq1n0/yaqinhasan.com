@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import DevContent from '@/components/DevContent.vue';
+import DevContent from "@/components/DevContent.vue";
 
 defineProps<{
   title: string;
@@ -62,9 +62,11 @@ defineProps<{
     padding-bottom: map.get($spacing, "md");
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-bg-secondary);
-    margin: -#{map.get($spacing, "xl")} -#{map.get($spacing, "xl")} map.get($spacing, "lg") -#{map.get($spacing, "xl")};
+    margin: -#{map.get($spacing, "xl")} -#{map.get($spacing, "xl")}
+      map.get($spacing, "lg") -#{map.get($spacing, "xl")};
     padding: map.get($spacing, "xl");
-    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0 0;
+    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0
+      0;
     min-height: 80px;
     display: flex;
     align-items: center;
@@ -141,18 +143,19 @@ defineProps<{
 @media (max-width: map.get($breakpoints, "md")) {
   .carousel-detail {
     padding: map.get($spacing, "lg");
-    
+
     .detail-header {
-      margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")} map.get($spacing, "lg") -#{map.get($spacing, "lg")};
+      margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")}
+        map.get($spacing, "lg") -#{map.get($spacing, "lg")};
       padding: map.get($spacing, "lg");
       flex-direction: column;
       align-items: center;
       text-align: center;
-      
+
       h2 {
         margin-bottom: map.get($spacing, "md");
       }
     }
   }
 }
-</style> 
+</style>

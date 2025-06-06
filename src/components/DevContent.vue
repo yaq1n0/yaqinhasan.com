@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     v-if="show"
     class="dev-content show-dev-only"
   >
@@ -30,7 +30,7 @@ defineProps<{
   border-radius: map.get($border-radius, "md");
   overflow: hidden;
   transition: all 0.3s ease;
-  
+
   .dev-content-header {
     display: flex;
     align-items: center;
@@ -38,21 +38,21 @@ defineProps<{
     background-color: var(--color-bg-secondary);
     padding: map.get($spacing, "md");
     border-bottom: 1px solid var(--color-dev-highlight);
-    
+
     .dev-icon {
       color: var(--color-dev-highlight);
       font-size: 1.2rem;
     }
-    
+
     h4 {
       margin: 0;
       color: var(--color-dev-highlight);
       font-size: map.get($font-sizes, "lg");
     }
   }
-  
+
   .dev-content-body {
     padding: map.get($spacing, "lg");
   }
 }
-</style> 
+</style>

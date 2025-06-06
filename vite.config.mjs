@@ -29,10 +29,10 @@ export default defineConfig({
         try {
           const assets = fs.readdirSync(path.join(distDir, "assets"));
           mainJsFile = assets.find(
-            (file) => file.startsWith("main") && file.endsWith(".js")
+            (file) => file.startsWith("main") && file.endsWith(".js"),
           );
           mainCssFile = assets.find(
-            (file) => file.startsWith("main") && file.endsWith(".css")
+            (file) => file.startsWith("main") && file.endsWith(".css"),
           );
 
           if (mainJsFile && mainCssFile) {
@@ -43,11 +43,11 @@ export default defineConfig({
               // Update asset paths
               content = content.replace(
                 "/assets/main.js",
-                `/assets/${mainJsFile}`
+                `/assets/${mainJsFile}`,
               );
               content = content.replace(
                 "/assets/main.css",
-                `/assets/${mainCssFile}`
+                `/assets/${mainCssFile}`,
               );
               // Write the file back
               fs.writeFileSync(file404Path, content);

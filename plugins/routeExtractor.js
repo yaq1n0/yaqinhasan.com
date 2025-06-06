@@ -13,7 +13,7 @@ export function extractRoutes() {
 
     // Find the routes array in the router file
     const routeMatches = routerContent.match(
-      /const\s+routes\s*:\s*Array<RouteRecordRaw>\s*=\s*\[([\s\S]*?)\];/
+      /const\s+routes\s*:\s*Array<RouteRecordRaw>\s*=\s*\[([\s\S]*?)\];/,
     );
 
     if (!routeMatches || !routeMatches[1]) {

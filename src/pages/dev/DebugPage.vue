@@ -18,7 +18,7 @@
     <!-- Button Component -->
     <section>
       <h2>Button Component</h2>
-      
+
       <div class="component-grid">
         <!-- Default Button -->
         <div class="component-variant">
@@ -34,7 +34,7 @@
             icon="close"
           />
         </div>
-        
+
         <!-- Button with Icon -->
         <div class="component-variant">
           <h3>Label Right + Icon</h3>
@@ -44,7 +44,7 @@
             label-pos="right"
           />
         </div>
-        
+
         <!-- Button with Icon Left -->
         <div class="component-variant">
           <h3>Label Left + Icon</h3>
@@ -54,7 +54,7 @@
             label-pos="left"
           />
         </div>
-        
+
         <!-- Button with Icon Above -->
         <div class="component-variant">
           <h3>Label Above + Icon</h3>
@@ -64,7 +64,7 @@
             label-pos="above"
           />
         </div>
-        
+
         <!-- Button with Icon Below -->
         <div class="component-variant">
           <h3>Label Below + Icon</h3>
@@ -74,7 +74,7 @@
             label-pos="below"
           />
         </div>
-        
+
         <!-- Button Shapes -->
         <div class="component-variant">
           <h3>Shape: Rounded</h3>
@@ -83,7 +83,7 @@
             shape="rounded"
           />
         </div>
-        
+
         <div class="component-variant">
           <h3>Shape: Squircle (Default)</h3>
           <Button
@@ -91,7 +91,7 @@
             shape="squircle"
           />
         </div>
-        
+
         <!-- Button Borders -->
         <div class="component-variant">
           <h3>Border: Thin</h3>
@@ -100,7 +100,7 @@
             border="thin"
           />
         </div>
-        
+
         <!-- Icon Sizes -->
         <div class="component-variant">
           <h3>Icon Size: Small (Default)</h3>
@@ -110,7 +110,7 @@
             icon-size="sm"
           />
         </div>
-        
+
         <div class="component-variant">
           <h3>Icon Size: Medium</h3>
           <Button
@@ -119,7 +119,7 @@
             icon-size="md"
           />
         </div>
-        
+
         <div class="component-variant">
           <h3>Icon Size: Large</h3>
           <Button
@@ -128,7 +128,7 @@
             icon-size="lg"
           />
         </div>
-        
+
         <!-- Icon Size with Different Label Positions -->
         <div class="component-variant">
           <h3>Large Icon + Label Below</h3>
@@ -141,7 +141,7 @@
             border="none"
           />
         </div>
-        
+
         <div class="component-variant">
           <h3>Border: Thick</h3>
           <Button
@@ -149,7 +149,7 @@
             border="thick"
           />
         </div>
-        
+
         <div class="component-variant">
           <h3>Border: None</h3>
           <Button
@@ -157,7 +157,7 @@
             border="none"
           />
         </div>
-        
+
         <!-- Button as Link -->
         <div class="component-variant">
           <h3>Router Link (to="/")</h3>
@@ -167,7 +167,7 @@
             icon="home"
           />
         </div>
-        
+
         <div class="component-variant">
           <h3>External Link (href)</h3>
           <Button
@@ -177,7 +177,7 @@
             icon-prefix="fab"
           />
         </div>
-        
+
         <!-- Custom Background -->
         <div class="component-variant">
           <h3>Custom Background</h3>
@@ -192,14 +192,17 @@
     <!-- CollapsibleSection Component -->
     <section>
       <h2>CollapsibleSection Component</h2>
-      
+
       <div class="component-grid">
         <div class="wide">
           <CollapsibleSection
             title="Closed by default"
             :model-value="false"
           >
-            <p>This is the content of the collapsible section. It can contain any content.</p>
+            <p>
+              This is the content of the collapsible section. It can contain any
+              content.
+            </p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </CollapsibleSection>
         </div>
@@ -219,7 +222,7 @@
     <!-- DarkModeToggle Component -->
     <section>
       <h2>DarkModeToggle Component</h2>
-      
+
       <div class="component-grid">
         <div class="component-variant">
           <h3>Dark Mode Toggle</h3>
@@ -234,7 +237,7 @@
     <!-- DevModeToggle Component -->
     <section>
       <h2>DevModeToggle Component</h2>
-      
+
       <div class="component-grid">
         <div class="component-variant">
           <h3>Dev Mode Toggle</h3>
@@ -252,7 +255,7 @@
     <!-- NavBar Component -->
     <section>
       <h2>NavBar Component</h2>
-      
+
       <div class="component-grid">
         <div class="component-variant wide">
           <h3>Navigation Bar (Normal)</h3>
@@ -263,14 +266,15 @@
             Try toggling dev mode to see additional nav items
           </p>
         </div>
-        
+
         <div class="component-variant wide narrow-demo-container">
           <h3>Navigation Bar (Narrow/Mobile View)</h3>
           <div class="nav-container narrow-demo">
             <NavBar />
           </div>
           <p class="mt-4">
-            This demonstrates how the navbar appears on mobile devices with the overflow menu
+            This demonstrates how the navbar appears on mobile devices with the
+            overflow menu
           </p>
         </div>
       </div>
@@ -279,11 +283,11 @@
 </template>
 
 <script setup lang="ts">
-import Button from '@/components/GButton.vue';
-import DarkModeToggle from '@/components/DarkModeToggle.vue';
-import CollapsibleSection from '@/components/CollapsibleSection.vue';
-import DevModeToggle from '@/components/DevModeToggle.vue';
-import NavBar from '@/components/navbar/NavBar.vue';
+import Button from "@/components/GButton.vue";
+import DarkModeToggle from "@/components/DarkModeToggle.vue";
+import CollapsibleSection from "@/components/CollapsibleSection.vue";
+import DevModeToggle from "@/components/DevModeToggle.vue";
+import NavBar from "@/components/navbar/NavBar.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -291,26 +295,26 @@ import NavBar from '@/components/navbar/NavBar.vue';
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  
+
   h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--color-accent);
     text-align: center;
   }
-  
+
   .description {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 1.2rem;
     color: var(--color-text-secondary);
   }
-  
+
   .debug-links {
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
-    
+
     .debug-link {
       display: inline-flex;
       align-items: center;
@@ -321,17 +325,17 @@ import NavBar from '@/components/navbar/NavBar.vue';
       border-radius: 0.5rem;
       font-weight: 600;
       transition: all 0.2s ease;
-      
+
       &:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       }
     }
   }
-  
+
   section {
     margin-bottom: 4rem;
-    
+
     h2 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
@@ -340,60 +344,60 @@ import NavBar from '@/components/navbar/NavBar.vue';
       color: var(--color-accent-light);
     }
   }
-  
+
   .component-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-    
+
     .wide {
       grid-column: 1 / -1;
     }
   }
-  
+
   .component-variant {
     background: var(--color-bg-tertiary);
     border-radius: 0.5rem;
     padding: 1.5rem;
-    
+
     h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
       color: var(--color-text-secondary);
     }
-    
+
     .mt-4 {
       margin-top: 1rem;
     }
-    
+
     .p-4 {
       padding: 1rem;
     }
-    
+
     .border {
       border: 1px solid var(--color-border);
     }
-    
+
     .rounded {
       border-radius: 0.5rem;
     }
   }
-  
+
   .nav-container {
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
     overflow: hidden;
-    
+
     &.narrow-demo {
       max-width: 480px;
       margin: 0 auto;
       overflow: visible;
-      
+
       // Force mobile view styles regardless of actual screen width
       :deep(.hide-on-mobile) {
         display: none !important;
       }
-      
+
       :deep(.menu-toggle) {
         display: flex !important;
         order: -1;
@@ -412,7 +416,7 @@ import NavBar from '@/components/navbar/NavBar.vue';
 @media (max-width: 768px) {
   .debug-page {
     padding: 1rem;
-    
+
     .component-grid {
       grid-template-columns: 1fr;
     }

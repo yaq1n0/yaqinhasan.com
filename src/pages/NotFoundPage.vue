@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import GButton from '@/components/GButton.vue';
+import GButton from "@/components/GButton.vue";
 </script>
 
 <style lang="scss" scoped>

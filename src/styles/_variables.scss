@@ -3,18 +3,18 @@ $colors: (
   "primary": (
     "base": #4fd1c5,
     "light": #63b3ed,
-    "dark": #2c5282
+    "dark": #2c5282,
   ),
   "background": (
     "base": #13141f,
     "light": rgba(255, 255, 255, 0.05),
-    "dark": rgba(19, 20, 31, 0.95)
+    "dark": rgba(19, 20, 31, 0.95),
   ),
   "text": (
     "primary": #ffffff,
     "secondary": rgba(255, 255, 255, 0.8),
-    "accent": #9f7aea
-  )
+    "accent": #9f7aea,
+  ),
 );
 
 // Typography
@@ -39,7 +39,7 @@ $font-sizes: (
   // 36px
   "5xl": 3rem,
   // 48px
-  "6xl": 4rem // 64px
+  "6xl": 4rem, // 64px
 );
 
 // Spacing
@@ -56,7 +56,7 @@ $spacing: (
   // 32px
   "2xl": 3rem,
   // 48px
-  "3xl": 4rem // 64px
+  "3xl": 4rem, // 64px
 );
 
 // Breakpoints
@@ -65,7 +65,7 @@ $breakpoints: (
   "md": 768px,
   "lg": 1024px,
   "xl": 1280px,
-  "2xl": 1536px
+  "2xl": 1536px,
 );
 
 // Border Radius
@@ -74,14 +74,14 @@ $border-radius: (
   "base": 0.5rem,
   "lg": 0.75rem,
   "xl": 1rem,
-  "full": 9999px
+  "full": 9999px,
 );
 
 // Transitions
 $transitions: (
   "fast": 150ms,
   "base": 300ms,
-  "slow": 500ms
+  "slow": 500ms,
 );
 
 // Z-index
@@ -91,5 +91,5 @@ $z-index: (
   "sticky": 20,
   "fixed": 30,
   "modal": 40,
-  "popover": 50
+  "popover": 50,
 );
