@@ -9,10 +9,10 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
 /* Import Swiper CSS */
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 /* Add entire icon libraries to the library */
 library.add(fas, fab);
@@ -23,7 +23,7 @@ app.component("FontAwesomeIcon", FontAwesomeIcon);
 app.use(router);
 
 // Handle initial route for SSG pages
-if (window.__INITIAL_ROUTE__ && window.__INITIAL_ROUTE__ !== '/') {
+if (window.__INITIAL_ROUTE__ && window.__INITIAL_ROUTE__ !== "/") {
   // Wait for router to be ready before setting the route
   router.isReady().then(() => {
     router.push(window.__INITIAL_ROUTE__);

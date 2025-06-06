@@ -6,8 +6,8 @@
   >
     <div class="nav-content">
       <!-- Overflow Menu Button (Mobile Only) -->
-      <Button 
-        class="menu-toggle" 
+      <Button
+        class="menu-toggle"
         icon="bars"
         border="none"
         background="transparent"
@@ -107,7 +107,7 @@ onMounted(() => {
 
   const handleOutsideClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
-    if (isMenuOpen.value && !target.closest('.nav-bar')) {
+    if (isMenuOpen.value && !target.closest(".nav-bar")) {
       isMenuOpen.value = false;
     }
   };
@@ -116,39 +116,39 @@ onMounted(() => {
   window.addEventListener("devModeChanged", handleDevModeChange);
 
   // Close menu when clicking outside
-  document.addEventListener('click', handleOutsideClick);
+  document.addEventListener("click", handleOutsideClick);
 
   // Create ResizeObserver
   let resizeObserver: ResizeObserver | null = null;
-  
+
   // Use ResizeObserver to detect container width changes
   if (navBarRef.value) {
     const checkWidth = () => {
       if (navBarRef.value) {
         // Check if we're in a narrow demo via data attribute
-        const isInNarrowDemo = navBarRef.value.dataset.narrowDemo === 'true';
-        
+        const isInNarrowDemo = navBarRef.value.dataset.narrowDemo === "true";
+
         // Get the actual width of the navbar
         const navBarWidth = navBarRef.value.getBoundingClientRect().width;
-        
+
         // Set narrow view if width is below threshold or if we're in a narrow demo
         isNarrowView.value = navBarWidth < NARROW_THRESHOLD || isInNarrowDemo;
-        
+
         // Close menu when resizing to desktop size
         if (!isNarrowView.value && isMenuOpen.value) {
           isMenuOpen.value = false;
         }
       }
     };
-    
+
     // Initial check
     checkWidth();
-    
+
     // Create and start observing
     resizeObserver = new ResizeObserver(checkWidth);
     resizeObserver.observe(navBarRef.value);
   }
-  
+
   // Clean up all event listeners and observers
   onUnmounted(() => {
     // Clean up ResizeObserver
@@ -158,10 +158,10 @@ onMounted(() => {
       }
       resizeObserver.disconnect();
     }
-    
+
     // Clean up other event listeners
-    window.removeEventListener('devModeChanged', handleDevModeChange);
-    document.removeEventListener('click', handleOutsideClick);
+    window.removeEventListener("devModeChanged", handleDevModeChange);
+    document.removeEventListener("click", handleOutsideClick);
   });
 });
 
@@ -212,17 +212,19 @@ const visibleRightItems = computed(() =>
   structure.right.filter(
     (item) =>
       item.displayPolicy !== "dev-only" ||
-      (item.displayPolicy === "dev-only" && isDevMode.value && !isNarrowView.value)
+      (item.displayPolicy === "dev-only" &&
+        isDevMode.value &&
+        !isNarrowView.value),
   ),
 );
 
 const overflowItems = computed(() => [
   ...structure.left.filter((item) => item.displayPolicy === "overflow"),
   ...structure.right.filter(
-    (item) => 
-      item.displayPolicy === "dev-only" && 
-      isDevMode.value && 
-      isNarrowView.value
+    (item) =>
+      item.displayPolicy === "dev-only" &&
+      isDevMode.value &&
+      isNarrowView.value,
   ),
 ]);
 </script>
@@ -234,9 +236,11 @@ const overflowItems = computed(() => [
   border-radius: 0.5rem;
   margin: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-radius 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-radius 0.2s ease,
+    box-shadow 0.2s ease;
   z-index: 100;
-  
+
   // Remove bottom border radius when overflow menu is open
   &.menu-open {
     border-radius: 0.5rem 0.5rem 0 0;
@@ -267,12 +271,12 @@ const overflowItems = computed(() => [
   min-width: auto !important;
   min-height: auto !important;
   padding: 0.5rem !important;
-  
+
   @media (max-width: 768px) {
     display: flex;
     order: -1;
   }
-  
+
   // Hide the empty label
   :deep(.btn-label) {
     display: none;
@@ -301,10 +305,10 @@ const overflowItems = computed(() => [
   animation: slideDown 0.2s ease-out;
   max-height: 80vh;
   overflow-y: auto;
-  
+
   // Create a seamless connection with the navbar
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -1px;
     left: 0;
@@ -318,12 +322,12 @@ const overflowItems = computed(() => [
   width: 100%;
   justify-content: flex-start !important;
   text-align: left !important;
-  
+
   :deep(.btn-content) {
     justify-content: flex-start;
     width: 100%;
   }
-  
+
   :deep(.btn-icon) {
     width: 1.2em;
     margin-right: 0.5rem;
@@ -335,7 +339,7 @@ const overflowItems = computed(() => [
   min-width: auto !important;
   min-height: auto !important;
   padding: 0.5rem 0.75rem !important;
-  
+
   &:hover {
     transform: none !important;
     box-shadow: none !important;
@@ -360,16 +364,20 @@ const overflowItems = computed(() => [
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideDown {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(-10px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }

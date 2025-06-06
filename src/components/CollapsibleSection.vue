@@ -1,15 +1,15 @@
 <template>
   <div class="collapsible-section">
-    <div 
-      class="collapsible-header" 
-      :class="{ 'active': modelValue }"
+    <div
+      class="collapsible-header"
+      :class="{ active: modelValue }"
       @click="toggleOpen"
     >
       <div class="caret-container">
-        <font-awesome-icon 
-          :icon="['fas', 'caret-right']" 
+        <font-awesome-icon
+          :icon="['fas', 'caret-right']"
           class="caret-icon"
-          :class="{ 'rotate': modelValue }"
+          :class="{ rotate: modelValue }"
         />
       </div>
       <h3 class="header-title">
@@ -106,9 +106,9 @@ const toggleOpen = () => {
   .collapsible-header {
     padding: 0.75rem 1rem;
   }
-  
+
   .collapsible-content {
     padding: 1rem;
   }
 }
-</style> 
+</style>

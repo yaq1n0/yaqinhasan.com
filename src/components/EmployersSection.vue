@@ -10,32 +10,32 @@
     </p>
 
     <div class="text-box">
-      <Button 
-        label="Skills List" 
-        to="/about" 
-        icon="list-check" 
-        shape="rounded" 
+      <Button
+        label="Skills List"
+        to="/about"
+        icon="list-check"
+        shape="rounded"
         border="thin"
       />
-      <Button 
-        label="Modules List" 
-        to="/about" 
-        icon="book" 
-        shape="rounded" 
+      <Button
+        label="Modules List"
+        to="/about"
+        icon="book"
+        shape="rounded"
         border="thin"
       />
-      <Button 
-        label="Projects List" 
-        to="/projects" 
-        icon="code" 
-        shape="rounded" 
+      <Button
+        label="Projects List"
+        to="/projects"
+        icon="code"
+        shape="rounded"
         border="thin"
       />
-      <Button 
-        label="Interests List" 
-        to="/interests" 
-        icon="heart" 
-        shape="rounded" 
+      <Button
+        label="Interests List"
+        to="/interests"
+        icon="heart"
+        shape="rounded"
         border="thin"
       />
     </div>
@@ -55,32 +55,32 @@
     </p>
 
     <div class="text-box">
-      <Button 
-        label="Skills List" 
-        to="/about" 
-        icon="list-check" 
-        shape="rounded" 
+      <Button
+        label="Skills List"
+        to="/about"
+        icon="list-check"
+        shape="rounded"
         border="thin"
       />
-      <Button 
-        label="Modules List" 
-        to="/about" 
-        icon="book" 
-        shape="rounded" 
+      <Button
+        label="Modules List"
+        to="/about"
+        icon="book"
+        shape="rounded"
         border="thin"
       />
-      <Button 
-        label="Projects List" 
-        to="/projects" 
-        icon="code" 
-        shape="rounded" 
+      <Button
+        label="Projects List"
+        to="/projects"
+        icon="code"
+        shape="rounded"
         border="thin"
       />
-      <Button 
-        label="Interests List" 
-        to="/interests" 
-        icon="heart" 
-        shape="rounded" 
+      <Button
+        label="Interests List"
+        to="/interests"
+        icon="heart"
+        shape="rounded"
         border="thin"
       />
     </div>
@@ -90,10 +90,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import CollapsibleSection from '@/components/CollapsibleSection.vue';
-import Button from '@/components/GButton.vue';
-import ContactBox from '@/components/ContactBox.vue';
+import { ref } from "vue";
+import CollapsibleSection from "@/components/CollapsibleSection.vue";
+import Button from "@/components/GButton.vue";
+import ContactBox from "@/components/ContactBox.vue";
 
 const isOpen = ref(true);
 </script>
@@ -153,4 +153,4 @@ const isOpen = ref(true);
     opacity: 1;
   }
 }
-</style> 
+</style>

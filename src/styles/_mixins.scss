@@ -45,7 +45,11 @@
 @mixin transition($properties...) {
   $result: ();
   @each $property in $properties {
-    $result: list.append($result, $property map.get($transitions, "base") ease, comma);
+    $result: list.append(
+      $result,
+      $property map.get($transitions, "base") ease,
+      comma
+    );
   }
   transition: $result;
 }

@@ -53,9 +53,9 @@
 </template>
 
 <script setup lang="ts">
-import EmployersSection from '@/components/EmployersSection.vue';
-import CollapsibleSection from '@/components/CollapsibleSection.vue';
-import { ref } from 'vue';
+import EmployersSection from "@/components/EmployersSection.vue";
+import CollapsibleSection from "@/components/CollapsibleSection.vue";
+import { ref } from "vue";
 
 const devModeOpen = ref(true);
 </script>
@@ -142,7 +142,7 @@ const devModeOpen = ref(true);
 /* Display utilities */
 .show-dev-only {
   display: none;
-  
+
   &.active {
     display: block;
   }

@@ -21,7 +21,7 @@ export function staticRouteGenerator(routes = []) {
       const __dirname = path.dirname(fileURLToPath(import.meta.url));
       const templatePath = path.resolve(
         __dirname,
-        "../templates/routeTemplate.html"
+        "../templates/routeTemplate.html",
       );
       template = await fs.readFile(templatePath, "utf-8");
     },
@@ -29,7 +29,7 @@ export function staticRouteGenerator(routes = []) {
       // Skip if no template found
       if (!template) {
         console.warn(
-          "Route template not found, skipping static HTML generation"
+          "Route template not found, skipping static HTML generation",
         );
         return;
       }
@@ -60,11 +60,11 @@ export function staticRouteGenerator(routes = []) {
         let htmlContent = template.replace(/\{\{ROUTE_PATH\}\}/g, route);
         htmlContent = htmlContent.replace(
           "/assets/main.js",
-          `${assetPrefix}${mainJsPath}`
+          `${assetPrefix}${mainJsPath}`,
         );
         htmlContent = htmlContent.replace(
           "/assets/main.css",
-          `${assetPrefix}${mainCssPath}`
+          `${assetPrefix}${mainCssPath}`,
         );
 
         // Add HTML file to build output

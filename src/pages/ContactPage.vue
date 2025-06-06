@@ -61,8 +61,8 @@
 </template>
 
 <script setup lang="ts">
-import ContactBox from '@/components/ContactBox.vue';
-import Button from '@/components/GButton.vue';
+import ContactBox from "@/components/ContactBox.vue";
+import Button from "@/components/GButton.vue";
 </script>
 
 <style lang="scss" scoped>
