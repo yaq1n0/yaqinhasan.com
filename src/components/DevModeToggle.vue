@@ -29,47 +29,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { useDevMode } from "@/composables/UseDevMode";
 
-const isDevMode = ref(false);
-
-// Initialize dev mode from sessionStorage
-onMounted(() => {
-  const savedMode = sessionStorage.getItem("devMode");
-  if (savedMode) {
-    isDevMode.value = savedMode === "true";
-  } else {
-    isDevMode.value = false;
-    sessionStorage.setItem("devMode", "false");
-  }
-  applyDevMode();
-});
-
-// Watch for changes and apply dev mode
-watch(isDevMode, () => {
-  applyDevMode();
-});
-
-const toggleDevMode = () => {
-  isDevMode.value = !isDevMode.value;
-  sessionStorage.setItem("devMode", isDevMode.value ? "true" : "false");
-};
-
-const applyDevMode = () => {
-  const root = document.documentElement;
-  if (isDevMode.value) {
-    root.classList.add("dev-mode");
-  } else {
-    root.classList.remove("dev-mode");
-  }
-
-  // Emit event for other components to react to dev mode changes
-  window.dispatchEvent(
-    new CustomEvent("devModeChanged", {
-      detail: { isDevMode: isDevMode.value },
-    }),
-  );
-};
+const { isDevMode, toggleDevMode } = useDevMode();
 </script>
 
 <style lang="scss" scoped>
@@ -78,11 +40,7 @@ const applyDevMode = () => {
   width: 3rem;
   height: 1.75rem;
   border-radius: map.get($border-radius, "full");
-  background: linear-gradient(
-    to right,
-    #6b46c1,
-    #805ad5
-  );
+  background: linear-gradient(to right, #6b46c1, #805ad5);
   cursor: pointer;
   padding: 0;
   border: 2px solid rgba(255, 255, 255, 0.1);

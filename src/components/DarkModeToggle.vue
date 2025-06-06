@@ -3,7 +3,7 @@
     class="theme-toggle"
     :class="{ 'theme-toggle--dark': isDark }"
     aria-label="Toggle dark mode"
-    @click="toggleTheme"
+    @click="toggleDarkMode"
   >
     <div class="theme-toggle__container">
       <!-- Sun -->
@@ -27,34 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { useDarkMode } from "@/composables/UseDarkMode";
 
-const isDark = ref(false);
-
-// Initialize theme from localStorage or system preference
-onMounted(() => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) {
-    isDark.value = savedTheme === "dark";
-  } else {
-    isDark.value = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  }
-  applyTheme();
-});
-
-// Watch for changes and apply theme
-watch(isDark, () => {
-  applyTheme();
-});
-
-const toggleTheme = () => {
-  isDark.value = !isDark.value;
-  localStorage.setItem("theme", isDark.value ? "dark" : "light");
-};
-
-const applyTheme = () => {
-  document.documentElement.classList.toggle("dark", isDark.value);
-};
+const { isDark, toggleDarkMode } = useDarkMode();
 </script>
 
 <style lang="scss" scoped>
