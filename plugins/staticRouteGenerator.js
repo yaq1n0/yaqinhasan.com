@@ -19,18 +19,13 @@ export function staticRouteGenerator(routes = []) {
     configResolved: async () => {
       // Get template from file
       const __dirname = path.dirname(fileURLToPath(import.meta.url));
-      const templatePath = path.resolve(
-        __dirname,
-        "../templates/routeTemplate.html",
-      );
+      const templatePath = path.resolve(__dirname, "../templates/routeTemplate.html");
       template = await fs.readFile(templatePath, "utf-8");
     },
     generateBundle(options, bundle) {
       // Skip if no template found
       if (!template) {
-        console.warn(
-          "Route template not found, skipping static HTML generation",
-        );
+        console.warn("Route template not found, skipping static HTML generation");
         return;
       }
 
@@ -48,9 +43,7 @@ export function staticRouteGenerator(routes = []) {
         if (route === "/" || route.includes("*")) continue; // Skip root and catch-all routes
 
         // Create path for the HTML file
-        const fileName = route.endsWith("/")
-          ? `${route}index.html`
-          : `${route}.html`;
+        const fileName = route.endsWith("/") ? `${route}index.html` : `${route}.html`;
 
         // Calculate relative path for assets
         const depth = (route.match(/\//g) || []).length;
@@ -58,22 +51,16 @@ export function staticRouteGenerator(routes = []) {
 
         // Generate HTML with route data and correct asset paths
         let htmlContent = template.replace(/\{\{ROUTE_PATH\}\}/g, route);
-        htmlContent = htmlContent.replace(
-          "/assets/main.js",
-          `${assetPrefix}${mainJsPath}`,
-        );
-        htmlContent = htmlContent.replace(
-          "/assets/main.css",
-          `${assetPrefix}${mainCssPath}`,
-        );
+        htmlContent = htmlContent.replace("/assets/main.js", `${assetPrefix}${mainJsPath}`);
+        htmlContent = htmlContent.replace("/assets/main.css", `${assetPrefix}${mainCssPath}`);
 
         // Add HTML file to build output
         this.emitFile({
           type: "asset",
           fileName: fileName.startsWith("/") ? fileName.slice(1) : fileName,
-          source: htmlContent,
+          source: htmlContent
         });
       }
-    },
+    }
   };
 }

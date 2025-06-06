@@ -12,43 +12,43 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomePage,
+    component: HomePage
   },
   {
     path: "/about",
     name: "about",
-    component: AboutPage,
+    component: AboutPage
   },
   {
     path: "/projects",
     name: "projects",
-    component: ProjectsPage,
+    component: ProjectsPage
   },
   {
     path: "/interests",
     name: "interests",
-    component: InterestsPage,
+    component: InterestsPage
   },
   {
     path: "/contact",
     name: "contact",
-    component: ContactPage,
+    component: ContactPage
   },
   {
     path: "/debug",
     name: "debug",
-    component: DebugPage,
+    component: DebugPage
   },
   {
     path: "/debug-carousel",
     name: "debug-carousel",
-    component: DebugCarouselPage,
+    component: DebugCarouselPage
   },
   {
     path: "/:pathMatch(.*)*",
     name: "not-found",
-    component: NotFoundPage,
-  },
+    component: NotFoundPage
+  }
 ];
 
 // Using HTML5 history mode for cleaner URLs
@@ -61,7 +61,7 @@ const router = createRouter({
     } else {
       return { top: 0 };
     }
-  },
+  }
 });
 
 export default router;

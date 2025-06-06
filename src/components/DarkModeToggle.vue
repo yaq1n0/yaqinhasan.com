@@ -1,10 +1,5 @@
 <template>
-  <button
-    class="theme-toggle"
-    :class="{ 'theme-toggle--dark': isDark }"
-    aria-label="Toggle dark mode"
-    @click="toggleDarkMode"
-  >
+  <button class="theme-toggle" :class="{ 'theme-toggle--dark': isDark }" aria-label="Toggle dark mode" @click="toggleDarkMode">
     <div class="theme-toggle__container">
       <!-- Sun -->
       <div class="theme-toggle__sun">
@@ -16,11 +11,7 @@
       </div>
       <!-- Stars -->
       <div class="theme-toggle__stars">
-        <div
-          v-for="n in 3"
-          :key="n"
-          class="star"
-        />
+        <div v-for="n in 3" :key="n" class="star" />
       </div>
     </div>
   </button>
@@ -38,11 +29,7 @@ const { isDark, toggleDarkMode } = useDarkMode();
   width: 3rem;
   height: 1.75rem;
   border-radius: map.get($border-radius, "full");
-  background: linear-gradient(
-    to right,
-    map.get(map.get($colors, "primary"), "light"),
-    #4a90e2
-  );
+  background: linear-gradient(to right, map.get(map.get($colors, "primary"), "light"), #4a90e2);
   cursor: pointer;
   padding: 0;
   border: 2px solid rgba(255, 255, 255, 0.1);

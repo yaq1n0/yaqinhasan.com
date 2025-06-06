@@ -3,6 +3,9 @@
 @use "mixins" as *;
 @use "utilities";
 
+// Import Bootstrap utilities
+@import "bootstrap-utilities";
+
 // CSS Variables for Theming
 :root {
   // Light theme colors

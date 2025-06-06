@@ -8,7 +8,7 @@ export type UseBooleanStateOptions = {
 
 export const defaultOptions: UseBooleanStateOptions = {
   storage: sessionStorage,
-  defaultValue: false,
+  defaultValue: false
 };
 
 /**
@@ -18,11 +18,7 @@ export const defaultOptions: UseBooleanStateOptions = {
  * @param onChange - A function to call when the state changes.
  * @param options - The options for the state.
  */
-export function useBooleanState(
-  key: string,
-  onChange: (value: boolean) => void,
-  { storage, defaultValue }: UseBooleanStateOptions = defaultOptions,
-) {
+export function useBooleanState(key: string, onChange: (value: boolean) => void, { storage, defaultValue }: UseBooleanStateOptions = defaultOptions) {
   const state = useStorage(key, defaultValue, storage);
 
   const toggleState = () => (state.value = !state.value);

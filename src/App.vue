@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container">
-    <NavBar />
-    <main class="main-content">
+  <div>
+    <nav-bar />
+    <main>
       <router-view />
     </main>
   </div>
@@ -13,16 +13,4 @@ import NavBar from "./components/navbar/NavBar.vue";
 
 <style lang="scss">
 @forward "@/styles/main";
-
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
 </style>

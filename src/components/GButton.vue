@@ -4,28 +4,14 @@
     :to="to"
     :href="href"
     :target="href ? '_blank' : undefined"
-    :class="[
-      'btn',
-      `shape-${shape}`,
-      `border-${border}`,
-      `label-${labelPos}`,
-      { 'has-icon': !!icon },
-    ]"
+    :class="['btn', `shape-${shape}`, `border-${border}`, `label-${labelPos}`, { 'has-icon': !!icon }]"
     :style="{ '--btn-bg-color': background }"
     @click="$emit('click', $event)"
   >
     <div class="btn-content">
-      <font-awesome-icon
-        v-if="icon"
-        :icon="[iconPrefix, icon]"
-        class="btn-icon"
-        :class="`icon-${iconSize}`"
-      />
+      <font-awesome-icon v-if="icon" :icon="[iconPrefix, icon]" class="btn-icon" :class="`icon-${iconSize}`" />
 
-      <span
-        v-if="label"
-        class="btn-label"
-      >{{ label }}</span>
+      <span v-if="label" class="btn-label">{{ label }}</span>
     </div>
   </component>
 </template>
@@ -55,7 +41,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   shape: "squircle",
   background: "var(--color-accent-translucent)",
   to: "",
-  href: "",
+  href: ""
 });
 
 defineEmits(["click"]);

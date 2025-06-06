@@ -7,16 +7,16 @@
     <!-- Contact Container -->
     <div class="contact-container">
       <!-- Contact Box -->
-      <ContactBox :items="['linkedin', 'email', 'github']" />
+      <contact-box :items="['linkedin', 'email', 'github']" />
 
       <div class="info-box">
         <p>
           <strong>If you'd rather do things manually...</strong>
-          <br>
+          <br />
           LinkedIn: https://www.linkedin.com/in/yaqinhasan
-          <br>
+          <br />
           Email: yaqin.k.hasan@gmail.com
-          <br>
+          <br />
           GitHub: https://github.com/yaq1n0
         </p>
       </div>
@@ -25,44 +25,26 @@
     <div class="divider" />
 
     <p class="dev-note show-dev-only">
-      I am planning to put a native web formatted version of my CV here
-      eventually, but for now, I will simply embed a pdf version :)
-      <br><u>Last CV update: 28th March 2024</u>
+      I am planning to put a native web formatted version of my CV here eventually, but for now, I will simply embed a pdf version :)
+      <br /><u>Last CV update: 28th March 2024</u>
     </p>
 
     <!-- Download Links -->
     <div class="download-links">
-      <Button
-        label="Download as PDF"
-        href="/CV_Yaqin_Hasan.pdf"
-        icon="file-pdf"
-        download
-        shape="rounded"
-        border="thin"
-      />
-      <Button
-        label="Download as Word .docx"
-        href="/CV_Yaqin_Hasan.docx"
-        icon="file-word"
-        download
-        shape="rounded"
-        border="thin"
-      />
+      <g-button label="Download as PDF" href="/CV_Yaqin_Hasan.pdf" icon="file-pdf" download shape="rounded" border="thin" />
+      <g-button label="Download as Word .docx" href="/CV_Yaqin_Hasan.docx" icon="file-word" download shape="rounded" border="thin" />
     </div>
 
     <!-- PDF Embed -->
     <div class="pdf-container">
-      <iframe
-        src="/CV_Yaqin_Hasan.pdf"
-        class="pdf-embed"
-      />
+      <iframe src="/CV_Yaqin_Hasan.pdf" class="pdf-embed" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import ContactBox from "@/components/ContactBox.vue";
-import Button from "@/components/GButton.vue";
+import GButton from "@/components/GButton.vue";
 </script>
 
 <style lang="scss" scoped>

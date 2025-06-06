@@ -1,24 +1,12 @@
 <template>
-  <nav
-    ref="navBarRef"
-    class="nav-bar"
-    :class="{ 'menu-open': isMenuOpen }"
-  >
+  <nav ref="navBarRef" class="nav-bar" :class="{ 'menu-open': isMenuOpen }">
     <div class="nav-content">
       <!-- Overflow Menu Button (Mobile Only) -->
-      <Button
-        class="menu-toggle"
-        icon="bars"
-        border="none"
-        background="transparent"
-        label=""
-        aria-label="Toggle menu"
-        @click="isMenuOpen = !isMenuOpen"
-      />
+      <g-button class="menu-toggle" icon="bars" border="none" background="transparent" label="" aria-label="Toggle menu" @click="isMenuOpen = !isMenuOpen" />
 
       <!-- Left Section -->
       <div class="nav-section left">
-        <Button
+        <g-button
           v-for="item in structure.left"
           :key="item.label"
           :label="item.label"
@@ -33,7 +21,7 @@
 
       <!-- Right Section -->
       <div class="nav-section right">
-        <Button
+        <g-button
           v-for="item in visibleRightItems"
           :key="item.label"
           :label="item.label"
@@ -44,17 +32,14 @@
           border="none"
           background="transparent"
         />
-        <DarkModeToggle />
-        <DevModeToggle />
+        <dark-mode-toggle />
+        <dev-mode-toggle />
       </div>
     </div>
 
     <!-- Mobile Overflow Menu -->
-    <div
-      v-if="isMenuOpen"
-      class="overflow-menu"
-    >
-      <Button
+    <div v-if="isMenuOpen" class="overflow-menu">
+      <g-button
         v-for="item in overflowItems"
         :key="item.label"
         :label="item.label"
@@ -69,14 +54,8 @@
     </div>
 
     <!-- Site Banner (Dev Joke) - Only visible in dev mode -->
-    <div
-      v-if="isDevMode"
-      class="dev-banner"
-    >
-      <p>
-        "All programming languages are just wrappers for assembly" - Yaqin
-        (2024)
-      </p>
+    <div v-if="isDevMode" class="dev-banner">
+      <p>"All programming languages are just wrappers for assembly" - Yaqin (2024)</p>
     </div>
   </nav>
 </template>
@@ -84,7 +63,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import type { NavBarStructure } from "@/components/navbar/navbar";
-import Button from "@/components/GButton.vue";
+import GButton from "@/components/GButton.vue";
 import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import DevModeToggle from "@/components/DevModeToggle.vue";
 
@@ -171,61 +150,50 @@ const structure: NavBarStructure = {
       label: "Home",
       to: "/",
       icon: { name: "home" },
-      displayPolicy: "always-show",
+      displayPolicy: "always-show"
     },
     {
       label: "About",
       to: "/about",
       icon: { name: "user" },
-      displayPolicy: "overflow",
+      displayPolicy: "overflow"
     },
     {
       label: "Projects",
       to: "/projects",
       icon: { name: "code" },
-      displayPolicy: "overflow",
+      displayPolicy: "overflow"
     },
     {
       label: "Interests",
       to: "/interests",
       icon: { name: "star" },
-      displayPolicy: "overflow",
-    },
+      displayPolicy: "overflow"
+    }
   ],
   right: [
     {
       label: "Contact",
       to: "/contact",
       icon: { name: "envelope", position: "right" },
-      displayPolicy: "always-show",
+      displayPolicy: "always-show"
     },
     {
       label: "debug",
       to: "/debug",
       icon: { name: "info-circle" },
-      displayPolicy: "dev-only",
-    },
-  ],
+      displayPolicy: "dev-only"
+    }
+  ]
 };
 
 const visibleRightItems = computed(() =>
-  structure.right.filter(
-    (item) =>
-      item.displayPolicy !== "dev-only" ||
-      (item.displayPolicy === "dev-only" &&
-        isDevMode.value &&
-        !isNarrowView.value),
-  ),
+  structure.right.filter((item) => item.displayPolicy !== "dev-only" || (item.displayPolicy === "dev-only" && isDevMode.value && !isNarrowView.value))
 );
 
 const overflowItems = computed(() => [
   ...structure.left.filter((item) => item.displayPolicy === "overflow"),
-  ...structure.right.filter(
-    (item) =>
-      item.displayPolicy === "dev-only" &&
-      isDevMode.value &&
-      isNarrowView.value,
-  ),
+  ...structure.right.filter((item) => item.displayPolicy === "dev-only" && isDevMode.value && isNarrowView.value)
 ]);
 </script>
 

@@ -1,0 +1,19 @@
+// Bootstrap Utilities Only
+// Import Bootstrap's functions, variables, and mixins
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+// Override Bootstrap variables with our theme variables if needed
+$primary: #4fd1c5 !default;
+$secondary: #63b3ed !default;
+$dark: #13141f !default;
+$light: #ffffff !default;
+
+// Import only Bootstrap's utility classes
+@import "bootstrap/scss/utilities";
+
+// Additional Bootstrap utility classes that are commonly used
+@import "bootstrap/scss/helpers";

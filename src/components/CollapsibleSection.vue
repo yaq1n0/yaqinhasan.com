@@ -1,26 +1,15 @@
 <template>
   <div class="collapsible-section">
-    <div
-      class="collapsible-header"
-      :class="{ active: modelValue }"
-      @click="toggleOpen"
-    >
+    <div class="collapsible-header" :class="{ active: modelValue }" @click="toggleOpen">
       <div class="caret-container">
-        <font-awesome-icon
-          :icon="['fas', 'caret-right']"
-          class="caret-icon"
-          :class="{ rotate: modelValue }"
-        />
+        <font-awesome-icon :icon="['fas', 'caret-right']" class="caret-icon" :class="{ rotate: modelValue }" />
       </div>
       <h3 class="header-title">
         {{ title }}
       </h3>
     </div>
     <transition name="slide">
-      <div
-        v-if="modelValue"
-        class="collapsible-content"
-      >
+      <div v-if="modelValue" class="collapsible-content">
         <slot />
       </div>
     </transition>

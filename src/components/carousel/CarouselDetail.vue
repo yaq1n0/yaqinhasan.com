@@ -7,10 +7,7 @@
       </div>
     </div>
 
-    <p
-      v-if="summary"
-      class="summary"
-    >
+    <p v-if="summary" class="summary">
       {{ summary }}
     </p>
 
@@ -18,13 +15,9 @@
       <slot />
     </div>
 
-    <DevContent
-      v-if="showDevContent"
-      title="Developer Content"
-      :show="true"
-    >
+    <dev-content v-if="showDevContent" title="Developer Content" :show="true">
       <slot name="dev-content" />
-    </DevContent>
+    </dev-content>
   </div>
 </template>
 
@@ -62,11 +55,9 @@ defineProps<{
     padding-bottom: map.get($spacing, "md");
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-bg-secondary);
-    margin: -#{map.get($spacing, "xl")} -#{map.get($spacing, "xl")}
-      map.get($spacing, "lg") -#{map.get($spacing, "xl")};
+    margin: -#{map.get($spacing, "xl")} -#{map.get($spacing, "xl")} map.get($spacing, "lg") -#{map.get($spacing, "xl")};
     padding: map.get($spacing, "xl");
-    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0
-      0;
+    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0 0;
     min-height: 80px;
     display: flex;
     align-items: center;
@@ -145,8 +136,7 @@ defineProps<{
     padding: map.get($spacing, "lg");
 
     .detail-header {
-      margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")}
-        map.get($spacing, "lg") -#{map.get($spacing, "lg")};
+      margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")} map.get($spacing, "lg") -#{map.get($spacing, "lg")};
       padding: map.get($spacing, "lg");
       flex-direction: column;
       align-items: center;

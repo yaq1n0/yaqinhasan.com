@@ -12,15 +12,12 @@ export function useDevMode() {
     // Emit event for other components to react to dev mode changes
     window.dispatchEvent(
       new CustomEvent("devModeChanged", {
-        detail: { isDevMode: isDevMode.value },
-      }),
+        detail: { isDevMode: isDevMode.value }
+      })
     );
   };
 
-  const { state: isDevMode, toggleState: toggleDevMode } = useBooleanState(
-    "devMode",
-    applyDevMode,
-  );
+  const { state: isDevMode, toggleState: toggleDevMode } = useBooleanState("devMode", applyDevMode);
 
   return { isDevMode, toggleDevMode };
 }
