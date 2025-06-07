@@ -76,7 +76,7 @@ import GButton from "@/components/GButton.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Autoplay, A11y, EffectFade } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import type { CarouselItem } from "@/components/carousel/types";
+import type { CarouselItem } from "@/components/carousel/CarouselItem";
 
 // Import Swiper styles
 import "swiper/css";

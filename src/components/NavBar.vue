@@ -70,18 +70,36 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import type { NavBarItem, NavBarStructure } from "@/components/navbar/navbar";
 import GButton from "@/components/GButton.vue";
 import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import DevModeToggle from "@/components/DevModeToggle.vue";
 import { useDevMode } from "@/composables/UseDevMode";
 import { onClickOutside, useResizeObserver } from "@vueuse/core";
+import { RouteLocationRaw } from "vue-router";
 
 const navBarRef = ref<HTMLElement | null>(null);
 const isMenuOpen = ref(false);
 const { isDevMode } = useDevMode();
 const NARROW_THRESHOLD = 768;
 const isNarrowView = ref(false);
+
+export interface NavBarItem {
+  label: string;
+  icon?: {
+    name: string;
+    prefix?: "fas" | "fab" | "far"; // Font Awesome style prefixes
+    position?: "left" | "right";
+  };
+  to?: RouteLocationRaw; // For router links
+  href?: string; // For external links
+  displayPolicy: "always-show" | "overflow";
+  onClick?: () => void; // For clickable items
+}
+
+export interface NavBarStructure {
+  left: NavBarItem[];
+  right: NavBarItem[];
+}
 
 onClickOutside(navBarRef, () => isMenuOpen.value && (isMenuOpen.value = false));
 

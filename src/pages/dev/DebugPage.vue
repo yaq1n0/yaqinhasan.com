@@ -199,7 +199,7 @@ import GButton from "@/components/GButton.vue";
 import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
 import DevModeToggle from "@/components/DevModeToggle.vue";
-import NavBar from "@/components/navbar/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 import { useDevMode } from "@/composables/UseDevMode";
 
 const { isDevMode } = useDevMode();
