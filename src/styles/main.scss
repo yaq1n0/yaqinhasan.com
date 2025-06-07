@@ -110,19 +110,6 @@ button {
   }
 }
 
-// Responsive Display Utilities
-.show-landscape-only {
-  @media (max-width: map.get($breakpoints, "md")) {
-    display: none !important;
-  }
-}
-
-.show-portrait-only {
-  @media (min-width: map.get($breakpoints, "md")) {
-    display: none !important;
-  }
-}
-
 // Dev Mode Styles
 .dev-mode {
   --color-dev-highlight: #9c27b0;
