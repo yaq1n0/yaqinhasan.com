@@ -2,30 +2,26 @@
 @use "variables" as *;
 @use "mixins" as *;
 @use "utilities";
-
-// Import Bootstrap utilities
 @import "bootstrap-utilities";
 
-// CSS Variables for Theming
 :root {
-  // Light theme colors (Solarized Light with improved contrast)
+  // default (light) theme colors
   --color-bg-primary: #fdf6e3;
   --color-bg-secondary: #eee8d5;
   --color-bg-tertiary: #93a1a1;
   --color-text-primary: #073642;
   --color-text-secondary: #586e75;
   --color-accent: #268bd2;
-  --color-accent-light: #2aa198;
+  --color-accent-light: #078177;
   --color-accent-dark: #dc322f;
   --color-accent-translucent: rgba(38, 139, 210, 0.15);
   --color-border: rgba(88, 110, 117, 0.3);
 
-  // Fonts
-  --font-mono: #{$font-family-mono};
+  --font-mono: #{$font-family-mono}; // setup the monospace font
 }
 
 :root.dark {
-  // Dark theme colors (keeping current dark theme)
+  // dark theme colors
   --color-bg-primary: #0a0b11;
   --color-bg-secondary: #13141f;
   --color-bg-tertiary: #1e2030;
