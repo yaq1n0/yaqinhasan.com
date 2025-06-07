@@ -10,6 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "type-check": "vue-tsc --noEmit",
     "prettier": "prettier --check ./",
     "prettier:fix": "prettier --write ./",
     "lint": "eslint --ext .ts,.vue src/",
@@ -44,6 +45,7 @@
     "typescript": "^5.4.5",
     "vite": "^6.2.2",
     "vite-plugin-static-copy": "^2.3.1",
-    "vitest": "^3.0.8"
+    "vitest": "^3.0.8",
+    "vue-tsc": "^2.1.6"
   }
 }

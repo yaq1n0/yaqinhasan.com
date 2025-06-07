@@ -79,6 +79,15 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: fileURLToPath(new URL("./index.html", import.meta.url))
+      },
+      output: {
+        manualChunks: {
+          // Separate vendor chunks
+          vue: ["vue", "vue-router"],
+          swiper: ["swiper"],
+          vueuse: ["@vueuse/core"],
+          fontawesome: ["@fortawesome/fontawesome-svg-core", "@fortawesome/vue-fontawesome"]
+        }
       }
     },
     outDir: "dist"
