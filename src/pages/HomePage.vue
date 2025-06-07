@@ -3,12 +3,6 @@
     <!-- For Employers Section -->
     <collapsible-section :model-value="true" title="For Employers!">
       <p class="top-paragraph">If you got here from a job application I made, here are some things you might be looking for.</p>
-      <div class="text-box">
-        <g-button label="Skills List" to="/about" icon="list-check" shape="rounded" border="thin" />
-        <g-button label="Modules List" to="/about" icon="book" shape="rounded" border="thin" />
-        <g-button label="Projects List" to="/projects" icon="code" shape="rounded" border="thin" />
-        <g-button label="Interests List" to="/interests" icon="heart" shape="rounded" border="thin" />
-      </div>
       <contact-box />
     </collapsible-section>
 
@@ -45,7 +39,6 @@
 
 <script setup lang="ts">
 import ContactBox from "@/components/ContactBox.vue";
-import GButton from "@/components/GButton.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
 
 import { useDevMode } from "@/composables/UseDevMode";
