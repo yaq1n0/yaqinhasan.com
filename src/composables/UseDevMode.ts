@@ -12,7 +12,7 @@ export function useDevMode() {
     // Emit event for other components to react to dev mode changes
     window.dispatchEvent(
       new CustomEvent("devModeChanged", {
-        detail: { isDevMode: isDevMode.value }
+        detail: { isDevMode: value }
       })
     );
   };
