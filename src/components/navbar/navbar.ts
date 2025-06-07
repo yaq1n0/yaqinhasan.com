@@ -6,7 +6,7 @@ export type IconType = {
   position?: "left" | "right";
 };
 
-export type DisplayPolicy = "always-show" | "overflow" | "dev-only";
+export type DisplayPolicy = "always-show" | "overflow";
 
 export interface NavBarItem {
   label: string;
@@ -14,7 +14,6 @@ export interface NavBarItem {
   to?: RouteLocationRaw; // For router links
   href?: string; // For external links
   displayPolicy: DisplayPolicy;
-  isButton?: boolean; // For special items like theme toggle
   onClick?: () => void; // For clickable items
 }
 
