@@ -20,7 +20,7 @@
     </p>
 
     <!-- "For Developers" section - Only visible in dev mode -->
-    <collapsible-section v-model="devModeOpen" title="for_developers" class="show-dev-only">
+    <collapsible-section v-if="isDevMode" :model-value="true" title="for_developers">
       <p class="top-paragraph" style="font-weight: 600">I see you like to hit random toggles..</p>
 
       <p class="top-paragraph">
@@ -39,9 +39,10 @@
 <script setup lang="ts">
 import EmployersSection from "@/components/EmployersSection.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
-import { ref } from "vue";
 
-const devModeOpen = ref(true);
+import { useDevMode } from "@/composables/UseDevMode";
+
+const { isDevMode } = useDevMode();
 </script>
 
 <style lang="scss" scoped>
@@ -120,15 +121,6 @@ const devModeOpen = ref(true);
 
   .top-paragraph {
     font-size: map.get($font-sizes, "base");
-  }
-}
-
-/* Display utilities */
-.show-dev-only {
-  display: none;
-
-  &.active {
-    display: block;
   }
 }
 

@@ -24,7 +24,7 @@
 
     <div class="divider" />
 
-    <p class="dev-note show-dev-only">
+    <p v-if="isDevMode" class="dev-note">
       I am planning to put a native web formatted version of my CV here eventually, but for now, I will simply embed a pdf version :)
       <br /><u>Last CV update: 28th March 2024</u>
     </p>
@@ -45,6 +45,9 @@
 <script setup lang="ts">
 import ContactBox from "@/components/ContactBox.vue";
 import GButton from "@/components/GButton.vue";
+import { useDevMode } from "@/composables/UseDevMode";
+
+const { isDevMode } = useDevMode();
 </script>
 
 <style lang="scss" scoped>

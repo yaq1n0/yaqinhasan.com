@@ -1,8 +1,8 @@
 <template>
-  <div v-if="show" class="dev-content show-dev-only">
+  <div v-if="isDevMode" class="dev-content">
     <div class="dev-content-header">
       <font-awesome-icon :icon="['fas', 'code']" class="dev-icon" />
-      <h4>{{ title }}</h4>
+      <h4>{{ title ?? "Developer Content" }}</h4>
     </div>
     <div class="dev-content-body">
       <slot />
@@ -11,8 +11,11 @@
 </template>
 
 <script setup lang="ts">
+import { useDevMode } from "@/composables/UseDevMode";
+
+const { isDevMode } = useDevMode();
+
 defineProps<{
-  show?: boolean;
   title?: string;
 }>();
 </script>
