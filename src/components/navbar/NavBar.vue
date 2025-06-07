@@ -1,13 +1,22 @@
 <template>
   <nav ref="navBarRef" class="nav-bar" :class="{ 'menu-open': isMenuOpen }">
     <div class="nav-content">
-      <!-- Overflow Menu Button (Mobile Only) -->
-      <g-button class="menu-toggle" icon="bars" border="none" background="transparent" label="" aria-label="Toggle menu" @click="isMenuOpen = !isMenuOpen" />
+      <!-- Overflow Menu Button  -->
+      <g-button
+        v-if="isNarrowView"
+        class="menu-toggle"
+        icon="bars"
+        border="none"
+        background="transparent"
+        label=""
+        aria-label="Toggle menu"
+        @click="isMenuOpen = !isMenuOpen"
+      />
 
       <!-- Left Section -->
       <div class="nav-section left">
         <g-button
-          v-for="item in structure.left"
+          v-for="item in visibleLeftItems"
           :key="item.label"
           :label="item.label"
           :to="item.to"
@@ -15,7 +24,6 @@
           :icon-prefix="item.icon?.prefix || 'fas'"
           border="none"
           background="transparent"
-          :class="{ 'hide-on-mobile': item.displayPolicy === 'overflow' }"
         />
       </div>
 
@@ -37,7 +45,7 @@
       </div>
     </div>
 
-    <!-- Mobile Overflow Menu -->
+    <!-- Overflow Menu -->
     <div v-if="isMenuOpen" class="overflow-menu">
       <g-button
         v-for="item in overflowItems"
@@ -61,80 +69,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
-import type { NavBarStructure } from "@/components/navbar/navbar";
+import { ref, computed } from "vue";
+import type { NavBarItem, NavBarStructure } from "@/components/navbar/navbar";
 import GButton from "@/components/GButton.vue";
 import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import DevModeToggle from "@/components/DevModeToggle.vue";
 import { useDevMode } from "@/composables/UseDevMode";
+import { onClickOutside, useResizeObserver } from "@vueuse/core";
 
 const navBarRef = ref<HTMLElement | null>(null);
 const isMenuOpen = ref(false);
 const { isDevMode } = useDevMode();
+const NARROW_THRESHOLD = 768;
 const isNarrowView = ref(false);
-const NARROW_THRESHOLD = 768; // Width threshold for narrow view
 
-// Initialize component
-onMounted(() => {
-  // Define event handlers
-  const handleOutsideClick = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (isMenuOpen.value && !target.closest(".nav-bar")) {
-      isMenuOpen.value = false;
-    }
-  };
+onClickOutside(navBarRef, () => isMenuOpen.value && (isMenuOpen.value = false));
 
-  // Close menu when clicking outside
-  document.addEventListener("click", handleOutsideClick);
-
-  // Create ResizeObserver
-  let resizeObserver: ResizeObserver | null = null;
-
-  // Use ResizeObserver to detect container width changes
-  if (navBarRef.value) {
-    const checkWidth = () => {
-      if (navBarRef.value) {
-        // Check if we're in a narrow demo via data attribute
-        const isInNarrowDemo = navBarRef.value.dataset.narrowDemo === "true";
-
-        // Get the actual width of the navbar
-        const navBarWidth = navBarRef.value.getBoundingClientRect().width;
-
-        // Set narrow view if width is below threshold or if we're in a narrow demo
-        isNarrowView.value = navBarWidth < NARROW_THRESHOLD || isInNarrowDemo;
-
-        // Close menu when resizing to desktop size
-        if (!isNarrowView.value && isMenuOpen.value) {
-          isMenuOpen.value = false;
-        }
-      }
-    };
-
-    // Initial check
-    checkWidth();
-
-    // Create and start observing
-    resizeObserver = new ResizeObserver(checkWidth);
-    resizeObserver.observe(navBarRef.value);
-  }
-
-  // Clean up all event listeners and observers
-  onUnmounted(() => {
-    // Clean up ResizeObserver
-    if (resizeObserver) {
-      if (navBarRef.value) {
-        resizeObserver.unobserve(navBarRef.value);
-      }
-      resizeObserver.disconnect();
-    }
-
-    // Clean up other event listeners
-    document.removeEventListener("click", handleOutsideClick);
-  });
+useResizeObserver(navBarRef, (entries) => {
+  const { width } = entries[0].contentRect;
+  isNarrowView.value = width < NARROW_THRESHOLD;
 });
 
-const structure: NavBarStructure = {
-  left: [
+const structure = computed<NavBarStructure>(() => {
+  const left: NavBarItem[] = [
     {
       label: "Home",
       to: "/",
@@ -159,31 +116,38 @@ const structure: NavBarStructure = {
       icon: { name: "star" },
       displayPolicy: "overflow"
     }
-  ],
-  right: [
+  ];
+
+  const right: NavBarItem[] = [
     {
       label: "Contact",
       to: "/contact",
       icon: { name: "envelope", position: "right" },
       displayPolicy: "always-show"
-    },
-    {
+    }
+  ];
+
+  if (isDevMode.value) {
+    right.push({
       label: "debug",
       to: "/debug",
       icon: { name: "info-circle" },
-      displayPolicy: "dev-only"
-    }
-  ]
-};
+      displayPolicy: "overflow"
+    });
+  }
 
-const visibleRightItems = computed(() =>
-  structure.right.filter((item) => item.displayPolicy !== "dev-only" || (item.displayPolicy === "dev-only" && isDevMode.value && !isNarrowView.value))
-);
+  return { left, right };
+});
 
-const overflowItems = computed(() => [
-  ...structure.left.filter((item) => item.displayPolicy === "overflow"),
-  ...structure.right.filter((item) => item.displayPolicy === "dev-only" && isDevMode.value && isNarrowView.value)
-]);
+const isVisible = (item: NavBarItem) => (isNarrowView.value ? item.displayPolicy === "always-show" : true);
+
+const isOverflow = (item: NavBarItem) => !isVisible(item);
+
+const visibleLeftItems = computed(() => structure.value.left.filter(isVisible));
+
+const visibleRightItems = computed(() => structure.value.right.filter(isVisible));
+
+const overflowItems = computed(() => [...structure.value.left.filter(isOverflow), ...structure.value.right.filter(isOverflow)]);
 </script>
 
 <style lang="scss" scoped>
@@ -224,26 +188,9 @@ const overflowItems = computed(() => [
 }
 
 .menu-toggle {
-  display: none;
   min-width: auto !important;
   min-height: auto !important;
   padding: 0.5rem !important;
-
-  @media (max-width: 768px) {
-    display: flex;
-    order: -1;
-  }
-
-  // Hide the empty label
-  :deep(.btn-label) {
-    display: none;
-  }
-}
-
-.hide-on-mobile {
-  @media (max-width: 768px) {
-    display: none !important;
-  }
 }
 
 .overflow-menu {
