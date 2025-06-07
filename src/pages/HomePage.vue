@@ -1,7 +1,16 @@
 <template>
   <div class="home">
     <!-- For Employers Section -->
-    <employers-section />
+    <collapsible-section :model-value="true" title="For Employers!">
+      <p class="top-paragraph">If you got here from a job application I made, here are some things you might be looking for.</p>
+      <div class="text-box">
+        <g-button label="Skills List" to="/about" icon="list-check" shape="rounded" border="thin" />
+        <g-button label="Modules List" to="/about" icon="book" shape="rounded" border="thin" />
+        <g-button label="Projects List" to="/projects" icon="code" shape="rounded" border="thin" />
+        <g-button label="Interests List" to="/interests" icon="heart" shape="rounded" border="thin" />
+      </div>
+      <contact-box />
+    </collapsible-section>
 
     <!-- Welcome Section -->
     <div class="welcome">
@@ -22,12 +31,10 @@
     <!-- "For Developers" section - Only visible in dev mode -->
     <collapsible-section v-if="isDevMode" :model-value="true" title="for_developers">
       <p class="top-paragraph" style="font-weight: 600">I see you like to hit random toggles..</p>
-
       <p class="top-paragraph">
         You have enabled "developer mode" on this site, which basically means that you have access to more content than is shown by default. You can turn this
         off by hitting that toggle button again. Additional content will be in the vivid purple you can see here.
       </p>
-
       <p class="top-paragraph">
         I added this feature because I wanted the site to be trimmed down for a general audience by default, but also be technically comprehensive for those who
         can appreciate it.
@@ -37,7 +44,8 @@
 </template>
 
 <script setup lang="ts">
-import EmployersSection from "@/components/EmployersSection.vue";
+import ContactBox from "@/components/ContactBox.vue";
+import GButton from "@/components/GButton.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
 
 import { useDevMode } from "@/composables/UseDevMode";
