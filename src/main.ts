@@ -4,15 +4,67 @@ import router from "./router";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
+// Import only the specific icons we need instead of entire libraries
+import {
+  faSun,
+  faMoon,
+  faCode,
+  faTerminal,
+  faCaretRight,
+  faHome,
+  faUser,
+  faStar,
+  faEnvelope,
+  faInfoCircle,
+  faBars,
+  faClose,
+  faArrowRight,
+  faArrowLeft,
+  faArrowUp,
+  faArrowDown,
+  faFileAlt,
+  faFilePdf,
+  faFileWord,
+  faListCheck,
+  faBook,
+  faHeart,
+  faSlidersH
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-library.add(fas, fab);
+// Add only the specific icons we need
+library.add(
+  faSun,
+  faMoon,
+  faCode,
+  faTerminal,
+  faCaretRight,
+  faHome,
+  faUser,
+  faStar,
+  faEnvelope,
+  faInfoCircle,
+  faBars,
+  faClose,
+  faArrowRight,
+  faArrowLeft,
+  faArrowUp,
+  faArrowDown,
+  faFileAlt,
+  faFilePdf,
+  faFileWord,
+  faListCheck,
+  faBook,
+  faHeart,
+  faSlidersH,
+  faGithub,
+  faLinkedin
+);
 
 const app = createApp(App);
 
