@@ -63,7 +63,7 @@
 
     <!-- Site Banner (Dev Joke) - Only visible in dev mode -->
     <div v-if="isDevMode" class="dev-banner">
-      <p>"All programming languages are just wrappers for assembly" - Yaqin (2024)</p>
+      <p>{{ randomJoke }}</p>
     </div>
   </nav>
 </template>
@@ -76,12 +76,15 @@ import DevModeToggle from "@/components/DevModeToggle.vue";
 import { useDevMode } from "@/composables/UseDevMode";
 import { onClickOutside, useResizeObserver } from "@vueuse/core";
 import { RouteLocationRaw } from "vue-router";
+import { UseJokes } from "@/composables/UseJokes";
 
 const navBarRef = ref<HTMLElement | null>(null);
 const isMenuOpen = ref(false);
 const { isDevMode } = useDevMode();
 const NARROW_THRESHOLD = 768;
 const isNarrowView = ref(false);
+
+const { randomJoke } = UseJokes();
 
 export interface NavBarItem {
   label: string;
