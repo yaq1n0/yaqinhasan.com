@@ -126,14 +126,4 @@ button {
 // Dev Mode Styles
 .dev-mode {
   --color-dev-highlight: #9c27b0;
-
-  .show-dev-only {
-    display: block !important;
-    border-color: var(--color-dev-highlight);
-  }
-}
-
-// Hide dev-only elements by default
-.show-dev-only {
-  display: none !important;
 }

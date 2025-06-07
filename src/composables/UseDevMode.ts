@@ -8,13 +8,6 @@ export function useDevMode() {
     } else {
       root.classList.remove("dev-mode");
     }
-
-    // Emit event for other components to react to dev mode changes
-    window.dispatchEvent(
-      new CustomEvent("devModeChanged", {
-        detail: { isDevMode: value }
-      })
-    );
   };
 
   const { state: isDevMode, toggleState: toggleDevMode } = useBooleanState("devMode", applyDevMode);

@@ -3,7 +3,7 @@
     <template #default="{ activeItem }">
       <!-- Website Project -->
       <div v-show="activeItem.id === 'website'">
-        <carousel-detail :title="projects.website.title" :summary="projects.website.summary" :show-dev-content="projects.website.showDevContent">
+        <carousel-detail :title="projects.website.title" :summary="projects.website.summary">
           <p>I wanted a personal portfolio website to showcase and document my projects, most developers have one so I asked myself "how hard could it be?".</p>
 
           <h4>Initial Research, Abandoned Approaches</h4>
@@ -83,7 +83,7 @@
 
       <!-- ThymPi Project -->
       <div v-show="activeItem.id === 'thympi'">
-        <carousel-detail :title="projects.thympi.title" :summary="projects.thympi.summary" :show-dev-content="projects.thympi.showDevContent">
+        <carousel-detail :title="projects.thympi.title" :summary="projects.thympi.summary">
           <h4>Project Definition</h4>
           <p>
             The official title of my dissertation was "An Intelligent Approach to Navigating Environments With Compliant Obstacles". Like most academic titles,
@@ -299,8 +299,7 @@ const projects = {
   website: {
     title: "yaqinhasan.com - This Website!",
     githubUrl: "https://github.com/yaq1n0/yaqinhasan.com",
-    summary: 'I wanted a personal portfolio website to showcase and document my projects, most developers have one so I asked myself "how hard could it be?".',
-    showDevContent: true
+    summary: 'I wanted a personal portfolio website to showcase and document my projects, most developers have one so I asked myself "how hard could it be?".'
   },
   floppy: {
     title: "flopPy - A Simple Stateful Tk/Python GUI library",
@@ -324,8 +323,7 @@ const projects = {
     title: "ThymPi - My Final Year Project",
     githubUrl: "https://github.com/yaq1n0/ThymPi",
     summary:
-      "The name of this project is a portmanteau of Thymio and Pi, with Thymio being the name of the robot platform that I used and Pi referencing the Raspberry Pi 3B+ that was the brains of the prototype.",
-    showDevContent: true
+      "The name of this project is a portmanteau of Thymio and Pi, with Thymio being the name of the robot platform that I used and Pi referencing the Raspberry Pi 3B+ that was the brains of the prototype."
   },
   stql: {
     title: "Structured Turtle Querying Language",

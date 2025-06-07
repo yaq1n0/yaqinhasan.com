@@ -66,33 +66,23 @@ import type { NavBarStructure } from "@/components/navbar/navbar";
 import GButton from "@/components/GButton.vue";
 import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import DevModeToggle from "@/components/DevModeToggle.vue";
+import { useDevMode } from "@/composables/UseDevMode";
 
 const navBarRef = ref<HTMLElement | null>(null);
 const isMenuOpen = ref(false);
-const isDevMode = ref(false);
+const { isDevMode } = useDevMode();
 const isNarrowView = ref(false);
 const NARROW_THRESHOLD = 768; // Width threshold for narrow view
 
-// Initialize dev mode state
+// Initialize component
 onMounted(() => {
-  const savedMode = sessionStorage.getItem("devMode");
-  isDevMode.value = savedMode === "true";
-
   // Define event handlers
-  const handleDevModeChange = (event: Event) => {
-    const customEvent = event as CustomEvent;
-    isDevMode.value = customEvent.detail.isDevMode;
-  };
-
   const handleOutsideClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     if (isMenuOpen.value && !target.closest(".nav-bar")) {
       isMenuOpen.value = false;
     }
   };
-
-  // Listen for dev mode changes
-  window.addEventListener("devModeChanged", handleDevModeChange);
 
   // Close menu when clicking outside
   document.addEventListener("click", handleOutsideClick);
@@ -139,7 +129,6 @@ onMounted(() => {
     }
 
     // Clean up other event listeners
-    window.removeEventListener("devModeChanged", handleDevModeChange);
     document.removeEventListener("click", handleOutsideClick);
   });
 });

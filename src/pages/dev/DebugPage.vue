@@ -162,7 +162,7 @@
           <h3>Dev Mode Toggle</h3>
           <dev-mode-toggle />
           <p class="mt-4">Toggle to show developer-only content</p>
-          <div class="show-dev-only mt-4 p-4 border rounded">
+          <div v-if="isDevMode" class="mt-4 p-4 border rounded">
             <p>This content is only visible in dev mode</p>
           </div>
         </div>
@@ -200,6 +200,9 @@ import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
 import DevModeToggle from "@/components/DevModeToggle.vue";
 import NavBar from "@/components/navbar/NavBar.vue";
+import { useDevMode } from "@/composables/UseDevMode";
+
+const { isDevMode } = useDevMode();
 </script>
 
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <template>
-  <collapsible-section v-model="isOpen" title="For Employers!" class="show-landscape-only">
+  <collapsible-section :model-value="true" title="For Employers!" class="show-landscape-only">
     <p class="top-paragraph">If you got here from a job application I made, here are some things you might be looking for.</p>
 
     <div class="text-box">
@@ -30,12 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
 import GButton from "@/components/GButton.vue";
 import ContactBox from "@/components/ContactBox.vue";
-
-const isOpen = ref(true);
 </script>
 
 <style lang="scss" scoped>

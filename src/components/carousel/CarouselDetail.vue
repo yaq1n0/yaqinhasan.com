@@ -15,7 +15,7 @@
       <slot />
     </div>
 
-    <dev-content v-if="showDevContent" title="Developer Content" :show="true">
+    <dev-content title="Developer Content">
       <slot name="dev-content" />
     </dev-content>
   </div>
@@ -27,7 +27,6 @@ import DevContent from "@/components/DevContent.vue";
 defineProps<{
   title: string;
   summary?: string;
-  showDevContent?: boolean;
 }>();
 </script>
 

@@ -134,18 +134,8 @@ const { isDevMode, toggleDevMode } = useDevMode();
   }
 }
 
-// Add styles for dev mode elements
+// Dev mode highlight color
 :global(.dev-mode) {
   --color-dev-highlight: #38a169;
-
-  .show-dev-only {
-    display: block !important;
-    border-color: var(--color-dev-highlight);
-  }
-}
-
-// Hide dev-only elements by default
-:global(.show-dev-only) {
-  display: none !important;
 }
 </style>
