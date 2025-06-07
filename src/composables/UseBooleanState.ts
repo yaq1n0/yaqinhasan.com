@@ -23,6 +23,9 @@ export function useBooleanState(key: string, onChange: (value: boolean) => void,
 
   const toggleState = () => (state.value = !state.value);
 
+  // Apply the initial state immediately
+  onChange(state.value);
+
   watch(state, (newValue, oldValue) => {
     if (newValue !== oldValue) onChange(newValue);
   });
