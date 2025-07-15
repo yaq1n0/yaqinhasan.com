@@ -1,12 +1,15 @@
 <template>
   <div class="home">
-    <!-- For Employers Section -->
-    <collapsible-section :model-value="true" title="For Employers!">
+    <p class="hero-tagline">
+      Full Stack Software Engineer - Computer Science Graduate. <br />
+      Building Kinabase @ Cambridge Kinetics
+    </p>
+
+    <collapsible-section :model-value="true" title="For Employers!" class="for-employers">
       <p class="top-paragraph">If you got here from a job application I made, here are some things you might be looking for.</p>
       <contact-box />
     </collapsible-section>
 
-    <!-- Welcome Section -->
     <div class="welcome">
       <div class="logo">
         <img src="/logo-no-background.svg" alt="Yaqin Hasan Logo" />
@@ -16,11 +19,6 @@
         <br />another <br />developer <br />portfolio <br />site :D
       </p>
     </div>
-
-    <p class="top-paragraph">
-      Computer Science graduate from the University of Southampton, passionate about creating elegant solutions to complex problems. Currently developing
-      Kinabase at Cambridge Kinetics.
-    </p>
 
     <!-- "For Developers" section - Only visible in dev mode -->
     <collapsible-section v-if="isDevMode" :model-value="true" title="for_developers">
@@ -50,10 +48,30 @@ const { isDevMode } = useDevMode();
 .home {
   max-width: 1200px;
   margin: 0 auto;
-  padding: map.get($spacing, "base");
+}
+
+.for-employers {
+  margin-left: map.get($spacing, "xl");
+  margin-right: map.get($spacing, "xl");
 }
 
 /* Text styles */
+.hero-tagline {
+  text-align: center;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: map.get($spacing, "xl") auto;
+  padding: map.get($spacing, "lg");
+  color: var(--color-accent-light);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  animation: heroFadeIn 1.2s ease-out;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
 .top-paragraph {
   line-height: 1.6;
   max-width: 800px;
@@ -105,6 +123,12 @@ const { isDevMode } = useDevMode();
 
 /* Responsive adjustments */
 @media (max-width: map.get($breakpoints, "md")) {
+  .hero-tagline {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    padding: map.get($spacing, "md");
+    margin: map.get($spacing, "lg") auto;
+  }
+
   .welcome {
     flex-direction: column;
     gap: map.get($spacing, "md");
@@ -153,6 +177,15 @@ const { isDevMode } = useDevMode();
   }
   to {
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
   }
 }
