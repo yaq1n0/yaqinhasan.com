@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="darkreader-lock" />
     <title>Yaqin Hasan</title>
+    <style>
+      html {
+        background: #fdf6e3;
+      }
+      html.dark {
+        background: #0a0b11;
+      }
+    </style>
+    <script>
+      (function () {
+        var s = localStorage.theme,
+          d = matchMedia("(prefers-color-scheme:dark)").matches;
+        if (s === "true" || (s === null && d)) document.documentElement.className = "dark";
+      })();
+    </script>
     <!-- This is the main entry point -->
   </head>
   <body>
