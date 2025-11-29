@@ -33,11 +33,7 @@ const { isDevMode, toggleDevMode } = useDevMode();
   cursor: pointer;
   padding: 0;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  @include transition(background-color, transform);
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  transition: background-color var(--toggle-animation-duration) ease;
 
   &--active {
     background: linear-gradient(to right, #38a169, #48bb78);
@@ -71,7 +67,7 @@ const { isDevMode, toggleDevMode } = useDevMode();
     border-radius: 50%;
     background: #e2e8f0;
     transform: translateX(0);
-    transition: transform map.get($transitions, "base") ease;
+    transition: transform var(--toggle-animation-duration) ease;
   }
 
   &__normal {
@@ -83,7 +79,7 @@ const { isDevMode, toggleDevMode } = useDevMode();
     color: #6b46c1;
     transform: scale(1);
     opacity: 1;
-    transition: all map.get($transitions, "base") ease;
+    transition: all var(--toggle-animation-duration) ease;
   }
 
   &__dev {
@@ -95,7 +91,7 @@ const { isDevMode, toggleDevMode } = useDevMode();
     color: #38a169;
     transform: scale(0);
     opacity: 0;
-    transition: all map.get($transitions, "base") ease;
+    transition: all var(--toggle-animation-duration) ease;
   }
 
   &__bits {
@@ -103,7 +99,7 @@ const { isDevMode, toggleDevMode } = useDevMode();
     top: -0.5rem;
     right: -0.5rem;
     opacity: 0;
-    transition: opacity map.get($transitions, "base") ease;
+    transition: opacity var(--toggle-animation-duration) ease;
 
     .bit {
       position: absolute;
@@ -111,24 +107,24 @@ const { isDevMode, toggleDevMode } = useDevMode();
       font-family: var(--font-mono);
       color: #48bb78;
       transform: scale(0);
-      transition: transform map.get($transitions, "base") ease;
+      transition: transform var(--toggle-animation-duration) ease;
 
       &:nth-child(1) {
         top: 0;
         right: 0;
-        transition-delay: 0.1s;
+        transition-delay: var(--toggle-animation-delay-1);
       }
 
       &:nth-child(2) {
         top: 0.5rem;
         right: 0.5rem;
-        transition-delay: 0.2s;
+        transition-delay: var(--toggle-animation-delay-2);
       }
 
       &:nth-child(3) {
         top: 0.25rem;
         right: 1rem;
-        transition-delay: 0.3s;
+        transition-delay: var(--toggle-animation-delay-3);
       }
     }
   }

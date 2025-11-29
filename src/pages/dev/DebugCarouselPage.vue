@@ -248,7 +248,6 @@ h1 {
   border-radius: 0.25rem;
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s ease;
 
   @media (max-width: 768px) {
     padding: 0.5rem 1rem;
@@ -260,17 +259,6 @@ h1 {
     font-size: 0.875rem;
     border-radius: 0.1875rem;
   }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    filter: brightness(1.1);
-  }
-
-  &:active {
-    transform: translateY(0);
-    filter: brightness(0.95);
-  }
 }
 
 .demo-link {
@@ -278,7 +266,6 @@ h1 {
   color: var(--color-accent);
   text-decoration: underline;
   font-weight: 500;
-  transition: all 0.2s ease;
 
   @media (max-width: 768px) {
     padding: 0.5rem 1rem;

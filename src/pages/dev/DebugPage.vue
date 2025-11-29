@@ -239,7 +239,6 @@ const { isDevMode } = useDevMode();
       color: var(--color-bg-primary);
       border-radius: 0.5rem;
       font-weight: 600;
-      transition: all 0.2s ease;
 
       &:hover {
         transform: translateY(-2px);

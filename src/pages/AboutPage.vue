@@ -403,13 +403,6 @@ const aboutItems = [
     background-color: var(--color-accent-translucent);
     padding: map.get($spacing, "xs") map.get($spacing, "md");
     border-radius: map.get($border-radius, "md");
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      background-color: var(--color-accent-light);
-      color: var(--color-bg-primary);
-    }
   }
 }
 
@@ -429,18 +422,10 @@ const aboutItems = [
     padding: map.get($spacing, "sm") map.get($spacing, "lg");
     background-color: var(--color-accent-translucent);
     border-radius: map.get($border-radius, "md");
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      background-color: var(--color-accent-light);
-      color: var(--color-bg-primary);
-    }
   }
 }
 
 .year-section {
-  animation: fadeIn 0.5s ease;
 }
 
 .video-container {
@@ -462,17 +447,6 @@ const aboutItems = [
     @media (max-width: map.get($breakpoints, "sm")) {
       height: 250px;
     }
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>

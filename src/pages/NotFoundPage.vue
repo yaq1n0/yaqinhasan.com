@@ -55,7 +55,6 @@ import GButton from "@/components/GButton.vue";
       border-radius: map.get($border-radius, "md");
       text-decoration: none;
       font-weight: 500;
-      transition: background-color map.get($transitions, "base") ease;
 
       &:hover {
         background-color: var(--color-accent-dark);

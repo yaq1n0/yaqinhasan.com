@@ -49,24 +49,12 @@ const isLink = computed(() => !!props.to || !!props.href);
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s ease;
   border: none;
   outline: none;
   min-width: 120px;
   min-height: 40px;
   max-width: 100%;
   width: auto;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    filter: brightness(1.1);
-  }
-
-  &:active {
-    transform: translateY(0);
-    filter: brightness(0.95);
-  }
 
   .btn-content {
     display: flex;
@@ -161,10 +149,6 @@ const isLink = computed(() => !!props.to || !!props.href);
 
 // Dark mode adjustments
 :root[data-theme="dark"] .btn {
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
   &.border-thin,
   &.border-thick {
     border-color: rgba(255, 255, 255, 0.15);

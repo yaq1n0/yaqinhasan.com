@@ -22,16 +22,6 @@ defineProps<{
   margin: map.get($spacing, "lg") 0;
   padding: map.get($spacing, "md");
   border-radius: map.get($border-radius, "lg");
-  animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @media (max-width: map.get($breakpoints, "md")) {

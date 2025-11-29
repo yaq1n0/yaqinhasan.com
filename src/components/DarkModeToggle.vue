@@ -33,11 +33,7 @@ const { isDark, toggleDarkMode } = useDarkMode();
   cursor: pointer;
   padding: 0;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  @include transition(background-color, transform);
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  transition: background-color var(--toggle-animation-duration) ease;
 
   &--dark {
     background: linear-gradient(to right, #2c5282, #1a365d);
@@ -71,7 +67,7 @@ const { isDark, toggleDarkMode } = useDarkMode();
     border-radius: 50%;
     background: #ffd700;
     transform: translateX(0);
-    transition: transform map.get($transitions, "base") ease;
+    transition: transform var(--toggle-animation-duration) ease;
   }
 
   &__sun {
@@ -83,7 +79,7 @@ const { isDark, toggleDarkMode } = useDarkMode();
     color: #ff9800;
     transform: scale(1);
     opacity: 1;
-    transition: all map.get($transitions, "base") ease;
+    transition: all var(--toggle-animation-duration) ease;
   }
 
   &__moon {
@@ -95,7 +91,7 @@ const { isDark, toggleDarkMode } = useDarkMode();
     color: #fff;
     transform: scale(0);
     opacity: 0;
-    transition: all map.get($transitions, "base") ease;
+    transition: all var(--toggle-animation-duration) ease;
   }
 
   &__stars {
@@ -103,7 +99,7 @@ const { isDark, toggleDarkMode } = useDarkMode();
     top: -0.5rem;
     right: -0.5rem;
     opacity: 0;
-    transition: opacity map.get($transitions, "base") ease;
+    transition: opacity var(--toggle-animation-duration) ease;
 
     .star {
       position: absolute;
@@ -112,24 +108,24 @@ const { isDark, toggleDarkMode } = useDarkMode();
       background: #fff;
       border-radius: 50%;
       transform: scale(0);
-      transition: transform map.get($transitions, "base") ease;
+      transition: transform var(--toggle-animation-duration) ease;
 
       &:nth-child(1) {
         top: 0;
         right: 0;
-        transition-delay: 0.1s;
+        transition-delay: var(--toggle-animation-delay-1);
       }
 
       &:nth-child(2) {
         top: 0.5rem;
         right: 0.5rem;
-        transition-delay: 0.2s;
+        transition-delay: var(--toggle-animation-delay-2);
       }
 
       &:nth-child(3) {
         top: 0.25rem;
         right: 1rem;
-        transition-delay: 0.3s;
+        transition-delay: var(--toggle-animation-delay-3);
       }
     }
   }

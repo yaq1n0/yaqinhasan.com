@@ -26,7 +26,6 @@ defineProps<{
   border: 1px solid var(--color-dev-highlight);
   border-radius: map.get($border-radius, "md");
   overflow: hidden;
-  transition: all 0.3s ease;
 
   .dev-content-header {
     display: flex;

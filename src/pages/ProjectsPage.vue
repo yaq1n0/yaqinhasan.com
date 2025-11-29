@@ -388,24 +388,6 @@ onMounted(() => {
     background-color: var(--color-accent-translucent);
     padding: map.get($spacing, "xs") map.get($spacing, "md");
     border-radius: map.get($border-radius, "md");
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      background-color: var(--color-accent-light);
-      color: var(--color-bg-primary);
-    }
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
