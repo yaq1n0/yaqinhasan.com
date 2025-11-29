@@ -7,6 +7,7 @@
     "build": "vite build",
     "serve": "npm run build && npx serve dist",
     "preview": "vite preview",
+    "render:pdf": "npx tsx scripts/render-pdf.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -25,7 +26,8 @@
     "bootstrap": "^5.3.3",
     "swiper": "^11.2.5",
     "vue": "^3.4.21",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@types/node": "^22.15.30",
@@ -40,8 +42,10 @@
     "eslint-plugin-vue": "^9.24.0",
     "happy-dom": "^17.4.4",
     "prettier": "^3.2.5",
+    "puppeteer": "^24.31.0",
     "sass": "^1.85.1",
     "sass-loader": "^14.2.0",
+    "tsx": "^4.20.6",
     "typescript": "^5.4.5",
     "vite": "^6.2.2",
     "vite-plugin-static-copy": "^2.3.1",
