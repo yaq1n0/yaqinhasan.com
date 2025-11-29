@@ -1,46 +1,33 @@
 <template>
   <div class="home">
-    <p class="hero-tagline">
-      Full Stack Software Engineer - Computer Science Graduate. <br />
-      Building Kinabase @ Cambridge Kinetics
-    </p>
+    <p class="hero-tagline">Full Stack SWE - Somewhat Stacked Dude</p>
 
-    <collapsible-section :model-value="true" title="For Employers!" class="for-employers">
-      <p class="top-paragraph">If you got here from a job application I made, here are some things you might be looking for.</p>
-      <contact-box />
+    <!-- "For Developers" section - Only visible in dev mode -->
+    <collapsible-section v-if="isDevMode" :model-value="true" title="forDevs">
+      <p class="top-paragraph" style="font-weight: 600">So you like to hit random toggles?</p>
+      <p class="top-paragraph">You have enabled "developer mode" on this site, which shows some extra content than what is shown by default.</p>
+    </collapsible-section>
+
+    <!-- "For Employers" section - Only visible in non-dev mode (default)-->
+    <collapsible-section v-else :model-value="true" title="For Employers!">
+      <p class="top-paragraph">Some useful things if you got here from a job application.</p>
+      <contact-box :items="[GitHubIcon, LinkedInIcon, EmailIcon, CVIcon]" />
     </collapsible-section>
 
     <div class="welcome">
       <div class="logo">
         <img src="/logo-no-background.svg" alt="Yaqin Hasan Logo" />
       </div>
-      <p class="text">
-        Yet
-        <br />another <br />developer <br />portfolio <br />site :D
-      </p>
+      <p class="text">Yet<br />another<br />dev<br />portfolio<br />site :D</p>
     </div>
-
-    <!-- "For Developers" section - Only visible in dev mode -->
-    <collapsible-section v-if="isDevMode" :model-value="true" title="for_developers">
-      <p class="top-paragraph" style="font-weight: 600">I see you like to hit random toggles..</p>
-      <p class="top-paragraph">
-        You have enabled "developer mode" on this site, which basically means that you have access to more content than is shown by default. You can turn this
-        off by hitting that toggle button again. Additional content will be in the vivid purple you can see here.
-      </p>
-      <p class="top-paragraph">
-        I added this feature because I wanted the site to be trimmed down for a general audience by default, but also be technically comprehensive for those who
-        can appreciate it.
-      </p>
-    </collapsible-section>
   </div>
 </template>
 
 <script setup lang="ts">
 import ContactBox from "@/components/ContactBox.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
-
 import { useDevMode } from "@/composables/UseDevMode";
-
+import { GitHubIcon, LinkedInIcon, EmailIcon, CVIcon } from "@/data/ExternalLinks";
 const { isDevMode } = useDevMode();
 </script>
 
@@ -50,7 +37,7 @@ const { isDevMode } = useDevMode();
   margin: 0 auto;
 }
 
-.for-employers {
+.collapsible-section {
   margin-left: map.get($spacing, "xl");
   margin-right: map.get($spacing, "xl");
 }
@@ -75,7 +62,7 @@ const { isDevMode } = useDevMode();
 .top-paragraph {
   line-height: 1.6;
   max-width: 800px;
-  margin: map.get($spacing, "lg") auto;
+  margin: map.get($spacing, "sm") auto;
   animation: fadeIn 1s ease-in;
 }
 
