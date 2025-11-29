@@ -10,7 +10,6 @@
 
     <!-- "For Employers" section - Only visible in non-dev mode (default)-->
     <collapsible-section v-else :model-value="true" title="For Employers!">
-      <p class="top-paragraph">Some useful things if you got here from a job application.</p>
       <contact-box :items="[GitHubIcon, LinkedInIcon, EmailIcon, CVIcon]" />
     </collapsible-section>
 
