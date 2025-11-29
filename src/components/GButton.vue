@@ -18,19 +18,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-
-interface ButtonProps {
-  label: string;
-  labelPos?: "left" | "right" | "above" | "below";
-  icon?: string;
-  iconPrefix?: "fas" | "fab" | "far";
-  iconSize?: "sm" | "md" | "lg";
-  border?: "thin" | "thick" | "none";
-  shape?: "rounded" | "squircle";
-  background?: string;
-  to?: string | object;
-  href?: string;
-}
+import { ButtonProps } from "../data/models/Button";
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   labelPos: "right",
