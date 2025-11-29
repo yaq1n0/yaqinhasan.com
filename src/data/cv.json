@@ -1,0 +1,139 @@
+{
+  "personalInfo": {
+    "name": "Yaqin Hasan",
+    "portfolio": "yaqinhasan.com",
+    "linkedin": "linkedin.com/in/yaqinhasan",
+    "email": "yaqin.k.hasan@gmail.com",
+    "phone": "074-596-16935",
+    "location": "Cambridge, UK",
+    "tagline": "Full-stack software engineer & Computer Science grad - Delivering business value by shipping impactful features.",
+    "objective": "Looking for an exciting and challenging new role where I can expand on my technical and professional skills"
+  },
+  "experience": [
+    {
+      "company": "Cambridge Kinetics",
+      "role": "Software Engineer",
+      "startDate": "2024",
+      "bullets": [
+        "Implemented several AI-powered workflow optimization features that cut data-entry & system configuration from hours to seconds.",
+        "Expanded existing REST API to efficiently support bulk operations on 1000s of records at a time.",
+        "Implemented an SMTP service that allows users to track CRM operations within a business management system.",
+        "Developed a performant real-time data syncing service between multiple external systems and a business management system, handling various external schemas (database & API) and authentication schemes.",
+        "Enhanced existing Stripe billing integration in order to support flexible usage-based billing.",
+        "Responsible for the company's CI, which handles automated testing and deployment, running on local GitHub Actions runners."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Southampton",
+      "degree": "BSc Computer Science (Honours) - Second Class",
+      "startDate": "2020",
+      "endDate": "2023",
+      "subsections": [
+        {
+          "label": "Specialist Modules",
+          "content": "Advanced Computer Architecture & Systems, Real-time Computing & Embedded Systems (RTOS), Programming Language Concepts (compiler theory), Web Architecture & Hypertext Technologies (REST APIs)"
+        },
+        {
+          "label": "Final Year Project",
+          "content": "\"An Intelligent Approach to Navigating Environments With Compliant Obstacles\""
+        }
+      ]
+    },
+    {
+      "institution": "University of Southampton, Malaysia Campus",
+      "degree": "Engineering Foundation Year",
+      "startDate": "2019",
+      "endDate": "2020",
+      "grade": "83% year average (equiv. to A*A*A* A-levels)"
+    },
+    {
+      "institution": "IGCSE",
+      "degree": "7 A*s (2019)",
+      "startDate": "2019",
+      "endDate": "2019",
+      "grade": "Maths, English, Physics, Chemistry, Biology, Information Technology, History"
+    }
+  ],
+  "projects": [
+    {
+      "name": "ThymPi - Final Year Project",
+      "dates": "2023",
+      "description": "Researched, designed and implemented a prototype autonomous navigation robot as a platform to demonstrate the concept of intelligently using internal sensor data to add physical context to an otherwise purely visual navigation system.",
+      "skills": ["Python", "OpenCV", "Machine Vision", "Thymio", "Robotics", "Autonomous Navigation", "Sensors", "Raspberry Pi"]
+    },
+    {
+      "name": "yaqinhasan.com - Personal Portfolio Website",
+      "dates": "2024-Present",
+      "description": "Developed and self-hosted my own personal portfolio website from scratch. Challenging myself not to use frameworks, templates or managed hosting to develop a deeper understanding of the underlying technologies.",
+      "skills": ["Web Development", "Responsive", "HTML", "CSS", "JavaScript", "Web Hosting", "VPS", "DNS", "AWS"]
+    },
+    {
+      "name": "flopPy - A Pure Python Stateful GUI Framework",
+      "dates": "2024-Present",
+      "description": "Developed my own portable, lightweight, stateful Python GUI framework, inspired by Google's Flutter framework. This project also led to/required the development of submodules such as a pseudo-static type system and a lightweight state management library.",
+      "skills": ["Python", "Flutter", "GUI", "Frameworks", "Libraries", "stdlib", "Tk", "Tkinter", "PyPI"]
+    },
+    {
+      "name": "AGILE Software Engineering Group Project",
+      "dates": "2022",
+      "description": "Worked in a group of 6 developers to design, implement and test a Java/JavaFX desktop application using AGILE project management principles to meet continuously evolving customer requirements.",
+      "skills": ["AGILE", "UML", "Git", "GitHub", "MVC", "Java", "JavaFX"]
+    },
+    {
+      "name": "Structured Turtle Querying Language",
+      "dates": "2022",
+      "description": "Designed a structured querying language for RDF files, based on SQL concepts, and implemented an interpreter for it using Haskell, Alex and Happy.",
+      "skills": ["Interpreter", "Compiler", "Haskell", "C", "Lex", "Yacc", "Parser", "Lexer", "SQL", "RDF", "Turtle"]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Multi-paradigm, language-agnostic programming",
+      "items": [
+        "Object-oriented programming in C#, Java, Python and more.",
+        "Embedded/Systems programming with C (primarily for microcontrollers).",
+        "Functional programming in Haskell.",
+        "Scripting and process automation with Bash (Unix/Linux) and Batch (Windows)."
+      ]
+    },
+    {
+      "category": "Full stack web development",
+      "items": ["Front-end with HTML, responsive CSS, plain JavaScript.", "Back-end and hosting with Apache, MySQL, Linux, AWS."]
+    },
+    {
+      "category": "Desktop/Web/Mobile application development",
+      "items": [
+        "(desktop) Tk/Tkinter and Qt/PyQt frameworks with Python.",
+        "(desktop) JavaFX framework with Java.",
+        "(multi-platform/web/mobile) Google's Flutter framework with Dart.",
+        "(multi-platform/web) React JavaScript Framework and React Native with JavaScript and TypeScript."
+      ]
+    },
+    {
+      "category": "Development Tools & Practices",
+      "items": [
+        "Developing in and for both Unix/Linux environments such as Ubuntu, Debian and MacOS as well as Windows.",
+        "Test-driven development experience including writing unit tests and functional tests.",
+        "Proficient with Git and GitHub/GitLab version control workflows, including shared/collaborative workflows.",
+        "Standard software build tools such as Cmake, Maven and Gradle."
+      ]
+    },
+    {
+      "category": "Infrastructure & Hardware",
+      "items": [
+        "Virtualization with VMware Workstation/Fusion and VirtualBox.",
+        "Cloud server hosting with AWS & OVH, as well as \"HomeLab\" home server hosting.",
+        "Single board computer (Raspberry Pi, Jetson Nano) and microcontroller (PI pico, Arduino) electronics and robotics.",
+        "Microsoft Office suite, remote collaboration with Teams, advanced Excel (formulas and programming), Access databases and more."
+      ]
+    }
+  ],
+  "interests": [
+    "Co-founded University of Southampton's Powerlifting Club",
+    "Competing in powerlifting at the national level",
+    "Modding video games and map/level design",
+    "Building custom enthusiast PCs"
+  ]
+}
