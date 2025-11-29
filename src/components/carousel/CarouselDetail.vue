@@ -15,7 +15,7 @@
       <slot />
     </div>
 
-    <dev-content title="Developer Content">
+    <dev-content v-if="$slots['dev-content']" title="Developer Content">
       <slot name="dev-content" />
     </dev-content>
   </div>
@@ -35,11 +35,11 @@ defineProps<{
   background-color: var(--color-bg-tertiary);
   border-radius: map.get($border-radius, "lg");
   padding: map.get($spacing, "xl");
-  margin-bottom: map.get($spacing, "xl");
+  margin: 0 map.get($spacing, "base");
+  margin-bottom: map.get($spacing, "md");
   animation: fadeIn 0.5s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  height: 100%;
   display: flex;
   flex-direction: column;
 
