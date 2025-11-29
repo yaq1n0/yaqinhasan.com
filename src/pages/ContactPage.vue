@@ -1,53 +1,56 @@
 <template>
-  <div class="contact-page">
-    <section class="page-header">
-      <h1>Contact Info & CV</h1>
-    </section>
+  <div class="contact-page" :class="{ 'print-mode': isPrintMode }">
+    <template v-if="!isPrintMode">
+      <section class="page-header">
+        <h1>Contact Info & CV</h1>
+      </section>
 
-    <!-- Contact Container -->
-    <div class="contact-container">
-      <!-- Contact Box -->
-      <contact-box :items="['linkedin', 'email', 'github']" />
-
-      <div class="info-box">
-        <p>
-          <strong>If you'd rather do things manually...</strong>
-          <br />
-          LinkedIn: https://www.linkedin.com/in/yaqinhasan
-          <br />
-          Email: yaqin.k.hasan@gmail.com
-          <br />
-          GitHub: https://github.com/yaq1n0
-        </p>
+      <div class="contact-container">
+        <!-- Contact Container -->
+        <div>
+          <!-- Contact Box -->
+          <contact-box :items="[GitHubIcon, LinkedInIcon, EmailIcon, DownloadCVIcon]" />
+        </div>
       </div>
+    </template>
+
+    <!-- CV Rendered from JSON -->
+    <div v-if="isLoaded && cvData" class="cv-wrapper">
+      <render-c-v :cv="cvData" :print-mode="isPrintMode" />
+    </div>
+    <div v-else class="cv-loading">
+      <p>Loading CV...</p>
     </div>
 
-    <div class="divider" />
-
-    <p v-if="isDevMode" class="dev-note">
-      I am planning to put a native web formatted version of my CV here eventually, but for now, I will simply embed a pdf version :)
-      <br /><u>Last CV update: 28th March 2024</u>
-    </p>
-
-    <!-- Download Links -->
-    <div class="download-links">
-      <g-button label="Download as PDF" href="/CV_Yaqin_Hasan.pdf" icon="file-pdf" download shape="rounded" border="thin" />
-      <g-button label="Download as Word .docx" href="/CV_Yaqin_Hasan.docx" icon="file-word" download shape="rounded" border="thin" />
-    </div>
-
-    <!-- PDF Embed -->
-    <div class="pdf-container">
-      <iframe src="/CV_Yaqin_Hasan.pdf" class="pdf-embed" />
-    </div>
+    <!-- Dev mode: link to print preview -->
+    <dev-content v-if="!isPrintMode" title="CV Print Preview">
+      <g-button label="View print preview" to="/contact?print=true" icon="print" shape="rounded" border="thin" />
+    </dev-content>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
 import ContactBox from "@/components/ContactBox.vue";
+import DevContent from "@/components/DevContent.vue";
 import GButton from "@/components/GButton.vue";
-import { useDevMode } from "@/composables/UseDevMode";
+import { GitHubIcon, LinkedInIcon, EmailIcon, DownloadCVIcon } from "@/data/ExternalLinks";
+import RenderCV from "@/components/RenderCV.vue";
+import { type CV, cvSchema } from "@/data/models/CV";
+import { usePrintMode } from "@/composables/UsePrintMode";
 
-const { isDevMode } = useDevMode();
+const { isPrintMode } = usePrintMode();
+
+// CV data state
+const cvData = ref<CV>();
+const isLoaded = ref(false);
+
+// Load CV data on mount
+onMounted(async () => {
+  const cvJson = await import("../data/cv.json"); // ignore the ts warning, it just doesn't treat cv.json as a module but you can import it just fine
+  cvData.value = cvSchema.parse(cvJson.default);
+  isLoaded.value = true;
+});
 </script>
 
 <style lang="scss" scoped>
@@ -66,7 +69,7 @@ const { isDevMode } = useDevMode();
 }
 
 .page-header {
-  margin-bottom: map.get($spacing, "xl");
+  margin-bottom: map.get($spacing, "base");
   text-align: center;
 
   h1 {
@@ -109,12 +112,6 @@ const { isDevMode } = useDevMode();
   margin: map.get($spacing, "xl") 0;
 }
 
-.dev-note {
-  text-align: center;
-  color: var(--color-dev-highlight);
-  margin-bottom: map.get($spacing, "lg");
-}
-
 .download-links {
   display: flex;
   flex-wrap: wrap;
@@ -124,26 +121,54 @@ const { isDevMode } = useDevMode();
   padding: map.get($spacing, "md");
 }
 
-.pdf-container {
-  display: flex;
-  justify-content: center;
-  margin-top: map.get($spacing, "lg");
-}
-
-.pdf-embed {
-  width: 100%;
-  max-width: 800px;
-  height: 1000px;
-  border: none;
-  border-radius: map.get($border-radius, "md");
+.cv-wrapper {
+  background: var(--color-bg-secondary);
+  border-radius: map.get($border-radius, "lg");
+  padding: map.get($spacing, "lg");
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: map.get($breakpoints, "md")) {
-    height: 800px;
-  }
-
   @media (max-width: map.get($breakpoints, "sm")) {
-    height: 600px;
+    padding: map.get($spacing, "sm");
+    border-radius: 0;
+  }
+}
+
+.cv-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--color-text-secondary);
+}
+
+// Print mode styles
+.contact-page.print-mode {
+  padding: 0;
+  max-width: none;
+  background: white;
+
+  .cv-wrapper {
+    background: white;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+@media print {
+  .contact-page {
+    padding: 0;
+    max-width: none;
+    background: white;
+
+    .cv-wrapper {
+      background: white;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      border: none;
+    }
   }
 }
 </style>
