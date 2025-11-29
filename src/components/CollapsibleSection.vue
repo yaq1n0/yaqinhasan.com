@@ -8,11 +8,9 @@
         {{ title }}
       </h3>
     </div>
-    <transition name="slide">
-      <div v-if="modelValue" class="collapsible-content">
-        <slot />
-      </div>
-    </transition>
+    <div v-if="modelValue" class="collapsible-content">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -57,7 +55,6 @@ const toggleOpen = () => {
 }
 
 .caret-icon {
-  transition: transform 0.3s ease;
   color: var(--color-accent);
 }
 
@@ -74,21 +71,6 @@ const toggleOpen = () => {
 .collapsible-content {
   padding: 1rem 1.25rem 1.25rem 1.25rem;
   background-color: var(--color-bg-tertiary);
-}
-
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.3s ease-out;
-  max-height: 500px;
-  overflow: hidden;
-}
-
-.slide-enter-from,
-.slide-leave-to {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 @media (max-width: 768px) {

@@ -178,9 +178,6 @@ const overflowItems = computed(() => [...structure.value.left.filter(isOverflow)
   border-radius: 0.5rem;
   margin: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition:
-    border-radius 0.2s ease,
-    box-shadow 0.2s ease;
   z-index: 100;
 
   // Remove bottom border radius when overflow menu is open
@@ -227,7 +224,6 @@ const overflowItems = computed(() => [...structure.value.left.filter(isOverflow)
   gap: 0.75rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   z-index: 99; // Slightly lower than navbar to ensure proper stacking
-  animation: slideDown 0.2s ease-out;
   max-height: 80vh;
   overflow-y: auto;
 
@@ -278,33 +274,12 @@ const overflowItems = computed(() => [...structure.value.left.filter(isOverflow)
   padding: 0.75rem;
   background-color: var(--color-accent-translucent);
   text-align: center;
-  animation: fadeIn 0.3s ease-in;
 
   p {
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-accent-dark);
     margin: 0;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>

@@ -52,17 +52,12 @@ const { isDevMode } = useDevMode();
   padding: map.get($spacing, "lg");
   color: var(--color-accent-light);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  animation: heroFadeIn 1.2s ease-out;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
 }
 
 .top-paragraph {
   line-height: 1.6;
   max-width: 800px;
   margin: map.get($spacing, "sm") auto;
-  animation: fadeIn 1s ease-in;
 }
 
 /* Welcome section with logo */
@@ -73,24 +68,17 @@ const { isDevMode } = useDevMode();
   justify-content: center;
   align-items: center;
   gap: map.get($spacing, "xl");
-  animation: slideUp 0.8s ease-out;
 
   .logo {
     display: flex;
     padding: map.get($spacing, "md");
     width: 40%;
     max-width: 40rem;
-    animation: fadeIn 1.2s ease-in;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-    transition: transform 0.3s ease;
 
     img {
       width: 100%;
       height: auto;
-    }
-
-    &:hover {
-      transform: scale(1.02);
     }
   }
 
@@ -103,7 +91,6 @@ const { isDevMode } = useDevMode();
     font-family: var(--font-mono);
     color: var(--color-accent-light);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    animation: slideIn 0.8s ease-out;
   }
 }
 
@@ -132,47 +119,6 @@ const { isDevMode } = useDevMode();
 
   .top-paragraph {
     font-size: map.get($font-sizes, "base");
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes heroFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 </style>
