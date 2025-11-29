@@ -6,6 +6,21 @@
     <meta name="darkreader-lock" />
     <title>Yaqin Hasan</title>
     <link rel="icon" href="/favicon.ico" />
+    <style>
+      html {
+        background: #fdf6e3;
+      }
+      html.dark {
+        background: #0a0b11;
+      }
+    </style>
+    <script>
+      (function () {
+        var s = localStorage.theme,
+          d = matchMedia("(prefers-color-scheme:dark)").matches;
+        if (s === "true" || (s === null && d)) document.documentElement.className = "dark";
+      })();
+    </script>
     <!-- This is a SSG copy of the main index.html -->
     <!-- The main Vue app will correctly route to: {{ROUTE_PATH}} -->
   </head>
