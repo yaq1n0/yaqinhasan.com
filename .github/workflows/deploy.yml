@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Render CV PDF
+        run: npm run render:pdf
+
       - name: Build
         run: npm run build
 
