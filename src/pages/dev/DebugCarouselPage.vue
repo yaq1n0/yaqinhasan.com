@@ -68,7 +68,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import CarouselLayout from "@/components/carousel/CarouselLayout.vue";
-import { CarouselItem } from "@/components/carousel/CarouselItem";
+import { CarouselItem } from "@/data/models/CarouselItem";
 
 // Simple state
 const activeItemId = ref("item1");

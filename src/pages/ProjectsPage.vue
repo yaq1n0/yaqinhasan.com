@@ -289,7 +289,7 @@
 import { ref, onMounted } from "vue";
 import CarouselLayout from "@/components/carousel/CarouselLayout.vue";
 import CarouselDetail from "@/components/carousel/CarouselDetail.vue";
-import { type CarouselItem } from "@/components/carousel/CarouselItem";
+import { type CarouselItem } from "@/data/models/CarouselItem";
 
 // State for active project
 const activeProject = ref("website");

@@ -49,6 +49,7 @@
         :effect="'fade'"
         :fade-effect="{ crossFade: true }"
         :speed="400"
+        :auto-height="true"
         :pagination="{
           el: '.swiper-pagination',
           clickable: true,
@@ -76,7 +77,7 @@ import GButton from "@/components/GButton.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Autoplay, A11y, EffectFade } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import type { CarouselItem } from "@/components/carousel/CarouselItem";
+import type { CarouselItem } from "@/data/models/CarouselItem";
 
 // Import Swiper styles
 import "swiper/css";
@@ -261,7 +262,7 @@ defineExpose({
 }
 
 .page-header {
-  margin-bottom: map.get($spacing, "xl");
+  margin-bottom: map.get($spacing, "base");
   text-align: center;
   width: 100%;
 
@@ -522,6 +523,7 @@ defineExpose({
     overflow: hidden;
     border-radius: map.get($border-radius, "lg");
     padding: 0;
+    transition: height 0.3s ease;
 
     @media (max-width: map.get($breakpoints, "sm")) {
       border-radius: map.get($border-radius, "md");
@@ -529,12 +531,18 @@ defineExpose({
   }
 
   :deep(.swiper-pagination) {
-    position: relative; /* Change to relative positioning */
-    margin-top: 20px; /* Add margin to separate from content */
+    position: relative;
+    margin-top: map.get($spacing, "lg");
+    padding: map.get($spacing, "md") 0;
     bottom: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
     @media (max-width: map.get($breakpoints, "sm")) {
-      margin-top: 15px;
+      margin-top: map.get($spacing, "md");
+      padding: map.get($spacing, "sm") 0;
     }
 
     .swiper-pagination-bullet {
