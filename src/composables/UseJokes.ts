@@ -12,7 +12,7 @@ export function UseJokes() {
     `"REST is just RPC with commitment issues"`,
     `"Every API is a promise wrapped in a lie"`,
     `"Backend is 90% JSON serialization/deserialization and 10% wondering why it broke in prod"`,
-    `"Any is TypeScript's safe word"`
+    `"'any' is TypeScript's safe word"`
   ];
 
   const getRandomJoke = () => jokesListLol[Math.floor(Math.random() * jokesListLol.length)];
