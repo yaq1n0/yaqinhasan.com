@@ -2,7 +2,7 @@
   <div v-if="isDevMode" class="dev-content">
     <div class="dev-content-header">
       <font-awesome-icon :icon="['fas', 'code']" class="dev-icon" />
-      <h4>{{ title ?? "Developer Content" }}</h4>
+      <h4>{{ title || "Developer Content" }}</h4>
     </div>
     <div class="dev-content-body">
       <slot />
@@ -38,6 +38,7 @@ defineProps<{
 
     .dev-icon {
       color: var(--color-dev-highlight);
+      margin: 0 map.get($spacing, "sm");
       font-size: 1.2rem;
     }
 
