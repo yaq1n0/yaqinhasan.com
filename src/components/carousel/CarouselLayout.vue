@@ -7,23 +7,16 @@
     <!-- Carousel Picker (Top Navigation) -->
     <div class="carousel-picker" :class="{ minimal: minimal }">
       <swiper
-        :modules="swiperModules"
+        :modules="[FreeMode, A11y]"
         :slides-per-view="'auto'"
         :space-between="0"
         :centered-slides="true"
         :grab-cursor="true"
-        :watch-slides-progress="true"
         :speed="600"
-        :breakpoints="{
-          320: { slidesPerView: 'auto', spaceBetween: 0 },
-          480: { slidesPerView: 'auto', spaceBetween: 0 },
-          640: { slidesPerView: 'auto', spaceBetween: 0 },
-          1024: { slidesPerView: 'auto', spaceBetween: 0 }
-        }"
         :free-mode="{ enabled: true, sticky: true }"
         class="carousel-swiper"
-        @swiper="onSwiperInit"
-        @slide-change="onSlideChange"
+        @swiper="onPickerSwiperInit"
+        @slide-change="onPickerSlideChange"
       >
         <swiper-slide v-for="item in items" :key="item.id" :class="{ 'active-item': activeItemId === item.id }" class="carousel-item">
           <slot name="carousel-item" :item="item" :active="activeItemId === item.id">
@@ -43,18 +36,11 @@
     <!-- Content Display -->
     <div class="carousel-content">
       <swiper
-        :modules="swiperContentModules"
+        :modules="[A11y]"
         :slides-per-view="1"
         :space-between="30"
-        :effect="'fade'"
-        :fade-effect="{ crossFade: true }"
         :speed="400"
         :auto-height="true"
-        :pagination="{
-          el: '.swiper-pagination',
-          clickable: true,
-          dynamicBullets: isMobile
-        }"
         :allow-touch-move="true"
         :grab-cursor="true"
         class="content-swiper"
@@ -65,71 +51,41 @@
           <slot :active-item="item" :items="items" />
         </swiper-slide>
       </swiper>
-
-      <div class="swiper-pagination" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, computed, onUnmounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import GButton from "@/components/GButton.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination, Autoplay, A11y, EffectFade } from "swiper/modules";
+import { FreeMode, A11y } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import type { CarouselItem } from "@/data/models/CarouselItem";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
 
 interface CarouselLayoutProps {
   title: string;
   items: CarouselItem[];
   initialItemId?: string;
   minimal?: boolean;
-  scrollSpeed?: number;
-  pauseOnHover?: boolean;
-  forceCarouselMode?: boolean;
 }
 
 const props = withDefaults(defineProps<CarouselLayoutProps>(), {
   initialItemId: "",
-  minimal: false,
-  scrollSpeed: 30,
-  pauseOnHover: true,
-  forceCarouselMode: false
+  minimal: false
 });
-
-// Swiper modules
-const swiperModules = computed(() => [Pagination, Autoplay, A11y]);
-const swiperContentModules = computed(() => [Pagination, EffectFade, A11y]);
 
 // State
 const activeItemId = ref(props.initialItemId || props.items[0]?.id || "");
 const pickerSwiper = ref<SwiperType | null>(null);
 const contentSwiper = ref<SwiperType | null>(null);
-const visibleItems = ref(0);
-const isMobile = ref(false);
-
-// Check if device is mobile
-const checkMobile = () => {
-  if (typeof window !== "undefined") {
-    isMobile.value = window.innerWidth < 768;
-  }
-};
 
 // Initialize Swiper instances
-const onSwiperInit = (swiper: SwiperType) => {
+const onPickerSwiperInit = (swiper: SwiperType) => {
   pickerSwiper.value = swiper;
-
-  // Calculate visible items
-  if (swiper.el) {
-    const swiperWidth = swiper.el.clientWidth;
-    const slideWidth = swiper.slides[0]?.clientWidth || 200;
-    visibleItems.value = Math.floor(swiperWidth / slideWidth);
-  }
 
   // Set initial slide
   if (props.initialItemId) {
@@ -153,7 +109,7 @@ const onContentSwiperInit = (swiper: SwiperType) => {
 };
 
 // Handle slide changes
-const onSlideChange = (swiper: SwiperType) => {
+const onPickerSlideChange = (swiper: SwiperType) => {
   const activeIndex = swiper.activeIndex;
   if (props.items[activeIndex]) {
     activeItemId.value = props.items[activeIndex].id;
@@ -161,6 +117,11 @@ const onSlideChange = (swiper: SwiperType) => {
     // Sync content swiper
     if (contentSwiper.value && contentSwiper.value.activeIndex !== activeIndex) {
       contentSwiper.value.slideTo(activeIndex);
+    }
+
+    // Update URL hash
+    if (typeof window !== "undefined") {
+      window.location.hash = props.items[activeIndex].id;
     }
   }
 };
@@ -207,21 +168,10 @@ const selectItem = (itemId: string) => {
 // Initialize from URL hash if present
 onMounted(() => {
   if (typeof window !== "undefined") {
-    // Check if mobile
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
     const hash = window.location.hash.substring(1);
     if (hash && props.items.some((item) => item.id === hash)) {
       selectItem(hash);
     }
-  }
-});
-
-// Clean up event listeners
-onUnmounted(() => {
-  if (typeof window !== "undefined") {
-    window.removeEventListener("resize", checkMobile);
   }
 });
 
@@ -237,8 +187,7 @@ watch(
 
 // Expose methods for parent components
 defineExpose({
-  selectItem,
-  visibleItems
+  selectItem
 });
 </script>
 
@@ -247,7 +196,7 @@ defineExpose({
   margin: 0 auto;
   padding: map.get($spacing, "xl");
   position: relative;
-  overflow: hidden; /* Changed from visible to hidden to prevent overflow */
+  overflow: hidden;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -290,7 +239,7 @@ defineExpose({
   margin-bottom: map.get($spacing, "xl");
   overflow: hidden;
 
-  // Add pseudo-elements for the fade effect
+  // Fade effect on edges
   &::before,
   &::after {
     content: "";
@@ -299,7 +248,7 @@ defineExpose({
     bottom: 0;
     width: 80px;
     z-index: 2;
-    pointer-events: none; // Allow clicks to pass through
+    pointer-events: none;
     transition: opacity 0.3s ease;
   }
 
@@ -334,7 +283,7 @@ defineExpose({
   }
 
   .carousel-swiper {
-    overflow: hidden; /* Changed from visible to hidden */
+    overflow: hidden;
     padding: 10px 0;
     margin: 0 -10px;
 
@@ -347,7 +296,6 @@ defineExpose({
   .carousel-item {
     width: auto;
     min-width: 180px;
-    max-width: none;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     padding: 0 10px;
 
@@ -429,7 +377,6 @@ defineExpose({
 
     .carousel-item {
       min-width: 160px;
-      max-width: none;
 
       @media (max-width: map.get($breakpoints, "md")) {
         min-width: 130px;
@@ -490,7 +437,7 @@ defineExpose({
 
     &::before,
     &::after {
-      width: 60px; // Slightly smaller fade for minimal mode
+      width: 60px;
 
       @media (max-width: map.get($breakpoints, "md")) {
         width: 50px;
@@ -506,8 +453,6 @@ defineExpose({
 /* Content Carousel Styles */
 .carousel-content {
   margin-top: map.get($spacing, "xl");
-  position: relative;
-  padding: 0;
   width: 100%;
 
   @media (max-width: map.get($breakpoints, "md")) {
@@ -522,82 +467,12 @@ defineExpose({
     width: 100%;
     overflow: hidden;
     border-radius: map.get($border-radius, "lg");
-    padding: 0;
     transition: height 0.3s ease;
 
     @media (max-width: map.get($breakpoints, "sm")) {
       border-radius: map.get($border-radius, "md");
     }
   }
-
-  :deep(.swiper-pagination) {
-    position: relative;
-    margin-top: map.get($spacing, "lg");
-    padding: map.get($spacing, "md") 0;
-    bottom: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    @media (max-width: map.get($breakpoints, "sm")) {
-      margin-top: map.get($spacing, "md");
-      padding: map.get($spacing, "sm") 0;
-    }
-
-    .swiper-pagination-bullet {
-      width: 10px;
-      height: 10px;
-      background-color: var(--color-bg-secondary);
-      opacity: 0.7;
-      transition: all 0.3s ease;
-      margin: 0 5px;
-
-      @media (max-width: map.get($breakpoints, "sm")) {
-        width: 8px;
-        height: 8px;
-        margin: 0 4px;
-      }
-
-      &-active {
-        background-color: var(--color-accent);
-        opacity: 1;
-        width: 12px;
-        height: 12px;
-
-        @media (max-width: map.get($breakpoints, "sm")) {
-          width: 10px;
-          height: 10px;
-        }
-      }
-    }
-
-    /* Dynamic bullets for mobile */
-    &.swiper-pagination-bullets-dynamic {
-      .swiper-pagination-bullet {
-        transform: scale(0.8);
-
-        &-active {
-          transform: scale(1);
-        }
-
-        &-active-prev,
-        &-active-next {
-          transform: scale(0.9);
-        }
-
-        &-active-prev-prev,
-        &-active-next-next {
-          transform: scale(0.7);
-        }
-      }
-    }
-  }
-}
-
-/* Navigation Controls */
-.nav-button {
-  display: none; /* Hide navigation buttons */
 }
 
 /* Touch-specific optimizations */
@@ -605,7 +480,7 @@ defineExpose({
   .carousel-picker {
     .carousel-item {
       &:hover {
-        transform: none; /* Disable hover effects on touch devices */
+        transform: none;
       }
 
       :deep(.btn) {
@@ -613,19 +488,6 @@ defineExpose({
           box-shadow: none;
         }
       }
-    }
-  }
-
-  .carousel-content {
-    :deep(.swiper-pagination-bullet) {
-      width: 12px !important; /* Larger touch targets */
-      height: 12px !important;
-      margin: 0 6px !important;
-    }
-
-    :deep(.swiper-pagination-bullet-active) {
-      width: 14px !important;
-      height: 14px !important;
     }
   }
 }
