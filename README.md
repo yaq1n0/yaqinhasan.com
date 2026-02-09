@@ -64,9 +64,9 @@ yaqinhasan.com/
 │   ├── pages/               # Main application pages
 │   │   ├── HomePage.vue     # Landing page
 │   │   ├── AboutPage.vue    # Skills & education
+│   │   ├── CVPage.vue       # Curriculum Vitae (with print mode)
 │   │   ├── ProjectsPage.vue # Portfolio showcase
 │   │   ├── InterestsPage.vue # Personal interests
-│   │   ├── ContactPage.vue  # Contact & CV
 │   │   └── dev/            # Development/debug pages
 │   ├── styles/             # Global SCSS files
 │   │   ├── main.scss       # Main stylesheet
