@@ -14,10 +14,12 @@ export interface CommandContext {
   addOutput: (type: OutputLine["type"], content: string) => void;
   isDevMode: boolean;
   toggleDevMode: () => void;
+  navigate?: (path: string) => void;
+  currentPath?: string;
 }
 
 export function createCommands(context: CommandContext): Command[] {
-  const { addOutput, isDevMode, toggleDevMode } = context;
+  const { addOutput, isDevMode, toggleDevMode, navigate, currentPath } = context;
 
   return [
     {
@@ -140,6 +142,274 @@ export function createCommands(context: CommandContext): Command[] {
         const isDark = document.documentElement.classList.contains("dark");
         addOutput("info", `Current theme: ${isDark ? "Dark" : "Light"}`);
         addOutput("output", "Theme switching coming soon...");
+      }
+    },
+    {
+      name: "tree",
+      description: "Display the site structure (sitemap)",
+      execute: () => {
+        addOutput("output", "<strong>yaqinhasan.com</strong>");
+        addOutput("output", "│");
+        addOutput("output", "├── <a href='/' style='color: var(--color-accent);'>/</a> (home)");
+        addOutput("output", "├── <a href='/about' style='color: var(--color-accent);'>/about</a>");
+        addOutput("output", "├── <a href='/experience' style='color: var(--color-accent);'>/experience</a>");
+        addOutput("output", "├── <a href='/projects' style='color: var(--color-accent);'>/projects</a>");
+        addOutput("output", "├── <a href='/interests' style='color: var(--color-accent);'>/interests</a>");
+        addOutput("output", "├── <a href='/cv' style='color: var(--color-accent);'>/cv</a>");
+
+        if (isDevMode) {
+          addOutput("output", "├── <a href='/debug' style='color: var(--color-dev);'>/debug</a> <span style='color: var(--color-dev);'>[dev]</span>");
+          addOutput(
+            "output",
+            "└── <a href='/debug-carousel' style='color: var(--color-dev);'>/debug-carousel</a> <span style='color: var(--color-dev);'>[dev]</span>"
+          );
+        } else {
+          addOutput("output", "└── <span style='opacity: 0.5;'>... (enable dev mode to see more)</span>");
+        }
+      }
+    },
+    {
+      name: "cd",
+      description: "Navigate to a page (e.g., cd /about)",
+      execute: (args) => {
+        if (!navigate) {
+          addOutput("error", "Navigation not available");
+          return;
+        }
+
+        if (args.length === 0) {
+          navigate("/");
+          addOutput("success", "Navigating to home...");
+          return;
+        }
+
+        let path = args[0].toLowerCase();
+
+        // Handle relative paths
+        if (!path.startsWith("/")) {
+          path = "/" + path;
+        }
+
+        // Valid paths
+        const validPaths = ["/", "/home", "/about", "/experience", "/projects", "/interests", "/cv"];
+
+        // Add dev paths if in dev mode
+        if (isDevMode) {
+          validPaths.push("/debug", "/debug-carousel");
+        }
+
+        // Normalize path
+        if (path === "/home") {
+          path = "/";
+        }
+
+        if (validPaths.includes(path)) {
+          navigate(path);
+          addOutput("success", `Navigating to ${path}...`);
+        } else {
+          addOutput("error", `cd: ${path}: No such page`);
+          addOutput("info", "Try 'tree' to see available pages");
+        }
+      }
+    },
+    {
+      name: "ls",
+      description: "List available pages",
+      execute: () => {
+        addOutput("output", "<strong>Available pages:</strong>");
+        addOutput("output", "");
+        addOutput("output", "  <span style='color: var(--color-accent);'>home</span>         Landing page");
+        addOutput("output", "  <span style='color: var(--color-accent);'>about</span>        Skills & education");
+        addOutput("output", "  <span style='color: var(--color-accent);'>experience</span>   Work experience");
+        addOutput("output", "  <span style='color: var(--color-accent);'>projects</span>    Portfolio showcase");
+        addOutput("output", "  <span style='color: var(--color-accent);'>interests</span>   Personal interests");
+        addOutput("output", "  <span style='color: var(--color-accent);'>cv</span>          Download CV");
+
+        if (isDevMode) {
+          addOutput("output", "");
+          addOutput("output", "  <span style='color: var(--color-dev);'>debug</span>        Debug page [dev]");
+          addOutput("output", "  <span style='color: var(--color-dev);'>debug-carousel</span> Carousel debug [dev]");
+        }
+      }
+    },
+    {
+      name: "pwd",
+      description: "Print current page/route",
+      execute: () => {
+        const path = currentPath || window.location.pathname;
+        addOutput("output", path);
+      }
+    },
+    {
+      name: "cat",
+      description: "Display content (e.g., cat skills, cat contact)",
+      execute: (args) => {
+        if (args.length === 0) {
+          addOutput("error", "cat: missing operand");
+          addOutput("info", "Try: cat skills, cat contact, cat education");
+          return;
+        }
+
+        const target = args[0].toLowerCase();
+
+        switch (target) {
+          case "contact":
+          case "email":
+            addOutput("output", "<strong>Contact Information:</strong>");
+            addOutput("output", "");
+            addOutput("output", "  Email:    yaqinhasan@outlook.com");
+            addOutput("output", "  GitHub:   github.com/yaqinhasan");
+            addOutput("output", "  LinkedIn: linkedin.com/in/yaqinhasan");
+            addOutput("output", "  Location: Cambridge, UK");
+            break;
+
+          case "skills":
+          case "tech":
+            addOutput("output", "<strong>Core Technologies:</strong>");
+            addOutput("output", "");
+            addOutput("output", "  • TypeScript, JavaScript, Python, C#");
+            addOutput("output", "  • React, Vue, Node.js, .NET");
+            addOutput("output", "  • PostgreSQL, MySQL, Redis");
+            addOutput("output", "  • AWS, Docker, Linux");
+            addOutput("output", "  • Git, CI/CD, AGILE");
+            break;
+
+          case "education":
+          case "degree":
+            addOutput("output", "<strong>Education:</strong>");
+            addOutput("output", "");
+            addOutput("output", "  BSc Computer Science (Honours)");
+            addOutput("output", "  University of Southampton");
+            addOutput("output", "  2020 - 2023");
+            break;
+
+          case "experience":
+          case "work":
+            addOutput("output", "<strong>Current Role:</strong>");
+            addOutput("output", "");
+            addOutput("output", "  Software Engineer @ Cambridge Kinetics");
+            addOutput("output", "  May 2024 - January 2026");
+            addOutput("output", "");
+            addOutput("info", "Visit /experience page for full details");
+            break;
+
+          case "status":
+          case "info":
+            addOutput("output", "<strong>System Status:</strong>");
+            addOutput("output", "");
+            addOutput("output", `  Current Page: ${currentPath || window.location.pathname}`);
+            addOutput("output", `  Dev Mode:     ${isDevMode ? "ENABLED" : "DISABLED"}`);
+            addOutput("output", `  Theme:        ${document.documentElement.classList.contains("dark") ? "Dark" : "Light"}`);
+            break;
+
+          default:
+            addOutput("error", `cat: ${target}: No such file or directory`);
+            addOutput("info", "Available: contact, skills, education, experience, status");
+        }
+      }
+    },
+    {
+      name: "grep",
+      description: "Search CV content (e.g., grep python)",
+      execute: (args) => {
+        if (args.length === 0) {
+          addOutput("error", "grep: missing search pattern");
+          addOutput("info", "Usage: grep <search_term>");
+          return;
+        }
+
+        const searchTerm = args.join(" ").toLowerCase();
+        const cvData = {
+          skills: [
+            "TypeScript",
+            "JavaScript",
+            "Python",
+            "C#",
+            "Java",
+            "C",
+            "Haskell",
+            "Bash",
+            "React",
+            "Vue",
+            "Node.js",
+            ".NET",
+            "Flutter",
+            "JavaFX",
+            "Tkinter",
+            "PostgreSQL",
+            "MySQL",
+            "Redis",
+            "AWS",
+            "Docker",
+            "Linux",
+            "Git",
+            "CI/CD"
+          ],
+          experience: [
+            "AI-powered workflow optimization",
+            "REST API development",
+            "SMTP service implementation",
+            "Real-time data syncing",
+            "Stripe billing integration",
+            "CI/CD with GitHub Actions"
+          ],
+          projects: [
+            "ThymPi - Autonomous navigation robot",
+            "flopPy - Python GUI Framework",
+            "yaqinhasan.com - Portfolio website",
+            "Structured Turtle Querying Language"
+          ]
+        };
+
+        let found = false;
+
+        // Search skills
+        const matchingSkills = cvData.skills.filter((s) => s.toLowerCase().includes(searchTerm));
+        if (matchingSkills.length > 0) {
+          found = true;
+          addOutput("info", "<strong>Skills:</strong>");
+          matchingSkills.forEach((skill) => {
+            addOutput("output", `  • ${skill}`);
+          });
+        }
+
+        // Search experience
+        const matchingExp = cvData.experience.filter((e) => e.toLowerCase().includes(searchTerm));
+        if (matchingExp.length > 0) {
+          found = true;
+          addOutput("info", "<strong>Experience:</strong>");
+          matchingExp.forEach((exp) => {
+            addOutput("output", `  • ${exp}`);
+          });
+        }
+
+        // Search projects
+        const matchingProjects = cvData.projects.filter((p) => p.toLowerCase().includes(searchTerm));
+        if (matchingProjects.length > 0) {
+          found = true;
+          addOutput("info", "<strong>Projects:</strong>");
+          matchingProjects.forEach((proj) => {
+            addOutput("output", `  • ${proj}`);
+          });
+        }
+
+        if (!found) {
+          addOutput("output", `No matches found for '${args.join(" ")}'`);
+        }
+      }
+    },
+    {
+      name: "env",
+      description: "Display environment information",
+      execute: () => {
+        addOutput("output", "<strong>Environment Variables:</strong>");
+        addOutput("output", "");
+        addOutput("output", `  SITE_NAME=yaqinhasan.com`);
+        addOutput("output", `  VERSION=1.0.0`);
+        addOutput("output", `  DEV_MODE=${isDevMode ? "true" : "false"}`);
+        addOutput("output", `  THEME=${document.documentElement.classList.contains("dark") ? "dark" : "light"}`);
+        addOutput("output", `  PATH=${currentPath || window.location.pathname}`);
+        addOutput("output", `  USER_AGENT=${navigator.userAgent.split(" ").slice(0, 2).join(" ")}...`);
       }
     },
     {
