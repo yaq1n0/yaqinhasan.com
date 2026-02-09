@@ -1,65 +1,34 @@
 <template>
-  <nav ref="navBarRef" class="nav-bar" :class="{ 'menu-open': isMenuOpen }">
+  <nav ref="navBarRef" class="nav-bar">
     <div class="nav-content">
-      <!-- Overflow Menu Button  -->
-      <g-button
-        v-if="isNarrowView"
-        class="menu-toggle"
-        icon="bars"
-        border="none"
-        background="transparent"
-        label=""
-        aria-label="Toggle menu"
-        @click="isMenuOpen = !isMenuOpen"
-      />
-
       <!-- Left Section -->
       <div class="nav-section left">
-        <g-button
-          v-for="item in visibleLeftItems"
-          :key="item.label"
-          :label="item.label"
-          :to="item.to"
-          :icon="item.icon?.name || ''"
-          :icon-prefix="item.icon?.prefix || 'fas'"
-          border="none"
-          background="transparent"
-        />
+        <g-button v-for="item in structure.left" :key="item.label" v-bind="item" border="none" background="transparent" />
       </div>
 
       <!-- Right Section -->
       <div class="nav-section right">
+        <g-button v-for="item in structure.right" :key="item.label" v-bind="item" border="none" background="transparent" />
+
         <g-button
-          v-for="item in visibleRightItems"
-          :key="item.label"
-          :label="item.label"
-          :to="item.to"
-          :icon="item.icon?.name || ''"
-          :icon-prefix="item.icon?.prefix || 'fas'"
-          :label-pos="item.icon?.position === 'right' ? 'left' : 'right'"
+          class="terminal-toggle"
+          icon="terminal"
           border="none"
           background="transparent"
+          label=""
+          aria-label="Toggle terminal"
+          :title="isTerminalOpen ? 'Close terminal' : 'Open terminal'"
+          @click="toggleTerminal"
         />
-        <dark-mode-toggle />
-        <dev-mode-toggle />
       </div>
     </div>
 
-    <!-- Overflow Menu -->
-    <div v-if="isMenuOpen" class="overflow-menu">
-      <g-button
-        v-for="item in overflowItems"
-        :key="item.label"
-        :label="item.label"
-        :to="item.to"
-        :icon="item.icon?.name || ''"
-        :icon-prefix="item.icon?.prefix || 'fas'"
-        border="none"
-        background="transparent"
-        class="overflow-item"
-        @click="isMenuOpen = false"
-      />
-    </div>
+    <!-- Integrated Terminal-->
+    <transition name="terminal-expand">
+      <div v-if="isTerminalOpen" class="terminal-container">
+        <dev-terminal ref="terminalRef" v-model:open="isTerminalOpen" />
+      </div>
+    </transition>
 
     <!-- Site Banner (Dev Joke) - Only visible in dev mode -->
     <div v-if="isDevMode" class="dev-banner">
@@ -69,106 +38,87 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, nextTick } from "vue";
 import GButton from "@/components/GButton.vue";
-import DarkModeToggle from "@/components/DarkModeToggle.vue";
-import DevModeToggle from "@/components/DevModeToggle.vue";
+import DevTerminal from "@/components/DevTerminal.vue";
 import { useDevMode } from "@/composables/UseDevMode";
-import { onClickOutside, useResizeObserver } from "@vueuse/core";
-import { RouteLocationRaw } from "vue-router";
+import { useResizeObserver } from "@vueuse/core";
 import { UseJokes } from "@/composables/UseJokes";
+import { GitHubLink, LinkedInLink } from "@/data/ExternalLinks";
+import { ButtonProps } from "@/data/models/Button";
 
-const navBarRef = ref<HTMLElement | null>(null);
-const isMenuOpen = ref(false);
-const { isDevMode } = useDevMode();
+const navBarRef = ref<HTMLElement>();
+const terminalRef = ref<InstanceType<typeof DevTerminal>>();
+
+const isTerminalOpen = ref(false);
+
 const NARROW_THRESHOLD = 768;
 const isNarrowView = ref(false);
 
+const { isDevMode } = useDevMode();
 const { randomJoke } = UseJokes();
 
-export interface NavBarItem {
-  label: string;
-  icon?: {
-    name: string;
-    prefix?: "fas" | "fab" | "far"; // Font Awesome style prefixes
-    position?: "left" | "right";
+const toggleTerminal = () => {
+  isTerminalOpen.value = !isTerminalOpen.value;
+
+  // Focus terminal input after opening
+  if (isTerminalOpen.value) {
+    nextTick(() => {
+      terminalRef.value?.focus();
+    });
+  }
+};
+
+const structure = computed(() => {
+  const isNarrow = isNarrowView.value ? true : undefined; // because hideLabel is true | undefined lol
+
+  const homeButton: ButtonProps = {
+    label: "Home",
+    hideLabel: true,
+    to: "/",
+    icon: "home"
   };
-  to?: RouteLocationRaw; // For router links
-  href?: string; // For external links
-  displayPolicy: "always-show" | "overflow";
-  onClick?: () => void; // For clickable items
-}
 
-export interface NavBarStructure {
-  left: NavBarItem[];
-  right: NavBarItem[];
-}
+  const experienceButton: ButtonProps = {
+    label: "Experience",
+    hideLabel: isNarrow,
+    icon: "briefcase",
+    to: "/experience"
+  };
 
-onClickOutside(navBarRef, () => isMenuOpen.value && (isMenuOpen.value = false));
+  const projectsButton: ButtonProps = {
+    label: "Projects",
+    hideLabel: isNarrow,
+    icon: "code",
+    to: "/projects"
+  };
+
+  const githubButton: ButtonProps = {
+    href: GitHubLink,
+    label: "GitHub",
+    hideLabel: true,
+    icon: "github",
+    iconPrefix: "fab"
+  };
+
+  const linkedinButton: ButtonProps = {
+    href: LinkedInLink,
+    label: "LinkedIn",
+    hideLabel: true,
+    icon: "linkedin",
+    iconPrefix: "fab"
+  };
+
+  return {
+    left: [homeButton, experienceButton, projectsButton],
+    right: [githubButton, linkedinButton]
+  };
+});
 
 useResizeObserver(navBarRef, (entries) => {
   const { width } = entries[0].contentRect;
   isNarrowView.value = width < NARROW_THRESHOLD;
 });
-
-const structure = computed<NavBarStructure>(() => {
-  const left: NavBarItem[] = [
-    {
-      label: "Home",
-      to: "/",
-      icon: { name: "home" },
-      displayPolicy: "always-show"
-    },
-    {
-      label: "About",
-      to: "/about",
-      icon: { name: "user" },
-      displayPolicy: "overflow"
-    },
-    {
-      label: "Projects",
-      to: "/projects",
-      icon: { name: "code" },
-      displayPolicy: "overflow"
-    },
-    {
-      label: "Interests",
-      to: "/interests",
-      icon: { name: "star" },
-      displayPolicy: "overflow"
-    }
-  ];
-
-  const right: NavBarItem[] = [
-    {
-      label: "Contact",
-      to: "/contact",
-      icon: { name: "envelope", position: "right" },
-      displayPolicy: "always-show"
-    }
-  ];
-
-  if (isDevMode.value) {
-    right.push({
-      label: "debug",
-      to: "/debug",
-      icon: { name: "info-circle" },
-      displayPolicy: "overflow"
-    });
-  }
-
-  return { left, right };
-});
-
-const isVisible = (item: NavBarItem) => (isNarrowView.value ? item.displayPolicy === "always-show" : true);
-
-const isOverflow = (item: NavBarItem) => !isVisible(item);
-
-const visibleLeftItems = computed(() => structure.value.left.filter(isVisible));
-
-const visibleRightItems = computed(() => structure.value.right.filter(isVisible));
-
-const overflowItems = computed(() => [...structure.value.left.filter(isOverflow), ...structure.value.right.filter(isOverflow)]);
 </script>
 
 <style lang="scss" scoped>
@@ -179,19 +129,15 @@ const overflowItems = computed(() => [...structure.value.left.filter(isOverflow)
   margin: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
-
-  // Remove bottom border radius when overflow menu is open
-  &.menu-open {
-    border-radius: 0.5rem 0.5rem 0 0;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0); // Remove bottom shadow when menu is open
-  }
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
 .nav-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   min-height: 60px;
 }
 
@@ -265,6 +211,61 @@ const overflowItems = computed(() => [...structure.value.left.filter(isOverflow)
     transform: none !important;
     box-shadow: none !important;
     background-color: var(--color-bg-tertiary) !important;
+  }
+}
+
+// Terminal Container - Seamlessly integrated
+.terminal-container {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+
+  :deep(.terminal) {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  :deep(.terminal-header) {
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+
+    &:hover {
+      background: var(--color-bg-tertiary);
+      cursor: default;
+    }
+  }
+
+  :deep(.terminal-body) {
+    background: #1e1e1e;
+  }
+}
+
+// Terminal expand animation
+.terminal-expand-enter-active,
+.terminal-expand-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.terminal-expand-enter-from,
+.terminal-expand-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+
+.terminal-expand-enter-to,
+.terminal-expand-leave-from {
+  max-height: 600px;
+  opacity: 1;
+}
+
+// Terminal toggle button highlight when active
+.terminal-toggle {
+  :deep(.btn) {
+    &:hover {
+      color: var(--color-accent) !important;
+    }
   }
 }
 
