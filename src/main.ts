@@ -28,7 +28,11 @@ import {
   faListCheck,
   faBook,
   faHeart,
-  faSlidersH
+  faSlidersH,
+  faBug,
+  faBriefcase,
+  faDownload,
+  faEye
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -62,6 +66,10 @@ library.add(
   faBook,
   faHeart,
   faSlidersH,
+  faBug,
+  faBriefcase,
+  faDownload,
+  faEye,
   faGithub,
   faLinkedin
 );
