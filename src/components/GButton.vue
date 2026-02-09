@@ -1,17 +1,18 @@
 <template>
   <component
-    :is="isLink ? 'router-link' : 'button'"
+    :is="isRouterLink ? 'router-link' : 'button'"
     :to="to"
     :href="href"
     :target="href ? '_blank' : undefined"
+    :title="label"
     :class="['btn', `shape-${shape}`, `border-${border}`, `label-${labelPos}`, { 'has-icon': !!icon }]"
     :style="{ '--btn-bg-color': background }"
     @click="$emit('click', $event)"
   >
     <div class="btn-content">
-      <font-awesome-icon v-if="icon" :icon="[iconPrefix, icon]" class="btn-icon" :class="`icon-${iconSize}`" />
+      <font-awesome-icon v-if="parsedIcon" :icon="parsedIcon" class="btn-icon" :class="`icon-${iconSize}`" />
 
-      <span v-if="label" class="btn-label">{{ label }}</span>
+      <span v-if="label && !hideLabel" class="btn-label">{{ label }}</span>
     </div>
   </component>
 </template>
@@ -27,14 +28,22 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   iconSize: "sm",
   border: "thin",
   shape: "squircle",
-  background: "var(--color-accent-translucent)",
-  to: "",
-  href: ""
+  background: "var(--color-accent-translucent)"
 });
 
 defineEmits(["click"]);
 
-const isLink = computed(() => !!props.to || !!props.href);
+const isRouterLink = computed(() => !!props.to || !!props.href);
+
+// Parse icon to handle both "fa-icon-name" and "icon-name" formats
+const parsedIcon = computed(() => {
+  if (!props.icon) return undefined;
+
+  // Strip common FontAwesome prefixes (fa-, fas-, fab-, far-, fal-, fat-, fad-, fass-)
+  const iconName = props.icon.replace(/^(fa|fas|fab|far|fal|fat|fad|fass)-/, "");
+
+  return [props.iconPrefix, iconName];
+});
 </script>
 
 <style lang="scss" scoped>
