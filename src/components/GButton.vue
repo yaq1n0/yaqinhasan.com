@@ -1,9 +1,7 @@
 <template>
   <component
-    :is="isRouterLink ? 'router-link' : 'button'"
-    :to="to"
-    :href="href"
-    :target="href ? '_blank' : undefined"
+    :is="componentType"
+    v-bind="componentProps"
     :title="label"
     :class="['btn', `shape-${shape}`, `border-${border}`, `label-${labelPos}`, { 'has-icon': !!icon }]"
     :style="{ '--btn-bg-color': background }"
@@ -33,7 +31,27 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 defineEmits(["click"]);
 
-const isRouterLink = computed(() => !!props.to || !!props.href);
+// Determine component type: router-link for internal routes, <a> for external links, button otherwise
+const componentType = computed(() => {
+  if (props.to) return "router-link";
+  if (props.href) return "a";
+  return "button";
+});
+
+// Component-specific props based on type
+const componentProps = computed(() => {
+  if (props.to) {
+    return { to: props.to };
+  }
+  if (props.href) {
+    return {
+      href: props.href,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    };
+  }
+  return {};
+});
 
 // Parse icon to handle both "fa-icon-name" and "icon-name" formats
 const parsedIcon = computed(() => {
