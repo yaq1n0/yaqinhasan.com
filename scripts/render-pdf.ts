@@ -37,8 +37,8 @@ async function renderPDF() {
 
     const page = await browser.newPage();
 
-    // Navigate to the contact page with print mode
-    const cvUrl = `${serverUrl}/contact?print=true`;
+    // Navigate to the CV page with print mode
+    const cvUrl = `${serverUrl}/cv?print=true`;
     console.log(`Navigating to ${cvUrl}...`);
 
     await page.goto(cvUrl, {
