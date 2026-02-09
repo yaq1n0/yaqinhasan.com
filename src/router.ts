@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
 import AboutPage from "@/pages/AboutPage.vue";
+import ExperiencePage from "@/pages/ExperiencePage.vue";
 import ProjectsPage from "@/pages/ProjectsPage.vue";
 import InterestsPage from "@/pages/InterestsPage.vue";
-import ContactPage from "@/pages/ContactPage.vue";
+import CVPage from "@/pages/CVPage.vue";
 import DebugPage from "@/pages/dev/DebugPage.vue";
 import DebugCarouselPage from "@/pages/dev/DebugCarouselPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
@@ -20,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
     component: AboutPage
   },
   {
+    path: "/experience",
+    name: "experience",
+    component: ExperiencePage
+  },
+  {
     path: "/projects",
     name: "projects",
     component: ProjectsPage
@@ -30,9 +36,9 @@ const routes: Array<RouteRecordRaw> = [
     component: InterestsPage
   },
   {
-    path: "/contact",
-    name: "contact",
-    component: ContactPage
+    path: "/cv",
+    name: "cv",
+    component: CVPage
   },
   {
     path: "/debug",
