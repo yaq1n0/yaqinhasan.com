@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { useDevMode } from "@/composables/UseDevMode";
 import { useTerminalLogic } from "@/composables/useTerminalLogic";
 import { useTerminalHistory } from "@/composables/useTerminalHistory";
@@ -47,18 +48,28 @@ defineEmits<{
   close: [];
 }>();
 
+const router = useRouter();
+const route = useRoute();
+
 const { isDevMode, toggleDevMode } = useDevMode();
 
 const terminalBody = ref<HTMLElement | null>(null);
 const terminalInput = ref<HTMLInputElement | null>(null);
 const currentInput = ref("");
 
+// Navigation function for commands
+const navigate = (path: string) => {
+  router.push(path);
+};
+
 // Create commands with context
 const commands = computed(() =>
   createCommands({
     addOutput,
     isDevMode: isDevMode.value,
-    toggleDevMode
+    toggleDevMode,
+    navigate,
+    currentPath: route.path
   })
 );
 
