@@ -11,7 +11,6 @@
         <g-button v-for="item in structure.right" :key="item.label" v-bind="item" border="none" background="transparent" />
 
         <g-button
-          class="terminal-toggle"
           icon="terminal"
           border="none"
           background="transparent"
@@ -258,15 +257,6 @@ useResizeObserver(navBarRef, (entries) => {
 .terminal-expand-leave-from {
   max-height: 600px;
   opacity: 1;
-}
-
-// Terminal toggle button highlight when active
-.terminal-toggle {
-  :deep(.btn) {
-    &:hover {
-      color: var(--color-accent) !important;
-    }
-  }
 }
 
 // Dev banner
