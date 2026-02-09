@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
-const outputPath = path.join(projectRoot, "public", "CV_Yaqin_Hasan.pdf");
+const outputPath = path.join(projectRoot, "public", "cv.pdf");
 
 async function renderPDF() {
   let server: ViteDevServer | null = null;
