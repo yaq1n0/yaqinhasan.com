@@ -13,7 +13,8 @@
     {
       "company": "Cambridge Kinetics",
       "role": "Software Engineer",
-      "startDate": "2024",
+      "startDate": "May 2024",
+      "endDate": "January 2026",
       "bullets": [
         "Implemented several AI-powered workflow optimization features that cut data-entry & system configuration from hours to seconds.",
         "Expanded existing REST API to efficiently support bulk operations on 1000s of records at a time.",
