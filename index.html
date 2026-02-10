@@ -17,7 +17,7 @@
     </style>
     <script>
       (function () {
-        var s = localStorage.theme,
+        var s = localStorage.getItem("theme"),
           d = matchMedia("(prefers-color-scheme:dark)").matches;
         if (s === "true" || (s === null && d)) document.documentElement.className = "dark";
       })();
