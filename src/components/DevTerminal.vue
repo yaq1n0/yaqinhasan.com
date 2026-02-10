@@ -39,6 +39,7 @@
 import { ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useDevMode } from "@/composables/UseDevMode";
+import { useTheme } from "@/composables/UseTheme";
 import { useTerminalLogic } from "@/composables/useTerminalLogic";
 import { useTerminalHistory } from "@/composables/useTerminalHistory";
 import { useTerminalAutoComplete } from "@/composables/useTerminalAutoComplete";
@@ -52,6 +53,7 @@ const router = useRouter();
 const route = useRoute();
 
 const { isDevMode, toggleDevMode } = useDevMode();
+const theme = useTheme();
 
 const terminalBody = ref<HTMLElement | null>(null);
 const terminalInput = ref<HTMLInputElement | null>(null);
@@ -69,7 +71,8 @@ const commands = computed(() =>
     isDevMode: isDevMode.value,
     toggleDevMode,
     navigate,
-    currentPath: route.path
+    currentPath: route.path,
+    theme
   })
 );
 

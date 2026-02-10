@@ -18,9 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { useDarkMode } from "@/composables/UseDarkMode";
+import { computed } from "vue";
+import { useTheme } from "@/composables/UseTheme";
 
-const { isDark, toggleDarkMode } = useDarkMode();
+const { currentMode, toggleMode } = useTheme();
+const isDark = computed(() => currentMode.value === "dark");
+const toggleDarkMode = toggleMode;
 </script>
 
 <style lang="scss" scoped>
