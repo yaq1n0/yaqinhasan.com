@@ -1,11 +1,16 @@
 import { useStorage } from "@vueuse/core";
 import { computed, watch } from "vue";
-
-export const AVAILABLE_THEMES = ["default-light", "default-dark", "futuristic-light", "futuristic-dark", "pastel-light", "pastel-dark"] as const;
-
-export type ThemeId = (typeof AVAILABLE_THEMES)[number];
-export type ThemeVariant = "default" | "futuristic" | "pastel";
-export type ThemeMode = "light" | "dark";
+import {
+  type ThemeId,
+  type ThemeVariant,
+  type ThemeMode,
+  THEME_REGISTRY,
+  AVAILABLE_THEMES,
+  AVAILABLE_VARIANTS,
+  isValidTheme,
+  buildThemeId,
+  parseThemeId
+} from "./ThemeRegistry";
 
 /**
  * A composable for managing theme state with localStorage persistence.
@@ -15,7 +20,7 @@ export type ThemeMode = "light" | "dark";
  */
 export function useTheme() {
   const applyTheme = (themeId: ThemeId) => {
-    // Remove old dark mode class if it exists
+    // Remove old dark mode class if it exists (cleanup)
     document.documentElement.classList.remove("dark");
     // Apply new theme via data attribute
     document.documentElement.setAttribute("data-theme", themeId);
@@ -25,17 +30,21 @@ export function useTheme() {
   const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const defaultTheme: ThemeId = systemPrefersDark ? "default-dark" : "default-light";
 
-  // Migrate old boolean theme value to new format
-  const oldThemeValue = localStorage.getItem("theme");
-  if (oldThemeValue === "true" || oldThemeValue === "false") {
-    const migratedTheme = oldThemeValue === "true" ? "default-dark" : "default-light";
-    localStorage.setItem("theme", migratedTheme);
-  }
+  // Get stored value with validation
+  const getValidatedTheme = (): ThemeId => {
+    const stored = localStorage.getItem("theme");
+    return isValidTheme(stored) ? stored : defaultTheme;
+  };
 
   // Store theme preference in localStorage
-  const currentTheme = useStorage<ThemeId>("theme", defaultTheme, localStorage, {
+  const currentTheme = useStorage<ThemeId>("theme", getValidatedTheme(), localStorage, {
     listenToStorageChanges: true
   });
+
+  // Validate and correct invalid theme on load
+  if (!isValidTheme(currentTheme.value)) {
+    currentTheme.value = defaultTheme;
+  }
 
   // Apply the initial theme immediately
   applyTheme(currentTheme.value);
@@ -47,23 +56,29 @@ export function useTheme() {
     }
   });
 
-  // Helper computed properties
-  const currentVariant = computed<ThemeVariant>(() => currentTheme.value.split("-")[0] as ThemeVariant);
-  const currentMode = computed<ThemeMode>(() => currentTheme.value.split("-")[1] as ThemeMode);
+  // Helper computed properties using registry parser
+  const currentVariant = computed<ThemeVariant>(() => parseThemeId(currentTheme.value).variant);
+  const currentMode = computed<ThemeMode>(() => parseThemeId(currentTheme.value).mode);
 
-  // Helper methods
+  // Helper methods with runtime validation
   const setTheme = (themeId: ThemeId) => {
+    if (!isValidTheme(themeId)) {
+      console.error(`Invalid theme ID: ${themeId}`);
+      return;
+    }
     currentTheme.value = themeId;
   };
 
   const setVariant = (variant: ThemeVariant) => {
     const mode = currentMode.value;
-    setTheme(`${variant}-${mode}` as ThemeId);
+    const themeId = buildThemeId(variant, mode);
+    setTheme(themeId);
   };
 
   const setMode = (mode: ThemeMode) => {
     const variant = currentVariant.value;
-    setTheme(`${variant}-${mode}` as ThemeId);
+    const themeId = buildThemeId(variant, mode);
+    setTheme(themeId);
   };
 
   const toggleMode = () => {
@@ -72,10 +87,15 @@ export function useTheme() {
   };
 
   return {
+    // Current state
     currentTheme,
     currentVariant,
     currentMode,
+    // Registry access
     availableThemes: AVAILABLE_THEMES,
+    availableVariants: AVAILABLE_VARIANTS,
+    themeRegistry: THEME_REGISTRY,
+    // Actions
     setTheme,
     setVariant,
     setMode,

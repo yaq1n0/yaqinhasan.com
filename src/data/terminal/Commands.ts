@@ -1,3 +1,6 @@
+import type { useTheme } from "@/composables/UseTheme";
+import { executeThemeCommand } from "./ThemeCommands";
+
 export interface OutputLine {
   type: "command" | "output" | "error" | "success" | "info";
   content: string;
@@ -16,16 +19,7 @@ export interface CommandContext {
   toggleDevMode: () => void;
   navigate?: (path: string) => void;
   currentPath?: string;
-  theme?: {
-    currentTheme: { value: string };
-    currentVariant: { value: string };
-    currentMode: { value: string };
-    availableThemes: readonly string[];
-    setTheme: (themeId: string) => void;
-    setVariant: (variant: string) => void;
-    setMode: (mode: "light" | "dark") => void;
-    toggleMode: () => void;
-  };
+  theme?: ReturnType<typeof useTheme>;
 }
 
 export function createCommands(context: CommandContext): Command[] {
@@ -154,89 +148,7 @@ export function createCommands(context: CommandContext): Command[] {
           addOutput("error", "Theme management not available");
           return;
         }
-
-        if (args.length === 0) {
-          // Show current theme
-          addOutput("info", `Current theme: <strong>${theme.currentTheme.value}</strong>`);
-          addOutput("info", `  Variant: <strong>${theme.currentVariant.value}</strong> | Mode: <strong>${theme.currentMode.value}</strong>`);
-          addOutput("output", "");
-          addOutput("output", "Usage: theme [list|set|variant|mode|toggle]");
-          return;
-        }
-
-        const subcommand = args[0].toLowerCase();
-
-        switch (subcommand) {
-          case "list":
-            // Show all available themes
-            addOutput("info", "<strong>Available themes:</strong>");
-            addOutput("output", "");
-            theme.availableThemes.forEach((t) => {
-              const current = t === theme.currentTheme.value ? " <strong style='color: var(--color-accent);'>(current)</strong>" : "";
-              addOutput("output", `  • ${t}${current}`);
-            });
-            addOutput("output", "");
-            addOutput("info", "Use: theme set <theme-name>");
-            break;
-
-          case "set": {
-            if (!args[1]) {
-              addOutput("error", "Please specify a theme. Use 'theme list' to see options.");
-              return;
-            }
-            const themeExists = theme.availableThemes.some((t) => t === args[1]);
-            if (themeExists) {
-              theme.setTheme(args[1]);
-              addOutput("success", `✓ Theme set to: <strong>${args[1]}</strong>`);
-            } else {
-              addOutput("error", `Invalid theme: ${args[1]}`);
-              addOutput("info", "Use 'theme list' to see available themes.");
-            }
-            break;
-          }
-
-          case "variant": {
-            if (!args[1]) {
-              addOutput("error", "Please specify a variant (default, futuristic, pastel).");
-              return;
-            }
-            const validVariants = ["default", "futuristic", "pastel"];
-            if (validVariants.includes(args[1])) {
-              theme.setVariant(args[1]);
-              addOutput("success", `✓ Variant changed to: <strong>${args[1]}</strong>`);
-              addOutput("info", `Current theme: ${theme.currentTheme.value}`);
-            } else {
-              addOutput("error", `Invalid variant: ${args[1]}`);
-              addOutput("info", "Valid variants: default, futuristic, pastel");
-            }
-            break;
-          }
-
-          case "mode":
-            if (!args[1]) {
-              addOutput("error", "Please specify a mode (light or dark).");
-              return;
-            }
-            if (args[1] === "light" || args[1] === "dark") {
-              theme.setMode(args[1]);
-              addOutput("success", `✓ Mode changed to: <strong>${args[1]}</strong>`);
-              addOutput("info", `Current theme: ${theme.currentTheme.value}`);
-            } else {
-              addOutput("error", `Invalid mode: ${args[1]}`);
-              addOutput("info", "Valid modes: light, dark");
-            }
-            break;
-
-          case "toggle":
-            theme.toggleMode();
-            addOutput("success", `✓ Toggled to <strong>${theme.currentMode.value}</strong> mode`);
-            addOutput("info", `Current theme: ${theme.currentTheme.value}`);
-            break;
-
-          default:
-            addOutput("error", `Unknown subcommand: ${subcommand}`);
-            addOutput("output", "Usage: theme [list|set <theme>|variant <name>|mode <light|dark>|toggle]");
-        }
+        executeThemeCommand(args, theme, addOutput);
       }
     },
     {
