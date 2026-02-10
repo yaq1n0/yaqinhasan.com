@@ -1,0 +1,42 @@
+// Pastel Theme (Soft/Muted)
+// Gentle aesthetic with excellent readability
+
+[data-theme="pastel-light"] {
+  // Background colors - warm cream base
+  --color-bg-primary: #faf8f5;
+  --color-bg-secondary: #f1ede7;
+  --color-bg-tertiary: #e8dfd5;
+
+  // Text colors - strong but soft contrast
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+
+  // Accent colors - soft but visible
+  --color-accent: #5fb3b3;
+  --color-accent-light: #eb9fb6;
+  --color-accent-dark: #c594c5;
+  --color-accent-translucent: rgba(95, 179, 179, 0.15);
+
+  // Border
+  --color-border: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="pastel-dark"] {
+  // Background colors - muted purple-grey
+  --color-bg-primary: #2e303e;
+  --color-bg-secondary: #3b3d4f;
+  --color-bg-tertiary: #494b5e;
+
+  // Text colors - clear and readable
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #d3cfc9;
+
+  // Accent colors - soft pastels on dark
+  --color-accent: #7dc4c4;
+  --color-accent-light: #e9adc3;
+  --color-accent-dark: #c3a3c9;
+  --color-accent-translucent: rgba(125, 196, 196, 0.15);
+
+  // Border
+  --color-border: rgba(255, 255, 255, 0.15);
+}

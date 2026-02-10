@@ -11,6 +11,10 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import NavBar from "./components/NavBar.vue";
+import { useTheme } from "@/composables/UseTheme";
+
+// Initialize theme system on app startup
+useTheme();
 
 const route = useRoute();
 const isPrintMode = computed(() => route.query.print === "true");
