@@ -8,6 +8,7 @@
     "serve": "npm run build && npx serve dist",
     "preview": "vite preview",
     "render:pdf": "npx tsx scripts/render-pdf.ts",
+    "setup:playwright": "playwright install chromium",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -17,9 +18,7 @@
     "lint": "eslint --ext .ts,.vue src/",
     "lint:fix": "eslint --ext .ts,.vue --fix src/",
     "validate:themes": "tsx scripts/validate-themes.ts",
-    "validate:contrast": "tsx scripts/validate-contrast.ts",
-    "validate": "npm run validate:themes && npm run validate:contrast",
-    "ci": "npm run type-check && npm run lint && npm run validate && npm run test"
+    "validate:contrast": "tsx scripts/validate-contrast.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -47,7 +46,7 @@
     "happy-dom": "^17.4.4",
     "polished": "^4.3.1",
     "prettier": "^3.2.5",
-    "puppeteer": "^24.31.0",
+    "playwright": "^1.50.0",
     "sass": "^1.85.1",
     "sass-loader": "^14.2.0",
     "tsx": "^4.20.6",
