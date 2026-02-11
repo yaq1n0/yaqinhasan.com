@@ -178,9 +178,9 @@ function validateMainScss(): ValidationResult {
   const variants = new Set(THEME_REGISTRY.map((t) => t.variant));
 
   variants.forEach((variant) => {
-    const importStatement = `@import "themes/${variant}";`;
-    if (!content.includes(importStatement)) {
-      errors.push(`main.scss missing import for theme variant "${variant}": ${importStatement}`);
+    const useStatement = `@use "themes/${variant}";`;
+    if (!content.includes(useStatement)) {
+      errors.push(`main.scss missing import for theme variant "${variant}": ${useStatement}`);
     }
   });
 
