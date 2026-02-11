@@ -11,6 +11,7 @@ import {
   buildThemeId,
   parseThemeId
 } from "./ThemeRegistry";
+import { runMigrations } from "./migrations/themeMigrations";
 
 /**
  * A composable for managing theme state with localStorage persistence.
@@ -30,10 +31,23 @@ export function useTheme() {
   const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const defaultTheme: ThemeId = systemPrefersDark ? "default-dark" : "default-light";
 
-  // Get stored value with validation
+  // Get stored value with validation and migration support
   const getValidatedTheme = (): ThemeId => {
     const stored = localStorage.getItem("theme");
-    return isValidTheme(stored) ? stored : defaultTheme;
+
+    // Try to migrate legacy theme formats first
+    const migrated = runMigrations(stored);
+    if (migrated) {
+      return migrated;
+    }
+
+    // If valid modern theme, use it
+    if (isValidTheme(stored)) {
+      return stored;
+    }
+
+    // Fall back to system preference
+    return defaultTheme;
   };
 
   // Store theme preference in localStorage

@@ -2,12 +2,12 @@
 @use "variables" as *;
 @use "mixins" as *;
 @use "utilities";
-@import "bootstrap-utilities";
+@use "bootstrap-utilities";
 
 // Import theme files
-@import "themes/default";
-@import "themes/futuristic";
-@import "themes/pastel";
+@use "themes/default";
+@use "themes/futuristic";
+@use "themes/pastel";
 
 :root {
   --font-mono: #{$font-family-mono}; // setup the monospace font

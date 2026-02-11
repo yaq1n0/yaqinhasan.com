@@ -11,11 +11,11 @@
   --color-text-primary: #2c3e50;
   --color-text-secondary: #546e7a;
 
-  // Accent colors - vibrant and visible
-  --color-accent: #2196f3;
-  --color-accent-light: #00897b;
-  --color-accent-dark: #d32f2f;
-  --color-accent-translucent: rgba(33, 150, 243, 0.15);
+  // Accent colors - WCAG AA compliant (4.5:1 contrast minimum)
+  --color-accent: #1565c0;
+  --color-accent-light: #00695c;
+  --color-accent-dark: #c62828;
+  --color-accent-translucent: rgba(21, 101, 192, 0.15);
 
   // Border
   --color-border: rgba(0, 0, 0, 0.12);
