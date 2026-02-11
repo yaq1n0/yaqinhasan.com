@@ -4,7 +4,7 @@
  */
 
 import type { useTheme } from "@/composables/UseTheme";
-import { isValidVariant, isValidMode, isValidTheme, type ThemeId } from "@/composables/ThemeRegistry";
+import { isValidVariant, isValidMode, isValidTheme } from "@/composables/ThemeRegistry";
 
 type ThemeComposable = ReturnType<typeof useTheme>;
 type OutputFn = (type: "info" | "error" | "success" | "output", message: string) => void;

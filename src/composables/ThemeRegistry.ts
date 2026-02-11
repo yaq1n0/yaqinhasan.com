@@ -3,8 +3,9 @@
  * Provides type-safe theme management with validation utilities
  */
 
-export type ThemeVariant = "default" | "futuristic" | "pastel";
-export type ThemeMode = "light" | "dark";
+import { THEME_CONFIG, type ThemeVariant, type ThemeMode } from "./themes.config";
+
+export type { ThemeVariant, ThemeMode };
 
 export interface ThemeDefinition {
   readonly id: string;
@@ -66,7 +67,7 @@ export const THEME_REGISTRY: readonly ThemeDefinition[] = [
 export type ThemeId = (typeof THEME_REGISTRY)[number]["id"];
 
 export const AVAILABLE_THEMES = THEME_REGISTRY.map((t) => t.id) as readonly ThemeId[];
-export const AVAILABLE_VARIANTS: readonly ThemeVariant[] = ["default", "futuristic", "pastel"];
+export const AVAILABLE_VARIANTS = THEME_CONFIG.variants;
 
 /**
  * Type guard to check if a string is a valid ThemeId
