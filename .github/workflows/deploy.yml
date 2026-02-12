@@ -33,6 +33,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Setup playwright (required for render:pdf to work)
+        run: npm run setup:playwright
+
       - name: Render CV PDF
         run: npm run render:pdf
 
