@@ -107,7 +107,6 @@ export function createCommands(context: CommandContext): Command[] {
         addOutput("output", "  <span style='color: var(--color-accent);'>experience</span>   Work experience");
         addOutput("output", "  <span style='color: var(--color-accent);'>projects</span>    Portfolio showcase");
         addOutput("output", "  <span style='color: var(--color-accent);'>interests</span>   Personal interests");
-        addOutput("output", "  <span style='color: var(--color-accent);'>cv</span>          Download CV");
 
         if (isDevMode) {
           addOutput("output", "");
@@ -139,7 +138,7 @@ export function createCommands(context: CommandContext): Command[] {
         }
 
         // Valid paths
-        const validPaths = ["/", "/home", "/about", "/experience", "/projects", "/interests", "/cv"];
+        const validPaths = ["/", "/home", "/about", "/experience", "/projects", "/interests"];
 
         // Add dev paths if in dev mode
         if (isDevMode) {
@@ -156,7 +155,7 @@ export function createCommands(context: CommandContext): Command[] {
           addOutput("success", `Navigating to ${path}...`);
         } else {
           addOutput("error", `cd: ${path}: No such page`);
-          addOutput("info", "Try 'tree' to see available pages");
+          addOutput("info", "Try 'ls' to see available pages");
         }
       }
     },
