@@ -34,31 +34,21 @@ defineProps<{
 .carousel-detail {
   background-color: var(--color-bg-tertiary);
   border-radius: map.get($border-radius, "lg");
-  padding: map.get($spacing, "xl");
-  margin: 0 map.get($spacing, "base");
-  margin-bottom: map.get($spacing, "md");
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 
   .detail-header {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: map.get($spacing, "lg");
-    margin-bottom: map.get($spacing, "lg");
-    padding-bottom: map.get($spacing, "md");
-    border-bottom: 1px solid var(--color-border);
+    gap: map.get($spacing, "md");
     background-color: var(--color-bg-secondary);
-    margin: -#{map.get($spacing, "xl")} -#{map.get($spacing, "xl")} map.get($spacing, "lg") -#{map.get($spacing, "xl")};
-    padding: map.get($spacing, "xl");
-    border-radius: map.get($border-radius, "lg") map.get($border-radius, "lg") 0 0;
-    min-height: 80px;
-    display: flex;
-    align-items: center;
+    padding: map.get($spacing, "lg");
+
+    @media (max-width: map.get($breakpoints, "sm")) {
+      flex-direction: column;
+      padding: map.get($spacing, "md");
+    }
 
     h2 {
       font-size: map.get($font-sizes, "2xl");
@@ -72,23 +62,23 @@ defineProps<{
       display: flex;
       flex-wrap: wrap;
       gap: map.get($spacing, "sm");
-      align-self: center;
     }
   }
 
   .summary {
     font-size: map.get($font-sizes, "lg");
     text-align: center;
-    margin-bottom: map.get($spacing, "lg");
     color: var(--color-accent-light);
-    padding: map.get($spacing, "md") 0;
+    padding: map.get($spacing, "md") map.get($spacing, "lg");
     border-bottom: 1px solid var(--color-border-light);
   }
 
   .detail-content {
-    padding: map.get($spacing, "md") 0;
-    flex: 1;
-    overflow-y: auto;
+    padding: map.get($spacing, "lg");
+
+    @media (max-width: map.get($breakpoints, "sm")) {
+      padding: map.get($spacing, "md");
+    }
   }
 
   h3 {
@@ -114,24 +104,6 @@ defineProps<{
 
     li {
       margin-bottom: map.get($spacing, "xs");
-    }
-  }
-}
-
-@media (max-width: map.get($breakpoints, "md")) {
-  .carousel-detail {
-    padding: map.get($spacing, "lg");
-
-    .detail-header {
-      margin: -#{map.get($spacing, "lg")} -#{map.get($spacing, "lg")} map.get($spacing, "lg") -#{map.get($spacing, "lg")};
-      padding: map.get($spacing, "lg");
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-
-      h2 {
-        margin-bottom: map.get($spacing, "md");
-      }
     }
   }
 }

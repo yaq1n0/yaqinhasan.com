@@ -1,5 +1,5 @@
 <template>
-  <carousel-layout title="My Interests" :items="interestItems" :initial-item-id="activeInterest" minimal :scroll-speed="40">
+  <carousel-layout title="My Interests" :items="interestItems" :initial-item-id="activeInterest">
     <template #default="{ activeItem }">
       <!-- Custom PCs -->
       <div v-show="activeItem.id === 'custom-pcs'">
