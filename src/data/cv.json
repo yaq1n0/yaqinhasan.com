@@ -29,16 +29,15 @@
       "position": "Software Engineer (Full-Stack)",
       "startDate": "May 2024",
       "endDate": "January 2026",
-      "summary": "Worked across frontend, backend and infrastructure to build and maintain a production-grade SaaS business management platform.",
+      "summary": "Worked across frontend, backend and infrastructure (Vue 3, C#/ASP.NET Core, GraphQL, MongoDB) to build and maintain a production-grade SaaS business management platform.",
       "highlights": [
-        "Developed features across the full stack using Vue 3, C#/ASP.NET Core, HotChocolate GraphQL, and MongoDB.",
-        "Built AI-powered workflow features using LLMs, reducing system configuration and data entry time from hours to seconds.",
-        "Expanded existing REST API to efficiently support bulk operations on 10,000+ records.",
-        "Developed a real-time data syncing service between multiple external systems, processing thousands of daily updates across varied schemas and authentication schemes.",
-        "Enhanced existing Stripe billing integration to support flexible usage-based billing.",
-        "Built integrations with third-party accounting systems including Xero and QuickBooks, handling OAuth, webhooks and API errors robustly.",
-        "Built and maintained CI/CD pipelines with GitHub Actions on local and cloud runners, and managed production deployments on Microsoft Azure.",
-        "Mentored graduate and junior engineers through code review, pair programming, and onboarding onto complex areas of the codebase."
+        "Designed and deployed LLM-powered workflow automation, reducing manual configuration time from hours to seconds.",
+        "Architected and implemented real-time data synchronization service integrating multiple external systems, processing thousands of daily updates across heterogeneous schemas and OAuth flows.",
+        "Scoped requirements with stakeholders and led end-to-end delivery of production features, including system design, testing strategy, CI/CD integration and Azure deployment.",
+        "Extended Stripe billing to support usage-based pricing and implemented integrations with Xero and QuickBooks, handling OAuth flows, webhooks and resilient error handling.",
+        "Redesigned REST endpoints to support high-volume bulk operations (10k+ records), improving throughput and reducing client round-trips.",
+        "Built and maintained CI/CD pipelines using GitHub Actions and managed Azure production deployments.",
+        "Mentored graduate and junior engineers through code review, pair programming and onboarding."
       ]
     }
   ],
@@ -81,12 +80,6 @@
       "startDate": "2025",
       "description": "Spotlight-esque lightweight macOS menu-bar utility for triggering and scheduling local workflows",
       "keywords": ["Swift", "macOS", "Native APIs", "Developer Tooling"]
-    },
-    {
-      "name": "VidSrcWrapper",
-      "startDate": "2025",
-      "description": "Full-stack application that searches TMDB and streams content via VidSrc, packaged with Docker.",
-      "keywords": ["Vue", "Hono", "TypeScript", "Docker", "Full-Stack"]
     },
     {
       "name": "linkblitzer.com - Multi-Tab Link Launcher",
@@ -136,7 +129,7 @@
     },
     {
       "name": "Backend",
-      "keywords": ["ASP.NET Core", "HotChocolate GraphQL", "REST APIs", "MongoDB", "Hono", "FastAPI"]
+      "keywords": ["ASP.NET Core", "HotChocolate GraphQL", "OAuth", "Webhooks", "REST APIs", "MongoDB", "Hono", "FastAPI"]
     },
     {
       "name": "Infrastructure & DevOps",
