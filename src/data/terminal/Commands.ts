@@ -112,6 +112,8 @@ export function createCommands(context: CommandContext): Command[] {
           addOutput("output", "");
           addOutput("output", "  <span style='color: var(--color-dev);'>debug</span>        Debug page [dev]");
           addOutput("output", "  <span style='color: var(--color-dev);'>debug-carousel</span> Carousel debug [dev]");
+        } else {
+          addOutput("output", "<span style='opacity: 0.5;'>Use 'dev --enable' to show developer pages</span>");
         }
       }
     },
