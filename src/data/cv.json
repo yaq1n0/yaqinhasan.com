@@ -1,11 +1,11 @@
 {
   "basics": {
     "name": "Yaqin Hasan",
-    "label": "Full-stack software engineer & Computer Science grad - Delivering business value by shipping impactful features.",
+    "label": "Full-stack software engineer specialising in cloud-native SaaS applications.",
     "email": "yaqin.k.hasan@gmail.com",
     "phone": "074-596-16935",
     "url": "https://yaqinhasan.com",
-    "summary": "Looking for an exciting and challenging new role where I can expand on my technical and professional skills",
+    "summary": "Full-stack engineer with production experience across the UI, API and infrastructure layers. Proven track record of shipping impactful features - from AI-powered workflows to third-party integrations and billing systems.",
     "location": {
       "city": "Cambridge",
       "region": "UK"
@@ -15,34 +15,44 @@
         "network": "LinkedIn",
         "username": "yaqinhasan",
         "url": "https://linkedin.com/in/yaqinhasan"
+      },
+      {
+        "network": "GitHub",
+        "username": "yaq1n0",
+        "url": "https://github.com/yaq1n0"
       }
     ]
   },
   "work": [
     {
       "name": "Cambridge Kinetics",
-      "position": "Software Engineer",
+      "position": "Software Engineer (Full-Stack)",
       "startDate": "May 2024",
       "endDate": "January 2026",
+      "summary": "Worked across frontend, backend and infrastructure to build and maintain a production-grade SaaS business management platform.",
       "highlights": [
-        "Implemented several AI-powered workflow optimization features that cut data-entry & system configuration from hours to seconds.",
-        "Expanded existing REST API to efficiently support bulk operations on 1000s of records at a time.",
-        "Implemented an SMTP service that allows users to track CRM operations within a business management system.",
-        "Developed a performant real-time data syncing service between multiple external systems and a business management system, handling various external schemas (database & API) and authentication schemes.",
-        "Enhanced existing Stripe billing integration in order to support flexible usage-based billing.",
-        "Responsible for the company's CI, which handles automated testing and deployment, running on local GitHub Actions runners."
+        "Developed features across the full stack using Vue 3, C#/ASP.NET Core, HotChocolate GraphQL, and MongoDB.",
+        "Built AI-powered workflow features using LLMs, reducing system configuration and data entry time from hours to seconds.",
+        "Expanded existing REST API to efficiently support bulk operations on 10,000+ records.",
+        "Developed a real-time data syncing service between multiple external systems, processing thousands of daily updates across varied schemas and authentication schemes.",
+        "Enhanced existing Stripe billing integration to support flexible usage-based billing.",
+        "Built integrations with third-party accounting systems including Xero and QuickBooks, handling OAuth, webhooks and API errors robustly.",
+        "Built and maintained CI/CD pipelines with GitHub Actions on local and cloud runners, and managed production deployments on Microsoft Azure.",
+        "Mentored graduate and junior engineers through code review, pair programming, and onboarding onto complex areas of the codebase."
       ]
     }
   ],
   "education": [
     {
       "institution": "University of Southampton",
-      "studyType": "BSc Computer Science (Honours) - Second Class",
+      "studyType": "BSc Computer Science (Honours)",
       "startDate": "2020",
       "endDate": "2023",
       "courses": [
-        "Specialist Modules: Advanced Computer Architecture & Systems, Real-time Computing & Embedded Systems (RTOS), Programming Language Concepts (compiler theory), Web Architecture & Hypertext Technologies (REST APIs)",
-        "Final Year Project: \"An Intelligent Approach to Navigating Environments With Compliant Obstacles\""
+        "Advanced Computer Architecture & Systems",
+        "Real-time Computing & Embedded Systems (RTOS)",
+        "Programming Language Concepts (compiler theory)",
+        "Web Architecture & Hypertext Technologies (REST Theory)"
       ]
     },
     {
@@ -51,93 +61,97 @@
       "startDate": "2019",
       "endDate": "2020",
       "score": "83% year average (equiv. to A*A*A* A-levels)"
-    },
-    {
-      "institution": "IGCSE",
-      "studyType": "7 A*s (2019)",
-      "startDate": "2019",
-      "endDate": "2019",
-      "score": "Maths, English, Physics, Chemistry, Biology, Information Technology, History"
     }
   ],
   "projects": [
     {
-      "name": "ThymPi - Final Year Project",
-      "startDate": "2023",
-      "description": "Researched, designed and implemented a prototype autonomous navigation robot as a platform to demonstrate the concept of intelligently using internal sensor data to add physical context to an otherwise purely visual navigation system.",
-      "keywords": ["Python", "OpenCV", "Machine Vision", "Thymio", "Robotics", "Autonomous Navigation", "Sensors", "Raspberry Pi"]
-    },
-    {
       "name": "yaqinhasan.com - Personal Portfolio Website",
       "startDate": "2024",
-      "description": "Developed and self-hosted my own personal portfolio website from scratch. Challenging myself not to use frameworks, templates or managed hosting to develop a deeper understanding of the underlying technologies.",
-      "keywords": ["Web Development", "Responsive", "HTML", "CSS", "JavaScript", "Web Hosting", "VPS", "DNS", "AWS"]
+      "description": "Personal portfolio website, showcasing CV, experience and projects. Including interactive terminal and dynamic theming system.",
+      "keywords": ["Vue 3", "Vite", "TypeScript", "SCSS", "Web Hosting", "VPS", "DNS", "AWS"]
     },
     {
-      "name": "flopPy - A Pure Python Stateful GUI Framework",
-      "startDate": "2024",
-      "description": "Developed my own portable, lightweight, stateful Python GUI framework, inspired by Google's Flutter framework. This project also led to/required the development of submodules such as a pseudo-static type system and a lightweight state management library.",
-      "keywords": ["Python", "Flutter", "GUI", "Frameworks", "Libraries", "stdlib", "Tk", "Tkinter", "PyPI"]
+      "name": "CryptIt - Shamir Secret Sharing Encryption App",
+      "startDate": "2025",
+      "description": "Split secret data into multiple shares using Shamir's Secret Sharing algorithm, allowing for secure distribution and reconstruction of the original data.",
+      "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop Application"]
     },
     {
-      "name": "AGILE Software Engineering Group Project",
-      "startDate": "2022",
-      "description": "Worked in a group of 6 developers to design, implement and test a Java/JavaFX desktop application using AGILE project management principles to meet continuously evolving customer requirements.",
-      "keywords": ["AGILE", "UML", "Git", "GitHub", "MVC", "Java", "JavaFX"]
+      "name": "TrayRunner - MacOS Script Launcher",
+      "startDate": "2025",
+      "description": "Spotlight-esque lightweight macOS menu-bar utility for triggering and scheduling local workflows",
+      "keywords": ["Swift", "macOS", "Native APIs", "Developer Tooling"]
+    },
+    {
+      "name": "VidSrcWrapper",
+      "startDate": "2025",
+      "description": "Full-stack application that searches TMDB and streams content via VidSrc, packaged with Docker.",
+      "keywords": ["Vue", "Hono", "TypeScript", "Docker", "Full-Stack"]
+    },
+    {
+      "name": "linkblitzer.com - Multi-Tab Link Launcher",
+      "startDate": "2025",
+      "description": "Web utility and browser extension that generates single URLs which open multiple target pages simultaneously.",
+      "keywords": ["TypeScript", "HTML", "CSS", "Web Development"]
+    },
+    {
+      "name": "pwordgen.com & pwordgen (npm package)",
+      "startDate": "2025",
+      "description": "Password generation web utility backed by a reusable published TypeScript npm package",
+      "keywords": ["Vue", "Vite", "TypeScript", "npm", "Package Development"]
+    },
+    {
+      "name": "prompt-as-endpoint",
+      "startDate": "2025",
+      "description": "TypeScript framework for wrapping local and cloud LLMs in REST API endpoints, published on npm",
+      "keywords": ["TypeScript", "Hono", "LLM", "REST API", "Framework"]
+    },
+    {
+      "name": "PyDownloader",
+      "startDate": "2025",
+      "description": "Unified API for downloading content from multiple sources",
+      "keywords": ["Python", "FastAPI", "Backend"]
+    },
+    {
+      "name": "ThymPi - Final Year Project",
+      "startDate": "2023",
+      "description": "Researched, designed and implemented a prototype proof-of-concept for using sensor data to augment visual navigation systems for autonomously navigating robots.",
+      "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Sensors", "Raspberry Pi"]
     },
     {
       "name": "Structured Turtle Querying Language",
       "startDate": "2022",
-      "description": "Designed a structured querying language for RDF files, based on SQL concepts, and implemented an interpreter for it using Haskell, Alex and Happy.",
-      "keywords": ["Interpreter", "Compiler", "Haskell", "C", "Lex", "Yacc", "Parser", "Lexer", "SQL", "RDF", "Turtle"]
+      "description": "Designed an SQL-based querying language and implemented accompanying Haskell interpreter.",
+      "keywords": ["Interpreter", "Compiler", "Haskell", "Lex", "Yacc", "Parser", "Lexer", "SQL", "RDF"]
     }
   ],
   "skills": [
     {
-      "name": "Multi-paradigm, language-agnostic programming",
-      "keywords": [
-        "Object-oriented programming in C#, Java, Python and more.",
-        "Embedded/Systems programming with C (primarily for microcontrollers).",
-        "Functional programming in Haskell.",
-        "Scripting and process automation with Bash (Unix/Linux) and Batch (Windows)."
-      ]
+      "name": "Languages",
+      "keywords": ["TypeScript", "JavaScript", "C#", "Python", "Java", "Rust", "C", "Swift"]
     },
     {
-      "name": "Full stack web development",
-      "keywords": ["Front-end with HTML, responsive CSS, plain JavaScript.", "Back-end and hosting with Apache, MySQL, Linux, AWS."]
+      "name": "Frontend",
+      "keywords": ["Vue 3", "Vite", "Apollo GraphQL", "SCSS", "Bootstrap"]
     },
     {
-      "name": "Desktop/Web/Mobile application development",
-      "keywords": [
-        "(desktop) Tk/Tkinter and Qt/PyQt frameworks with Python.",
-        "(desktop) JavaFX framework with Java.",
-        "(multi-platform/web/mobile) Google's Flutter framework with Dart.",
-        "(multi-platform/web) React JavaScript Framework and React Native with JavaScript and TypeScript."
-      ]
+      "name": "Backend",
+      "keywords": ["ASP.NET Core", "HotChocolate GraphQL", "REST APIs", "MongoDB", "Hono", "FastAPI"]
     },
     {
-      "name": "Development Tools & Practices",
-      "keywords": [
-        "Developing in and for both Unix/Linux environments such as Ubuntu, Debian and MacOS as well as Windows.",
-        "Test-driven development experience including writing unit tests and functional tests.",
-        "Proficient with Git and GitHub/GitLab version control workflows, including shared/collaborative workflows.",
-        "Standard software build tools such as Cmake, Maven and Gradle."
-      ]
+      "name": "Infrastructure & DevOps",
+      "keywords": ["Microsoft Azure", "Docker", "GitHub Actions", "CI/CD", "VPS Hosting", "AWS"]
     },
     {
-      "name": "Infrastructure & Hardware",
+      "name": "Development Practices",
       "keywords": [
-        "Virtualization with VMware Workstation/Fusion and VirtualBox.",
-        "Cloud server hosting with AWS & OVH, as well as \"HomeLab\" home server hosting.",
-        "Single board computer (Raspberry Pi, Jetson Nano) and microcontroller (PI pico, Arduino) electronics and robotics.",
-        "Microsoft Office suite, remote collaboration with Teams, advanced Excel (formulas and programming), Access databases and more."
+        "Unit testing & Test driven development (Vitest, xUnit)",
+        "End to End testing (Playwright)",
+        "Code review",
+        "Git & GitHub workflows/collaboration",
+        "CI/CD pipeline management",
+        "Production deployment & environment management"
       ]
     }
-  ],
-  "interests": [
-    { "name": "Co-founded University of Southampton's Powerlifting Club" },
-    { "name": "Competing in powerlifting at the national level" },
-    { "name": "Modding video games and map/level design" },
-    { "name": "Building custom enthusiast PCs" }
   ]
 }
