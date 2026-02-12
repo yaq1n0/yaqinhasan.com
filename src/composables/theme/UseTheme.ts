@@ -11,7 +11,6 @@ import {
   buildThemeId,
   parseThemeId
 } from "./ThemeRegistry";
-import { runMigrations } from "./migrations/themeMigrations";
 
 /**
  * A composable for managing theme state with localStorage persistence.
@@ -23,6 +22,7 @@ export function useTheme() {
   const applyTheme = (themeId: ThemeId) => {
     // Remove old dark mode class if it exists (cleanup)
     document.documentElement.classList.remove("dark");
+
     // Apply new theme via data attribute
     document.documentElement.setAttribute("data-theme", themeId);
   };
@@ -31,37 +31,16 @@ export function useTheme() {
   const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const defaultTheme: ThemeId = systemPrefersDark ? "default-dark" : "default-light";
 
-  // Get stored value with validation and migration support
-  const getValidatedTheme = (): ThemeId => {
+  /** get stored valid theme or fallback to default system preference */
+  const getValidTheme = (): ThemeId => {
     const stored = localStorage.getItem("theme");
-
-    // Try to migrate legacy theme formats first
-    const migrated = runMigrations(stored);
-    if (migrated) {
-      return migrated;
-    }
-
-    // If valid modern theme, use it
-    if (isValidTheme(stored)) {
-      return stored;
-    }
-
-    // Fall back to system preference
-    return defaultTheme;
+    return isValidTheme(stored) ? stored : defaultTheme;
   };
 
   // Store theme preference in localStorage
-  const currentTheme = useStorage<ThemeId>("theme", getValidatedTheme(), localStorage, {
+  const currentTheme = useStorage<ThemeId>("theme", getValidTheme(), localStorage, {
     listenToStorageChanges: true
   });
-
-  // Validate and correct invalid theme on load
-  if (!isValidTheme(currentTheme.value)) {
-    currentTheme.value = defaultTheme;
-  }
-
-  // Apply the initial theme immediately
-  applyTheme(currentTheme.value);
 
   // Watch for theme changes and apply them
   watch(currentTheme, (newTheme, oldTheme) => {
@@ -95,10 +74,19 @@ export function useTheme() {
     setTheme(themeId);
   };
 
-  const toggleMode = () => {
-    const mode = currentMode.value;
-    setMode(mode === "light" ? "dark" : "light");
+  /** validate and correct invalid theme on init */
+  const init = () => {
+    // Validate and correct invalid theme on load
+    if (!isValidTheme(currentTheme.value)) {
+      currentTheme.value = defaultTheme;
+    }
+
+    // Apply the initial theme immediately
+    applyTheme(currentTheme.value);
   };
+
+  // this is called by App.vue -> useTheme() -> init() to validate and correct invalid theme on app start.
+  init();
 
   return {
     // Current state
@@ -112,7 +100,6 @@ export function useTheme() {
     // Actions
     setTheme,
     setVariant,
-    setMode,
-    toggleMode
+    setMode
   };
 }

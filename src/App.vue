@@ -8,16 +8,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRoute } from "vue-router";
 import NavBar from "./components/NavBar.vue";
-import { useTheme } from "@/composables/UseTheme";
+import { useTheme } from "@/composables/theme/UseTheme";
+import { usePrintMode } from "./composables/UsePrintMode";
 
 // Initialize theme system on app startup
 useTheme();
 
-const route = useRoute();
-const isPrintMode = computed(() => route.query.print === "true");
+const { isPrintMode } = usePrintMode();
 </script>
 
 <style lang="scss">

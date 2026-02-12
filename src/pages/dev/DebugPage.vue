@@ -140,35 +140,6 @@
       </div>
     </section>
 
-    <!-- DarkModeToggle Component -->
-    <section>
-      <h2>DarkModeToggle Component</h2>
-
-      <div class="component-grid">
-        <div class="component-variant">
-          <h3>Dark Mode Toggle</h3>
-          <dark-mode-toggle />
-          <p class="mt-4">Current theme is stored in localStorage</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- DevModeToggle Component -->
-    <section>
-      <h2>DevModeToggle Component</h2>
-
-      <div class="component-grid">
-        <div class="component-variant">
-          <h3>Dev Mode Toggle</h3>
-          <dev-mode-toggle />
-          <p class="mt-4">Toggle to show developer-only content</p>
-          <div v-if="isDevMode" class="mt-4 p-4 border rounded">
-            <p>This content is only visible in dev mode</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- NavBar Component -->
     <section>
       <h2>NavBar Component</h2>
@@ -196,13 +167,8 @@
 
 <script setup lang="ts">
 import GButton from "@/components/GButton.vue";
-import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import CollapsibleSection from "@/components/CollapsibleSection.vue";
-import DevModeToggle from "@/components/DevModeToggle.vue";
 import NavBar from "@/components/NavBar.vue";
-import { useDevMode } from "@/composables/UseDevMode";
-
-const { isDevMode } = useDevMode();
 </script>
 
 <style lang="scss" scoped>
