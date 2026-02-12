@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import { chromium } from "playwright";
 import { createServer, type ViteDevServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -27,13 +27,9 @@ async function renderPDF() {
     const serverUrl = `http://localhost:5174`;
 
     console.log(`Vite server running at ${serverUrl}`);
-    console.log("Launching Puppeteer...");
+    console.log("Launching Playwright...");
 
-    // Launch Puppeteer
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"]
-    });
+    const browser = await chromium.launch();
 
     const page = await browser.newPage();
 
@@ -42,7 +38,7 @@ async function renderPDF() {
     console.log(`Navigating to ${cvUrl}...`);
 
     await page.goto(cvUrl, {
-      waitUntil: "networkidle0",
+      waitUntil: "networkidle",
       timeout: 30000
     });
 

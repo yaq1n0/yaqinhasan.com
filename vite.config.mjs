@@ -68,7 +68,8 @@ export default defineConfig({
           @use "sass:list";
           @use "@/styles/_variables.scss" as *;
           @use "@/styles/_mixins.scss" as *;
-        `
+        `,
+        silenceDeprecations: ["import", "global-builtin", "color-functions"]
       }
     }
   },

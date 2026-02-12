@@ -1,0 +1,42 @@
+// Futuristic Theme (Cyberpunk/Neon)
+// High-tech aesthetic with excellent contrast
+
+[data-theme="futuristic-light"] {
+  // Background colors - clean tech look
+  --color-bg-primary: #f5f7fa;
+  --color-bg-secondary: #e4e9f0;
+  --color-bg-tertiary: #cbd5e1;
+
+  // Text colors - strong contrast
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+
+  // Accent colors - WCAG AA compliant neon
+  --color-accent: #0e7490;
+  --color-accent-light: #6d28d9;
+  --color-accent-dark: #be185d;
+  --color-accent-translucent: rgba(14, 116, 144, 0.15);
+
+  // Border
+  --color-border: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="futuristic-dark"] {
+  // Background colors - deep cyberpunk darkness
+  --color-bg-primary: #0f1419;
+  --color-bg-secondary: #1a1f2e;
+  --color-bg-tertiary: #252b3d;
+
+  // Text colors - bright for dark backgrounds
+  --color-text-primary: #f0f6fc;
+  --color-text-secondary: #c9d1d9;
+
+  // Accent colors - electric neon glow
+  --color-accent: #00e5ff;
+  --color-accent-light: #c084fc;
+  --color-accent-dark: #ff6bd6;
+  --color-accent-translucent: rgba(0, 229, 255, 0.15);
+
+  // Border - neon cyan glow
+  --color-border: rgba(0, 229, 255, 0.25);
+}

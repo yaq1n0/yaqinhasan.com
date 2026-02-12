@@ -1,8 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
+  # Only deploy after CI passes on main branch
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
     branches: [main]
+  # Allow manual deployment
   workflow_dispatch:
 
 permissions:
@@ -13,6 +18,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Only run if CI passed (or if manually triggered)
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,7 +27,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: "npm"
 
       - name: Install dependencies

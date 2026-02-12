@@ -1,5 +1,5 @@
 <template>
-  <div ref="cvBoxRef" class="cv-box">
+  <div ref="cvBoxRef">
     <div class="cv-header">
       <h2>CV</h2>
       <div class="cv-actions">
