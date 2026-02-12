@@ -3,91 +3,89 @@
     <!-- Header -->
     <header class="cv-header">
       <div class="header-left">
-        <h1 class="name">{{ cv.personalInfo.name }}</h1>
+        <h1 class="name">{{ cv.basics.name }}</h1>
         <div class="contact-details">
-          <p>
-            Portfolio: <a :href="cv.personalInfo.portfolio">{{ cv.personalInfo.portfolio }}</a>
+          <p v-if="cv.basics.url">
+            Portfolio: <a :href="cv.basics.url">{{ cv.basics.url }}</a>
           </p>
-          <p>
-            Linkedin: <a :href="cv.personalInfo.linkedin">{{ cv.personalInfo.linkedin }}</a>
+          <p v-for="profile in cv.basics.profiles" :key="profile.network">
+            {{ profile.network }}: <a :href="profile.url">{{ profile.url }}</a>
           </p>
-          <p>
-            Email: <a :href="`mailto:${cv.personalInfo.email}`">{{ cv.personalInfo.email }}</a>
+          <p v-if="cv.basics.email">
+            Email: <a :href="`mailto:${cv.basics.email}`">{{ cv.basics.email }}</a>
           </p>
-          <p>Phone: {{ cv.personalInfo.phone }}</p>
-          <p>{{ cv.personalInfo.location }}</p>
+          <p v-if="cv.basics.phone">Phone: {{ cv.basics.phone }}</p>
+          <p v-if="cv.basics.location">{{ cv.basics.location.city }}<span v-if="cv.basics.location.region">, {{ cv.basics.location.region }}</span></p>
         </div>
       </div>
       <div class="header-right">
-        <p class="tagline">{{ cv.personalInfo.tagline }}</p>
-        <p v-if="cv.personalInfo.objective" class="objective">{{ cv.personalInfo.objective }}</p>
+        <p v-if="cv.basics.label" class="tagline">{{ cv.basics.label }}</p>
+        <p v-if="cv.basics.summary" class="objective">{{ cv.basics.summary }}</p>
       </div>
     </header>
 
     <hr class="section-divider" />
 
     <!-- Experience Section -->
-    <section class="cv-section">
+    <section v-if="cv.work?.length" class="cv-section">
       <h2 class="section-title">Experience</h2>
-      <div v-for="exp in cv.experience" :key="exp.company" class="experience-item">
+      <div v-for="job in cv.work" :key="job.name" class="experience-item">
         <div class="item-header">
-          <h3 class="company">{{ exp.company }} ({{ exp.startDate }} - {{ exp.endDate || "Present" }})</h3>
-          <p class="role">{{ exp.role }}</p>
+          <h3 class="company">{{ job.name }} ({{ job.startDate }} - {{ job.endDate || "Present" }})</h3>
+          <p v-if="job.position" class="role">{{ job.position }}</p>
         </div>
-        <ul class="bullets">
-          <li v-for="(bullet, idx) in exp.bullets" :key="idx">{{ bullet }}</li>
+        <ul v-if="job.highlights?.length" class="bullets">
+          <li v-for="(highlight, idx) in job.highlights" :key="idx">{{ highlight }}</li>
         </ul>
       </div>
     </section>
 
     <!-- Education Section -->
-    <section class="cv-section">
+    <section v-if="cv.education?.length" class="cv-section">
       <h2 class="section-title">Education</h2>
       <div v-for="edu in cv.education" :key="edu.institution + edu.startDate" class="education-item">
         <div class="item-header">
           <h3 class="institution">{{ edu.institution }} ({{ edu.startDate }} - {{ edu.endDate }})</h3>
-          <p v-if="edu.degree" class="degree">{{ edu.degree }}</p>
+          <p v-if="edu.studyType" class="degree">{{ edu.studyType }}</p>
         </div>
-        <ul v-if="edu.subsections?.length" class="subsections">
-          <li v-for="sub in edu.subsections" :key="sub.label">
-            <strong>{{ sub.label }}:</strong> {{ sub.content }}
-          </li>
+        <ul v-if="edu.courses?.length" class="subsections">
+          <li v-for="course in edu.courses" :key="course">{{ course }}</li>
         </ul>
-        <p v-if="edu.grade" class="grade">{{ edu.grade }}</p>
+        <p v-if="edu.score" class="grade">{{ edu.score }}</p>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="cv-section">
+    <section v-if="cv.projects?.length" class="cv-section">
       <h2 class="section-title">Projects</h2>
       <div v-for="project in cv.projects" :key="project.name" class="project-item">
         <h3 class="project-name">
-          <span class="project-title">{{ project.name }} ({{ project.dates }})</span>
+          <span class="project-title">{{ project.name }} ({{ project.startDate }}<span v-if="project.endDate"> - {{ project.endDate }}</span>)</span>
           <span class="project-colon">:</span>
           <span class="project-description">{{ project.description }}</span>
         </h3>
-        <p class="skills-list">
-          <em>Skills: {{ project.skills.join(", ") }}</em>
+        <p v-if="project.keywords?.length" class="skills-list">
+          <em>Skills: {{ project.keywords.join(", ") }}</em>
         </p>
       </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="cv-section">
+    <section v-if="cv.skills?.length" class="cv-section">
       <h2 class="section-title">Skills</h2>
-      <div v-for="skillCat in cv.skills" :key="skillCat.category" class="skill-category">
-        <h3 class="category-name">{{ skillCat.category }}</h3>
-        <ul class="skill-items">
-          <li v-for="(item, idx) in skillCat.items" :key="idx">{{ item }}</li>
+      <div v-for="skill in cv.skills" :key="skill.name" class="skill-category">
+        <h3 class="category-name">{{ skill.name }}</h3>
+        <ul v-if="skill.keywords?.length" class="skill-items">
+          <li v-for="(keyword, idx) in skill.keywords" :key="idx">{{ keyword }}</li>
         </ul>
       </div>
     </section>
 
     <!-- Personal Interests Section -->
-    <section class="cv-section">
+    <section v-if="cv.interests?.length" class="cv-section">
       <h2 class="section-title">Personal Interests</h2>
       <ul class="interests-list">
-        <li v-for="(interest, idx) in cv.interests" :key="idx">{{ interest }}</li>
+        <li v-for="interest in cv.interests" :key="interest.name">{{ interest.name }}</li>
       </ul>
     </section>
   </div>
