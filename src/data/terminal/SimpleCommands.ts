@@ -1,9 +1,7 @@
-import type { Command, CommandContext } from "./Commands";
-import { createCommands } from "./Commands";
+import type { Ref } from "vue";
+import type { Command, AddOutputFn } from "./Commands";
 
-export function createSimpleCommands(context: CommandContext): Command[] {
-  const { addOutput } = context;
-
+export function createSimpleCommands(addOutput: AddOutputFn, allCommands: Ref<Command[]>): Command[] {
   return [
     {
       name: "help",
@@ -13,9 +11,7 @@ export function createSimpleCommands(context: CommandContext): Command[] {
         addOutput("info", "<strong>Available Commands:</strong>");
         addOutput("output", "");
 
-        // Get commands dynamically to ensure we show all registered commands
-        const commands = createCommands(context);
-        commands.forEach((cmd) => {
+        allCommands.value.forEach((cmd) => {
           const cmdName = cmd.aliases ? `${cmd.name} (${cmd.aliases.join(", ")})` : cmd.name;
           addOutput("output", `  <strong>${cmdName.padEnd(25)}</strong> ${cmd.description}`);
         });
@@ -30,7 +26,6 @@ export function createSimpleCommands(context: CommandContext): Command[] {
       description: "Clear the terminal screen",
       aliases: ["cls"],
       execute: () => {
-        // This will be handled by the composable
         addOutput("info", "__CLEAR__");
       }
     },

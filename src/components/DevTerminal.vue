@@ -36,54 +36,38 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
-import { useRouter, useRoute } from "vue-router";
-import { useDevMode } from "@/composables/UseDevMode";
-import { useTheme } from "@/composables/theme/UseTheme";
+import { ref, computed, onMounted } from "vue";
+import { useTerminalOutput } from "@/composables/terminal/useTerminalOutput";
+import { useTerminalCommands } from "@/composables/terminal/useTerminalCommands";
 import { useTerminalLogic } from "@/composables/terminal/useTerminalLogic";
 import { useTerminalHistory } from "@/composables/terminal/useTerminalHistory";
 import { useTerminalAutoComplete } from "@/composables/terminal/useTerminalAutoComplete";
-import { createCommands } from "@/data/terminal/Commands";
 
 defineEmits<{
   close: [];
 }>();
 
-const router = useRouter();
-const route = useRoute();
-
-const { isDevMode, toggleDevMode } = useDevMode();
-const theme = useTheme();
-
 const terminalBody = ref<HTMLElement | null>(null);
 const terminalInput = ref<HTMLInputElement | null>(null);
 const currentInput = ref("");
 
-// Navigation function for commands
-const navigate = (path: string) => {
-  router.push(path);
-};
+// Output management (owns outputLines, addOutput, scrollToBottom)
+const { outputLines, addOutput, showWelcomeMessage } = useTerminalOutput(terminalBody);
 
-// Create commands with context
-const commands = computed(() =>
-  createCommands({
-    addOutput,
-    isDevMode: isDevMode.value,
-    toggleDevMode,
-    navigate,
-    currentPath: route.path,
-    theme
-  })
-);
+// Commands (consumes composables internally — no callback bag needed)
+const { commands, isDevMode } = useTerminalCommands(addOutput);
 
-// Core terminal logic
-const { outputLines, prompt, addOutput, executeCommand, showWelcomeMessage } = useTerminalLogic(commands, terminalBody, isDevMode);
+// Execution engine
+const { executeCommand } = useTerminalLogic(commands, addOutput);
+
+// Prompt derived from dev mode
+const prompt = computed(() => `guest@yaqin:~/${isDevMode.value ? "dev" : "user"}$`);
 
 // History navigation
 const { addToHistory, navigateHistory: navigateHistoryFn } = useTerminalHistory();
 
 // Auto-completion
-const { autoComplete } = useTerminalAutoComplete(commands.value, addOutput);
+const { autoComplete } = useTerminalAutoComplete(commands, addOutput);
 
 function handleExecuteCommand() {
   const input = currentInput.value.trim();

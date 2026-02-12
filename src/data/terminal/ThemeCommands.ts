@@ -1,32 +1,20 @@
-/**
- * Terminal theme command handlers
- * Extracted from Commands.ts for better maintainability
- */
-
 import type { useTheme } from "@/composables/theme/UseTheme";
 import { isValidVariant, isValidMode, isValidTheme } from "@/composables/theme/ThemeRegistry";
+import type { Command, AddOutputFn } from "./Commands";
 
 type ThemeComposable = ReturnType<typeof useTheme>;
-type OutputFn = (type: "info" | "error" | "success" | "output", message: string) => void;
 
-/**
- * Show current theme status
- */
-export function handleThemeStatus(theme: ThemeComposable, addOutput: OutputFn): void {
+function handleThemeStatus(theme: ThemeComposable, addOutput: AddOutputFn): void {
   addOutput("info", `Current theme: <strong>${theme.currentTheme.value}</strong>`);
   addOutput("info", `  Variant: <strong>${theme.currentVariant.value}</strong> | Mode: <strong>${theme.currentMode.value}</strong>`);
   addOutput("output", "");
   addOutput("output", "Usage: theme [list|set|variant|mode]");
 }
 
-/**
- * List all available themes
- */
-export function handleThemeList(theme: ThemeComposable, addOutput: OutputFn): void {
+function handleThemeList(theme: ThemeComposable, addOutput: AddOutputFn): void {
   addOutput("info", "<strong>Available themes:</strong>");
   addOutput("output", "");
 
-  // Group by variant
   const variants = ["default", "futuristic", "pastel"] as const;
   variants.forEach((variant) => {
     const variantThemes = theme.themeRegistry.filter((t) => t.variant === variant);
@@ -44,10 +32,7 @@ export function handleThemeList(theme: ThemeComposable, addOutput: OutputFn): vo
   addOutput("info", "Use: theme set <theme-id>");
 }
 
-/**
- * Set theme by ID
- */
-export function handleThemeSet(args: string[], theme: ThemeComposable, addOutput: OutputFn): void {
+function handleThemeSet(args: string[], theme: ThemeComposable, addOutput: AddOutputFn): void {
   if (!args[1]) {
     addOutput("error", "Please specify a theme. Use 'theme list' to see options.");
     return;
@@ -65,10 +50,7 @@ export function handleThemeSet(args: string[], theme: ThemeComposable, addOutput
   }
 }
 
-/**
- * Change theme variant
- */
-export function handleThemeVariant(args: string[], theme: ThemeComposable, addOutput: OutputFn): void {
+function handleThemeVariant(args: string[], theme: ThemeComposable, addOutput: AddOutputFn): void {
   if (!args[1]) {
     const variants = theme.availableVariants.join(", ");
     addOutput("error", `Please specify a variant (${variants}).`);
@@ -88,10 +70,7 @@ export function handleThemeVariant(args: string[], theme: ThemeComposable, addOu
   addOutput("info", `Current theme: ${theme.currentTheme.value}`);
 }
 
-/**
- * Change theme mode (light/dark)
- */
-export function handleThemeMode(args: string[], theme: ThemeComposable, addOutput: OutputFn): void {
+function handleThemeMode(args: string[], theme: ThemeComposable, addOutput: AddOutputFn): void {
   if (!args[1]) {
     addOutput("error", "Please specify a mode (light or dark).");
     return;
@@ -109,32 +88,38 @@ export function handleThemeMode(args: string[], theme: ThemeComposable, addOutpu
   addOutput("info", `Current theme: ${theme.currentTheme.value}`);
 }
 
-/**
- * Main theme command handler
- */
-export function executeThemeCommand(args: string[], theme: ThemeComposable, addOutput: OutputFn): void {
-  if (args.length === 0) {
-    handleThemeStatus(theme, addOutput);
-    return;
-  }
+export function createThemeCommands(addOutput: AddOutputFn, theme: ThemeComposable): Command[] {
+  return [
+    {
+      name: "theme",
+      description: "Manage themes (list, set <theme>, variant <name>, mode <light|dark>, toggle)",
+      aliases: ["th"],
+      execute: (args) => {
+        if (args.length === 0) {
+          handleThemeStatus(theme, addOutput);
+          return;
+        }
 
-  const subcommand = args[0].toLowerCase();
+        const subcommand = args[0].toLowerCase();
 
-  switch (subcommand) {
-    case "list":
-      handleThemeList(theme, addOutput);
-      break;
-    case "set":
-      handleThemeSet(args, theme, addOutput);
-      break;
-    case "variant":
-      handleThemeVariant(args, theme, addOutput);
-      break;
-    case "mode":
-      handleThemeMode(args, theme, addOutput);
-      break;
-    default:
-      addOutput("error", `Unknown subcommand: ${subcommand}`);
-      addOutput("output", "Usage: theme [list|set|variant|mode]");
-  }
+        switch (subcommand) {
+          case "list":
+            handleThemeList(theme, addOutput);
+            break;
+          case "set":
+            handleThemeSet(args, theme, addOutput);
+            break;
+          case "variant":
+            handleThemeVariant(args, theme, addOutput);
+            break;
+          case "mode":
+            handleThemeMode(args, theme, addOutput);
+            break;
+          default:
+            addOutput("error", `Unknown subcommand: ${subcommand}`);
+            addOutput("output", "Usage: theme [list|set|variant|mode]");
+        }
+      }
+    }
+  ];
 }
