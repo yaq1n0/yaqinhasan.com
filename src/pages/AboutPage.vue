@@ -1,5 +1,5 @@
 <template>
-  <carousel-layout title="Stuff About Me" :items="aboutItems" :initial-item-id="activeSection" minimal :scroll-speed="40">
+  <carousel-layout title="Stuff About Me" :items="aboutItems" :initial-item-id="activeSection">
     <template #default="{ activeItem }">
       <!-- Skills Section -->
       <div v-show="activeItem.id === 'skills'">
@@ -423,9 +423,6 @@ const aboutItems = [
     background-color: var(--color-accent-translucent);
     border-radius: map.get($border-radius, "md");
   }
-}
-
-.year-section {
 }
 
 .video-container {
