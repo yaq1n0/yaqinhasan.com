@@ -3,24 +3,26 @@
     <!-- Header -->
     <header class="cv-header">
       <div class="header-left">
-        <h1 class="name">{{ cv.basics.name }}</h1>
+        <h1 class="name">{{ cv.basics?.name }}</h1>
         <div class="contact-details">
-          <p v-if="cv.basics.url">
-            Portfolio: <a :href="cv.basics.url">{{ cv.basics.url }}</a>
+          <p v-if="cv.basics?.url">
+            Portfolio: <a :href="cv.basics?.url">{{ cv.basics?.url }}</a>
           </p>
-          <p v-for="profile in cv.basics.profiles" :key="profile.network">
+          <p v-for="profile in cv.basics?.profiles" :key="profile.network">
             {{ profile.network }}: <a :href="profile.url">{{ profile.url }}</a>
           </p>
-          <p v-if="cv.basics.email">
-            Email: <a :href="`mailto:${cv.basics.email}`">{{ cv.basics.email }}</a>
+          <p v-if="cv.basics?.email">
+            Email: <a :href="`mailto:${cv.basics?.email}`">{{ cv.basics?.email }}</a>
           </p>
-          <p v-if="cv.basics.phone">Phone: {{ cv.basics.phone }}</p>
-          <p v-if="cv.basics.location">{{ cv.basics.location.city }}<span v-if="cv.basics.location.region">, {{ cv.basics.location.region }}</span></p>
+          <p v-if="cv.basics?.phone">Phone: {{ cv.basics?.phone }}</p>
+          <p v-if="cv.basics?.location">
+            {{ cv.basics?.location.city }}<span v-if="cv.basics?.location.region">, {{ cv.basics?.location.region }}</span>
+          </p>
         </div>
       </div>
       <div class="header-right">
-        <p v-if="cv.basics.label" class="tagline">{{ cv.basics.label }}</p>
-        <p v-if="cv.basics.summary" class="objective">{{ cv.basics.summary }}</p>
+        <p v-if="cv.basics?.label" class="tagline">{{ cv.basics?.label }}</p>
+        <p v-if="cv.basics?.summary" class="objective">{{ cv.basics?.summary }}</p>
       </div>
     </header>
 
@@ -60,7 +62,10 @@
       <h2 class="section-title">Projects</h2>
       <div v-for="project in cv.projects" :key="project.name" class="project-item">
         <h3 class="project-name">
-          <span class="project-title">{{ project.name }} ({{ project.startDate }}<span v-if="project.endDate"> - {{ project.endDate }}</span>)</span>
+          <span class="project-title"
+            >{{ project.name }} ({{ project.startDate }}<span v-if="project.endDate"> - {{ project.endDate }}</span
+            >)</span
+          >
           <span class="project-colon">:</span>
           <span class="project-description">{{ project.description }}</span>
         </h3>
