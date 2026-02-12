@@ -15,7 +15,7 @@ import {
   parseThemeId,
   getThemeById
 } from "./ThemeRegistry";
-import { THEME_CONFIG } from "./themes.config";
+import { THEME_CONFIG } from "./ThemeConfig";
 
 describe("ThemeRegistry", () => {
   describe("THEME_REGISTRY", () => {

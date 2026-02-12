@@ -10,23 +10,22 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { THEME_REGISTRY, buildThemeId, type ThemeId } from "../src/composables/ThemeRegistry";
 import { THEME_CONFIG } from "../src/composables/themes.config";
-import { THEME_MIGRATIONS, getExpiredMigrations } from "../src/composables/migrations/themeMigrations";
 
 // Get project root directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT = join(__dirname, "..");
 
-interface ValidationResult {
+type ThemeValidationResult = {
   success: boolean;
   errors: string[];
   warnings: string[];
-}
+};
 
 /**
  * Validate theme registry structure and consistency
  */
-function validateThemeRegistry(): ValidationResult {
+function validateThemeRegistry(): ThemeValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
 
@@ -130,30 +129,6 @@ function validateScssFiles(): ValidationResult {
   });
 
   console.log(`   ✓ Validated ${variants.size} SCSS files`);
-
-  return { success: errors.length === 0, errors, warnings };
-}
-
-/**
- * Check for expired migrations that should be cleaned up
- */
-function validateMigrations(): ValidationResult {
-  const errors: string[] = [];
-  const warnings: string[] = [];
-
-  console.log("🔄 Checking theme migrations...");
-
-  const expired = getExpiredMigrations();
-
-  if (expired.length > 0) {
-    warnings.push(`Found ${expired.length} expired migration(s) that can be removed:`);
-    expired.forEach((m) => {
-      warnings.push(`   - ${m.id} (expired: ${m.expiresAt.toISOString().split("T")[0]})`);
-    });
-    warnings.push("Remove expired migrations from src/composables/migrations/themeMigrations.ts");
-  }
-
-  console.log(`   ✓ ${THEME_MIGRATIONS.length} migrations registered, ${expired.length} expired`);
 
   return { success: errors.length === 0, errors, warnings };
 }

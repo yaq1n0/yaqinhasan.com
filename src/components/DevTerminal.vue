@@ -39,10 +39,10 @@
 import { ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useDevMode } from "@/composables/UseDevMode";
-import { useTheme } from "@/composables/UseTheme";
-import { useTerminalLogic } from "@/composables/useTerminalLogic";
-import { useTerminalHistory } from "@/composables/useTerminalHistory";
-import { useTerminalAutoComplete } from "@/composables/useTerminalAutoComplete";
+import { useTheme } from "@/composables/theme/UseTheme";
+import { useTerminalLogic } from "@/composables/terminal/useTerminalLogic";
+import { useTerminalHistory } from "@/composables/terminal/useTerminalHistory";
+import { useTerminalAutoComplete } from "@/composables/terminal/useTerminalAutoComplete";
 import { createCommands } from "@/data/terminal/Commands";
 
 defineEmits<{

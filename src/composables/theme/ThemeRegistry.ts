@@ -3,17 +3,17 @@
  * Provides type-safe theme management with validation utilities
  */
 
-import { THEME_CONFIG, type ThemeVariant, type ThemeMode } from "./themes.config";
+import { THEME_CONFIG, type ThemeVariant, type ThemeMode } from "./ThemeConfig";
 
 export type { ThemeVariant, ThemeMode };
 
-export interface ThemeDefinition {
+export type ThemeDefinition = {
   readonly id: string;
   readonly variant: ThemeVariant;
   readonly mode: ThemeMode;
   readonly name: string;
   readonly description: string;
-}
+};
 
 /**
  * Central registry of all available themes with metadata

@@ -3,8 +3,8 @@
  * Extracted from Commands.ts for better maintainability
  */
 
-import type { useTheme } from "@/composables/UseTheme";
-import { isValidVariant, isValidMode, isValidTheme } from "@/composables/ThemeRegistry";
+import type { useTheme } from "@/composables/theme/UseTheme";
+import { isValidVariant, isValidMode, isValidTheme } from "@/composables/theme/ThemeRegistry";
 
 type ThemeComposable = ReturnType<typeof useTheme>;
 type OutputFn = (type: "info" | "error" | "success" | "output", message: string) => void;
@@ -110,15 +110,6 @@ export function handleThemeMode(args: string[], theme: ThemeComposable, addOutpu
 }
 
 /**
- * Toggle between light and dark mode
- */
-export function handleThemeToggle(theme: ThemeComposable, addOutput: OutputFn): void {
-  theme.toggleMode();
-  addOutput("success", `✓ Toggled to <strong>${theme.currentMode.value}</strong> mode`);
-  addOutput("info", `Current theme: ${theme.currentTheme.value}`);
-}
-
-/**
  * Main theme command handler
  */
 export function executeThemeCommand(args: string[], theme: ThemeComposable, addOutput: OutputFn): void {
@@ -141,9 +132,6 @@ export function executeThemeCommand(args: string[], theme: ThemeComposable, addO
       break;
     case "mode":
       handleThemeMode(args, theme, addOutput);
-      break;
-    case "toggle":
-      handleThemeToggle(theme, addOutput);
       break;
     default:
       addOutput("error", `Unknown subcommand: ${subcommand}`);
