@@ -14,8 +14,8 @@
     <div class="experience-card">
       <div class="card-header">
         <div class="title-section">
-          <h2>{{ experience.role }}</h2>
-          <h3>{{ experience.company }}</h3>
+          <h2>{{ experience.position }}</h2>
+          <h3>{{ experience.name }}</h3>
         </div>
         <span>{{ experience.startDate }} - {{ experience.endDate }}</span>
       </div>
@@ -24,7 +24,7 @@
         <div class="achievements-section">
           <h4>Key Achievements & Responsibilities</h4>
           <ul class="achievements-list">
-            <li v-for="(bullet, index) in experience.bullets" :key="index" class="achievement-item">
+            <li v-for="(bullet, index) in experience.highlights" :key="index" class="achievement-item">
               <span class="bullet-icon">
                 <font-awesome-icon :icon="['fas', 'caret-right']" />
               </span>
@@ -55,8 +55,8 @@
 import { computed } from "vue";
 import cvData from "@/data/cv.json";
 
-// Get the first (and only) experience entry
-const experience = computed(() => cvData.experience[0]);
+// Get the first (and only) work entry
+const experience = computed(() => cvData.work[0]);
 </script>
 
 <style lang="scss" scoped>
