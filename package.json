@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "prebuild": "cp src/data/cv.json public/cv.json",
     "build": "vite build",
     "serve": "npm run build && npx serve dist",
     "preview": "vite preview",

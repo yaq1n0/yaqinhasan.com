@@ -15,6 +15,14 @@
     <div v-else-if="!isLoaded" class="cv-loading">
       <p>Loading CV...</p>
     </div>
+
+    <div class="jsonresume-disclaimer">
+      <p>
+        CV is generated from
+        <a href="https://jsonresume.org" target="_blank" rel="noopener">jsonresume</a>
+        compliant <a href="/cv.json" target="_blank" rel="noopener">JSON</a>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -90,5 +98,22 @@ function downloadCV() {
   min-height: 200px;
   color: var(--color-text-secondary);
   font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+
+.jsonresume-disclaimer {
+  margin: map.get($spacing, "base") auto;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
 }
 </style>
