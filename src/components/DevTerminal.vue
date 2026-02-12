@@ -168,60 +168,11 @@ defineExpose({
   gap: 0.5rem;
 }
 
-.terminal-btn {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  border: 1px solid #4d4d4d;
-  background: #2d2d2d;
-  color: #d4d4d4;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  transition: all 0.2s;
-
-  &:hover {
-    background: #3d3d3d;
-    border-color: #5d5d5d;
-  }
-
-  &.minimize {
-    font-size: 1rem;
-    padding-bottom: 4px;
-  }
-
-  &.close {
-    font-size: 1.5rem;
-    line-height: 1;
-    padding: 0;
-  }
-}
-
 .terminal-body {
   padding: 1rem;
   max-height: 500px;
   overflow-y: auto;
   background: #1e1e1e;
-
-  /* Custom scrollbar */
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #1e1e1e;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #3d3d3d;
-    border-radius: 4px;
-
-    &:hover {
-      background: #4d4d4d;
-    }
-  }
 }
 
 .terminal-output {
