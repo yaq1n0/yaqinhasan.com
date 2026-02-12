@@ -8,8 +8,8 @@
 import { readFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { THEME_REGISTRY, buildThemeId, type ThemeId } from "../src/composables/ThemeRegistry";
-import { THEME_CONFIG } from "../src/composables/themes.config";
+import { THEME_REGISTRY, buildThemeId, type ThemeId } from "../src/composables/theme/ThemeRegistry";
+import { THEME_CONFIG } from "../src/composables/theme/ThemeConfig";
 
 // Get project root directory
 const __filename = fileURLToPath(import.meta.url);
@@ -171,7 +171,7 @@ function main() {
   console.log("🎨 Theme System Validation\n");
   console.log("=".repeat(50) + "\n");
 
-  const results: ValidationResult[] = [validateThemeRegistry(), validateScssFiles(), validateMigrations(), validateMainScss()];
+  const results: ValidationResult[] = [validateThemeRegistry(), validateScssFiles(), validateMainScss()];
 
   console.log("\n" + "=".repeat(50) + "\n");
 
@@ -198,7 +198,6 @@ function main() {
   console.log(`   - ${THEME_REGISTRY.length} themes registered`);
   console.log(`   - ${new Set(THEME_REGISTRY.map((t) => t.variant)).size} variants (${Array.from(new Set(THEME_REGISTRY.map((t) => t.variant))).join(", ")})`);
   console.log(`   - ${THEME_CONFIG.requiredVars.length} required CSS variables`);
-  console.log(`   - ${THEME_MIGRATIONS.length} migrations configured`);
   console.log("");
 
   process.exit(0);

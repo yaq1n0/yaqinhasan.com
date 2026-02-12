@@ -9,8 +9,8 @@ import { readFileSync, existsSync, readdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { getLuminance } from "polished";
-import { THEME_REGISTRY } from "../src/composables/ThemeRegistry";
-import { THEME_CONFIG } from "../src/composables/themes.config";
+import { THEME_REGISTRY } from "../src/composables/theme/ThemeRegistry";
+import { THEME_CONFIG } from "../src/composables/theme/ThemeConfig";
 
 // Get project root directory
 const __filename = fileURLToPath(import.meta.url);
