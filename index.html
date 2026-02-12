@@ -8,18 +8,23 @@
     <meta name="darkreader-lock" />
     <title>Yaqin Hasan</title>
     <style>
-      html {
-        background: #fdf6e3;
-      }
-      html.dark {
-        background: #0a0b11;
-      }
+      html[data-theme="default-light"] { background: #fdf6e3; }
+      html[data-theme="default-dark"] { background: #1a1d2e; }
+      html[data-theme="futuristic-light"] { background: #f5f7fa; }
+      html[data-theme="futuristic-dark"] { background: #0f1419; }
+      html[data-theme="pastel-light"] { background: #faf8f5; }
+      html[data-theme="pastel-dark"] { background: #2e303e; }
     </style>
     <script>
       (function () {
-        var s = localStorage.getItem("theme"),
-          d = matchMedia("(prefers-color-scheme:dark)").matches;
-        if (s === "true" || (s === null && d)) document.documentElement.className = "dark";
+        var stored = localStorage.getItem("theme");
+        var theme;
+        try { theme = JSON.parse(stored); } catch (e) { theme = stored; }
+        var valid = ["default-light","default-dark","futuristic-light","futuristic-dark","pastel-light","pastel-dark"];
+        if (valid.indexOf(theme) === -1) {
+          theme = matchMedia("(prefers-color-scheme:dark)").matches ? "default-dark" : "default-light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
     <!-- This is the main entry point -->
