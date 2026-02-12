@@ -16,7 +16,7 @@ export function handleThemeStatus(theme: ThemeComposable, addOutput: OutputFn): 
   addOutput("info", `Current theme: <strong>${theme.currentTheme.value}</strong>`);
   addOutput("info", `  Variant: <strong>${theme.currentVariant.value}</strong> | Mode: <strong>${theme.currentMode.value}</strong>`);
   addOutput("output", "");
-  addOutput("output", "Usage: theme [list|set|variant|mode|toggle]");
+  addOutput("output", "Usage: theme [list|set|variant|mode]");
 }
 
 /**
@@ -135,6 +135,6 @@ export function executeThemeCommand(args: string[], theme: ThemeComposable, addO
       break;
     default:
       addOutput("error", `Unknown subcommand: ${subcommand}`);
-      addOutput("output", "Usage: theme [list|set <theme>|variant <name>|mode <light|dark>|toggle]");
+      addOutput("output", "Usage: theme [list|set|variant|mode]");
   }
 }
