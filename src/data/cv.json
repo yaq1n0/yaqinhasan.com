@@ -67,55 +67,64 @@
       "name": "yaqinhasan.com - Personal Portfolio Website",
       "startDate": "2024",
       "description": "Personal portfolio website, showcasing CV, experience and projects. Including interactive terminal and dynamic theming system.",
-      "keywords": ["Vue 3", "Vite", "TypeScript", "SCSS", "Web Hosting", "VPS", "DNS", "AWS"]
+      "keywords": ["Vue 3", "Vite", "TypeScript", "SCSS", "Web Hosting", "VPS", "DNS", "AWS"],
+      "type": "Web App"
     },
     {
       "name": "CryptIt - Shamir Secret Sharing Encryption App",
       "startDate": "2025",
       "description": "Split secret data into multiple shares using Shamir's Secret Sharing algorithm, allowing for secure distribution and reconstruction of the original data.",
-      "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop Application"]
+      "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop Application"],
+      "type": "Desktop App"
     },
     {
       "name": "TrayRunner - MacOS Script Launcher",
       "startDate": "2025",
       "description": "Spotlight-esque lightweight macOS menu-bar utility for triggering and scheduling local workflows",
-      "keywords": ["Swift", "macOS", "Native APIs", "Developer Tooling"]
+      "keywords": ["Swift", "macOS", "Native APIs", "Developer Tooling"],
+      "type": "Desktop App"
     },
     {
       "name": "linkblitzer.com - Multi-Tab Link Launcher",
       "startDate": "2025",
       "description": "Web utility and browser extension that generates single URLs which open multiple target pages simultaneously.",
-      "keywords": ["TypeScript", "HTML", "CSS", "Web Development"]
+      "keywords": ["TypeScript", "HTML", "CSS", "Web Development"],
+      "type": "Web App"
     },
     {
       "name": "pwordgen.com & pwordgen (npm package)",
       "startDate": "2025",
       "description": "Password generation web utility backed by a reusable published TypeScript npm package",
-      "keywords": ["Vue", "Vite", "TypeScript", "npm", "Package Development"]
+      "keywords": ["Vue", "Vite", "TypeScript", "npm", "Package Development"],
+      "type": "Web App"
     },
     {
       "name": "prompt-as-endpoint",
       "startDate": "2025",
       "description": "TypeScript framework for wrapping local and cloud LLMs in REST API endpoints, published on npm",
-      "keywords": ["TypeScript", "Hono", "LLM", "REST API", "Framework"]
+      "keywords": ["TypeScript", "Hono", "LLM", "REST API", "Framework"],
+      "type": "Package"
     },
     {
       "name": "PyDownloader",
       "startDate": "2025",
       "description": "Unified API for downloading content from multiple sources",
-      "keywords": ["Python", "FastAPI", "Backend"]
+      "keywords": ["Python", "FastAPI", "Backend"],
+      "type": "CLI App"
     },
     {
       "name": "ThymPi - Final Year Project",
       "startDate": "2023",
       "description": "Researched, designed and implemented a prototype proof-of-concept for using sensor data to augment visual navigation systems for autonomously navigating robots.",
-      "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Sensors", "Raspberry Pi"]
+      "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Sensors", "Raspberry Pi"],
+      "type": "Other"
     },
     {
       "name": "Structured Turtle Querying Language",
       "startDate": "2022",
       "description": "Designed an SQL-based querying language and implemented accompanying Haskell interpreter.",
-      "keywords": ["Interpreter", "Compiler", "Haskell", "Lex", "Yacc", "Parser", "Lexer", "SQL", "RDF"]
+      "keywords": ["Interpreter", "Compiler", "Haskell", "Lex", "Yacc", "Parser", "Lexer", "SQL", "RDF"],
+      "type": "Other"
     }
   ],
   "skills": [
