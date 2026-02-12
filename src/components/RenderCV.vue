@@ -78,11 +78,13 @@
     <!-- Skills Section -->
     <section v-if="cv.skills?.length" class="cv-section">
       <h2 class="section-title">Skills</h2>
-      <div v-for="skill in cv.skills" :key="skill.name" class="skill-category">
-        <h3 class="category-name">{{ skill.name }}</h3>
-        <ul v-if="skill.keywords?.length" class="skill-items">
-          <li v-for="(keyword, idx) in skill.keywords" :key="idx">{{ keyword }}</li>
-        </ul>
+      <div class="skills-grid">
+        <div v-for="skill in cv.skills" :key="skill.name" class="skill-category">
+          <h3 class="category-name">{{ skill.name }}</h3>
+          <ul v-if="skill.keywords?.length" class="skill-keywords">
+            <li v-for="(keyword, idx) in skill.keywords" :key="idx">{{ keyword }}</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -220,6 +222,7 @@ const simplifyLink = (url?: string) => {
   border: none;
   border-top: 1px solid var(--color-border);
   margin: map.get($spacing, "md") 0;
+  margin-bottom: map.get($spacing, "lg");
 
   .print-mode & {
     border-top-color: #ccc;
@@ -366,18 +369,24 @@ const simplifyLink = (url?: string) => {
 }
 
 // Skills Styles
-.skill-category {
-  margin-bottom: map.get($spacing, "sm");
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: map.get($spacing, "sm") map.get($spacing, "lg");
 
   .print-mode & {
-    margin-bottom: 6pt;
+    gap: 6pt 16pt;
   }
+}
+
+.skill-category {
+  margin-bottom: 0;
 }
 
 .category-name {
   font-size: 11pt;
   font-weight: bold;
-  margin: 0 0 4px;
+  margin: 0 0 2px;
   color: var(--color-text);
 
   .print-mode & {
@@ -385,18 +394,32 @@ const simplifyLink = (url?: string) => {
   }
 }
 
-.skill-items {
-  margin: 0 0 0 map.get($spacing, "lg");
+.skill-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
   padding: 0;
-  list-style-type: circle;
+  gap: 2px 0;
 
   li {
     font-size: 10pt;
-    margin-bottom: 2px;
+    color: var(--color-text-secondary);
+
+    &:not(:last-child)::after {
+      content: "·";
+      margin: 0 6px;
+      color: #0891b2;
+      font-weight: bold;
+    }
   }
 
-  .print-mode & {
-    margin-left: 20pt;
+  .print-mode & li {
+    color: #333;
+
+    &:not(:last-child)::after {
+      color: #000;
+    }
   }
 }
 
