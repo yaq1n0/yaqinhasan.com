@@ -2,21 +2,14 @@
 @use "variables" as *;
 @use "mixins" as *;
 @use "utilities";
-@import "bootstrap-utilities";
+@use "bootstrap-utilities";
+
+// Import theme files
+@use "themes/default";
+@use "themes/futuristic";
+@use "themes/pastel";
 
 :root {
-  // default (light) theme colors
-  --color-bg-primary: #fdf6e3;
-  --color-bg-secondary: #eee8d5;
-  --color-bg-tertiary: #93a1a1;
-  --color-text-primary: #073642;
-  --color-text-secondary: #586e75;
-  --color-accent: #268bd2;
-  --color-accent-light: #078177;
-  --color-accent-dark: #dc322f;
-  --color-accent-translucent: rgba(38, 139, 210, 0.15);
-  --color-border: rgba(88, 110, 117, 0.3);
-
   --font-mono: #{$font-family-mono}; // setup the monospace font
 
   // Toggle button animation duration (configurable)
@@ -24,20 +17,6 @@
   --toggle-animation-delay-1: 100ms;
   --toggle-animation-delay-2: 200ms;
   --toggle-animation-delay-3: 300ms;
-}
-
-:root.dark {
-  // dark theme colors
-  --color-bg-primary: #0a0b11;
-  --color-bg-secondary: #13141f;
-  --color-bg-tertiary: #1e2030;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255, 255, 255, 0.8);
-  --color-accent: #4fd1c5;
-  --color-accent-light: #63b3ed;
-  --color-accent-dark: #2c7a7b;
-  --color-accent-translucent: rgba(79, 209, 197, 0.15);
-  --color-border: rgba(255, 255, 255, 0.1);
 }
 
 // Reset & Base Styles
