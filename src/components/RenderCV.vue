@@ -1,15 +1,15 @@
 <template>
-  <div class="cv-container" :class="{ 'print-mode': isPrintMode }">
+  <div class="cv-container" :class="{ 'print-mode': isCVPage }">
     <!-- Header -->
     <header class="cv-header">
       <div class="header-left">
         <h1 class="name">{{ cv.basics?.name }}</h1>
         <div class="contact-details">
           <p v-if="cv.basics?.url">
-            Portfolio: <a :href="cv.basics?.url">{{ cv.basics?.url }}</a>
+            Portfolio: <a :href="cv.basics?.url">{{ simplifyLink(cv.basics?.url) }}</a>
           </p>
           <p v-for="profile in cv.basics?.profiles" :key="profile.network">
-            {{ profile.network }}: <a :href="profile.url">{{ profile.url }}</a>
+            {{ profile.network }}: <a :href="profile.url">{{ simplifyLink(profile.url) }}</a>
           </p>
           <p v-if="cv.basics?.email">
             Email: <a :href="`mailto:${cv.basics?.email}`">{{ cv.basics?.email }}</a>
@@ -98,13 +98,21 @@
 
 <script setup lang="ts">
 import type { CV } from "@/data/models/CV";
-import { usePrintMode } from "@/composables/UsePrintMode";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 defineProps<{
   cv: CV;
 }>();
 
-const { isPrintMode } = usePrintMode();
+const route = useRoute();
+const isCVPage = computed(() => route.path === "/cv");
+
+/** remove https:// from valid links and make them pretty for display */
+const simplifyLink = (url?: string) => {
+  if (!url) return "";
+  return url.replace(/^https?:\/\//, "");
+};
 </script>
 
 <style lang="scss" scoped>
