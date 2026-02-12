@@ -96,15 +96,6 @@ const experience = computed(() => cvData.work[0]);
     transform 0.3s ease,
     box-shadow 0.3s ease;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-
-    @media (max-width: map.get($breakpoints, "sm")) {
-      transform: translateY(-2px);
-    }
-  }
-
   @media (max-width: map.get($breakpoints, "md")) {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
@@ -237,17 +228,6 @@ const experience = computed(() => cvData.work[0]);
   font-weight: 500;
   transition: all 0.2s ease;
   border: 1px solid transparent;
-
-  &:hover {
-    background-color: var(--color-accent);
-    color: var(--color-bg-primary);
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
-
-    @media (max-width: map.get($breakpoints, "sm")) {
-      transform: none;
-    }
-  }
 
   @media (max-width: map.get($breakpoints, "sm")) {
     font-size: map.get($font-sizes, "xs");
