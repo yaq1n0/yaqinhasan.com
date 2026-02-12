@@ -33,8 +33,7 @@ async function renderPDF() {
 
     const page = await browser.newPage();
 
-    // Navigate to the CV page with print mode
-    const cvUrl = `${serverUrl}/cv?print=true`;
+    const cvUrl = `${serverUrl}/cv`;
     console.log(`Navigating to ${cvUrl}...`);
 
     await page.goto(cvUrl, {
@@ -42,17 +41,7 @@ async function renderPDF() {
       timeout: 30000
     });
 
-    // Wait a bit for Vue to fully render
     await page.waitForSelector(".cv-container", { timeout: 10000 });
-
-    // Inject white background to prevent dark theme bleeding through
-    await page.addStyleTag({
-      content: `
-        html, body, #app, main, .print-mode-app {
-          background: white !important;
-        }
-      `
-    });
 
     // Generate PDF
     console.log(`Generating PDF at ${outputPath}...`);
