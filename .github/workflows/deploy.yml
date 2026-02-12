@@ -33,11 +33,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Setup playwright (required for render:pdf to work)
-        run: npm run setup:playwright
+      # uncommenting this means that the pdf will be rendered on every deploy, which means the pdf can break when the rendering is broken.
+      # intentionally making it manual process to re-render the pdf when needed, upon significant changes to the cv or to the rendering (App.vue, CVPage.vue, RenderCV.vue)
+      # - name: Setup playwright (required for render:pdf to work)
+      #   run: npm run setup:playwright
 
-      - name: Render CV PDF
-        run: npm run render:pdf
+      # - name: Render CV PDF
+      #   run: npm run render:pdf
 
       - name: Build
         run: npm run build
