@@ -1,11 +1,12 @@
-import type { Command, OutputLine } from "@/data/terminal/Commands";
+import type { Ref } from "vue";
+import type { Command, AddOutputFn } from "@/data/terminal/Commands";
 
-export function useTerminalAutoComplete(commands: Command[], addOutput: (type: OutputLine["type"], content: string) => void) {
+export function useTerminalAutoComplete(commands: Ref<Command[]>, addOutput: AddOutputFn) {
   function autoComplete(input: string): string | null {
     const lowerInput = input.toLowerCase();
     if (!lowerInput) return null;
 
-    const matches = commands.filter((cmd) => cmd.name.startsWith(lowerInput) || cmd.aliases?.some((alias) => alias.startsWith(lowerInput)));
+    const matches = commands.value.filter((cmd) => cmd.name.startsWith(lowerInput) || cmd.aliases?.some((alias) => alias.startsWith(lowerInput)));
 
     if (matches.length === 1) {
       return matches[0].name + " ";
@@ -19,7 +20,5 @@ export function useTerminalAutoComplete(commands: Command[], addOutput: (type: O
     return null;
   }
 
-  return {
-    autoComplete
-  };
+  return { autoComplete };
 }

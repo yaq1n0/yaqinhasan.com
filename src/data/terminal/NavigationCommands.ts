@@ -1,8 +1,8 @@
-import type { Command, CommandContext } from "./Commands";
+import type { Ref } from "vue";
+import type { Router, RouteLocationNormalizedLoaded } from "vue-router";
+import type { Command, AddOutputFn } from "./Commands";
 
-export function createNavigationCommands(context: CommandContext): Command[] {
-  const { addOutput, isDevMode, navigate, currentPath } = context;
-
+export function createNavigationCommands(addOutput: AddOutputFn, router: Router, route: RouteLocationNormalizedLoaded, isDevMode: Ref<boolean>): Command[] {
   return [
     {
       name: "ls",
@@ -16,10 +16,10 @@ export function createNavigationCommands(context: CommandContext): Command[] {
         addOutput("output", "  <span style='color: var(--color-accent);'>projects</span>    Portfolio showcase");
         addOutput("output", "  <span style='color: var(--color-accent);'>interests</span>   Personal interests");
 
-        if (isDevMode) {
+        if (isDevMode.value) {
           addOutput("output", "");
-          addOutput("output", "  <span style='color: var(--color-dev);'>debug</span>        Debug page [dev]");
-          addOutput("output", "  <span style='color: var(--color-dev);'>debug-carousel</span> Carousel debug [dev]");
+          addOutput("output", "  <span style='color: var(--color-dev-highlight);'>debug</span>        Debug page [dev]");
+          addOutput("output", "  <span style='color: var(--color-dev-highlight);'>debug-carousel</span> Carousel debug [dev]");
         } else {
           addOutput("output", "<span style='opacity: 0.5;'>Use 'dev --enable' to show developer pages</span>");
         }
@@ -29,39 +29,30 @@ export function createNavigationCommands(context: CommandContext): Command[] {
       name: "cd",
       description: "Navigate to a page (e.g., cd /about)",
       execute: (args) => {
-        if (!navigate) {
-          addOutput("error", "Navigation not available");
-          return;
-        }
-
         if (args.length === 0) {
-          navigate("/");
+          router.push("/");
           addOutput("success", "Navigating to home...");
           return;
         }
 
         let path = args[0].toLowerCase();
 
-        // Handle relative paths
         if (!path.startsWith("/")) {
           path = "/" + path;
         }
 
-        // Valid paths
         const validPaths = ["/", "/home", "/about", "/experience", "/projects", "/interests"];
 
-        // Add dev paths if in dev mode
-        if (isDevMode) {
+        if (isDevMode.value) {
           validPaths.push("/debug", "/debug-carousel");
         }
 
-        // Normalize path
         if (path === "/home") {
           path = "/";
         }
 
         if (validPaths.includes(path)) {
-          navigate(path);
+          router.push(path);
           addOutput("success", `Navigating to ${path}...`);
         } else {
           addOutput("error", `cd: ${path}: No such page`);
@@ -73,8 +64,7 @@ export function createNavigationCommands(context: CommandContext): Command[] {
       name: "pwd",
       description: "Print current page/route",
       execute: () => {
-        const path = currentPath || window.location.pathname;
-        addOutput("output", path);
+        addOutput("output", route.path);
       }
     }
   ];
