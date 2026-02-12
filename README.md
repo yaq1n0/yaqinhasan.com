@@ -76,7 +76,7 @@ The build process generates a `dist/` folder with:
 
 Currently deployed to Github Pages using `deploy.yml`
 
-## 🔗 Links
+## Links
 
 - **Live Site**: [yaqinhasan.com](https://yaqinhasan.com)
 - **GitHub**: [github.com/yaq1n0/yaqinhasan.com](https://github.com/yaq1n0/yaqinhasan.com)
