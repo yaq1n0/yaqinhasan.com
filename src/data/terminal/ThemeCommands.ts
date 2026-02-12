@@ -32,6 +32,12 @@ function handleThemeList(theme: ThemeComposable, addOutput: AddOutputFn): void {
   addOutput("info", "Use: theme set <theme-id>");
 }
 
+function handleThemeReset(theme: ThemeComposable, addOutput: AddOutputFn): void {
+  theme.resetTheme();
+  addOutput("success", "✓ Theme settings reset to default.");
+  addOutput("info", `Current theme: <strong>${theme.currentTheme.value}</strong>`);
+}
+
 function handleThemeSet(args: string[], theme: ThemeComposable, addOutput: AddOutputFn): void {
   if (!args[1]) {
     addOutput("error", "Please specify a theme. Use 'theme list' to see options.");
@@ -105,6 +111,9 @@ export function createThemeCommands(addOutput: AddOutputFn, theme: ThemeComposab
         switch (subcommand) {
           case "list":
             handleThemeList(theme, addOutput);
+            break;
+          case "reset":
+            handleThemeReset(theme, addOutput);
             break;
           case "set":
             handleThemeSet(args, theme, addOutput);

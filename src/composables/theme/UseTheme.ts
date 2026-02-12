@@ -54,6 +54,10 @@ export function useTheme() {
   const currentMode = computed<ThemeMode>(() => parseThemeId(currentTheme.value).mode);
 
   // Helper methods with runtime validation
+  const resetTheme = () => {
+    currentTheme.value = defaultTheme;
+  };
+
   const setTheme = (themeId: ThemeId) => {
     if (!isValidTheme(themeId)) {
       console.error(`Invalid theme ID: ${themeId}`);
@@ -98,6 +102,7 @@ export function useTheme() {
     availableVariants: AVAILABLE_VARIANTS,
     themeRegistry: THEME_REGISTRY,
     // Actions
+    resetTheme,
     setTheme,
     setVariant,
     setMode
