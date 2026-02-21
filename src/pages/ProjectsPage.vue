@@ -30,8 +30,6 @@ const allProjects = computed<FullProject[]>(() => {
 const categoryOrder: { id: string; label: string }[] = [
   { id: "web-app", label: "Web Apps" },
   { id: "desktop-app", label: "Desktop Apps" },
-  { id: "cli-app", label: "CLI Apps" },
-  { id: "package", label: "Packages" },
   { id: "other", label: "Other" }
 ];
 
