@@ -1,11 +1,11 @@
 {
   "basics": {
     "name": "Yaqin Hasan",
-    "label": "Full-stack software engineer specialising in cloud-native SaaS applications.",
+    "label": "Full-stack software engineer specialising in cloud SaaS applications.",
     "email": "yaqin.k.hasan@gmail.com",
     "phone": "074-596-16935",
     "url": "https://yaqinhasan.com",
-    "summary": "Full-stack engineer with production experience across the UI, API and infrastructure layers. Proven track record of shipping impactful features - from AI-powered workflows to third-party integrations and billing systems.",
+    "summary": "Full-stack engineer with end-to-end ownership experience across the full SDLC from requirements to deployment at a production SaaS startup. Shipping impactful features, from AI-powered workflow automation to third-party integrations.",
     "location": {
       "city": "Cambridge",
       "region": "UK"
@@ -26,18 +26,18 @@
   "work": [
     {
       "name": "Cambridge Kinetics",
-      "position": "Software Engineer (Full-Stack)",
+      "position": "Software Engineer (Full Stack) - Vue, TypeScript, C# .NET, MongoDB, Azure",
       "startDate": "May 2024",
       "endDate": "January 2026",
       "summary": "Worked across frontend, backend and infrastructure (Vue 3, C#/ASP.NET Core, GraphQL, MongoDB) to build and maintain a production-grade SaaS business management platform.",
       "highlights": [
-        "Designed and deployed LLM-powered workflow automation, reducing manual configuration time from hours to seconds.",
-        "Architected and implemented real-time data synchronization service integrating multiple external systems, processing thousands of daily updates across heterogeneous schemas and OAuth flows.",
-        "Scoped requirements with stakeholders and led end-to-end delivery of production features, including system design, testing strategy, CI/CD integration and Azure deployment.",
-        "Extended Stripe billing to support usage-based pricing and implemented integrations with Xero and QuickBooks, handling OAuth flows, webhooks and resilient error handling.",
-        "Redesigned REST endpoints to support high-volume bulk operations (10k+ records), improving throughput and reducing client round-trips.",
-        "Built and maintained CI/CD pipelines using GitHub Actions and managed Azure production deployments.",
-        "Mentored graduate and junior engineers through code review, pair programming and onboarding."
+        "Led end-to-end delivery of AI-powered workflow automation features, owning requirements scoping, system architecture and team coordination to streamline customer onboarding and eliminate hours of manual data entry.",
+        "Architected and implemented a C# data synchronisation service integrating multiple external systems, using efficient local comparisons to minimise API calls to process thousands of daily updates across heterogeneous schemas.",
+        "Refactored legacy REST API endpoints to introduce type-safety and bulk operation support, turning 100 requests for 100 operations into a single call.",
+        "Extended existing Stripe billing integration to support add-ons and usage-based pricing, co-designing the commercial model, then architecting and delivering without disrupting existing subscriptions.",
+        "Led delivery of Xero and QuickBooks integrations, implementing OAuth-based account linking, webhook handling and production error handling.",
+        "Owned CI/CD and cloud infrastructure alongside the lead engineer, halving pipeline run times and introducing hybrid local and cloud runners to optimise costs, while managing all Azure production deployments.",
+        "Onboarded and mentored graduate engineers and SDETs from zero experience to full team contribution, covering the full stack, engineering tooling and problem solving."
       ]
     }
   ],
@@ -64,6 +64,20 @@
   ],
   "projects": [
     {
+      "name": "CryptIt - Shamir Secret Sharing Encryption App",
+      "startDate": "2025",
+      "description": "Split secret data into multiple shares using Shamir's Secret Sharing algorithm, splitting and reconstructing secrets with configurable thresholds.",
+      "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop Application"],
+      "type": "Desktop App"
+    },
+    {
+      "name": "TrayRunner - MacOS Script Launcher",
+      "startDate": "2025",
+      "description": "Spotlight-inspired lightweight macOS menu-bar utility for triggering and scheduling local scripting workflows",
+      "keywords": ["Swift", "MacOS", "Native APIs"],
+      "type": "Desktop App"
+    },
+    {
       "name": "yaqinhasan.com - Personal Portfolio Website",
       "startDate": "2024",
       "description": "Personal portfolio website, showcasing CV, experience and projects. Including interactive terminal and dynamic theming system.",
@@ -71,59 +85,38 @@
       "type": "Web App"
     },
     {
-      "name": "CryptIt - Shamir Secret Sharing Encryption App",
-      "startDate": "2025",
-      "description": "Split secret data into multiple shares using Shamir's Secret Sharing algorithm, allowing for secure distribution and reconstruction of the original data.",
-      "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop Application"],
-      "type": "Desktop App"
-    },
-    {
-      "name": "TrayRunner - MacOS Script Launcher",
-      "startDate": "2025",
-      "description": "Spotlight-esque lightweight macOS menu-bar utility for triggering and scheduling local workflows",
-      "keywords": ["Swift", "macOS", "Native APIs", "Developer Tooling"],
-      "type": "Desktop App"
-    },
-    {
-      "name": "linkblitzer.com - Multi-Tab Link Launcher",
-      "startDate": "2025",
-      "description": "Web utility and browser extension that generates single URLs which open multiple target pages simultaneously.",
-      "keywords": ["TypeScript", "HTML", "CSS", "Web Development"],
-      "type": "Web App"
-    },
-    {
       "name": "pwordgen.com & pwordgen (npm package)",
       "startDate": "2025",
-      "description": "Password generation web utility backed by a reusable published TypeScript npm package",
+      "description": "Lightweight password generation web utility backed by a published npm package",
       "keywords": ["Vue", "Vite", "TypeScript", "npm", "Package Development"],
       "type": "Web App"
     },
     {
       "name": "prompt-as-endpoint",
       "startDate": "2025",
-      "description": "TypeScript framework for wrapping local and cloud LLMs in REST API endpoints, published on npm",
-      "keywords": ["TypeScript", "Hono", "LLM", "REST API", "Framework"],
-      "type": "Package"
+      "description": "NPM library simplifying AI-powered REST endpoints by reducing boilerplate with runtime schema validation, prompt templating, and structured output validation.",
+      "keywords": ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm"],
+      "type": "Other"
     },
     {
       "name": "PyDownloader",
       "startDate": "2025",
-      "description": "Unified API for downloading content from multiple sources",
+      "description": "Python API that allows users to easily download media from various sources on the internet to their NAS.",
       "keywords": ["Python", "FastAPI", "Backend"],
-      "type": "CLI App"
+      "type": "Desktop App"
     },
     {
       "name": "ThymPi - Final Year Project",
       "startDate": "2023",
       "description": "Researched, designed and implemented a prototype proof-of-concept for using sensor data to augment visual navigation systems for autonomously navigating robots.",
-      "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Sensors", "Raspberry Pi"],
+      "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Sensors"],
       "type": "Other"
     },
     {
       "name": "Structured Turtle Querying Language",
       "startDate": "2022",
-      "description": "Designed an SQL-based querying language and implemented accompanying Haskell interpreter.",
-      "keywords": ["Interpreter", "Compiler", "Haskell", "Lex", "Yacc", "Parser", "Lexer", "SQL", "RDF"],
+      "description": "Designed an SQL-inspired querying language and implemented accompanying interpreter for querying RDF data.",
+      "keywords": ["Interpreter", "Compiler", "Haskell", "Parser", "Lexer"],
       "type": "Other"
     }
   ],
@@ -142,18 +135,11 @@
     },
     {
       "name": "Infrastructure & DevOps",
-      "keywords": ["Microsoft Azure", "Docker", "GitHub Actions", "CI/CD", "VPS Hosting", "AWS"]
+      "keywords": ["Microsoft Azure", "Docker", "GitHub Actions", "CI/CD", "Amazon AWS"]
     },
     {
-      "name": "Development Practices",
-      "keywords": [
-        "Unit testing & Test driven development (Vitest, xUnit)",
-        "End to End testing (Playwright)",
-        "Code review",
-        "Git & GitHub workflows/collaboration",
-        "CI/CD pipeline management",
-        "Production deployment & environment management"
-      ]
+      "name": "Testing",
+      "keywords": ["Vitest", "XUnit", "Playwright End-to-End Testing"]
     }
   ]
 }
