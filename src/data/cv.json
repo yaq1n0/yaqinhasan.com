@@ -5,7 +5,7 @@
     "email": "yaqin.k.hasan@gmail.com",
     "phone": "074-596-16935",
     "url": "https://yaqinhasan.com",
-    "summary": "Full-stack engineer with full SDLC ownership experience from requirements and system design to deployment. Delivered AI-powered workflow automations and third-party service integrations at a production SaaS startup.",
+    "summary": "Owned the full SDLC for features from requirements and system design to deployment. Delivered AI-powered workflow automations and third-party service integrations at a production SaaS startup.",
     "location": {
       "city": "Cambridge",
       "region": "UK"
@@ -35,7 +35,8 @@
         "Improved legacy REST API performance by implementing type-safe bulk operations, reducing 100 round-trips into a single call and supporting operations on 10k+ records.",
         "Increased product revenue by co-designing the commercial model for usage-based pricing and subscription add-ons, then extending the existing Stripe billing integration end-to-end without disrupting live subscriptions.",
         "Unified customer financial workflows by delivering Xero and QuickBooks integrations, implementing OAuth account linking, webhook ingestion and error reconciliation.",
-        "Halved CI/CD pipeline run times by transitioning to hybrid local and cloud runners, and managed all Azure production deployments alongside the lead engineer.",
+        "Cut MongoDB Atlas costs by ~1000£/month by profiling query patterns, identifying excessive search memory consumption from read-heavy workloads, and migrating to dedicated Atlas Search nodes.",
+        "Halved CI/CD pipeline run times by transitioning to hybrid local and cloud runners, and managed Azure production deployments",
         "Onboarded and mentored engineers and SDETs from zero experience to full team contribution, covering SDLC principles, full-stack development best practices and developer tooling."
       ]
     }
@@ -126,7 +127,7 @@
     },
     {
       "name": "Frontend",
-      "keywords": ["Vue 3", "Vite", "Apollo GraphQL", "SCSS", "Bootstrap"]
+      "keywords": ["Vue 3", "Vite", "Apollo GraphQL", "Node.js", "SCSS"]
     },
     {
       "name": "Backend",
