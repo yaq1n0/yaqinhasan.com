@@ -59,7 +59,7 @@
 
     <!-- Projects Section -->
     <section v-if="cv.projects?.length" class="cv-section">
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title">Personal Projects</h2>
       <div v-for="project in cv.projects" :key="project.name" class="project-item">
         <h3 class="project-name">
           <span class="project-title"
