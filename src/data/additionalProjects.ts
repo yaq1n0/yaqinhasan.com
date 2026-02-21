@@ -12,6 +12,13 @@ export const additionalProjects: FullProject[] = [
     type: "Desktop App",
     status: "Complete",
     url: "https://github.com/yaq1n0/VidSrcWrapper"
+  },
+  {
+    name: "linkblitzer.com - Multi-Tab Link Launcher",
+    startDate: "2025",
+    description: "Web utility and browser extension that generates single URLs which open multiple target pages simultaneously.",
+    keywords: ["TypeScript", "HTML", "CSS", "Web Development"],
+    type: "Web App"
   }
 ];
 
