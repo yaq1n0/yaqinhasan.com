@@ -258,15 +258,7 @@ defineExpose({
     transition: transform 0.3s ease;
     padding: 0 map.get($spacing, "sm");
 
-    &:hover {
-      transform: scale(1.05);
-      z-index: 2;
-    }
-
     &.active-item {
-      transform: scale(1.1);
-      z-index: 3;
-
       :deep(.btn) {
         font-weight: 600;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
