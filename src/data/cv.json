@@ -1,11 +1,11 @@
 {
   "basics": {
     "name": "Yaqin Hasan",
-    "label": "Full-stack software engineer specialising in cloud SaaS applications.",
+    "label": "Full-stack software engineer specialising in cloud-native SaaS applications.",
     "email": "yaqin.k.hasan@gmail.com",
     "phone": "074-596-16935",
     "url": "https://yaqinhasan.com",
-    "summary": "Full-stack engineer with end-to-end ownership experience across the full SDLC from requirements to deployment at a production SaaS startup. Shipping impactful features, from AI-powered workflow automation to third-party integrations.",
+    "summary": "Full-stack engineer with end-to-end ownership experience across the full SDLC from requirements and system design to deployment. Delivered AI-powered workflow automation, third-party integrations and cloud infrastructure improvements at a production SaaS startup.",
     "location": {
       "city": "Cambridge",
       "region": "UK"
@@ -29,15 +29,14 @@
       "position": "Software Engineer (Full Stack) - Vue, TypeScript, C# .NET, MongoDB, Azure",
       "startDate": "May 2024",
       "endDate": "January 2026",
-      "summary": "Worked across frontend, backend and infrastructure (Vue 3, C#/ASP.NET Core, GraphQL, MongoDB) to build and maintain a production-grade SaaS business management platform.",
       "highlights": [
-        "Led end-to-end delivery of AI-powered workflow automation features, owning requirements scoping, system architecture and team coordination to streamline customer onboarding and eliminate hours of manual data entry.",
-        "Architected and implemented a C# data synchronisation service integrating multiple external systems, using efficient local comparisons to minimise API calls to process thousands of daily updates across heterogeneous schemas.",
-        "Refactored legacy REST API endpoints to introduce type-safety and bulk operation support, turning 100 requests for 100 operations into a single call.",
-        "Extended existing Stripe billing integration to support add-ons and usage-based pricing, co-designing the commercial model, then architecting and delivering without disrupting existing subscriptions.",
-        "Led delivery of Xero and QuickBooks integrations, implementing OAuth-based account linking, webhook handling and production error handling.",
-        "Owned CI/CD and cloud infrastructure alongside the lead engineer, halving pipeline run times and introducing hybrid local and cloud runners to optimise costs, while managing all Azure production deployments.",
-        "Onboarded and mentored graduate engineers and SDETs from zero experience to full team contribution, covering the full stack, engineering tooling and problem solving."
+        "Reduced customer onboarding configuration from hours to seconds by leading end-to-end delivery of LLM-powered workflow automation, owning requirements scoping, system architecture and team coordination.",
+        "Aggregated customer data from multiple external systems by architecting and implementing a data synchronisation service, processing thousands of daily updates across heterogeneous schemas with minimised API overhead.",
+        "Improved legacy REST API performance by implementing type-safe bulk operations, reducing 100 round-trips into a single call and supporting operations on 10k+ records.",
+        "Increased product revenue by co-designing the commercial model for usage-based pricing and subscription add-ons, then extending the existing Stripe billing integration end-to-end without disrupting live subscriptions.",
+        "Unified customer financial workflows by delivering Xero and QuickBooks integrations, implementing OAuth account linking, webhook ingestion and error reconciliation.",
+        "Halved CI/CD pipeline run times by transitioning to hybrid local and cloud runners, and managed all Azure production deployments alongside the lead engineer.",
+        "Onboarded and mentored engineers and SDETs from zero experience to full team contribution, covering SDLC principles, full-stack development best practices and developer tooling."
       ]
     }
   ],
@@ -101,7 +100,7 @@
     {
       "name": "PyDownloader",
       "startDate": "2025",
-      "description": "Python API that allows users to easily download media from various sources on the internet to their NAS.",
+      "description": "FastAPI service that dispatches download requests to appropriate backends via a single REST endpoint, with organised filesystem output and JSON-based configuration.",
       "keywords": ["Python", "FastAPI", "Backend"],
       "type": "Desktop App"
     },
