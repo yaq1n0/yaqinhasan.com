@@ -17,12 +17,12 @@
           </div>
 
           <ul class="hero-bullets">
-            <li>Build things that solve real problems</li>
-            <li>Own features from idea to production</li>
+            <li>Ship things that solve real-world problems</li>
+            <li>Scope → Design → Build → Deploy → Support</li>
             <li class="mobile-hide">Pull Requests on weekdays and Personal Records on weekends</li>
           </ul>
 
-          <p class="visa-line">Based in Cambridge, UK. (Skilled Worker Sponsorship Required)</p>
+          <p class="visa-line">Based in Cambridge, UK • Skilled Worker Sponsorship Required</p>
         </div>
       </div>
     </section>
