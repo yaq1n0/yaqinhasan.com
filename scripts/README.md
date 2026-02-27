@@ -5,3 +5,5 @@
 - validate-themes: makes sure that the themes are setup properly
 
 - validate-contrast: makes sure that the themes are WCAG compliant
+
+- generate-cv-schema: generates CV.ts based on the jsonresume.org jsonschema, using jsonSchemaToZod.
