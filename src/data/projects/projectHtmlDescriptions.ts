@@ -1,31 +1,9 @@
-import type { FullProject } from "@/data/models/Project";
+import { ProjectId } from "../models/Project";
 
-// Projects not in cv.json that we want on the portfolio website
-export const additionalProjects: FullProject[] = [
-  {
-    name: "VidSrcWrapper",
-    startDate: "2025",
-    description: "Full-stack application that searches TMDB and streams content via VidSrc, packaged with Docker.",
-    htmlDescription:
-      "<p>I wanted an application that can search TMDB then pass the id to VidSrc embed, which would allow me to watch movies and shows from it easily, without the manual lookup.</p>",
-    keywords: ["Vue", "Hono", "TypeScript", "Docker", "Full-Stack"],
-    type: "Desktop App",
-    status: "Complete",
-    url: "https://github.com/yaq1n0/VidSrcWrapper"
-  },
-  {
-    name: "linkblitzer.com - Multi-Tab Link Launcher",
-    startDate: "2025",
-    description: "Web utility and browser extension that generates single URLs which open multiple target pages simultaneously.",
-    keywords: ["TypeScript", "HTML", "CSS", "Web Development"],
-    type: "Web App"
-  }
-];
-
-// Detailed HTML descriptions for cv.json projects (keyed by project name)
-// These override the short cv.json description on the portfolio page
-export const projectHtmlDescriptions: Record<string, string> = {
-  "yaqinhasan.com - Personal Portfolio Website": `
+/** Detailed HTML descriptions for cv.json projects (keyed by project id)
+ *  These override the short cv.json description on the portfolio page */
+export const projectHtmlDescriptions: Record<ProjectId, string> = {
+  "yaqinhasan.com": `
     <p>I wanted a personal portfolio website to showcase and document my projects, most developers have one so I asked myself "how hard could it be?".</p>
     <h4>Initial Research, Abandoned Approaches</h4>
     <p>
@@ -42,7 +20,7 @@ export const projectHtmlDescriptions: Record<string, string> = {
       also took the liberty of splitting the files into more manageable sections and components, simplifying my workflow dramatically.
     </p>`,
 
-  "ThymPi - Final Year Project": `
+  ThymPi: `
     <h4>Project Definition</h4>
     <p>
       The official title of my dissertation was "An Intelligent Approach to Navigating Environments With Compliant Obstacles". Like most academic titles, it
@@ -72,5 +50,7 @@ export const projectHtmlDescriptions: Record<string, string> = {
       The final prototype was able to identify and classify obstacles, then it would decide to test the compliance of the obstacle if it was unknown to it.
       In theory, this would then be coupled with a navigation algorithm, using the compliance values to augment the different path "weights" to come up with
       the most efficient real-life path.
-    </p>`
+    </p>`,
+
+  VidSrcWrapper: `<p>I wanted an application that can search TMDB then pass the id to VidSrc embed, which would allow me to watch movies and shows from it easily, without the manual lookup.</p>`
 };

@@ -13,18 +13,24 @@ import { ref, computed, onMounted } from "vue";
 import CarouselLayout from "@/components/carousel/CarouselLayout.vue";
 import ProjectCard from "@/components/ProjectCard.vue";
 import { type CarouselItem } from "@/data/models/CarouselItem";
-import type { FullProject } from "@/data/models/Project";
+import { isProjectId, ProjectId, type FullProject, type CVProject } from "@/data/models/Project";
 import cvData from "@/data/cv.json";
-import { additionalProjects, projectHtmlDescriptions } from "@/data/additionalProjects";
+import { additionalProjects } from "@/data/projects/additionalProjects";
+
+import { projectHtmlDescriptions } from "@/data/projects/projectHtmlDescriptions";
+
+/** Combine a project with its HTML description if it exists */
+const withHtmlDescription = (project: CVProject): FullProject => {
+  const projectId = isProjectId(project.id || "") ? (project.id as ProjectId) : undefined;
+  const htmlDescription = projectId ? projectHtmlDescriptions[projectId] : undefined;
+  return {
+    ...project,
+    htmlDescription
+  };
+};
 
 // Merge cv.json projects with additional projects, applying htmlDescription overrides
-const allProjects = computed<FullProject[]>(() => {
-  const fromJson: FullProject[] = (cvData.projects ?? []).map((p) => ({
-    ...p,
-    htmlDescription: projectHtmlDescriptions[p.name] ?? undefined
-  }));
-  return [...fromJson, ...additionalProjects];
-});
+const allProjects = computed<FullProject[]>(() => [...(cvData.projects ?? []), ...additionalProjects].map((p) => withHtmlDescription(p)));
 
 // Category order and labels
 const categoryOrder: { id: string; label: string }[] = [
