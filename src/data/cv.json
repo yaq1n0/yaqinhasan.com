@@ -26,7 +26,7 @@
   "work": [
     {
       "name": "Cambridge Kinetics",
-      "position": "Software Engineer (Full Stack) • C# .NET, TypeScript, Azure, MongoDB, Vue",
+      "position": "Software Engineer (Full Stack) • C# .NET, TypeScript, Azure, MongoDB, Vue, GraphQL",
       "startDate": "May 2024",
       "endDate": "January 2026",
       "highlights": [
@@ -103,23 +103,23 @@
   "skills": [
     {
       "name": "Languages",
-      "keywords": ["TypeScript", "JavaScript", "C#", "Python", "Java", "Rust", "C", "Swift"]
+      "keywords": ["TypeScript", "JavaScript", "C#", "Python", "Rust", "Swift"]
     },
     {
       "name": "Frontend",
-      "keywords": ["Vue 3", "Vite", "Apollo GraphQL", "Node.js", "SCSS"]
+      "keywords": ["Vue", "Vite", "Pinia", "React", "Node"]
     },
     {
       "name": "Backend",
-      "keywords": ["ASP.NET Core", "HotChocolate GraphQL", "OAuth", "Webhooks", "REST APIs", "MongoDB", "Hono", "FastAPI"]
+      "keywords": [".NET", "MongoDB", "PostgreSQL", "GraphQL", "Hono", "FastAPI"]
     },
     {
       "name": "Infrastructure & DevOps",
-      "keywords": ["Microsoft Azure", "Docker", "GitHub Actions", "CI/CD", "Amazon AWS"]
+      "keywords": ["Microsoft Azure", "Docker", "GitHub Actions", "CI/CD", "AWS"]
     },
     {
       "name": "Testing",
-      "keywords": ["Vitest", "XUnit", "Playwright End-to-End Testing"]
+      "keywords": ["Vitest", "XUnit", "Playwright", "TDD"]
     }
   ]
 }
