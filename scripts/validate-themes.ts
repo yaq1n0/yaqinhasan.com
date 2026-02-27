@@ -79,7 +79,7 @@ function validateThemeRegistry(): ThemeValidationResult {
 /**
  * Validate SCSS theme files exist and contain required selectors
  */
-function validateScssFiles(): ValidationResult {
+function validateScssFiles(): ThemeValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
 
@@ -136,7 +136,7 @@ function validateScssFiles(): ValidationResult {
 /**
  * Validate main.scss imports theme files
  */
-function validateMainScss(): ValidationResult {
+function validateMainScss(): ThemeValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
 
@@ -171,7 +171,7 @@ function main() {
   console.log("🎨 Theme System Validation\n");
   console.log("=".repeat(50) + "\n");
 
-  const results: ValidationResult[] = [validateThemeRegistry(), validateScssFiles(), validateMainScss()];
+  const results: ThemeValidationResult[] = [validateThemeRegistry(), validateScssFiles(), validateMainScss()];
 
   console.log("\n" + "=".repeat(50) + "\n");
 
