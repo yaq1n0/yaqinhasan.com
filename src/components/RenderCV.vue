@@ -140,7 +140,7 @@ const buildCoursesLine = (courses: string[]) => {
 
   &.print-mode {
     max-width: 210mm;
-    padding: 10mm 15mm;
+    padding: 0; // remove margins in print mode, since the margins are added by the pdf renderer
     background: white;
     color: #000;
     font-size: 10pt;
