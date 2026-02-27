@@ -2,27 +2,14 @@
   <div class="cv-container" :class="{ 'print-mode': isCVPage }">
     <!-- Header -->
     <header class="cv-header">
-      <div class="header-left">
-        <h1 class="name">{{ cv.basics?.name }}</h1>
-        <div class="contact-details">
-          <p v-if="cv.basics?.url">
-            Portfolio: <a :href="cv.basics?.url">{{ simplifyLink(cv.basics?.url) }}</a>
-          </p>
-          <p v-for="profile in cv.basics?.profiles" :key="profile.network">
-            {{ profile.network }}: <a :href="profile.url">{{ simplifyLink(profile.url) }}</a>
-          </p>
-          <p v-if="cv.basics?.email">
-            Email: <a :href="`mailto:${cv.basics?.email}`">{{ cv.basics?.email }}</a>
-          </p>
-          <p v-if="cv.basics?.phone">Phone: {{ cv.basics?.phone }}</p>
-          <p v-if="cv.basics?.location">
-            {{ cv.basics?.location.city }}<span v-if="cv.basics?.location.region">, {{ cv.basics?.location.region }}</span>
-          </p>
-        </div>
-      </div>
-      <div class="header-right">
-        <p v-if="cv.basics?.label" class="tagline">{{ cv.basics?.label }}</p>
-        <p v-if="cv.basics?.summary" class="objective">{{ cv.basics?.summary }}</p>
+      <h1 class="name">{{ cv.basics?.name }}</h1>
+      <p v-if="cv.basics?.label" class="tagline">{{ cv.basics?.label }}</p>
+      <p v-if="cv.basics?.summary" class="objective">{{ cv.basics?.summary }}</p>
+      <div class="contact-details">
+        <template v-for="(item, idx) in contactItems" :key="idx"
+          ><span v-if="idx > 0" class="sep"> · </span><a v-if="item.href" :href="item.href">{{ item.text }}</a
+          ><span v-else>{{ item.text }}</span></template
+        >
       </div>
     </header>
 
@@ -50,9 +37,9 @@
           <h3 class="institution">{{ edu.institution }} ({{ edu.startDate }} - {{ edu.endDate }})</h3>
           <p v-if="edu.studyType" class="degree">{{ edu.studyType }}</p>
         </div>
-        <ul v-if="edu.courses?.length" class="subsections">
-          <li v-for="course in edu.courses" :key="course">{{ course }}</li>
-        </ul>
+        <div v-if="edu.courses?.length" class="degree-subtitle">
+          {{ buildCoursesLine(edu.courses) }}
+        </div>
         <p v-if="edu.score" class="grade">{{ edu.score }}</p>
       </div>
     </section>
@@ -62,15 +49,12 @@
       <h2 class="section-title">Personal Projects</h2>
       <div v-for="project in cv.projects" :key="project.name" class="project-item">
         <h3 class="project-name">
-          <span class="project-title"
-            >{{ project.name }} ({{ project.startDate }}<span v-if="project.endDate"> - {{ project.endDate }}</span
-            >)</span
-          >
-          <span class="project-colon">:</span>
+          <span class="project-title">{{ project.name }}</span>
+          <br v-if="project.description" />
           <span class="project-description">{{ project.description }}</span>
         </h3>
         <p v-if="project.keywords?.length" class="skills-list">
-          <em>Skills: {{ project.keywords.join(", ") }}</em>
+          <em>{{ project.keywords.join(" • ") }}</em>
         </p>
       </div>
     </section>
@@ -103,7 +87,7 @@ import type { CV } from "@/data/models/CV";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 
-defineProps<{
+const props = defineProps<{
   cv: CV;
 }>();
 
@@ -114,6 +98,32 @@ const isCVPage = computed(() => route.path === "/cv");
 const simplifyLink = (url?: string) => {
   if (!url) return "";
   return url.replace(/^https?:\/\//, "");
+};
+
+type ContactItem = {
+  text: string;
+  href?: string;
+};
+
+const contactItems = computed(() => {
+  const items: ContactItem[] = [];
+  const basics = props.cv.basics;
+  if (basics?.url) items.push({ text: simplifyLink(basics.url), href: basics.url });
+  for (const p of basics?.profiles ?? []) items.push({ text: simplifyLink(p.url), href: p.url });
+  if (basics?.email) items.push({ text: basics.email, href: `mailto:${basics.email}` });
+  if (basics?.phone) items.push({ text: basics.phone });
+  if (basics?.location) {
+    const location = basics.location;
+    // this aint the prettiest but it works, let's not overbuid this
+    const locationText = [location.city, location.countryCode].filter((x) => !!x).join(", ");
+    if (locationText) items.push({ text: locationText });
+  }
+  return items;
+});
+
+const buildCoursesLine = (courses: string[]) => {
+  if (courses.length === 0) return undefined;
+  return `Specialist Modules: ${courses.join(", ")}`;
 };
 </script>
 
@@ -145,9 +155,7 @@ const simplifyLink = (url?: string) => {
 
 // Header Styles
 .cv-header {
-  display: flex;
-  justify-content: space-between;
-  gap: map.get($spacing, "lg");
+  text-align: center;
   margin-bottom: map.get($spacing, "md");
   padding-bottom: map.get($spacing, "md");
   border-bottom: 3px solid #0891b2;
@@ -157,41 +165,14 @@ const simplifyLink = (url?: string) => {
   }
 }
 
-.header-left {
-  flex: 0 0 auto;
-}
-
-.header-right {
-  flex: 1;
-  text-align: right;
-  max-width: 45%;
-}
-
 .name {
   font-size: 24pt;
   font-weight: normal;
-  margin: 0 0 map.get($spacing, "sm");
+  margin: 0 0 map.get($spacing, "xs");
   color: var(--color-text);
 
   .print-mode & {
     color: #000;
-  }
-}
-
-.contact-details {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 9pt;
-
-  p {
-    margin: 2px 0;
-  }
-
-  a {
-    color: var(--color-accent);
-
-    .print-mode & {
-      color: inherit;
-    }
   }
 }
 
@@ -209,11 +190,24 @@ const simplifyLink = (url?: string) => {
 .objective {
   font-size: 10pt;
   font-style: italic;
-  margin: 0;
+  margin: 0 0 map.get($spacing, "sm");
   color: var(--color-text-secondary);
 
   .print-mode & {
     color: #333;
+  }
+}
+
+.contact-details {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 9pt;
+
+  a {
+    color: var(--color-accent);
+
+    .print-mode & {
+      color: inherit;
+    }
   }
 }
 
@@ -288,6 +282,15 @@ const simplifyLink = (url?: string) => {
   }
 }
 
+.degree-subtitle {
+  font-size: 9pt;
+  color: var(--color-text-secondary);
+
+  .print-mode & {
+    color: #333;
+  }
+}
+
 .bullets,
 .subsections {
   margin: map.get($spacing, "xs") 0 0 map.get($spacing, "lg");
@@ -349,10 +352,6 @@ const simplifyLink = (url?: string) => {
   font-weight: bold;
 }
 
-.project-colon {
-  margin: 0 4px;
-}
-
 .project-description {
   font-weight: normal;
 }
@@ -360,10 +359,8 @@ const simplifyLink = (url?: string) => {
 .skills-list {
   font-size: 9pt;
   color: var(--color-text-secondary);
-  margin: 2px 0 0 map.get($spacing, "lg");
 
   .print-mode & {
-    margin-left: 20pt;
     color: #555;
   }
 }
