@@ -3,12 +3,12 @@
     "name": "Yaqin Hasan",
     "label": "Full-stack software engineer specialising in cloud-native SaaS applications.",
     "email": "yaqin.k.hasan@gmail.com",
-    "phone": "074-596-16935",
+    "phone": "07459 616935",
     "url": "https://yaqinhasan.com",
     "summary": "Owned the full SDLC for features from requirements and system design to deployment. Delivered AI-powered workflow automations and third-party service integrations at a production SaaS startup.",
     "location": {
       "city": "Cambridge",
-      "region": "UK"
+      "countryCode": "UK"
     },
     "profiles": [
       {
@@ -26,7 +26,7 @@
   "work": [
     {
       "name": "Cambridge Kinetics",
-      "position": "Software Engineer (Full Stack) - Vue, TypeScript, C# .NET, MongoDB, Azure",
+      "position": "Software Engineer (Full Stack) • C# .NET, TypeScript, Azure, MongoDB, Vue",
       "startDate": "May 2024",
       "endDate": "January 2026",
       "highlights": [
@@ -57,59 +57,46 @@
   ],
   "projects": [
     {
-      "name": "CryptIt - Shamir Secret Sharing Encryption App",
-      "startDate": "2025",
-      "description": "Split secret data into multiple shares using Shamir's Secret Sharing algorithm, splitting and reconstructing secrets with configurable thresholds.",
-      "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop Application"],
+      "name": "CryptIt • Secret splitting & reconstruction",
+      "description": "Desktop app for securely splitting secrets into multiple shares and reconstructing them using Shamir's Secret Sharing algorithm",
+      "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop App Development"],
       "type": "Desktop App"
     },
     {
-      "name": "TrayRunner - MacOS Script Launcher",
-      "startDate": "2025",
-      "description": "Spotlight-inspired lightweight macOS menu-bar utility for triggering and scheduling local scripting workflows",
-      "keywords": ["Swift", "MacOS", "Native APIs"],
+      "name": "TrayRunner • Script launcher",
+      "description": "Spotlight-inspired macOS menu bar utility for triggering and scheduling local script-based workflows.",
+      "keywords": ["Swift", "SwiftUI", "macOS Development", "Desktop App Development", "Shell Scripting"],
       "type": "Desktop App"
     },
     {
-      "name": "yaqinhasan.com - Personal Portfolio Website",
-      "startDate": "2024",
-      "description": "Personal portfolio website, showcasing CV, experience and projects. Including interactive terminal and dynamic theming system.",
-      "keywords": ["Vue 3", "Vite", "TypeScript", "SCSS", "Web Hosting", "VPS", "DNS", "AWS"],
-      "type": "Web App"
-    },
-    {
-      "name": "pwordgen.com & pwordgen (npm package)",
-      "startDate": "2025",
-      "description": "Lightweight password generation web utility backed by a published npm package",
-      "keywords": ["Vue", "Vite", "TypeScript", "npm", "Package Development"],
-      "type": "Web App"
-    },
-    {
-      "name": "prompt-as-endpoint",
-      "startDate": "2025",
-      "description": "NPM library simplifying AI-powered REST endpoints by reducing boilerplate with runtime schema validation, prompt templating, and structured output validation.",
-      "keywords": ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm"],
+      "name": "Structured Turtle Querying Language • Haskell interpreter",
+      "description": "Designed and implemented an SQL-inspired querying language for RDF data, including complete Haskell interpreter.",
+      "keywords": ["Haskell", "Interpreter Design", "Compiler Theory", "Formal Language Theory"],
       "type": "Other"
     },
     {
-      "name": "PyDownloader",
-      "startDate": "2025",
-      "description": "FastAPI service that dispatches download requests to appropriate backends via a single REST endpoint, with organised filesystem output and JSON-based configuration.",
-      "keywords": ["Python", "FastAPI", "Backend"],
-      "type": "Desktop App"
-    },
-    {
-      "name": "ThymPi - Final Year Project",
-      "startDate": "2023",
-      "description": "Researched, designed and implemented a prototype proof-of-concept for using sensor data to augment visual navigation systems for autonomously navigating robots.",
-      "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Sensors"],
+      "name": "prompt-as-endpoint • TypeScript library on npm",
+      "description": "Open-source library for building AI-powered REST endpoints by simplifying runtime schema validation, prompt templating, and structured output validation.",
+      "keywords": ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm packaging", "Developer Experience"],
       "type": "Other"
     },
     {
-      "name": "Structured Turtle Querying Language",
-      "startDate": "2022",
-      "description": "Designed an SQL-inspired querying language and implemented accompanying interpreter for querying RDF data.",
-      "keywords": ["Interpreter", "Compiler", "Haskell", "Parser", "Lexer"],
+      "name": "PyDownloader • Download aggregator",
+      "description": "Self-hostable download aggregator, matching the functionality of online downloaders, with pluggable architecture supporting multiple backend downloaders.",
+      "keywords": ["Python", "FastAPI", "Backend", "Docker"],
+      "type": "Other"
+    },
+    {
+      "name": "linkblitzer.com • Link bundling and multi-tab launcher",
+      "description": "Web utility with accompanying browser extension allowing users to bundle links and open them in bulk.",
+      "keywords": ["Vue", "Vite", "TypeScript", "Browser Extension", "Web Development"],
+      "type": "Web App"
+    },
+    {
+      "name": "ThymPi • Sensor-augmented navigation research",
+      "id": "ThymPi",
+      "description": "Researched, designed and implemented a proof-of-concept for using sensor data to augment visual navigation systems for autonomously navigating robots.",
+      "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Final year project"],
       "type": "Other"
     }
   ],
