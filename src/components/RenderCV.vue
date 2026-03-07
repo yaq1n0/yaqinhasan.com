@@ -6,10 +6,18 @@
       <p v-if="cv.basics?.label" class="tagline">{{ cv.basics?.label }}</p>
       <p v-if="cv.basics?.summary" class="objective">{{ cv.basics?.summary }}</p>
       <div class="contact-details">
-        <template v-for="(item, idx) in contactItems" :key="idx"
-          ><span v-if="idx > 0" class="sep"> · </span><a v-if="item.href" :href="item.href">{{ item.text }}</a
-          ><span v-else>{{ item.text }}</span></template
-        >
+        <div v-if="contactLinks.length">
+          <template v-for="(item, idx) in contactLinks" :key="idx"
+            ><span v-if="idx > 0" class="sep"> · </span><a v-if="item.href" :href="item.href">{{ item.text }}</a
+            ><span v-else>{{ item.text }}</span></template
+          >
+        </div>
+        <div v-if="contactDetails.length">
+          <template v-for="(item, idx) in contactDetails" :key="idx"
+            ><span v-if="idx > 0" class="sep"> · </span><a v-if="item.href" :href="item.href">{{ item.text }}</a
+            ><span v-else>{{ item.text }}</span></template
+          >
+        </div>
       </div>
     </header>
 
@@ -105,16 +113,21 @@ type ContactItem = {
   href?: string;
 };
 
-const contactItems = computed(() => {
+const contactLinks = computed(() => {
   const items: ContactItem[] = [];
   const basics = props.cv.basics;
   if (basics?.url) items.push({ text: simplifyLink(basics.url), href: basics.url });
   for (const p of basics?.profiles ?? []) items.push({ text: simplifyLink(p.url), href: p.url });
+  return items;
+});
+
+const contactDetails = computed(() => {
+  const items: ContactItem[] = [];
+  const basics = props.cv.basics;
   if (basics?.email) items.push({ text: basics.email, href: `mailto:${basics.email}` });
   if (basics?.phone) items.push({ text: basics.phone });
   if (basics?.location) {
     const location = basics.location;
-    // this aint the prettiest but it works, let's not overbuid this
     const locationText = [location.city, location.countryCode].filter((x) => !!x).join(", ");
     if (locationText) items.push({ text: locationText });
   }
