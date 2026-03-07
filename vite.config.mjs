@@ -69,7 +69,7 @@ export default defineConfig({
           @use "@/styles/_variables.scss" as *;
           @use "@/styles/_mixins.scss" as *;
         `,
-        silenceDeprecations: ["import", "global-builtin", "color-functions"]
+        silenceDeprecations: ["import", "global-builtin", "color-functions", "if-function"]
       }
     }
   },
