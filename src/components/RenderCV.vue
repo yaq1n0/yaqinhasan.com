@@ -9,19 +9,18 @@
         <div v-if="contactLinks.length">
           <template v-for="(item, idx) in contactLinks" :key="idx"
             ><span v-if="idx > 0" class="sep"> · </span><a v-if="item.href" :href="item.href">{{ item.text }}</a
-            ><span v-else>{{ item.text }}</span></template
-          >
+            ><span v-else>{{ item.text }}</span>
+          </template>
         </div>
         <div v-if="contactDetails.length">
           <template v-for="(item, idx) in contactDetails" :key="idx"
             ><span v-if="idx > 0" class="sep"> · </span><a v-if="item.href" :href="item.href">{{ item.text }}</a
-            ><span v-else>{{ item.text }}</span></template
-          >
+            ><span v-else>{{ item.text }}</span>
+          </template>
         </div>
+        <div>Open to relocation · Visa sponsorship required</div>
       </div>
     </header>
-
-    <hr class="section-divider" />
 
     <!-- Experience Section -->
     <section v-if="cv.work?.length" class="cv-section">
@@ -70,21 +69,11 @@
     <!-- Skills Section -->
     <section v-if="cv.skills?.length" class="cv-section">
       <h2 class="section-title">Skills</h2>
-      <div class="skills-grid">
-        <div v-for="skill in cv.skills" :key="skill.name" class="skill-category">
-          <h3 class="category-name">{{ skill.name }}</h3>
-          <ul v-if="skill.keywords?.length" class="skill-keywords">
-            <li v-for="(keyword, idx) in skill.keywords" :key="idx">{{ keyword }}</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Personal Interests Section -->
-    <section v-if="cv.interests?.length" class="cv-section">
-      <h2 class="section-title">Personal Interests</h2>
-      <ul class="interests-list">
-        <li v-for="interest in cv.interests" :key="interest.name">{{ interest.name }}</li>
+      <ul class="skills-list">
+        <li v-for="skill in cv.skills" :key="skill.name" class="skill-row">
+          <span class="category-name">{{ skill.name }}:</span>
+          {{ skill.keywords?.join(", ") }}
+        </li>
       </ul>
     </section>
   </div>
@@ -156,8 +145,8 @@ const buildCoursesLine = (courses: string[]) => {
     padding: 0; // remove margins in print mode, since the margins are added by the pdf renderer
     background: white;
     color: #000;
-    font-size: 10pt;
-    line-height: 1.3;
+    font-size: 9pt;
+    line-height: 1.15;
 
     a {
       color: inherit;
@@ -171,10 +160,10 @@ const buildCoursesLine = (courses: string[]) => {
   text-align: center;
   margin-bottom: map.get($spacing, "md");
   padding-bottom: map.get($spacing, "md");
-  border-bottom: 3px solid #0891b2;
 
   .print-mode & {
-    border-bottom-color: #000;
+    margin-bottom: 5pt;
+    padding-bottom: 0;
   }
 }
 
@@ -186,6 +175,8 @@ const buildCoursesLine = (courses: string[]) => {
 
   .print-mode & {
     color: #000;
+    font-size: 18pt;
+    margin: 0 0 2pt;
   }
 }
 
@@ -197,6 +188,8 @@ const buildCoursesLine = (courses: string[]) => {
 
   .print-mode & {
     color: #000;
+    font-size: 9pt;
+    margin: 0 0 2pt;
   }
 }
 
@@ -208,6 +201,7 @@ const buildCoursesLine = (courses: string[]) => {
 
   .print-mode & {
     color: #333;
+    margin: 0 0 2pt;
   }
 }
 
@@ -224,23 +218,11 @@ const buildCoursesLine = (courses: string[]) => {
   }
 }
 
-// Section Styles
-.section-divider {
-  border: none;
-  border-top: 1px solid var(--color-border);
-  margin: map.get($spacing, "md") 0;
-  margin-bottom: map.get($spacing, "lg");
-
-  .print-mode & {
-    border-top-color: #ccc;
-  }
-}
-
 .cv-section {
   margin-bottom: map.get($spacing, "lg");
 
   .print-mode & {
-    margin-bottom: 12pt;
+    margin-bottom: 5pt;
   }
 }
 
@@ -255,6 +237,9 @@ const buildCoursesLine = (courses: string[]) => {
   .print-mode & {
     color: #000;
     border-bottom-color: #000;
+    font-size: 11pt;
+    margin: 0 0 3pt;
+    padding-bottom: 3px;
   }
 }
 
@@ -263,12 +248,16 @@ const buildCoursesLine = (courses: string[]) => {
   margin-bottom: map.get($spacing, "md");
 
   .print-mode & {
-    margin-bottom: 8pt;
+    margin-bottom: 4pt;
   }
 }
 
 .item-header {
   margin-bottom: map.get($spacing, "xs");
+
+  .print-mode & {
+    margin-bottom: 1pt;
+  }
 }
 
 .company,
@@ -280,6 +269,7 @@ const buildCoursesLine = (courses: string[]) => {
 
   .print-mode & {
     color: #000;
+    font-size: 10pt;
   }
 }
 
@@ -316,10 +306,10 @@ const buildCoursesLine = (courses: string[]) => {
   }
 
   .print-mode & {
-    margin-left: 20pt;
+    margin: 2pt 0 0 14pt;
 
     li {
-      margin-bottom: 2pt;
+      margin-bottom: 1pt;
     }
   }
 }
@@ -329,7 +319,7 @@ const buildCoursesLine = (courses: string[]) => {
   margin-bottom: map.get($spacing, "md");
 
   .print-mode & {
-    margin-bottom: 8pt;
+    margin-bottom: 4pt;
   }
 }
 
@@ -350,7 +340,7 @@ const buildCoursesLine = (courses: string[]) => {
   margin-bottom: map.get($spacing, "sm");
 
   .print-mode & {
-    margin-bottom: 6pt;
+    margin-bottom: 2pt;
   }
 }
 
@@ -379,98 +369,29 @@ const buildCoursesLine = (courses: string[]) => {
 }
 
 // Skills Styles
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: map.get($spacing, "sm") map.get($spacing, "lg");
+.skills-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-row {
+  font-size: 10pt;
+  margin-bottom: 3px;
+  color: var(--color-text-secondary);
 
   .print-mode & {
-    gap: 6pt 16pt;
+    color: #333;
+    margin-bottom: 1pt;
   }
 }
 
-.skill-category {
-  margin-bottom: 0;
-}
-
 .category-name {
-  font-size: 11pt;
   font-weight: bold;
-  margin: 0 0 2px;
   color: var(--color-text);
 
   .print-mode & {
     color: #000;
-  }
-}
-
-.skill-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 2px 0;
-
-  li {
-    font-size: 10pt;
-    color: var(--color-text-secondary);
-
-    &:not(:last-child)::after {
-      content: "·";
-      margin: 0 6px;
-      color: #0891b2;
-      font-weight: bold;
-    }
-  }
-
-  .print-mode & li {
-    color: #333;
-
-    &:not(:last-child)::after {
-      color: #000;
-    }
-  }
-}
-
-// Interests Styles
-.interests-list {
-  margin: 0 0 0 map.get($spacing, "lg");
-  padding: 0;
-  list-style-type: disc;
-
-  li {
-    font-size: 10pt;
-    margin-bottom: 4px;
-  }
-
-  .print-mode & {
-    margin-left: 20pt;
-  }
-}
-
-// Print Media Query
-@media print {
-  .cv-container {
-    max-width: 100%;
-    padding: 0;
-    background: white;
-    color: #000;
-    font-size: 10pt;
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-  }
-
-  .section-divider {
-    border-top-color: #ccc;
-  }
-
-  .cv-section {
-    margin-bottom: 10pt;
-    page-break-inside: avoid;
   }
 }
 </style>

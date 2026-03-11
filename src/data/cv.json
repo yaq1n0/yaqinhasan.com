@@ -1,11 +1,9 @@
 {
   "basics": {
     "name": "Yaqin Hasan",
-    "label": "Full-stack software engineer specialising in cloud-native SaaS applications.",
     "email": "yaqin.k.hasan@gmail.com",
     "phone": "07459 616935",
     "url": "https://yaqinhasan.com",
-    "summary": "Owned the full SDLC for features from requirements and system design to deployment. Delivered AI-powered workflow automations and third-party service integrations at a production SaaS startup.",
     "location": {
       "city": "Cambridge",
       "countryCode": "UK"
