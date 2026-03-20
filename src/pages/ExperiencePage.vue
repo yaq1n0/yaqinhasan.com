@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import cvData from "@/data/cv.json";
+import { cvData } from "@/data/cvData";
 import ExperienceCard from "@/components/ExperienceCard.vue";
 
 // Get the first (and only) work entry

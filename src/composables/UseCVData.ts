@@ -1,9 +1,9 @@
 import { ref, onMounted } from "vue";
-import { type CV, cvSchema } from "@/data/models/CV";
+import type { CV } from "@/data/models/CV";
 
 /**
  * Composable for loading and managing CV data.
- * Loads CV JSON data on mount and validates it against the schema.
+ * Loads CV data on mount from typed sources.
  */
 export function useCVData() {
   const cvData = ref<CV>();
@@ -12,8 +12,9 @@ export function useCVData() {
 
   onMounted(async () => {
     try {
-      const cvJson = await import("../data/cv.json");
-      cvData.value = cvSchema.parse(cvJson.default);
+      const { cvData: data } = await import("../data/cvData");
+      const { getCVProjects } = await import("../data/projects/resolveProjects");
+      cvData.value = { ...data, projects: getCVProjects() } as CV;
       isLoaded.value = true;
     } catch (e) {
       error.value = e as Error;
