@@ -69,7 +69,6 @@ export default defineConfig({
           @use "sass:map";
           @use "sass:list";
           @use "@/styles/_variables.scss" as *;
-          @use "@/styles/_mixins.scss" as *;
         `,
       }
     }

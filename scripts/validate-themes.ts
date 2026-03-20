@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 /**
  * Theme System Validation Script
- * Validates theme registry, SCSS files, and configuration consistency
+ * Validates theme registry and CSS configuration consistency
  * Run via: npm run validate:themes
  */
 
@@ -77,89 +77,49 @@ function validateThemeRegistry(): ThemeValidationResult {
 }
 
 /**
- * Validate SCSS theme files exist and contain required selectors
+ * Validate tailwind.css contains required theme selectors and CSS variables
  */
-function validateScssFiles(): ThemeValidationResult {
+function validateThemeCss(): ThemeValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
 
-  console.log("🎨 Validating SCSS theme files...");
+  console.log("🎨 Validating theme CSS in tailwind.css...");
 
-  const themesDir = join(PROJECT_ROOT, "src/styles/themes");
-  const variants = new Set(THEME_REGISTRY.map((t) => t.variant));
+  const tailwindCssPath = join(PROJECT_ROOT, "src/styles/tailwind.css");
 
-  // 1. Check each variant has a corresponding SCSS file
-  variants.forEach((variant) => {
-    const scssPath = join(themesDir, `_${variant}.scss`);
-
-    if (!existsSync(scssPath)) {
-      errors.push(`Missing SCSS file for variant "${variant}": ${scssPath}`);
-      return;
-    }
-
-    console.log(`   📄 Checking _${variant}.scss...`);
-
-    const content = readFileSync(scssPath, "utf-8");
-
-    // 2. Verify all theme IDs for this variant have selectors
-    const variantThemes = THEME_REGISTRY.filter((t) => t.variant === variant);
-
-    variantThemes.forEach((theme) => {
-      const selector = `[data-theme="${theme.id}"]`;
-      if (!content.includes(selector)) {
-        errors.push(`SCSS file "_${variant}.scss" missing selector: ${selector}`);
-      }
-    });
-
-    // 3. Check for required CSS variables in each theme
-    variantThemes.forEach((theme) => {
-      const themeBlockRegex = new RegExp(`\\[data-theme="${theme.id}"\\]\\s*\\{([^}]+)\\}`, "s");
-      const match = content.match(themeBlockRegex);
-
-      if (match) {
-        const themeBlock = match[1];
-
-        THEME_CONFIG.requiredVars.forEach((cssVar) => {
-          if (!themeBlock.includes(cssVar)) {
-            warnings.push(`Theme "${theme.id}" might be missing CSS variable: ${cssVar}`);
-          }
-        });
-      }
-    });
-  });
-
-  console.log(`   ✓ Validated ${variants.size} SCSS files`);
-
-  return { success: errors.length === 0, errors, warnings };
-}
-
-/**
- * Validate main.scss imports theme files
- */
-function validateMainScss(): ThemeValidationResult {
-  const errors: string[] = [];
-  const warnings: string[] = [];
-
-  console.log("📦 Validating main.scss imports...");
-
-  const mainScssPath = join(PROJECT_ROOT, "src/styles/main.scss");
-
-  if (!existsSync(mainScssPath)) {
-    errors.push("main.scss not found at expected location");
+  if (!existsSync(tailwindCssPath)) {
+    errors.push("tailwind.css not found at expected location");
     return { success: false, errors, warnings };
   }
 
-  const content = readFileSync(mainScssPath, "utf-8");
-  const variants = new Set(THEME_REGISTRY.map((t) => t.variant));
+  const content = readFileSync(tailwindCssPath, "utf-8");
 
-  variants.forEach((variant) => {
-    const useStatement = `@use "themes/${variant}";`;
-    if (!content.includes(useStatement)) {
-      errors.push(`main.scss missing import for theme variant "${variant}": ${useStatement}`);
+  // 1. Check each theme has a [data-theme] selector block
+  THEME_REGISTRY.forEach((theme) => {
+    const selector = `[data-theme="${theme.id}"]`;
+    if (!content.includes(selector)) {
+      errors.push(`tailwind.css missing selector: ${selector}`);
+      return;
+    }
+
+    console.log(`   📄 Checking ${theme.id}...`);
+
+    // 2. Check for required CSS variables in each theme block
+    const themeBlockRegex = new RegExp(`\\[data-theme="${theme.id}"\\]\\s*\\{([^}]+)\\}`, "s");
+    const match = content.match(themeBlockRegex);
+
+    if (match) {
+      const themeBlock = match[1];
+
+      THEME_CONFIG.requiredVars.forEach((cssVar) => {
+        if (!themeBlock.includes(cssVar)) {
+          warnings.push(`Theme "${theme.id}" might be missing CSS variable: ${cssVar}`);
+        }
+      });
     }
   });
 
-  console.log(`   ✓ Verified theme imports in main.scss`);
+  console.log(`   ✓ Validated ${THEME_REGISTRY.length} theme blocks`);
 
   return { success: errors.length === 0, errors, warnings };
 }
@@ -171,7 +131,7 @@ function main() {
   console.log("🎨 Theme System Validation\n");
   console.log("=".repeat(50) + "\n");
 
-  const results: ThemeValidationResult[] = [validateThemeRegistry(), validateScssFiles(), validateMainScss()];
+  const results: ThemeValidationResult[] = [validateThemeRegistry(), validateThemeCss()];
 
   console.log("\n" + "=".repeat(50) + "\n");
 

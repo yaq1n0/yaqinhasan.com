@@ -5,7 +5,7 @@
  * Run via: npm run validate:contrast
  */
 
-import { readFileSync, existsSync, readdirSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { getLuminance } from "polished";
@@ -73,14 +73,14 @@ function parseColor(value: string): string {
 }
 
 /**
- * Extract CSS variable values from SCSS content
+ * Extract CSS variable values from tailwind.css content for a given theme
  */
-function extractColors(scssContent: string, themeId: string): Map<string, string> {
+function extractColors(cssContent: string, themeId: string): Map<string, string> {
   const colors = new Map<string, string>();
 
   // Find the theme block
   const themeBlockRegex = new RegExp(`\\[data-theme="${themeId}"\\]\\s*\\{([^}]+)\\}`, "s");
-  const match = scssContent.match(themeBlockRegex);
+  const match = cssContent.match(themeBlockRegex);
 
   if (!match) {
     console.warn(`⚠️  Could not find theme block for: ${themeId}`);
@@ -155,54 +155,45 @@ function main() {
   console.log("🎨 WCAG Contrast Ratio Validation\n");
   console.log("=".repeat(50) + "\n");
 
-  const themesDir = join(PROJECT_ROOT, "src/styles/themes");
+  const tailwindCssPath = join(PROJECT_ROOT, "src/styles/tailwind.css");
 
-  if (!existsSync(themesDir)) {
-    console.error(`❌ Themes directory not found: ${themesDir}`);
+  if (!existsSync(tailwindCssPath)) {
+    console.error(`❌ tailwind.css not found: ${tailwindCssPath}`);
     process.exit(1);
   }
 
-  const scssFiles = readdirSync(themesDir).filter((f) => f.endsWith(".scss"));
+  const cssContent = readFileSync(tailwindCssPath, "utf-8");
 
   let totalChecks = 0;
   let failedChecks = 0;
   const failures: string[] = [];
   const allResults: ContrastCheck[] = [];
 
-  // Process each SCSS file
-  scssFiles.forEach((file) => {
-    const variantName = file.replace(/^_|\.scss$/g, "");
-    const filePath = join(themesDir, file);
-    const content = readFileSync(filePath, "utf-8");
+  // Process each registered theme
+  THEME_REGISTRY.forEach((theme) => {
+    console.log(`📋 ${theme.name} (${theme.id}):`);
 
-    // Get all themes for this variant
-    const variantThemes = THEME_REGISTRY.filter((t) => t.variant === variantName);
+    const colors = extractColors(cssContent, theme.id);
 
-    variantThemes.forEach((theme) => {
-      console.log(`📋 ${theme.name} (${theme.id}):`);
+    if (colors.size === 0) {
+      console.log(`   ⚠️  No colors extracted - check CSS format\n`);
+      return;
+    }
 
-      const colors = extractColors(content, theme.id);
+    const results = validateThemeContrast(theme.id, colors);
 
-      if (colors.size === 0) {
-        console.log(`   ⚠️  No colors extracted - check SCSS format\n`);
-        return;
+    results.forEach((check) => {
+      totalChecks++;
+      console.log(formatCheckResult(check));
+      allResults.push(check);
+
+      if (!check.passes.aa) {
+        failedChecks++;
+        failures.push(`${theme.name}: ${check.context} (${check.ratio.toFixed(2)}:1, needs ${THEME_CONFIG.wcag.aa.normal}:1)`);
       }
-
-      const results = validateThemeContrast(theme.id, colors);
-
-      results.forEach((check) => {
-        totalChecks++;
-        console.log(formatCheckResult(check));
-        allResults.push(check);
-
-        if (!check.passes.aa) {
-          failedChecks++;
-          failures.push(`${theme.name}: ${check.context} (${check.ratio.toFixed(2)}:1, needs ${THEME_CONFIG.wcag.aa.normal}:1)`);
-        }
-      });
-
-      console.log("");
     });
+
+    console.log("");
   });
 
   console.log("=".repeat(50) + "\n");
