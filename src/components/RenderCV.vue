@@ -129,135 +129,134 @@ const buildCoursesLine = (courses: string[]) => {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .cv-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: map.get($spacing, "lg");
+  padding: 1.5rem;
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 11pt;
   line-height: 1.4;
-  color: var(--color-text);
-  background: var(--color-bg);
-
-  &.print-mode {
-    max-width: 210mm;
-    padding: 0; // remove margins in print mode, since the margins are added by the pdf renderer
-    background: white;
-    color: #000;
-    font-size: 9pt;
-    line-height: 1.15;
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-  }
+  color: var(--color-text-primary);
 }
 
-// Header Styles
+.cv-container.print-mode {
+  max-width: 210mm;
+  padding: 0;
+  background: white;
+  color: #000;
+  font-size: 9pt;
+  line-height: 1.15;
+}
+
+.cv-container.print-mode a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Header Styles */
 .cv-header {
   text-align: center;
-  margin-bottom: map.get($spacing, "md");
-  padding-bottom: map.get($spacing, "md");
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+}
 
-  .print-mode & {
-    margin-bottom: 5pt;
-    padding-bottom: 0;
-  }
+.print-mode .cv-header {
+  margin-bottom: 5pt;
+  padding-bottom: 0;
 }
 
 .name {
   font-size: 24pt;
   font-weight: normal;
-  margin: 0 0 map.get($spacing, "xs");
-  color: var(--color-text);
+  margin: 0 0 0.25rem;
+  color: var(--color-text-primary);
+}
 
-  .print-mode & {
-    color: #000;
-    font-size: 18pt;
-    margin: 0 0 2pt;
-  }
+.print-mode .name {
+  color: #000;
+  font-size: 18pt;
+  margin: 0 0 2pt;
 }
 
 .tagline {
   font-size: 11pt;
   color: #0891b2;
   font-weight: 500;
-  margin: 0 0 map.get($spacing, "xs");
+  margin: 0 0 0.25rem;
+}
 
-  .print-mode & {
-    color: #000;
-    font-size: 9pt;
-    margin: 0 0 2pt;
-  }
+.print-mode .tagline {
+  color: #000;
+  font-size: 9pt;
+  margin: 0 0 2pt;
 }
 
 .objective {
   font-size: 10pt;
   font-style: italic;
-  margin: 0 0 map.get($spacing, "sm");
+  margin: 0 0 0.5rem;
   color: var(--color-text-secondary);
+}
 
-  .print-mode & {
-    color: #333;
-    margin: 0 0 2pt;
-  }
+.print-mode .objective {
+  color: #333;
+  margin: 0 0 2pt;
 }
 
 .contact-details {
   font-family: "Courier New", Courier, monospace;
   font-size: 9pt;
+}
 
-  a {
-    color: var(--color-accent);
+.contact-details a {
+  color: var(--color-accent);
+}
 
-    .print-mode & {
-      color: inherit;
-    }
-  }
+.print-mode .contact-details a {
+  color: inherit;
 }
 
 .cv-section {
-  margin-bottom: map.get($spacing, "lg");
+  margin-bottom: 1.5rem;
+}
 
-  .print-mode & {
-    margin-bottom: 5pt;
-  }
+.print-mode .cv-section {
+  margin-bottom: 5pt;
 }
 
 .section-title {
   font-size: 14pt;
   font-weight: bold;
   color: #0891b2;
-  margin: 0 0 map.get($spacing, "sm");
+  margin: 0 0 0.5rem;
   border-bottom: 1px solid #0891b2;
   padding-bottom: 4px;
-
-  .print-mode & {
-    color: #000;
-    border-bottom-color: #000;
-    font-size: 11pt;
-    margin: 0 0 3pt;
-    padding-bottom: 3px;
-  }
 }
 
-// Experience Styles
-.experience-item {
-  margin-bottom: map.get($spacing, "md");
+.print-mode .section-title {
+  color: #000;
+  border-bottom-color: #000;
+  font-size: 11pt;
+  margin: 0 0 3pt;
+  padding-bottom: 3px;
+}
 
-  .print-mode & {
-    margin-bottom: 4pt;
-  }
+/* Experience Styles */
+.experience-item {
+  margin-bottom: 0.75rem;
+}
+
+.print-mode .experience-item {
+  margin-bottom: 4pt;
 }
 
 .item-header {
-  margin-bottom: map.get($spacing, "xs");
+  margin-bottom: 0.25rem;
+}
 
-  .print-mode & {
-    margin-bottom: 1pt;
-  }
+.print-mode .item-header {
+  margin-bottom: 1pt;
 }
 
 .company,
@@ -265,12 +264,13 @@ const buildCoursesLine = (courses: string[]) => {
   font-size: 12pt;
   font-weight: bold;
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-text-primary);
+}
 
-  .print-mode & {
-    color: #000;
-    font-size: 10pt;
-  }
+.print-mode .company,
+.print-mode .institution {
+  color: #000;
+  font-size: 10pt;
 }
 
 .role,
@@ -279,69 +279,73 @@ const buildCoursesLine = (courses: string[]) => {
   font-style: italic;
   margin: 2px 0 0;
   color: var(--color-text-secondary);
+}
 
-  .print-mode & {
-    color: #333;
-  }
+.print-mode .role,
+.print-mode .degree {
+  color: #333;
 }
 
 .degree-subtitle {
   font-size: 9pt;
   color: var(--color-text-secondary);
+}
 
-  .print-mode & {
-    color: #333;
-  }
+.print-mode .degree-subtitle {
+  color: #333;
 }
 
 .bullets,
 .subsections {
-  margin: map.get($spacing, "xs") 0 0 map.get($spacing, "lg");
+  margin: 0.25rem 0 0 1.5rem;
   padding: 0;
   list-style-type: disc;
-
-  li {
-    margin-bottom: 4px;
-    font-size: 10pt;
-  }
-
-  .print-mode & {
-    margin: 2pt 0 0 14pt;
-
-    li {
-      margin-bottom: 1pt;
-    }
-  }
 }
 
-// Education Styles
-.education-item {
-  margin-bottom: map.get($spacing, "md");
+.bullets li,
+.subsections li {
+  margin-bottom: 4px;
+  font-size: 10pt;
+}
 
-  .print-mode & {
-    margin-bottom: 4pt;
-  }
+.print-mode .bullets,
+.print-mode .subsections {
+  margin: 2pt 0 0 14pt;
+}
+
+.print-mode .bullets li,
+.print-mode .subsections li {
+  margin-bottom: 1pt;
+}
+
+/* Education Styles */
+.education-item {
+  margin-bottom: 0.75rem;
+}
+
+.print-mode .education-item {
+  margin-bottom: 4pt;
 }
 
 .grade {
   font-size: 10pt;
   font-style: italic;
-  margin: 4px 0 0 map.get($spacing, "lg");
+  margin: 4px 0 0 1.5rem;
   color: var(--color-text-secondary);
-
-  .print-mode & {
-    margin-left: 20pt;
-    color: #333;
-  }
 }
 
-// Project Styles
-.project-item {
-  margin-bottom: map.get($spacing, "sm");
+.print-mode .grade {
+  margin-left: 20pt;
+  color: #333;
+}
 
-  .print-mode & {
-    margin-bottom: 2pt;
-  }
+/* Project Styles */
+.project-item {
+  margin-bottom: 0.5rem;
+}
+
+.print-mode .project-item {
+  margin-bottom: 2pt;
 }
 
 .project-name {
@@ -362,36 +366,32 @@ const buildCoursesLine = (courses: string[]) => {
 .skills-list {
   font-size: 9pt;
   color: var(--color-text-secondary);
-
-  .print-mode & {
-    color: #555;
-  }
-}
-
-// Skills Styles
-.skills-list {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.print-mode .skills-list {
+  color: #555;
 }
 
 .skill-row {
   font-size: 10pt;
   margin-bottom: 3px;
   color: var(--color-text-secondary);
+}
 
-  .print-mode & {
-    color: #333;
-    margin-bottom: 1pt;
-  }
+.print-mode .skill-row {
+  color: #333;
+  margin-bottom: 1pt;
 }
 
 .category-name {
   font-weight: bold;
-  color: var(--color-text);
+  color: var(--color-text-primary);
+}
 
-  .print-mode & {
-    color: #000;
-  }
+.print-mode .category-name {
+  color: #000;
 }
 </style>

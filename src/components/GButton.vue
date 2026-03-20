@@ -64,7 +64,7 @@ const parsedIcon = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .btn {
   display: inline-flex;
   align-items: center;
@@ -82,103 +82,96 @@ const parsedIcon = computed(() => {
   min-height: 40px;
   max-width: 100%;
   width: auto;
-
-  .btn-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    justify-content: center;
-  }
-
-  &.shape-rounded {
-    border-radius: 1rem;
-  }
-
-  &.shape-squircle {
-    border-radius: 0.5rem;
-  }
-
-  &.border-thin {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  &.border-thick {
-    border: 2px solid rgba(255, 255, 255, 0.3);
-  }
-
-  &.border-none {
-    border: none;
-  }
-
-  &.label-above,
-  &.label-below {
-    padding: 0.75rem;
-
-    .btn-content {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-  }
-
-  &.label-left,
-  &.label-right {
-    .btn-content {
-      flex-direction: row;
-      gap: 0.5rem;
-    }
-  }
-
-  &.label-above {
-    .btn-content {
-      flex-direction: column-reverse;
-    }
-  }
-
-  &.label-left {
-    .btn-content {
-      flex-direction: row-reverse;
-    }
-  }
-
-  .btn-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    &.icon-sm {
-      width: 1.2em;
-      height: 1.2em;
-    }
-
-    &.icon-md {
-      width: 1.5em;
-      height: 1.5em;
-    }
-
-    &.icon-lg {
-      width: 2em;
-      height: 2em;
-    }
-  }
-
-  .btn-label {
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: initial;
-    max-width: 100%;
-    line-height: 1.2;
-  }
 }
 
-// Dark mode adjustments
-:root[data-theme="dark"] .btn {
-  &.border-thin,
-  &.border-thick {
-    border-color: rgba(255, 255, 255, 0.15);
-  }
+.btn .btn-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn.shape-rounded {
+  border-radius: 1rem;
+}
+
+.btn.shape-squircle {
+  border-radius: 0.5rem;
+}
+
+.btn.border-thin {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn.border-thick {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn.border-none {
+  border: none;
+}
+
+.btn.label-above,
+.btn.label-below {
+  padding: 0.75rem;
+}
+
+.btn.label-above .btn-content,
+.btn.label-below .btn-content {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.btn.label-left .btn-content,
+.btn.label-right .btn-content {
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.btn.label-above .btn-content {
+  flex-direction: column-reverse;
+}
+
+.btn.label-left .btn-content {
+  flex-direction: row-reverse;
+}
+
+.btn .btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn .btn-icon.icon-sm {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.btn .btn-icon.icon-md {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.btn .btn-icon.icon-lg {
+  width: 2em;
+  height: 2em;
+}
+
+.btn .btn-label {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+/* Dark mode adjustments */
+:root[data-theme="dark"] .btn.border-thin,
+:root[data-theme="dark"] .btn.border-thick {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 </style>

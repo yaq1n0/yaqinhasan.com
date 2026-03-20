@@ -1,9 +1,9 @@
 <template>
-  <div class="cv-page">
-    <div v-if="isLoaded && cvData" class="cv-wrapper">
+  <div class="mx-auto bg-white p-0">
+    <div v-if="isLoaded && cvData">
       <render-c-v :cv="cvData" />
     </div>
-    <div v-else class="cv-loading">
+    <div v-else class="flex items-center justify-center min-h-[200px] text-text-secondary">
       <p>Loading CV...</p>
     </div>
   </div>
@@ -15,19 +15,3 @@ import { useCVData } from "@/composables/UseCVData";
 
 const { cvData, isLoaded } = useCVData();
 </script>
-
-<style lang="scss" scoped>
-.cv-page {
-  margin: 0 auto;
-  padding: 0;
-  background: white;
-}
-
-.cv-loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-  color: var(--color-text-secondary);
-}
-</style>

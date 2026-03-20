@@ -374,36 +374,36 @@ const aboutItems = [
 ];
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .keyword-container {
   display: flex;
   flex-wrap: wrap;
-  gap: map.get($spacing, "sm");
-  margin-bottom: map.get($spacing, "lg");
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
 
-  .keyword {
-    background-color: var(--color-accent-translucent);
-    padding: map.get($spacing, "xs") map.get($spacing, "sm");
-    border-radius: map.get($border-radius, "sm");
-    font-size: map.get($font-sizes, "sm");
-    white-space: nowrap;
-  }
+.keyword-container .keyword {
+  background-color: var(--color-accent-translucent);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .link-container {
   display: flex;
   flex-wrap: wrap;
-  gap: map.get($spacing, "md");
-  margin: map.get($spacing, "md") 0;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
 
-  .link {
-    display: inline-flex;
-    align-items: center;
-    gap: map.get($spacing, "xs");
-    background-color: var(--color-accent-translucent);
-    padding: map.get($spacing, "xs") map.get($spacing, "md");
-    border-radius: map.get($border-radius, "md");
-  }
+.link-container .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: var(--color-accent-translucent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
 }
 
 .centered {
@@ -413,37 +413,41 @@ const aboutItems = [
 .year-navigation {
   display: flex;
   justify-content: center;
-  gap: map.get($spacing, "lg");
-  margin: map.get($spacing, "xl") 0;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
 
-  .link {
-    font-size: map.get($font-sizes, "lg");
-    font-weight: 600;
-    padding: map.get($spacing, "sm") map.get($spacing, "lg");
-    background-color: var(--color-accent-translucent);
-    border-radius: map.get($border-radius, "md");
-  }
+.year-navigation .link {
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-accent-translucent);
+  border-radius: 0.5rem;
 }
 
 .video-container {
   display: flex;
   justify-content: center;
-  margin: map.get($spacing, "lg") 0;
+  margin: 1.5rem 0;
+}
 
-  .youtube-embed {
-    width: 100%;
-    max-width: 800px;
-    height: 450px;
-    border-radius: map.get($border-radius, "lg");
-    border: 2px solid var(--color-accent-light);
+.video-container .youtube-embed {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-accent-light);
+}
 
-    @media (max-width: map.get($breakpoints, "md")) {
-      height: 350px;
-    }
+@media (max-width: 768px) {
+  .video-container .youtube-embed {
+    height: 350px;
+  }
+}
 
-    @media (max-width: map.get($breakpoints, "sm")) {
-      height: 250px;
-    }
+@media (max-width: 640px) {
+  .video-container .youtube-embed {
+    height: 250px;
   }
 }
 </style>
