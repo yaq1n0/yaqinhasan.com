@@ -1,14 +1,18 @@
 <template>
-  <div class="collapsible-section">
-    <div class="collapsible-header" :class="{ active: modelValue }" @click="toggleOpen">
-      <div class="caret-container">
-        <font-awesome-icon :icon="['fas', 'caret-right']" class="caret-icon" :class="{ rotate: modelValue }" />
+  <div class="my-6 rounded-lg overflow-hidden shadow-sm">
+    <div
+      class="flex items-center px-5 py-3 bg-bg-secondary cursor-pointer select-none max-md:px-4"
+      :class="{ active: modelValue }"
+      @click="toggleOpen"
+    >
+      <div class="flex items-center justify-center w-8 h-8 mr-4 rounded-full p-2">
+        <font-awesome-icon :icon="['fas', 'caret-right']" class="text-accent transition-transform duration-200" :class="{ 'rotate-90': modelValue }" />
       </div>
-      <h3 class="header-title">
+      <h3 class="text-xl font-semibold m-0">
         {{ title }}
       </h3>
     </div>
-    <div v-if="modelValue" class="collapsible-content">
+    <div v-if="modelValue" class="p-4 pt-4 pb-5 px-5 bg-bg-tertiary max-md:p-4">
       <slot />
     </div>
   </div>
@@ -25,61 +29,3 @@ const toggleOpen = () => {
   modelValue.value = !modelValue.value;
 };
 </script>
-
-<style scoped>
-.collapsible-section {
-  margin: 1.5rem 0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.collapsible-header {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  background-color: var(--color-bg-secondary);
-  cursor: pointer;
-  user-select: none;
-}
-
-.caret-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  margin-right: 1rem;
-  border-radius: 50%;
-  padding: 0.5rem;
-}
-
-.caret-icon {
-  color: var(--color-accent);
-}
-
-.caret-icon.rotate {
-  transform: rotate(90deg);
-}
-
-.header-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-.collapsible-content {
-  padding: 1rem 1.25rem 1.25rem 1.25rem;
-  background-color: var(--color-bg-tertiary);
-}
-
-@media (max-width: 768px) {
-  .collapsible-header {
-    padding: 0.75rem 1rem;
-  }
-
-  .collapsible-content {
-    padding: 1rem;
-  }
-}
-</style>
