@@ -20,4 +20,3 @@ useTheme();
 const route = useRoute();
 const onCVPage = computed(() => route.path === "/cv");
 </script>
-

@@ -15,13 +15,17 @@
           </div>
         </div>
 
-        <ul class="list-disc pl-4 my-[clamp(1rem,2vw,1.5rem)] flex flex-col gap-[clamp(0.875rem,2vw,1.25rem)] text-[clamp(0.9375rem,1.5vw,1.125rem)] leading-relaxed max-sm:gap-[clamp(0.75rem,1.5vw,1rem)]">
+        <ul
+          class="list-disc pl-4 my-[clamp(1rem,2vw,1.5rem)] flex flex-col gap-[clamp(0.875rem,2vw,1.25rem)] text-[clamp(0.9375rem,1.5vw,1.125rem)] leading-relaxed max-sm:gap-[clamp(0.75rem,1.5vw,1rem)]"
+        >
           <li>Ship things that solve real-world problems</li>
           <li>Scope → Design → Build → Deploy → Support</li>
           <li class="max-sm:hidden">Pull Requests on weekdays and Personal Records on weekends</li>
         </ul>
 
-        <p class="mt-[clamp(1rem,2vw,1.5rem)] max-sm:mt-3 text-[clamp(0.8125rem,1.25vw,0.9375rem)] text-text-secondary italic leading-relaxed">Based in Cambridge, UK • Skilled Worker Sponsorship Required</p>
+        <p class="mt-[clamp(1rem,2vw,1.5rem)] max-sm:mt-3 text-[clamp(0.8125rem,1.25vw,0.9375rem)] text-text-secondary italic leading-relaxed">
+          Based in Cambridge, UK • Skilled Worker Sponsorship Required
+        </p>
       </div>
     </section>
 

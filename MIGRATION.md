@@ -18,6 +18,7 @@ Vue 3 + Vite personal portfolio. Bootstrap 5.3.8 is installed but provides zero 
 ## How to Execute
 
 Each stage is one conversation + one commit. At the start of each stage:
+
 1. Read this file for stage instructions
 2. Read all files being modified in that stage
 3. Do the work
@@ -33,6 +34,7 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 **Commit: `chore: install tailwind v4, remove bootstrap`**
 
 ### Steps
+
 1. `npm uninstall bootstrap`
 2. `npm install -D tailwindcss @tailwindcss/vite`
 3. Add Tailwind Vite plugin to `vite.config.mjs`
@@ -40,6 +42,7 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 5. Remove `@use "bootstrap-utilities"` from `src/styles/main.scss`
 6. Remove `silenceDeprecations` from vite.config.mjs SCSS options
 7. Create `src/styles/tailwind.css` — import Tailwind and configure `@theme` to map the existing design tokens from `_variables.scss` and the CSS custom properties from the theme files. Use this mapping:
+
    ```css
    @theme {
      /* Background colors → bg-primary, bg-secondary, bg-tertiary */
@@ -77,8 +80,10 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
      --transition-duration-slow: 500ms;
    }
    ```
+
    This enables classes like `bg-bg-primary`, `text-text-primary`, `text-accent`, `border-border`, `border-border-light`, `font-base`, `font-mono`, `duration-fast`, etc. Most spacing, font-size, border-radius, breakpoint, and z-index values already match Tailwind defaults and don't need custom tokens.
    **Note:** `--color-text` and `--color-bg` are referenced in `RenderCV.vue` and `DebugCarouselPage.vue` but are never defined in any theme — replace those references with `--color-text-primary` and `--color-bg-primary` during component migration (stages 5-6).
+
 8. Move Swiper CSS imports from `main.ts` JS imports to `tailwind.css` using `@import` with `layer(base)` — this places Swiper styles below Tailwind utilities in the cascade, preventing Preflight from breaking Swiper's navigation/pagination, while still allowing Tailwind classes to override Swiper when needed:
    ```css
    @import "swiper/css" layer(base);
@@ -92,6 +97,7 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 11. Disable Tailwind Preflight initially (project has custom reset in `main.scss` — reconcile in stage 2)
 
 ### Verify
+
 - `npm run build` succeeds
 - Site looks identical visually
 - Swiper carousel navigation arrows and pagination dots render correctly
@@ -103,6 +109,7 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 **Commit: `refactor: migrate global styles and themes from SCSS to tailwind base layer`**
 
 ### Steps
+
 1. Read `src/styles/main.scss` and all `src/styles/themes/*.scss` files
 2. Move the base reset, scrollbar styles, `:root` variables, dev-mode styles, and print styles into `tailwind.css` `@layer base` as plain CSS
 3. The theme files are pure `[data-theme]` CSS variable blocks with no SCSS features — convert to plain CSS in `@layer base`
@@ -121,10 +128,12 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 7. Update `App.vue` — remove `@forward "@/styles/main"`. Note: App.vue has an **unscoped** `<style lang="scss">` block (not scoped) containing global print styles (`.print-mode-app`, `@media print` overrides). These are global styles that must be migrated into `tailwind.css` `@layer base`, not just deleted. The print styles are critical for `RenderCV.vue` and `scripts/render-pdf.ts` which renders `cv.pdf` via Playwright — the `.print-mode` class on `.cv-container` controls print layout.
 
 ### Notes
+
 - Breakpoint values in `_variables.scss` (sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px) already match Tailwind's defaults — no custom breakpoint config needed.
 - After enabling Preflight and moving styles to `@layer base`, verify that no component styles are unintentionally overridden by layer specificity changes. Spot-check NavBar, GButton, and CarouselLayout which have the most complex selector hierarchies.
 
 ### Verify
+
 - All 6 theme variants render correctly (`npm run dev`, toggle themes)
 - Scrollbar styling intact
 - Print view of CV page correct — run `npm run render:pdf` and compare output
@@ -136,6 +145,7 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 **Commit: `refactor: update validation scripts for CSS source, remove SCSS utilities and mixins`**
 
 ### Steps
+
 1. Read `scripts/validate-themes.ts` and `scripts/validate-contrast.ts` fully
 2. **`validate-themes.ts` rewrite:**
    - Replace `fs.existsSync` checks for individual `.scss` theme files → check that `tailwind.css` exists and contains a `[data-theme="<id>"]` block for each registered theme
@@ -147,11 +157,12 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
    - Update file glob/path to read `[data-theme]` blocks from `tailwind.css` instead of `src/styles/themes/*.scss`
    - The hex-extraction regex should work as-is — verify it still correctly parses values from the new plain CSS format
    - Keep `polished` `getLuminance()` usage unchanged
-5. Delete `src/styles/_mixins.scss` — no component uses `@include` for any mixin (note: `_utilities.scss` was already deleted in stage 1)
-7. Keep `src/styles/_variables.scss` temporarily — still needed by components that use `map.get()` (will be removed in stage 7)
-8. Update vite.config.mjs `additionalData` — remove `_mixins.scss` reference, keep only `_variables.scss`
+4. Delete `src/styles/_mixins.scss` — no component uses `@include` for any mixin (note: `_utilities.scss` was already deleted in stage 1)
+5. Keep `src/styles/_variables.scss` temporarily — still needed by components that use `map.get()` (will be removed in stage 7)
+6. Update vite.config.mjs `additionalData` — remove `_mixins.scss` reference, keep only `_variables.scss`
 
 ### Verify
+
 - `npm run validate:themes` passes
 - `npm run validate:contrast` passes — confirms `polished` `getLuminance()` still works with the new CSS format
 - `npm run build` succeeds
@@ -163,15 +174,18 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 **Commit: `refactor: migrate simple components from SCSS to tailwind`**
 
 ### Components
+
 `App.vue`, `ProjectsPage.vue`, `CVPage.vue`, `CollapsibleSection.vue`, `DevContent.vue`
 
 ### Approach
+
 - Read each component, read `_variables.scss` to resolve any `map.get()` calls to actual values
 - Replace `<style lang="scss" scoped>` blocks with Tailwind classes in templates
 - Use plain `<style scoped>` (no `lang="scss"`) for anything that can't be expressed as Tailwind utilities
 - Keep `var(--color-*)` references via the Tailwind theme tokens configured in stage 1
 
 ### Verify
+
 - `npm run build` succeeds
 - Each component renders correctly
 - CollapsibleSection expand/collapse animation works
@@ -183,10 +197,13 @@ For component migration stages (4-6): glob `src/**/*.vue`, read each component's
 **Commit: `refactor: migrate medium-complexity components to tailwind`**
 
 ### Components
+
 `GButton.vue`, `CVBox.vue`, `DevTerminal.vue`, `HomePage.vue`, `ExperiencePage.vue`, `ExperienceCard.vue`, `InterestsPage.vue`, `NotFoundPage.vue`, `DebugPage.vue`, `NavBar.vue`, `CarouselDetail.vue`
 
 ### Approach
+
 Same as stage 4. Additional notes:
+
 - `:deep()` selectors (DebugPage, NavBar) → keep in plain `<style scoped>` block (`:deep()` is a Vue feature, works without SCSS)
 - Vue transition classes (NavBar) → plain CSS in `<style scoped>`
 - `::placeholder` (DevTerminal) → Tailwind `placeholder:` variant
@@ -195,6 +212,7 @@ Same as stage 4. Additional notes:
 - Dynamic CSS variable `--btn-bg-color` (GButton) → preserve via `:style` binding, reference in Tailwind or CSS
 
 ### Verify
+
 - `npm run build` succeeds
 - Terminal input/output and placeholder render correctly
 - NavBar responsive behavior and terminal expand animation work
@@ -208,15 +226,19 @@ Same as stage 4. Additional notes:
 **Commit: `refactor: migrate complex components to tailwind`**
 
 ### Components
+
 `ProjectCard.vue`, `RenderCV.vue`, `CarouselLayout.vue`, `AboutPage.vue`, `DebugCarouselPage.vue`
 
 ### Approach
+
 Same as previous stages. Additional notes:
+
 - **CarouselLayout.vue**: `::before`/`::after` gradient fade overlays and `:deep(.btn)` → plain scoped CSS fallback for these rules. Swiper CSS imports in `main.ts` are unchanged.
 - **RenderCV.vue**: Print styles are critical — `scripts/render-pdf.ts` uses Playwright to navigate to `/cv` and generate `public/cv.pdf`. The `.print-mode` class (toggled by `isCVPage` computed property) controls print layout with hardcoded colors (#000, #333, #555), pt-based sizing, and A4-width constraints. These `.print-mode &` nested selectors must be preserved as plain scoped CSS — Tailwind's `print:` variant is for `@media print`, not class-based print modes. Use Tailwind utilities for the non-print styles only.
 - **DebugCarouselPage.vue**: `@media (hover: none) and (pointer: coarse)` has no Tailwind variant — use plain CSS.
 
 ### Verify
+
 - `npm run build` succeeds
 - Carousel picker gradient fades work on all themes
 - Carousel touch/swipe behavior unchanged
@@ -230,6 +252,7 @@ Same as previous stages. Additional notes:
 **Commit: `chore: remove scss dependencies and all remaining scss artifacts`**
 
 ### Steps
+
 1. Delete `src/styles/_variables.scss` (should be unreferenced after stages 4-6)
 2. Delete `src/styles/_utilities.reference.scss` (migration reference, no longer needed)
 3. Remove `src/styles/` directory if empty (tailwind.css may still live here)
@@ -239,6 +262,7 @@ Same as previous stages. Additional notes:
 7. Grep for any remaining `@use "sass:map"` or `@use "sass:list"` — must be zero
 
 ### Verify
+
 - `npm run build` — zero warnings, no SCSS references
 - `npm run dev` — full visual check: all pages, all 6 theme variants
 - `npm run validate:themes` — passes
