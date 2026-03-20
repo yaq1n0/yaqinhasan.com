@@ -1,8 +1,6 @@
 @use "sass:map";
 @use "variables" as *;
 @use "mixins" as *;
-@use "utilities";
-@use "bootstrap-utilities";
 
 // Import theme files
 @use "themes/default";

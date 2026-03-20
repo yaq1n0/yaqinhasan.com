@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath, URL } from "node:url";
 import { staticRouteGenerator } from "./plugins/staticRouteGenerator.js";
 import { extractRoutes } from "./plugins/routeExtractor.js";
@@ -12,6 +13,7 @@ const routes = extractRoutes();
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     vue(),
     // Generate static HTML files for each route using our custom plugin
     staticRouteGenerator(routes),
@@ -69,7 +71,6 @@ export default defineConfig({
           @use "@/styles/_variables.scss" as *;
           @use "@/styles/_mixins.scss" as *;
         `,
-        silenceDeprecations: ["import", "global-builtin", "color-functions", "if-function"]
       }
     }
   },

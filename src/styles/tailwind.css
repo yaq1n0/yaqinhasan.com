@@ -1,0 +1,49 @@
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
+/* Swiper CSS in base layer — below utilities in cascade */
+@import "swiper/css" layer(base);
+@import "swiper/css/navigation" layer(base);
+@import "swiper/css/pagination" layer(base);
+@import "swiper/css/effect-fade" layer(base);
+
+/* Disable Preflight (project has custom reset in main.scss — reconcile in stage 2) */
+@layer base {
+  /* Will be populated in stage 2 */
+}
+
+@theme {
+  /* Background colors → bg-bg-primary, bg-bg-secondary, bg-bg-tertiary */
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-tertiary: var(--color-bg-tertiary);
+
+  /* Text colors → text-text-primary, text-text-secondary */
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+
+  /* Accent colors → accent, accent-light, accent-dark, accent-translucent */
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-accent-translucent: var(--color-accent-translucent);
+
+  /* Border colors → border (default), border-light */
+  --color-border: var(--color-border);
+  --color-border-light: var(--color-border-light);
+
+  /* Dev-mode highlight (static, not themed) */
+  --color-dev-highlight: #9c27b0;
+
+  /* Typography */
+  --font-family-base: "Avenir", Helvetica, Arial, sans-serif;
+  --font-family-mono: "Courier New", Courier, monospace;
+
+  /* Spacing tokens not in Tailwind defaults */
+  --spacing-base: 1rem;
+
+  /* Transition durations */
+  --transition-duration-fast: 150ms;
+  --transition-duration-base: 300ms;
+  --transition-duration-slow: 500ms;
+}
