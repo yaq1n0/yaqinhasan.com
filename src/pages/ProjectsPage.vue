@@ -34,15 +34,15 @@ const allProjects = computed<FullProject[]>(() => [...(cvData.projects ?? []), .
 
 // Category order and labels
 const categoryOrder: { id: string; label: string }[] = [
-  { id: "web-app", label: "Web Apps" },
-  { id: "desktop-app", label: "Desktop Apps" },
+  { id: "web", label: "Web" },
+  { id: "desktop", label: "Desktop" },
   { id: "other", label: "Other" }
 ];
 
 // Convert type string to category ID
 function typeToCategoryId(type?: string): string {
   if (!type) return "other";
-  return type.toLowerCase().replace(/\s+/g, "-");
+  return type.toLowerCase();
 }
 
 // Only show categories that have projects
