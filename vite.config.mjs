@@ -62,17 +62,6 @@ export default defineConfig({
   server: {
     port: 3000
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `
-          @use "sass:map";
-          @use "sass:list";
-          @use "@/styles/_variables.scss" as *;
-        `,
-      }
-    }
-  },
   // Ensure all files in public folder are copied
   publicDir: "public",
   build: {
