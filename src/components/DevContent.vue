@@ -1,10 +1,10 @@
 <template>
-  <div v-if="isDevMode" class="dev-content">
-    <div class="dev-content-header">
-      <font-awesome-icon :icon="['fas', 'code']" class="dev-icon" />
-      <h4>{{ title || "Developer Content" }}</h4>
+  <div v-if="isDevMode" class="mt-8 border border-dev-highlight rounded-md overflow-hidden">
+    <div class="flex items-center gap-3 bg-bg-secondary px-3 py-3 border-b border-dev-highlight">
+      <font-awesome-icon :icon="['fas', 'code']" class="text-dev-highlight mx-2 text-lg" />
+      <h4 class="m-0 text-dev-highlight text-lg">{{ title || "Developer Content" }}</h4>
     </div>
-    <div class="dev-content-body">
+    <div class="p-6">
       <slot />
     </div>
   </div>
@@ -19,37 +19,3 @@ defineProps<{
   title?: string;
 }>();
 </script>
-
-<style lang="scss" scoped>
-.dev-content {
-  margin-top: map.get($spacing, "xl");
-  border: 1px solid var(--color-dev-highlight);
-  border-radius: map.get($border-radius, "md");
-  overflow: hidden;
-
-  .dev-content-header {
-    display: flex;
-    align-items: center;
-    gap: map.get($spacing, "md");
-    background-color: var(--color-bg-secondary);
-    padding: map.get($spacing, "md");
-    border-bottom: 1px solid var(--color-dev-highlight);
-
-    .dev-icon {
-      color: var(--color-dev-highlight);
-      margin: 0 map.get($spacing, "sm");
-      font-size: 1.2rem;
-    }
-
-    h4 {
-      margin: 0;
-      color: var(--color-dev-highlight);
-      font-size: map.get($font-sizes, "lg");
-    }
-  }
-
-  .dev-content-body {
-    padding: map.get($spacing, "lg");
-  }
-}
-</style>

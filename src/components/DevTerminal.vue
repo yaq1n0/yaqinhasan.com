@@ -127,7 +127,7 @@ defineExpose({
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .terminal {
   font-family: var(--font-mono), "Courier New", monospace;
   background: #1e1e1e;
@@ -227,10 +227,10 @@ defineExpose({
   font-family: inherit;
   font-size: 0.9rem;
   caret-color: var(--color-accent, #4ec9b0);
+}
 
-  &::placeholder {
-    color: #666;
-  }
+.terminal-input::placeholder {
+  color: #666;
 }
 
 /* Responsive adjustments */

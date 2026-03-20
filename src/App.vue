@@ -20,25 +20,3 @@ useTheme();
 const route = useRoute();
 const onCVPage = computed(() => route.path === "/cv");
 </script>
-
-<style lang="scss">
-@forward "@/styles/main";
-
-// Print mode - ensure white background everywhere
-.print-mode-app {
-  background: white !important;
-  min-height: 100vh;
-
-  main {
-    background: white !important;
-  }
-}
-
-// Also override body/html for print
-@media print {
-  html,
-  body {
-    background: white !important;
-  }
-}
-</style>

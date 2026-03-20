@@ -120,7 +120,7 @@ useResizeObserver(navBarRef, (entries) => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .nav-bar {
   position: relative;
   background: var(--color-bg-secondary);
@@ -144,10 +144,10 @@ useResizeObserver(navBarRef, (entries) => {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+}
 
-  &.right {
-    margin-left: auto;
-  }
+.nav-section.right {
+  margin-left: auto;
 }
 
 .menu-toggle {
@@ -168,79 +168,79 @@ useResizeObserver(navBarRef, (entries) => {
   flex-direction: column;
   gap: 0.75rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  z-index: 99; // Slightly lower than navbar to ensure proper stacking
+  z-index: 99;
   max-height: 80vh;
   overflow-y: auto;
+}
 
-  // Create a seamless connection with the navbar
-  &::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: var(--color-bg-secondary);
-  }
+/* Create a seamless connection with the navbar */
+.overflow-menu::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-bg-secondary);
 }
 
 .overflow-item {
   width: 100%;
   justify-content: flex-start !important;
   text-align: left !important;
-
-  :deep(.btn-content) {
-    justify-content: flex-start;
-    width: 100%;
-  }
-
-  :deep(.btn-icon) {
-    width: 1.2em;
-    margin-right: 0.5rem;
-  }
 }
 
-// Override Button component styles for navbar
+.overflow-item :deep(.btn-content) {
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.overflow-item :deep(.btn-icon) {
+  width: 1.2em;
+  margin-right: 0.5rem;
+}
+
+/* Override Button component styles for navbar */
 :deep(.btn) {
   min-width: auto !important;
   min-height: auto !important;
   padding: 0.5rem 0.75rem !important;
-
-  &:hover {
-    transform: none !important;
-    box-shadow: none !important;
-    background-color: var(--color-bg-tertiary) !important;
-  }
 }
 
-// Terminal Container - Seamlessly integrated
+:deep(.btn:hover) {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+/* Terminal Container - Seamlessly integrated */
 .terminal-container {
   background: var(--color-bg-secondary);
   border-top: 1px solid var(--color-border);
-
-  :deep(.terminal) {
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    background: transparent;
-  }
-
-  :deep(.terminal-header) {
-    background: var(--color-bg-tertiary);
-    border-bottom: 1px solid var(--color-border);
-
-    &:hover {
-      background: var(--color-bg-tertiary);
-      cursor: default;
-    }
-  }
-
-  :deep(.terminal-body) {
-    background: #1e1e1e;
-  }
 }
 
-// Terminal expand animation
+.terminal-container :deep(.terminal) {
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.terminal-container :deep(.terminal-header) {
+  background: var(--color-bg-tertiary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.terminal-container :deep(.terminal-header:hover) {
+  background: var(--color-bg-tertiary);
+  cursor: default;
+}
+
+.terminal-container :deep(.terminal-body) {
+  background: #1e1e1e;
+}
+
+/* Terminal expand animation */
 .terminal-expand-enter-active,
 .terminal-expand-leave-active {
   transition: all 0.3s ease;
@@ -259,18 +259,18 @@ useResizeObserver(navBarRef, (entries) => {
   opacity: 1;
 }
 
-// Dev banner
+/* Dev banner */
 .dev-banner {
   width: 100%;
   padding: 0.75rem;
   background-color: var(--color-accent-translucent);
   text-align: center;
+}
 
-  p {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-accent-dark);
-    margin: 0;
-  }
+.dev-banner p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-accent-dark);
+  margin: 0;
 }
 </style>

@@ -189,107 +189,111 @@ defineExpose({
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .carousel-layout {
   display: flex;
   flex-direction: column;
-  padding: 0 map.get($spacing, "lg");
-  margin-bottom: map.get($spacing, "xl");
-  gap: map.get($spacing, "lg");
+  padding: 0 1.5rem;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
 }
 
 .page-header {
   text-align: center;
+}
 
-  h1 {
-    font-size: map.get($font-sizes, "3xl");
-    color: var(--color-accent);
-    margin: 0;
+.page-header h1 {
+  font-size: 1.875rem;
+  color: var(--color-accent);
+  margin: 0;
+}
 
-    @media (max-width: map.get($breakpoints, "md")) {
-      font-size: map.get($font-sizes, "2xl");
-    }
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+}
 
-    @media (max-width: map.get($breakpoints, "sm")) {
-      font-size: map.get($font-sizes, "xl");
-    }
+@media (max-width: 640px) {
+  .page-header h1 {
+    font-size: 1.25rem;
   }
 }
 
 .carousel-picker {
   position: relative;
   overflow: hidden;
+}
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 60px;
-    z-index: 2;
-    pointer-events: none;
+.carousel-picker::before,
+.carousel-picker::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carousel-picker::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg-primary), transparent);
+}
+
+.carousel-picker::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg-primary), transparent);
+}
+
+@media (max-width: 640px) {
+  .carousel-picker::before,
+  .carousel-picker::after {
+    width: 30px;
   }
+}
 
-  &::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-bg-primary), transparent);
-  }
+.carousel-picker .carousel-swiper {
+  overflow: hidden;
+}
 
-  &::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-bg-primary), transparent);
-  }
+.carousel-picker .carousel-item {
+  width: auto;
+  min-width: 120px;
+  transition: transform 0.3s ease;
+  padding: 0 0.5rem;
+}
 
-  @media (max-width: map.get($breakpoints, "sm")) {
-    &::before,
-    &::after {
-      width: 30px;
-    }
-  }
+.carousel-picker .carousel-item.active-item :deep(.btn) {
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  border-color: var(--color-accent);
+}
 
-  .carousel-swiper {
-    overflow: hidden;
-  }
+.carousel-picker .carousel-item :deep(.btn) {
+  width: 100%;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 0.25rem 0.75rem;
+  height: auto;
+  min-height: 36px;
+}
 
-  .carousel-item {
-    width: auto;
-    min-width: 120px;
-    transition: transform 0.3s ease;
-    padding: 0 map.get($spacing, "sm");
-
-    &.active-item {
-      :deep(.btn) {
-        font-weight: 600;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        border-color: var(--color-accent);
-      }
-    }
-
-    :deep(.btn) {
-      width: 100%;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      padding: map.get($spacing, "xs") map.get($spacing, "md");
-      height: auto;
-      min-height: 36px;
-
-      @media (max-width: map.get($breakpoints, "sm")) {
-        font-size: 0.75rem;
-        padding: map.get($spacing, "xs") map.get($spacing, "sm");
-        min-height: 32px;
-      }
-    }
+@media (max-width: 640px) {
+  .carousel-picker .carousel-item :deep(.btn) {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    min-height: 32px;
   }
 }
 
 .carousel-content {
   width: 100%;
+}
 
-  .content-swiper {
-    overflow: hidden;
-    border-radius: map.get($border-radius, "lg");
-    transition: height 0.3s ease;
-  }
+.carousel-content .content-swiper {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  transition: height 0.3s ease;
 }
 </style>

@@ -171,135 +171,135 @@ import CollapsibleSection from "@/components/CollapsibleSection.vue";
 import NavBar from "@/components/NavBar.vue";
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .debug-page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-accent);
-    text-align: center;
-  }
+.debug-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+  text-align: center;
+}
 
-  .description {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 1.2rem;
-    color: var(--color-text-secondary);
-  }
+.debug-page .description {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+}
 
-  .debug-links {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
+.debug-page .debug-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
 
-    .debug-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background-color: var(--color-accent);
-      color: var(--color-bg-primary);
-      border-radius: 0.5rem;
-      font-weight: 600;
+.debug-page .debug-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-accent);
+  color: var(--color-bg-primary);
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
 
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      }
-    }
-  }
+.debug-page .debug-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
-  section {
-    margin-bottom: 4rem;
+.debug-page section {
+  margin-bottom: 4rem;
+}
 
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--color-border);
-      color: var(--color-accent-light);
-    }
-  }
+.debug-page section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-accent-light);
+}
 
-  .component-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+.debug-page .component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
 
-    .wide {
-      grid-column: 1 / -1;
-    }
-  }
+.debug-page .component-grid .wide {
+  grid-column: 1 / -1;
+}
 
-  .component-variant {
-    background: var(--color-bg-tertiary);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
+.debug-page .component-variant {
+  background: var(--color-bg-tertiary);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
 
-    h3 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: var(--color-text-secondary);
-    }
+.debug-page .component-variant h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+}
 
-    .mt-4 {
-      margin-top: 1rem;
-    }
+.debug-page .component-variant .mt-4 {
+  margin-top: 1rem;
+}
 
-    .p-4 {
-      padding: 1rem;
-    }
+.debug-page .component-variant .p-4 {
+  padding: 1rem;
+}
 
-    .border {
-      border: 1px solid var(--color-border);
-    }
+.debug-page .component-variant .border {
+  border: 1px solid var(--color-border);
+}
 
-    .rounded {
-      border-radius: 0.5rem;
-    }
-  }
+.debug-page .component-variant .rounded {
+  border-radius: 0.5rem;
+}
 
-  .nav-container {
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    overflow: hidden;
+.debug-page .nav-container {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
 
-    &.narrow-demo {
-      max-width: 480px;
-      margin: 0 auto;
-      overflow: visible;
+.debug-page .nav-container.narrow-demo {
+  max-width: 480px;
+  margin: 0 auto;
+  overflow: visible;
+}
 
-      // Force mobile view styles regardless of actual screen width
-      :deep(.hide-on-mobile) {
-        display: none !important;
-      }
+/* Force mobile view styles regardless of actual screen width */
+.debug-page .nav-container.narrow-demo :deep(.hide-on-mobile) {
+  display: none !important;
+}
 
-      :deep(.menu-toggle) {
-        display: flex !important;
-        order: -1;
-      }
-    }
-  }
+.debug-page .nav-container.narrow-demo :deep(.menu-toggle) {
+  display: flex !important;
+  order: -1;
+}
 
-  .carousel-demo {
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    overflow: hidden;
-    margin-top: 1rem;
-  }
+.debug-page .carousel-demo {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
   .debug-page {
     padding: 1rem;
+  }
 
-    .component-grid {
-      grid-template-columns: 1fr;
-    }
+  .debug-page .component-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
