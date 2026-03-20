@@ -50,23 +50,25 @@ const statusClass = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .project-card {
   background-color: var(--color-bg-tertiary);
-  border-radius: map.get($border-radius, "lg");
+  border-radius: 0.75rem;
   overflow: hidden;
+}
 
-  & + & {
-    margin-top: map.get($spacing, "lg");
-  }
+.project-card + .project-card {
+  margin-top: 1.5rem;
 }
 
 .project-header {
   background-color: var(--color-bg-secondary);
-  padding: map.get($spacing, "md") map.get($spacing, "lg");
+  padding: 0.75rem 1.5rem;
+}
 
-  @media (max-width: map.get($breakpoints, "md")) {
-    padding: map.get($spacing, "sm") map.get($spacing, "base");
+@media (max-width: 768px) {
+  .project-header {
+    padding: 0.5rem 1rem;
   }
 }
 
@@ -74,99 +76,105 @@ const statusClass = computed(() => {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: map.get($spacing, "sm");
+  gap: 0.5rem;
+}
 
-  h3 {
-    font-size: map.get($font-sizes, "xl");
-    color: var(--color-accent);
-    margin: 0;
-    flex: 1;
-    min-width: 0;
+.project-title-row h3 {
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
 
-    @media (max-width: map.get($breakpoints, "md")) {
-      font-size: map.get($font-sizes, "lg");
-    }
+@media (max-width: 768px) {
+  .project-title-row h3 {
+    font-size: 1.125rem;
+  }
+}
 
-    @media (max-width: map.get($breakpoints, "sm")) {
-      font-size: map.get($font-sizes, "base");
-    }
+@media (max-width: 640px) {
+  .project-title-row h3 {
+    font-size: 1rem;
   }
 }
 
 .project-actions {
   display: flex;
   align-items: center;
-  gap: map.get($spacing, "sm");
+  gap: 0.5rem;
   flex-shrink: 0;
+}
 
-  :deep(.btn) {
-    min-width: 0 !important;
-    min-height: 0 !important;
-    padding: 0.25rem !important;
-  }
+.project-actions :deep(.btn) {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0.25rem !important;
 }
 
 .status-badge {
-  font-size: map.get($font-sizes, "sm");
+  font-size: 0.875rem;
   padding: 0.2rem 0.6rem;
-  border-radius: map.get($border-radius, "sm");
+  border-radius: 0.25rem;
   font-weight: 500;
   white-space: nowrap;
   background-color: var(--color-bg-primary);
   color: var(--color-text-secondary);
   border: 1px solid var(--color-border-light);
+}
 
-  &.status-complete {
-    color: #4ade80;
-    border-color: rgba(74, 222, 128, 0.3);
-  }
+.status-badge.status-complete {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.3);
+}
 
-  &.status-in-progress {
-    color: #facc15;
-    border-color: rgba(250, 204, 21, 0.3);
-  }
+.status-badge.status-in-progress {
+  color: #facc15;
+  border-color: rgba(250, 204, 21, 0.3);
+}
 
-  &.status-archived {
-    color: var(--color-text-secondary);
-    border-color: var(--color-border-light);
-  }
+.status-badge.status-archived {
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-light);
 }
 
 .project-body {
-  padding: map.get($spacing, "lg");
+  padding: 1.5rem;
+}
 
-  @media (max-width: map.get($breakpoints, "sm")) {
-    padding: map.get($spacing, "md");
+@media (max-width: 640px) {
+  .project-body {
+    padding: 0.75rem;
   }
 }
 
 .project-description {
   line-height: 1.6;
-  margin-bottom: map.get($spacing, "md");
+  margin-bottom: 0.75rem;
+}
 
-  :deep(h4) {
-    font-size: map.get($font-sizes, "lg");
-    color: var(--color-accent-light);
-    margin: map.get($spacing, "lg") 0 map.get($spacing, "sm");
-  }
+.project-description :deep(h4) {
+  font-size: 1.125rem;
+  color: var(--color-accent-light);
+  margin: 1.5rem 0 0.5rem;
+}
 
-  :deep(p) {
-    margin-bottom: map.get($spacing, "md");
-    line-height: 1.6;
-  }
+.project-description :deep(p) {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
 }
 
 .project-keywords {
   display: flex;
   flex-wrap: wrap;
-  gap: map.get($spacing, "xs");
-  margin-top: map.get($spacing, "md");
+  gap: 0.25rem;
+  margin-top: 0.75rem;
 }
 
 .keyword-chip {
-  font-size: map.get($font-sizes, "sm");
+  font-size: 0.875rem;
   padding: 0.15rem 0.5rem;
-  border-radius: map.get($border-radius, "sm");
+  border-radius: 0.25rem;
   background-color: var(--color-accent-translucent);
   color: var(--color-accent-light);
   white-space: nowrap;

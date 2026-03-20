@@ -84,7 +84,7 @@ const carouselItems: CarouselItem[] = [
 ];
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .debug-carousel-page {
   max-width: 1200px;
   width: 100%;
@@ -92,12 +92,16 @@ const carouselItems: CarouselItem[] = [
   padding: 2rem;
   box-sizing: border-box;
   overflow-x: hidden;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .debug-carousel-page {
     padding: 1.5rem 0.75rem;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .debug-carousel-page {
     padding: 1rem 0.5rem;
   }
 }
@@ -106,13 +110,17 @@ h1 {
   text-align: center;
   margin-bottom: 2rem;
   color: var(--color-accent);
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  h1 {
     margin-bottom: 1.5rem;
     font-size: 1.75rem;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  h1 {
     margin-bottom: 1rem;
     font-size: 1.5rem;
   }
@@ -124,102 +132,124 @@ h1 {
   border-radius: 0.5rem;
   min-height: 300px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem; /* Add bottom margin to prevent overlap with pagination */
-  position: relative; /* Ensure proper positioning context */
+  margin-bottom: 1.5rem;
+  position: relative;
   width: 100%;
   box-sizing: border-box;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .carousel-content {
     padding: 1.75rem;
     min-height: 250px;
     margin-bottom: 1.25rem;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .carousel-content {
     padding: 1.25rem;
     min-height: 200px;
     margin-bottom: 1rem;
     border-radius: 0.375rem;
   }
+}
 
-  h2 {
-    margin-top: 0;
-    color: var(--color-accent);
-    margin-bottom: 1.25rem;
-    font-size: 1.75rem;
-    font-weight: 600;
+.carousel-content h2 {
+  margin-top: 0;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
 
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
+@media (max-width: 768px) {
+  .carousel-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
+}
 
-  h3 {
-    color: var(--color-accent-light);
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+@media (max-width: 480px) {
+  .carousel-content h2 {
     font-size: 1.25rem;
-
-    @media (max-width: 768px) {
-      font-size: 1.125rem;
-      margin-top: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1rem;
-      margin-top: 1rem;
-    }
+    margin-bottom: 0.75rem;
   }
+}
 
-  p {
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
+.carousel-content h3 {
+  color: var(--color-accent-light);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .carousel-content h3 {
+    font-size: 1.125rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-content h3 {
     font-size: 1rem;
-    color: var(--color-text);
-
-    @media (max-width: 768px) {
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 480px) {
-      margin-bottom: 0.75rem;
-      font-size: 0.9375rem;
-      line-height: 1.4;
-    }
+    margin-top: 1rem;
   }
+}
 
-  ul {
-    margin-bottom: 1.25rem;
-    padding-left: 1.5rem;
+.carousel-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
 
-    @media (max-width: 768px) {
-      margin-bottom: 1rem;
-      padding-left: 1.25rem;
-    }
+@media (max-width: 768px) {
+  .carousel-content p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+}
 
-    @media (max-width: 480px) {
-      margin-bottom: 0.75rem;
-      padding-left: 1rem;
-    }
+@media (max-width: 480px) {
+  .carousel-content p {
+    margin-bottom: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+}
 
-    li {
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
+.carousel-content ul {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
 
-      @media (max-width: 480px) {
-        margin-bottom: 0.375rem;
-        line-height: 1.4;
-        font-size: 0.9375rem;
-      }
-    }
+@media (max-width: 768px) {
+  .carousel-content ul {
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-content ul {
+    margin-bottom: 0.75rem;
+    padding-left: 1rem;
+  }
+}
+
+.carousel-content ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .carousel-content ul li {
+    margin-bottom: 0.375rem;
+    line-height: 1.4;
+    font-size: 0.9375rem;
   }
 }
 
@@ -228,13 +258,17 @@ h1 {
   gap: 1.25rem;
   margin: 1.5rem 0;
   flex-wrap: wrap;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .button-row {
     gap: 1rem;
     margin: 1.25rem 0;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .button-row {
     gap: 0.75rem;
     margin: 1rem 0;
   }
@@ -248,13 +282,17 @@ h1 {
   border-radius: 0.25rem;
   cursor: pointer;
   font-weight: 500;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .demo-button {
     padding: 0.5rem 1rem;
     font-size: 0.9375rem;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .demo-button {
     padding: 0.4375rem 0.875rem;
     font-size: 0.875rem;
     border-radius: 0.1875rem;
@@ -266,20 +304,24 @@ h1 {
   color: var(--color-accent);
   text-decoration: underline;
   font-weight: 500;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .demo-link {
     padding: 0.5rem 1rem;
     font-size: 0.9375rem;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .demo-link {
     padding: 0.4375rem 0.875rem;
     font-size: 0.875rem;
   }
+}
 
-  &:hover {
-    color: var(--color-accent-light);
-  }
+.demo-link:hover {
+  color: var(--color-accent-light);
 }
 
 .demo-image {
@@ -289,14 +331,18 @@ h1 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: block;
   margin: 1.5rem auto;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .demo-image {
     margin: 1.25rem auto;
     border-radius: 0.375rem;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .demo-image {
     margin: 1rem auto;
     border-radius: 0.25rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -307,25 +353,29 @@ h1 {
   display: flex;
   gap: 2.5rem;
   margin: 1.5rem 0;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .two-columns {
     flex-direction: column;
     gap: 1.5rem;
     margin: 1.25rem 0;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .two-columns {
     gap: 1rem;
     margin: 1rem 0;
   }
+}
 
-  .column {
-    flex: 1;
+.two-columns .column {
+  flex: 1;
+}
 
-    h3 {
-      margin-top: 0;
-    }
-  }
+.two-columns .column h3 {
+  margin-top: 0;
 }
 
 .demo-card {
@@ -335,58 +385,60 @@ h1 {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   margin: 1.5rem 0;
   border: 1px solid var(--color-border);
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .demo-card {
     padding: 1.5rem;
     border-radius: 0.625rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
     margin: 1.25rem 0;
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .demo-card {
     padding: 1.25rem;
     border-radius: 0.5rem;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     margin: 1rem 0;
   }
+}
 
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    color: var(--color-accent);
+.demo-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--color-accent);
+}
 
-    @media (max-width: 480px) {
-      margin-bottom: 0.5rem;
-    }
+@media (max-width: 480px) {
+  .demo-card h3 {
+    margin-bottom: 0.5rem;
   }
+}
 
-  p {
-    margin-bottom: 0;
-  }
+.demo-card p {
+  margin-bottom: 0;
 }
 
 /* Touch-specific optimizations */
 @media (hover: none) and (pointer: coarse) {
-  .demo-button {
-    &:hover {
-      transform: none;
-      box-shadow: none;
-      filter: none;
-    }
-
-    &:active {
-      background-color: var(--color-accent-dark, var(--color-accent));
-    }
+  .demo-button:hover {
+    transform: none;
+    box-shadow: none;
+    filter: none;
   }
 
-  .demo-link {
-    &:hover {
-      color: var(--color-accent);
-    }
+  .demo-button:active {
+    background-color: var(--color-accent-dark, var(--color-accent));
+  }
 
-    &:active {
-      color: var(--color-accent-light);
-    }
+  .demo-link:hover {
+    color: var(--color-accent);
+  }
+
+  .demo-link:active {
+    color: var(--color-accent-light);
   }
 }
 </style>
