@@ -48,7 +48,7 @@ function rewriteRelativeUrls(html: string, repoName: string): string {
 async function fetchReadmeHtml(repoName: string): Promise<string | null> {
   const url = `https://api.github.com/repos/${GITHUB_USER}/${repoName}/readme`;
   const res = await fetch(url, {
-    headers: { Accept: "application/vnd.github.v3+json" },
+    headers: { Accept: "application/vnd.github.v3+json" }
   });
 
   if (res.status === 404) return null;
@@ -71,10 +71,9 @@ function escapeForTemplateLiteral(str: string): string {
 async function main() {
   console.log(`Fetching repos for ${GITHUB_USER}...`);
 
-  const reposRes = await fetch(
-    `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`,
-    { headers: { Accept: "application/vnd.github.v3+json" } }
-  );
+  const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`, {
+    headers: { Accept: "application/vnd.github.v3+json" }
+  });
 
   if (!reposRes.ok) {
     console.error(`Failed to fetch repos: ${reposRes.status}`);

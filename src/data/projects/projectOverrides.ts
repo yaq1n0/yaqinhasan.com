@@ -29,8 +29,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   // ── Web ────────────────────────────────────────────────────
   VidSrcWrapper: {
     displayName: "VidSrcWrapper • Self-hostable media site",
-    description:
-      "Searches TMDB and stream content via VidSrc (proxied for security), dockerised full stack web app.",
+    description: "Searches TMDB and stream content via VidSrc (proxied for security), dockerised full stack web app.",
     type: "Web",
     status: "Complete",
     keywords: ["Vue", "Hono", "TypeScript", "Docker", "Full Stack"],
@@ -39,8 +38,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   },
   "yaqinhasan.com": {
     displayName: "yaqinhasan.com • Portfolio site",
-    description:
-      "Portfolio with dynamically rendered CV, terminal UI for interactive navigation and extensive theming system.",
+    description: "Portfolio with dynamically rendered CV, terminal UI for interactive navigation and extensive theming system.",
     type: "Web",
     status: "Complete",
     keywords: ["Vue", "Vite", "TypeScript", "Web Development"],
@@ -72,8 +70,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   },
   LinkBlitzer: {
     displayName: "LinkBlitzer • Link bundler & opener",
-    description:
-      "Bundle, save & share links easily, with a browser extension to quickly open multiple links simultaneously.",
+    description: "Bundle, save & share links easily, with a browser extension to quickly open multiple links simultaneously.",
     type: "Web",
     status: "In Progress",
     keywords: ["Vue", "Vite", "TypeScript", "Browser Extension", "Web Development"],
@@ -95,23 +92,12 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       "Open source Python SDK and dockerised web app for querying and analysing OpenPowerlifting data, with performance prediction using machine learning",
     type: "Other",
     status: "In Progress",
-    keywords: [
-      "Python",
-      "FastAPI",
-      "React",
-      "Docker",
-      "scikit-learn",
-      "PyTorch",
-      "PyPI",
-      "Machine Learning",
-      "Data analytics"
-    ],
+    keywords: ["Python", "FastAPI", "React", "Docker", "scikit-learn", "PyTorch", "PyPI", "Machine Learning", "Data analytics"],
     order: 2
   },
   "prompt-as-endpoint": {
     displayName: "prompt-as-endpoint • npm library",
-    description:
-      "Open source TypeScript library for building AI-powered APIs with runtime schema validation, prompt templating, and output validation.",
+    description: "Open source TypeScript library for building AI-powered APIs with runtime schema validation, prompt templating, and output validation.",
     type: "Other",
     status: "In Progress",
     keywords: ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm", "Developer Experience"],
@@ -119,18 +105,10 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   },
   ThymPi: {
     displayName: "ThymPi • Research project",
-    description:
-      "Proof-of-concept robotics platform using sensor data to augment visual navigation systems for autonomously navigating robots.",
+    description: "Proof-of-concept robotics platform using sensor data to augment visual navigation systems for autonomously navigating robots.",
     type: "Other",
     status: "Complete",
-    keywords: [
-      "Python",
-      "OpenCV",
-      "Machine Vision",
-      "Robotics",
-      "Autonomous Navigation",
-      "Final year project"
-    ],
+    keywords: ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Final year project"],
     htmlDescription: `
     <h4>Project Definition</h4>
     <p>
