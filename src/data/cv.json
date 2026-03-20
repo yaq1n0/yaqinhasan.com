@@ -55,47 +55,52 @@
   ],
   "projects": [
     {
-      "name": "CryptIt • Secret splitting & reconstruction",
-      "description": "Desktop app for securely splitting secrets into multiple shares and reconstructing them using Shamir's Secret Sharing algorithm",
+      "name": "CryptIt • Desktop app",
+      "description": "Cryptographically secure secret splitting & reconstruction desktop app built with Rust & Tauri.",
       "keywords": ["Rust", "Tauri", "Vue", "Cryptography", "Desktop App Development"],
-      "type": "Desktop App"
+      "type": "Desktop",
+      "status": "Complete",
+      "url": "https://github.com/yaq1n0/CryptIt"
     },
     {
-      "name": "TrayRunner • Script launcher",
-      "description": "Spotlight-inspired macOS menu bar utility for triggering and scheduling local script-based workflows.",
+      "name": "TrayRunner • macOS app",
+      "description": "Spotlight-inspired menu bar utility for launching & scheduling local script-based workflows, built with Swift & SwiftUI.",
       "keywords": ["Swift", "SwiftUI", "macOS Development", "Desktop App Development", "Shell Scripting"],
-      "type": "Desktop App"
+      "type": "Desktop",
+      "status": "Complete",
+      "url": "https://github.com/yaq1n0/TrayRunner"
     },
     {
-      "name": "Structured Turtle Querying Language • Haskell interpreter",
-      "description": "Designed and implemented an SQL-inspired querying language for RDF data, including complete Haskell interpreter.",
+      "name": "STQL • Interpreter",
+      "description": "Interpreter for a custom SQL-inspired RDF querying language, implemented in Haskell",
       "keywords": ["Haskell", "Interpreter Design", "Compiler Theory", "Formal Language Theory"],
-      "type": "Other"
+      "type": "Other",
+      "status": "Complete",
+      "url": "https://github.com/yaq1n0/STQL-haskell"
     },
     {
-      "name": "prompt-as-endpoint • TypeScript library on npm",
-      "description": "Open-source library for building AI-powered REST endpoints by simplifying runtime schema validation, prompt templating, and structured output validation.",
-      "keywords": ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm packaging", "Developer Experience"],
-      "type": "Other"
+      "name": "opl-py • PyPI package",
+      "description": "Open source Python SDK and dockerised web app for querying and analysing OpenPowerlifting data, with performance prediction using machine learning",
+      "keywords": ["Python", "FastAPI", "React", "Docker", "scikit-learn", "PyTorch", "PyPI", "Machine Learning", "Data analytics"],
+      "type": "Other",
+      "status": "In Progress",
+      "url": "https://github.com/yaq1n0/opl-py"
     },
     {
-      "name": "PyDownloader • Download aggregator",
-      "description": "Self-hostable download aggregator, matching the functionality of online downloaders, with pluggable architecture supporting multiple backend downloaders.",
-      "keywords": ["Python", "FastAPI", "Backend", "Docker"],
-      "type": "Other"
+      "name": "prompt-as-endpoint • npm library",
+      "description": "Open source TypeScript library for building AI-powered APIs with runtime schema validation, prompt templating, and output validation.",
+      "keywords": ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm", "Developer Experience"],
+      "status": "In Progress",
+      "url": "https://github.com/yaq1n0/prompt-as-endpoint"
     },
     {
-      "name": "linkblitzer.com • Link bundling and multi-tab launcher",
-      "description": "Web utility with accompanying browser extension allowing users to bundle links and open them in bulk.",
-      "keywords": ["Vue", "Vite", "TypeScript", "Browser Extension", "Web Development"],
-      "type": "Web App"
-    },
-    {
-      "name": "ThymPi • Sensor-augmented navigation research",
+      "name": "ThymPi • Research project",
       "id": "ThymPi",
-      "description": "Researched, designed and implemented a proof-of-concept for using sensor data to augment visual navigation systems for autonomously navigating robots.",
+      "description": "Proof-of-concept robotics platform using sensor data to augment visual navigation systems for autonomously navigating robots.",
       "keywords": ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Final year project"],
-      "type": "Other"
+      "type": "Other",
+      "status": "Complete",
+      "url": "https://github.com/yaq1n0/ThymPi"
     }
   ],
   "skills": [
