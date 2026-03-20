@@ -1,0 +1,48 @@
+# Standalone scripts that perform special development functions
+
+## CV JSON Generation Scripts
+
+| File Name                 | `npm run` command | Function                                                                                                                         |
+| ------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `sync-github-projects.ts` | `sync:github`     | Pulls GitHub projects into `src/data/projects/githubProjects.ts`                                                                 |
+| `generate-cv-json.ts`     | `gen:cv-json`     | Generates `cv.json` by combining `githubProjects.ts`, `cvOverrides.ts`, and `cvData.ts`. Also runs automatically via `prebuild`. |
+| `render-pdf.ts`           | `render:pdf`      | Navigates to `.../cv` and renders `public/cv.pdf` using Playwright                                                               |
+
+### CV JSON Pipeline
+
+```mermaid
+flowchart TD
+    GH[("GitHub API")]
+    sync["npm run sync:github\nscripts/sync-github-projects.ts"]
+    ghProjects["src/data/projects/githubProjects.ts\n(auto-generated)"]
+    projOverrides["src/data/projects/projectOverrides.ts\n(manually maintained)"]
+    cvOverrides["src/data/projects/cvOverrides.ts\n(manually maintained)"]
+    cvData["src/data/cvData.ts\n(manually maintained)"]
+    resolveProjects["src/data/projects/resolveProjects.ts"]
+    ProjectsPage["src/pages/ProjectsPage.vue"]
+    genJson["npm run gen:cv-json\nscripts/generate-cv-json.ts\n(also runs automatically via prebuild)"]
+    cvJson[("dist/cv.json\n(auto-generated)")]
+
+    GH --> sync --> ghProjects
+    ghProjects --> resolveProjects
+    projOverrides --> resolveProjects
+    resolveProjects --> ProjectsPage
+
+    ghProjects --> genJson
+    cvOverrides --> genJson
+    cvData --> genJson
+    genJson --> cvJson
+```
+
+## CV Schema Generation Scripts
+
+| File Name               | `npm run` command | Function                                                                                                                           |
+| ----------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `generate-cv-schema.ts` | `gen:cv-schema`   | Pulls the `jsonresume.org` JSON Schema and generates `src/data/models/CV.ts` TypeScript CV type definition using `jsonSchemaToZod` |
+
+## Theme Validation Scripts
+
+| File Name              | `npm run` command   | Function                                       |
+| ---------------------- | ------------------- | ---------------------------------------------- |
+| `validate-themes.ts`   | `validate:themes`   | Makes sure that the themes are set up properly |
+| `validate-contrast.ts` | `validate:contrast` | Makes sure that the themes are WCAG compliant  |
