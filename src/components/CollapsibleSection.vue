@@ -1,10 +1,6 @@
 <template>
   <div class="my-6 rounded-lg overflow-hidden shadow-sm">
-    <div
-      class="flex items-center px-5 py-3 bg-bg-secondary cursor-pointer select-none max-md:px-4"
-      :class="{ active: modelValue }"
-      @click="toggleOpen"
-    >
+    <div class="flex items-center px-5 py-3 bg-bg-secondary cursor-pointer select-none max-md:px-4" :class="{ active: modelValue }" @click="toggleOpen">
       <div class="flex items-center justify-center w-8 h-8 mr-4 rounded-full p-2">
         <font-awesome-icon :icon="['fas', 'caret-right']" class="text-accent transition-transform duration-200" :class="{ 'rotate-90': modelValue }" />
       </div>

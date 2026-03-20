@@ -1,6 +1,8 @@
 <template>
   <div class="bg-bg-tertiary rounded-xl overflow-hidden">
-    <div class="card-header bg-gradient-to-br from-accent to-accent-light p-8 flex justify-between items-start flex-wrap gap-3 max-md:p-6 max-sm:flex-col max-sm:items-start max-sm:p-3">
+    <div
+      class="card-header bg-gradient-to-br from-accent to-accent-light p-8 flex justify-between items-start flex-wrap gap-3 max-md:p-6 max-sm:flex-col max-sm:items-start max-sm:p-3"
+    >
       <div>
         <h2 class="text-2xl font-bold">{{ experience.position }}</h2>
         <h3 class="text-lg font-medium">{{ experience.name }}</h3>

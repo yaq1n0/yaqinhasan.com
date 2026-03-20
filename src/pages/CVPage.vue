@@ -15,4 +15,3 @@ import { useCVData } from "@/composables/UseCVData";
 
 const { cvData, isLoaded } = useCVData();
 </script>
-
