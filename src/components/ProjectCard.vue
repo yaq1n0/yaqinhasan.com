@@ -81,6 +81,7 @@ const statusClass = computed(() => {
 
 .project-title-row h3 {
   font-size: 1.25rem;
+  font-weight: 600;
   color: var(--color-accent);
   margin: 0;
   flex: 1;

@@ -138,7 +138,6 @@ const buildCoursesLine = (courses: string[]) => {
   font-size: 11pt;
   line-height: 1.4;
   color: var(--color-text-primary);
-  background: var(--color-bg-primary);
 }
 
 .cv-container.print-mode {
