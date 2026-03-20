@@ -1,18 +1,32 @@
 import { z } from "zod";
 import { cvSchema } from "@/data/models/CV";
 
-// Extract the jsonresume project type from the CV schema
+// jsonresume project type — used for CV output and cv.json generation
 export type CVProject = NonNullable<z.infer<typeof cvSchema>["projects"]>[number];
 
-// Id for projects with matching html description, usually the GitHub repository name.
-// Will fail compile if you don't add a matching entry in projectHtmlDescriptions.
-export const ProjectIds = ["yaqinhasan.com", "ThymPi", "VidSrcWrapper"] as const;
-export type ProjectId = (typeof ProjectIds)[number];
-export const isProjectId = (id: string): id is ProjectId => ProjectIds.includes(id as ProjectId);
+// Shape of data pulled from GitHub API (auto-generated into githubProjects.ts)
+export interface GitHubProject {
+  id: string; // repo name — the canonical project ID
+  name: string; // repo name
+  description: string | null; // GitHub repo description (the one-liner)
+  url: string; // html_url
+  readmeHtml: string | null; // README markdown converted to HTML, null if no README
+  language: string | null; // primary language from GitHub
+  topics: string[]; // GitHub repo topics
+  archived: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
 
-// Extend with additional portfolio-specific properties
-export type FullProject = CVProject & {
-  id?: ProjectId; // optional id for matching with html descriptions
-  htmlDescription?: string; // rich HTML content, rendered instead of description when present
-  status?: string; // "Complete", "In Progress", "Archived", etc.
-};
+// Resolved project for the Projects page (after merging github data + overrides)
+export interface FullProject {
+  id: string;
+  name: string; // displayName from override, or repo name
+  description?: string;
+  htmlDescription?: string; // override HTML or README HTML
+  url?: string;
+  keywords?: string[];
+  type?: string; // "Web" | "Desktop" | "Other" — for category grouping
+  status?: string; // "Complete" | "In Progress" | "Archived"
+  order: number; // sort order within category
+}
