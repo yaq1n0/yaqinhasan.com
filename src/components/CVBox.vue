@@ -1,26 +1,26 @@
 <template>
   <div ref="cvBoxRef">
-    <div class="cv-header">
-      <h2>CV</h2>
-      <div class="cv-actions">
-        <g-button icon="eye" label="View CV" hide-label border="none" background="transparent" class="cv-action-btn" @click="viewCV" />
-        <g-button icon="download" label="Download CV" hide-label border="none" background="transparent" class="cv-action-btn" @click="downloadCV" />
+    <div class="flex justify-between items-center py-6">
+      <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-text-primary m-0 tracking-tight">CV</h2>
+      <div class="flex gap-2 items-center">
+        <g-button icon="eye" label="View CV" hide-label border="none" background="transparent" class="!min-w-0" @click="viewCV" />
+        <g-button icon="download" label="Download CV" hide-label border="none" background="transparent" class="!min-w-0" @click="downloadCV" />
       </div>
     </div>
 
     <!-- Only render CV if viewport is wide enough -->
-    <div v-if="isLoaded && cvData && !isTooNarrow" class="cv-wrapper">
+    <div v-if="isLoaded && cvData && !isTooNarrow" class="bg-bg-secondary rounded-xl p-8 shadow-md">
       <render-c-v :cv="cvData" />
     </div>
-    <div v-else-if="!isLoaded" class="cv-loading">
+    <div v-else-if="!isLoaded" class="flex justify-center items-center min-h-[200px] text-text-secondary text-[clamp(1rem,1.5vw,1.125rem)]">
       <p>Loading CV...</p>
     </div>
 
-    <div class="jsonresume-disclaimer">
-      <p>
+    <div class="my-4 mx-auto text-sm text-text-secondary opacity-70 text-center">
+      <p class="m-0">
         CV is generated from
-        <a href="https://jsonresume.org" target="_blank" rel="noopener">jsonresume</a>
-        compliant <a href="/cv.json" target="_blank" rel="noopener">JSON</a>
+        <a href="https://jsonresume.org" target="_blank" rel="noopener" class="underline text-inherit">jsonresume</a>
+        compliant <a href="/cv.json" target="_blank" rel="noopener" class="underline text-inherit">JSON</a>
       </p>
     </div>
   </div>
@@ -57,63 +57,3 @@ function downloadCV() {
   document.body.removeChild(link);
 }
 </script>
-
-<style lang="scss" scoped>
-.cv-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: map.get($spacing, "lg") 0;
-
-  h2 {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 700;
-    color: var(--color-text-primary);
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
-}
-
-.cv-actions {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.cv-action-btn {
-  min-width: 0 !important;
-}
-
-.cv-wrapper {
-  background: var(--color-bg-secondary);
-  border-radius: map.get($border-radius, "lg");
-  padding: map.get($spacing, "xl");
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.cv-loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-  color: var(--color-text-secondary);
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-}
-
-.jsonresume-disclaimer {
-  margin: map.get($spacing, "base") auto;
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  opacity: 0.7;
-  text-align: center;
-
-  p {
-    margin: 0;
-  }
-
-  a {
-    text-decoration: underline;
-    color: inherit;
-  }
-}
-</style>

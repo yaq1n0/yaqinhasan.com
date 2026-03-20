@@ -1,12 +1,12 @@
 <template>
-  <section class="page-header">
-    <h1>Professional Experience</h1>
+  <section class="text-center mb-6">
+    <h1 class="text-3xl md:text-2xl sm:text-xl text-accent m-0">Professional Experience</h1>
   </section>
 
-  <div class="experience-container">
-    <div class="additional-info">
-      <p class="info-text">
-        <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
+  <div class="flex flex-col px-6 mb-8 gap-8">
+    <div class="bg-bg-secondary rounded-lg p-6 sm:p-3 border-l-4 border-accent-light">
+      <p class="text-base text-accent-light flex items-center gap-6 leading-relaxed sm:text-sm sm:flex-col sm:text-center sm:gap-2">
+        <font-awesome-icon :icon="['fas', 'circle-exclamation']" class="text-accent-light text-2xl shrink-0" />
         Looking for my next role!
       </p>
     </div>
@@ -23,65 +23,3 @@ import ExperienceCard from "@/components/ExperienceCard.vue";
 // Get the first (and only) work entry
 const experience = computed(() => cvData.work);
 </script>
-
-<style lang="scss" scoped>
-.page-header {
-  text-align: center;
-  margin-bottom: map.get($spacing, "lg");
-
-  h1 {
-    font-size: map.get($font-sizes, "3xl");
-    color: var(--color-accent);
-    margin: 0;
-
-    @media (max-width: map.get($breakpoints, "md")) {
-      font-size: map.get($font-sizes, "2xl");
-    }
-
-    @media (max-width: map.get($breakpoints, "sm")) {
-      font-size: map.get($font-sizes, "xl");
-    }
-  }
-}
-
-.experience-container {
-  display: flex;
-  flex-direction: column;
-  padding: 0 map.get($spacing, "lg");
-  margin-bottom: map.get($spacing, "xl");
-  gap: map.get($spacing, "xl");
-}
-
-.additional-info {
-  background-color: var(--color-bg-secondary);
-  border-radius: map.get($border-radius, "md");
-  padding: map.get($spacing, "lg");
-  border-left: 4px solid var(--color-accent-light);
-
-  @media (max-width: map.get($breakpoints, "sm")) {
-    padding: map.get($spacing, "md");
-  }
-
-  .info-text {
-    font-size: map.get($font-sizes, "base");
-    color: var(--color-accent-light);
-    display: flex;
-    align-items: center;
-    gap: map.get($spacing, "lg");
-    line-height: 1.6;
-
-    svg {
-      color: var(--color-accent-light);
-      font-size: map.get($font-sizes, "2xl");
-      flex-shrink: 0;
-    }
-
-    @media (max-width: map.get($breakpoints, "sm")) {
-      font-size: map.get($font-sizes, "sm");
-      flex-direction: column;
-      text-align: center;
-      gap: map.get($spacing, "sm");
-    }
-  }
-}
-</style>

@@ -172,70 +172,67 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .link-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: map.get($spacing, "md");
-  margin: map.get($spacing, "lg") 0;
-
-  .link {
-    display: inline-flex;
-    align-items: center;
-    gap: map.get($spacing, "xs");
-    background-color: var(--color-accent-translucent);
-    padding: map.get($spacing, "xs") map.get($spacing, "md");
-    border-radius: map.get($border-radius, "md");
-  }
+  gap: 0.75rem;
+  margin: 1.5rem 0;
 }
 
-.interests-picker {
-  :deep(.groups) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: map.get($spacing, "xl");
+.link-container .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: var(--color-accent-translucent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+}
 
-    .group {
-      flex: 1;
-      min-width: 250px;
+.interests-picker :deep(.groups) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+}
 
-      .title {
-        font-weight: 600;
-        color: var(--color-accent);
-        font-size: map.get($font-sizes, "md");
-      }
+.interests-picker :deep(.groups) .group {
+  flex: 1;
+  min-width: 250px;
+}
 
-      .links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: map.get($spacing, "md");
+.interests-picker :deep(.groups) .group .title {
+  font-weight: 600;
+  color: var(--color-accent);
+}
 
-        :deep(.btn) {
-          flex: 1 0 calc(50% - #{map.get($spacing, "md")});
-          min-width: 140px;
-          height: 40px;
-          margin: map.get($spacing, "xs");
-          text-align: center;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-    }
+.interests-picker :deep(.groups) .group .links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.interests-picker :deep(.groups) .group .links :deep(.btn) {
+  flex: 1 0 calc(50% - 0.75rem);
+  min-width: 140px;
+  height: 40px;
+  margin: 0.25rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .interests-picker :deep(.groups) {
+    flex-direction: column;
   }
 
-  @media (max-width: map.get($breakpoints, "md")) {
-    :deep(.groups) {
-      flex-direction: column;
-
-      .group {
-        width: 100%;
-        margin-bottom: map.get($spacing, "md");
-      }
-    }
+  .interests-picker :deep(.groups) .group {
+    width: 100%;
+    margin-bottom: 0.75rem;
   }
 }
 </style>
