@@ -6,8 +6,8 @@
   <div class="experience-container">
     <div class="additional-info">
       <p class="info-text">
-        <font-awesome-icon :icon="['fas', 'info-circle']" />
-        Looking for an exciting and challenging new role where I can expand on my technical and professional skills.
+        <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
+        Looking for my next role!
       </p>
     </div>
 
