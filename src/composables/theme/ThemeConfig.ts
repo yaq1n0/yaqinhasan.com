@@ -27,7 +27,8 @@ export const THEME_CONFIG = {
     "--color-accent-light",
     "--color-accent-dark",
     "--color-accent-translucent",
-    "--color-border"
+    "--color-border",
+    "--color-border-light"
   ] as const,
 
   /**

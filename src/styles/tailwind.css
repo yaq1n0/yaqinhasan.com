@@ -1,4 +1,5 @@
 @import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/preflight" layer(base);
 @import "tailwindcss/utilities" layer(utilities);
 
 /* Swiper CSS in base layer — below utilities in cascade */
@@ -7,28 +8,23 @@
 @import "swiper/css/pagination" layer(base);
 @import "swiper/css/effect-fade" layer(base);
 
-/* Disable Preflight (project has custom reset in main.scss — reconcile in stage 2) */
-@layer base {
-  /* Will be populated in stage 2 */
-}
-
 @theme {
-  /* Background colors → bg-bg-primary, bg-bg-secondary, bg-bg-tertiary */
+  /* Background colors */
   --color-bg-primary: var(--color-bg-primary);
   --color-bg-secondary: var(--color-bg-secondary);
   --color-bg-tertiary: var(--color-bg-tertiary);
 
-  /* Text colors → text-text-primary, text-text-secondary */
+  /* Text colors */
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);
 
-  /* Accent colors → accent, accent-light, accent-dark, accent-translucent */
+  /* Accent colors */
   --color-accent: var(--color-accent);
   --color-accent-light: var(--color-accent-light);
   --color-accent-dark: var(--color-accent-dark);
   --color-accent-translucent: var(--color-accent-translucent);
 
-  /* Border colors → border (default), border-light */
+  /* Border colors */
   --color-border: var(--color-border);
   --color-border-light: var(--color-border-light);
 
@@ -46,4 +42,188 @@
   --transition-duration-fast: 150ms;
   --transition-duration-base: 300ms;
   --transition-duration-slow: 500ms;
+}
+
+/* ─── Base styles (reset extensions, global elements, themes) ─── */
+@layer base {
+  :root {
+    --font-mono: "Courier New", Courier, monospace;
+
+    /* Toggle button animation duration */
+    --toggle-animation-duration: 300ms;
+    --toggle-animation-delay-1: 100ms;
+    --toggle-animation-delay-2: 200ms;
+    --toggle-animation-delay-3: 300ms;
+  }
+
+  html,
+  body {
+    height: 100%;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+  }
+
+  #app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Global link styles */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-accent-light);
+  }
+
+  /* Global button styles */
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    color: inherit;
+  }
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-secondary);
+  }
+
+  /* Dev mode */
+  .dev-mode {
+    --color-dev-highlight: #9c27b0;
+  }
+
+  /* ─── Print styles (critical for RenderCV / render-pdf.ts) ─── */
+  .print-mode-app {
+    background: white !important;
+    min-height: 100vh;
+  }
+  .print-mode-app main {
+    background: white !important;
+  }
+
+  @media print {
+    html,
+    body {
+      background: white !important;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     THEMES
+     ═══════════════════════════════════════════ */
+
+  /* Default Light (Solarized-inspired) */
+  [data-theme="default-light"] {
+    --color-bg-primary: #fdf6e3;
+    --color-bg-secondary: #eee8d5;
+    --color-bg-tertiary: #d9d2c4;
+    --color-text-primary: #2c3e50;
+    --color-text-secondary: #546e7a;
+    --color-accent: #1565c0;
+    --color-accent-light: #00695c;
+    --color-accent-dark: #c62828;
+    --color-accent-translucent: rgba(21, 101, 192, 0.15);
+    --color-border: rgba(0, 0, 0, 0.12);
+    --color-border-light: rgba(0, 0, 0, 0.06);
+  }
+
+  /* Default Dark */
+  [data-theme="default-dark"] {
+    --color-bg-primary: #1a1d2e;
+    --color-bg-secondary: #242837;
+    --color-bg-tertiary: #2e3347;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b8c1d9;
+    --color-accent: #64b5f6;
+    --color-accent-light: #4dd0e1;
+    --color-accent-dark: #f48fb1;
+    --color-accent-translucent: rgba(100, 181, 246, 0.15);
+    --color-border: rgba(255, 255, 255, 0.15);
+    --color-border-light: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Futuristic Light */
+  [data-theme="futuristic-light"] {
+    --color-bg-primary: #f5f7fa;
+    --color-bg-secondary: #e4e9f0;
+    --color-bg-tertiary: #cbd5e1;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-accent: #0e7490;
+    --color-accent-light: #6d28d9;
+    --color-accent-dark: #be185d;
+    --color-accent-translucent: rgba(14, 116, 144, 0.15);
+    --color-border: rgba(0, 0, 0, 0.12);
+    --color-border-light: rgba(0, 0, 0, 0.06);
+  }
+
+  /* Futuristic Dark (Cyberpunk) */
+  [data-theme="futuristic-dark"] {
+    --color-bg-primary: #0f1419;
+    --color-bg-secondary: #1a1f2e;
+    --color-bg-tertiary: #252b3d;
+    --color-text-primary: #f0f6fc;
+    --color-text-secondary: #c9d1d9;
+    --color-accent: #00e5ff;
+    --color-accent-light: #c084fc;
+    --color-accent-dark: #ff6bd6;
+    --color-accent-translucent: rgba(0, 229, 255, 0.15);
+    --color-border: rgba(0, 229, 255, 0.25);
+    --color-border-light: rgba(0, 229, 255, 0.12);
+  }
+
+  /* Pastel Light */
+  [data-theme="pastel-light"] {
+    --color-bg-primary: #faf8f5;
+    --color-bg-secondary: #f1ede7;
+    --color-bg-tertiary: #e8dfd5;
+    --color-text-primary: #2d3748;
+    --color-text-secondary: #4a5568;
+    --color-accent: #2c7a7b;
+    --color-accent-light: #be185d;
+    --color-accent-dark: #7c3aed;
+    --color-accent-translucent: rgba(44, 122, 123, 0.15);
+    --color-border: rgba(0, 0, 0, 0.1);
+    --color-border-light: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Pastel Dark */
+  [data-theme="pastel-dark"] {
+    --color-bg-primary: #2e303e;
+    --color-bg-secondary: #3b3d4f;
+    --color-bg-tertiary: #494b5e;
+    --color-text-primary: #f5f5f5;
+    --color-text-secondary: #d3cfc9;
+    --color-accent: #7dc4c4;
+    --color-accent-light: #e9adc3;
+    --color-accent-dark: #c3a3c9;
+    --color-accent-translucent: rgba(125, 196, 196, 0.15);
+    --color-border: rgba(255, 255, 255, 0.15);
+    --color-border-light: rgba(255, 255, 255, 0.08);
+  }
 }
