@@ -13,10 +13,8 @@ import { ref, computed, onMounted } from "vue";
 import CarouselLayout from "@/components/carousel/CarouselLayout.vue";
 import ProjectCard from "@/components/ProjectCard.vue";
 import { type CarouselItem } from "@/data/models/CarouselItem";
-import { getProjectsPageProjects } from "@/data/projects/resolveProjects";
 import type { FullProject } from "@/data/models/Project";
-
-const allProjects = computed<FullProject[]>(() => getProjectsPageProjects());
+import { fullProjects } from "@/data/projects/projectHelpers";
 
 // Category order and labels
 const categoryOrder: { id: string; label: string }[] = [
@@ -33,7 +31,7 @@ function typeToCategoryId(type?: string): string {
 
 // Only show categories that have projects
 const categoryItems = computed<CarouselItem[]>(() => {
-  const usedIds = new Set(allProjects.value.map((p) => typeToCategoryId(p.type)));
+  const usedIds = new Set(fullProjects.map((p) => typeToCategoryId(p.type)));
   return categoryOrder.filter((c) => usedIds.has(c.id));
 });
 
@@ -43,7 +41,7 @@ const projectsByCategory = computed<Record<string, FullProject[]>>(() => {
   for (const cat of categoryOrder) {
     grouped[cat.id] = [];
   }
-  for (const project of allProjects.value) {
+  for (const project of fullProjects) {
     const catId = typeToCategoryId(project.type);
     if (!grouped[catId]) grouped[catId] = [];
     grouped[catId].push(project);

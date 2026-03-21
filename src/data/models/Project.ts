@@ -1,10 +1,6 @@
-import { z } from "zod";
-import { cvSchema } from "@/data/models/CV";
+import { CV } from "@/data/models/CV";
 
-// jsonresume project type — used for CV output and cv.json generation
-export type CVProject = NonNullable<z.infer<typeof cvSchema>["projects"]>[number];
-
-/**  Shape of the GitHubProject in githubProjects.ts file that sync-github-projects.ts generates */
+/** GitHubProject in githubProjects.ts file that sync-github-projects.ts generates */
 export type GitHubProject = {
   id: string; // repo name — the canonical project ID
   name: string; // repo name
@@ -18,7 +14,10 @@ export type GitHubProject = {
   updatedAt: string;
 };
 
-/** Resolved project for the Projects page (after merging github data + overrides) */
+/** (jsonResume compliant! derive from CV type) Resolved project for the CV (after merging githubProjects.ts + cvOverrides.ts)  */
+export type CVProject = NonNullable<CV["projects"]>[number];
+
+/** Resolved project for the Projects page (after merging githubProjects.ts and projectOverrides.ts) */
 export type FullProject = {
   id: string;
   name: string; // displayName from override, or repo name

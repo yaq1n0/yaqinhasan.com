@@ -1,25 +1,17 @@
-export interface ProjectOverride {
-  displayName?: string; // override repo name for display (e.g. "CryptIt • Desktop app")
-  description?: string; // override GitHub description
-  htmlDescription?: string; // override README HTML (takes priority over GitHub README)
-  keywords?: string[]; // replaces GitHub topics entirely when specified
-  type: string; // required: "Web" | "Desktop" | "Other" — category grouping
-  status?: string; // "Complete" | "In Progress" | "Archived"
-  order?: number; // sort within category (lower = first, default 999)
-}
+import { FullProject } from "../models/Project";
 
 // Keyed by GitHub repo name (= project ID)
-export const projectOverrides: Record<string, ProjectOverride> = {
+export const projectOverrides: Record<string, Partial<FullProject>> = {
   // ── Desktop ────────────────────────────────────────────────
   CryptIt: {
-    displayName: "CryptIt • Desktop app",
+    name: "CryptIt • Desktop app",
     type: "Desktop",
     status: "Complete",
     keywords: ["Rust", "Tauri", "Vue", "Cryptography", "Desktop App Development"],
     order: 1
   },
   TrayRunner: {
-    displayName: "TrayRunner • macOS app",
+    name: "TrayRunner • macOS app",
     type: "Desktop",
     status: "Complete",
     keywords: ["Swift", "SwiftUI", "macOS Development", "Desktop App Development", "Shell Scripting"],
@@ -28,7 +20,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
 
   // ── Web ────────────────────────────────────────────────────
   VidSrcWrapper: {
-    displayName: "VidSrcWrapper • Self-hostable media site",
+    name: "VidSrcWrapper • Self-hostable media site",
     description: "Searches TMDB and stream content via VidSrc (proxied for security), dockerised full stack web app.",
     type: "Web",
     status: "Complete",
@@ -37,7 +29,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     order: 1
   },
   "yaqinhasan.com": {
-    displayName: "yaqinhasan.com • Portfolio site",
+    name: "yaqinhasan.com • Portfolio site",
     description: "Portfolio with dynamically rendered CV, terminal UI for interactive navigation and extensive theming system.",
     type: "Web",
     status: "Complete",
@@ -61,7 +53,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     order: 2
   },
   "pwordGen.com": {
-    displayName: "PwordGen • Lightweight password generator",
+    name: "PwordGen • Lightweight password generator",
     description: "Lightweight password generation web utility at pwordgen.com backed by the pwordgen npm package",
     type: "Web",
     status: "Complete",
@@ -69,7 +61,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     order: 3
   },
   LinkBlitzer: {
-    displayName: "LinkBlitzer • Link bundler & opener",
+    name: "LinkBlitzer • Link bundler & opener",
     description: "Bundle, save & share links easily, with a browser extension to quickly open multiple links simultaneously.",
     type: "Web",
     status: "In Progress",
@@ -79,7 +71,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
 
   // ── Other ──────────────────────────────────────────────────
   STQL: {
-    displayName: "STQL • Interpreter",
+    name: "STQL • Interpreter",
     description: "Interpreter for a custom SQL-inspired RDF querying language, implemented in Haskell",
     type: "Other",
     status: "Complete",
@@ -87,7 +79,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     order: 1
   },
   "opl-py": {
-    displayName: "opl-py • PyPI package",
+    name: "opl-py • PyPI package",
     description:
       "Open source Python SDK and dockerised web app for querying and analysing OpenPowerlifting data, with performance prediction using machine learning",
     type: "Other",
@@ -96,7 +88,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     order: 2
   },
   "prompt-as-endpoint": {
-    displayName: "prompt-as-endpoint • npm library",
+    name: "prompt-as-endpoint • npm library",
     description: "Open source TypeScript library for building AI-powered APIs with runtime schema validation, prompt templating, and output validation.",
     type: "Other",
     status: "In Progress",
@@ -104,7 +96,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     order: 3
   },
   ThymPi: {
-    displayName: "ThymPi • Research project",
+    name: "ThymPi • Research project",
     description: "Proof-of-concept robotics platform using sensor data to augment visual navigation systems for autonomously navigating robots.",
     type: "Other",
     status: "Complete",

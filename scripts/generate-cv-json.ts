@@ -1,5 +1,5 @@
 import { cvData } from "../src/data/cvData";
-import { getCVProjects } from "../src/data/projects/resolveProjects";
+import { getCVProjects } from "../src/data/projects/projectHelpers";
 import { writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
