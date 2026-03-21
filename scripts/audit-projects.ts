@@ -60,9 +60,7 @@ const colW = { projects: 10, cv: 6 };
 
 // Header
 console.log();
-console.log(
-  `${BOLD}${pad("Project", idWidth)}${pad("Category", catWidth)}${center("Projects", colW.projects)}${center("CV", colW.cv)}${RESET}`
-);
+console.log(`${BOLD}${pad("Project", idWidth)}${pad("Category", catWidth)}${center("Projects", colW.projects)}${center("CV", colW.cv)}${RESET}`);
 console.log("─".repeat(idWidth + catWidth + colW.projects + colW.cv));
 
 let githubCount = 0;
