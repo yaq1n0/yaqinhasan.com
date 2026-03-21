@@ -57,7 +57,7 @@ const resolveCVProject = (id: string): CVProject | undefined => {
 
 /** For CV rendering and cv.json — projects listed in cvOverrides, in array order */
 const getCVProjects = (): CVProject[] =>
-  Object.keys(projectOverrides)
+  Object.keys(cvOverrides)
     .map(resolveCVProject)
     .filter((p): p is CVProject => !!p);
 
