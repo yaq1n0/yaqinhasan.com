@@ -23,7 +23,7 @@ const resolveFullProject = (id: string): FullProject | undefined => {
     htmlDescription: override.htmlDescription ?? gh.htmlDescription ?? undefined,
     url: gh.url,
     keywords: override.keywords ?? (gh.topics.length > 0 ? gh.topics : undefined),
-    type: override.type,
+    category: override.category,
     status: override.status ?? (gh.archived ? "Archived" : undefined),
     order: override.order ?? 999
   };
