@@ -25,7 +25,10 @@ export type FullProject = {
   htmlDescription?: string; // override HTML or README HTML
   url?: string;
   keywords?: string[];
-  type?: string; // "Web" | "Desktop" | "Other" — for category grouping
-  status?: string; // "Complete" | "In Progress" | "Archived"
+  category?: "Desktop" | "Web" | "Package" | "Academic" | "Other" | "Joke";
+  status?: "Complete" | "In Progress" | "Archived";
   order: number; // sort order within category
 };
+
+export type FullProjectCategory = NonNullable<FullProject["category"]>;
+export type FullProjectStatus = NonNullable<FullProject["status"]>;

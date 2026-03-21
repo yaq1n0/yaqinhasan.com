@@ -11,15 +11,11 @@
       </p>
     </div>
 
-    <experience-card v-for="(ex, index) in experience" :key="index" :experience="ex" />
+    <experience-card v-for="(ex, index) in cvData.work" :key="index" :experience="ex" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { cvData } from "@/data/cvData";
 import ExperienceCard from "@/components/ExperienceCard.vue";
-
-// Get the first (and only) work entry
-const experience = computed(() => cvData.work);
 </script>
