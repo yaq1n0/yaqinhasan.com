@@ -1,6 +1,6 @@
 import type { useTheme } from "@/composables/theme/UseTheme";
 import { isValidVariant, isValidMode, isValidTheme } from "@/composables/theme/ThemeRegistry";
-import type { Command, AddOutputFn } from "./Commands";
+import type { Command, AddOutputFn } from "./Command";
 
 type ThemeComposable = ReturnType<typeof useTheme>;
 

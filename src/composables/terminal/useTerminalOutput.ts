@@ -1,5 +1,5 @@
 import { ref, nextTick, type Ref } from "vue";
-import type { OutputLine } from "@/data/terminal/Commands";
+import type { OutputLine } from "@/data/terminal/Command";
 
 export function useTerminalOutput(terminalBody: Ref<HTMLElement | null>) {
   const outputLines = ref<OutputLine[]>([]);

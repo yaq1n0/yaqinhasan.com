@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import type { Command, AddOutputFn } from "@/data/terminal/Commands";
+import type { Command, AddOutputFn } from "@/data/terminal/Command";
 
 export function useTerminalAutoComplete(commands: Ref<Command[]>, addOutput: AddOutputFn) {
   function autoComplete(input: string): string | null {
