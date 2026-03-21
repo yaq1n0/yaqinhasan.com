@@ -1,9 +1,7 @@
 import type { RouteRecordRaw } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
-import AboutPage from "@/pages/AboutPage.vue";
 import ExperiencePage from "@/pages/ExperiencePage.vue";
 import ProjectsPage from "@/pages/ProjectsPage.vue";
-import InterestsPage from "@/pages/InterestsPage.vue";
 import CVPage from "@/pages/CVPage.vue";
 import DebugPage from "@/pages/dev/DebugPage.vue";
 import DebugCarouselPage from "@/pages/dev/DebugCarouselPage.vue";
@@ -16,11 +14,6 @@ export const routes: Array<RouteRecordRaw> = [
     component: HomePage
   },
   {
-    path: "/about",
-    name: "about",
-    component: AboutPage
-  },
-  {
     path: "/experience",
     name: "experience",
     component: ExperiencePage
@@ -29,11 +22,6 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/projects",
     name: "projects",
     component: ProjectsPage
-  },
-  {
-    path: "/interests",
-    name: "interests",
-    component: InterestsPage
   },
   {
     path: "/cv",
