@@ -23,7 +23,8 @@
     "gen:cv-json": "tsx scripts/generate-cv-json.ts",
     "render:pdf": "npx tsx scripts/render-pdf.ts",
     "validate:themes": "tsx scripts/validate-themes.ts",
-    "validate:contrast": "tsx scripts/validate-contrast.ts"
+    "validate:contrast": "tsx scripts/validate-contrast.ts",
+    "audit:projects": "tsx scripts/audit-projects.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
