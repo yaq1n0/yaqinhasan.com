@@ -2,6 +2,7 @@ import { useBooleanState } from "./UseBooleanState";
 
 export function useDevMode() {
   const applyDevMode = (value: boolean) => {
+    if (import.meta.env.SSR) return;
     const root = document.documentElement;
     if (value) {
       root.classList.add("dev-mode");

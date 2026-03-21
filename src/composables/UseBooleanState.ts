@@ -7,7 +7,9 @@ export type UseBooleanStateOptions = {
 };
 
 export const defaultOptions: UseBooleanStateOptions = {
-  storage: sessionStorage,
+  get storage() {
+    return import.meta.env.SSR ? (null as unknown as Storage) : sessionStorage;
+  },
   defaultValue: false
 };
 
