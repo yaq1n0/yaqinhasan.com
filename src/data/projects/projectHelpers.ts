@@ -29,12 +29,11 @@ const resolveFullProject = (id: string): FullProject | undefined => {
   };
 };
 
-/** For ProjectsPage.vue — all projects with an entry in projectOverrides, sorted by order within category */
+/** For ProjectsPage.vue — all projects with category attached, in definition order */
 const getFullProjects = (): FullProject[] =>
   Object.keys(projectOverrides)
     .map(resolveFullProject)
-    .filter((p): p is FullProject => !!p)
-    .sort((a, b) => a.order - b.order);
+    .filter((p): p is FullProject => !!p);
 
 export const fullProjects = getFullProjects();
 

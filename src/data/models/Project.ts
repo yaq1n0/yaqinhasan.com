@@ -17,6 +17,9 @@ export type GitHubProject = {
 /** (jsonResume compliant! derive from CV type) Resolved project for the CV (after merging githubProjects.ts + cvOverrides.ts)  */
 export type CVProject = NonNullable<CV["projects"]>[number];
 
+export type FullProjectCategory = "Desktop" | "Web" | "Package" | "Academic" | "Other" | "Joke";
+export type FullProjectStatus = "Complete" | "In Progress" | "Archived";
+
 /** Resolved project for the Projects page (after merging githubProjects.ts and projectOverrides.ts) */
 export type FullProject = {
   id: string;
@@ -25,10 +28,7 @@ export type FullProject = {
   htmlDescription?: string; // override HTML or README HTML
   url?: string;
   keywords?: string[];
-  category?: "Desktop" | "Web" | "Package" | "Academic" | "Other" | "Joke";
-  status?: "Complete" | "In Progress" | "Archived";
+  category: FullProjectCategory;
+  status?: FullProjectStatus;
   order: number; // sort order within category
 };
-
-export type FullProjectCategory = NonNullable<FullProject["category"]>;
-export type FullProjectStatus = NonNullable<FullProject["status"]>;

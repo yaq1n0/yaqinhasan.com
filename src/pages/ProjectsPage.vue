@@ -23,7 +23,7 @@ const { isDevMode } = useDevMode();
 const projectsByCategory = computed(() => {
   const groups: Record<string, FullProject[]> = {};
   for (const project of fullProjects) {
-    const cat = project.category ?? "Other";
+    const cat = project.category;
     if (cat === "Joke" && !isDevMode.value) continue;
     (groups[cat] ??= []).push(project);
   }
