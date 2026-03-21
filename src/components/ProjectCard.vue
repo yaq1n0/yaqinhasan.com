@@ -18,18 +18,12 @@
           />
         </div>
       </div>
+      <p v-if="project.description" class="project-subtitle">{{ project.description }}</p>
     </div>
 
     <div class="project-body">
-      <div v-if="project.htmlDescription || project.description" class="description-container">
-        <div
-          v-if="project.htmlDescription"
-          ref="descriptionRef"
-          class="project-description"
-          :class="{ truncated: !expanded }"
-          v-html="project.htmlDescription"
-        />
-        <p v-else-if="project.description" ref="descriptionRef" class="project-description" :class="{ truncated: !expanded }">{{ project.description }}</p>
+      <div v-if="project.htmlDescription" class="description-container">
+        <div ref="descriptionRef" class="project-description" :class="{ truncated: !expanded }" v-html="project.htmlDescription" />
         <button v-if="isOverflowing || expanded" class="toggle-btn" @click="toggle">
           {{ expanded ? "less..." : "more..." }}
         </button>
@@ -171,6 +165,17 @@ onUnmounted(() => {
 .status-badge.status-archived {
   color: var(--color-text-secondary);
   border-color: var(--color-border-light);
+}
+
+.project-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .project-body {
