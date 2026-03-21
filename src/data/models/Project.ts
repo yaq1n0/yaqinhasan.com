@@ -1,18 +1,34 @@
-import { z } from "zod";
-import { cvSchema } from "@/data/models/CV";
+import { CV } from "@/data/models/CV";
 
-// Extract the jsonresume project type from the CV schema
-export type CVProject = NonNullable<z.infer<typeof cvSchema>["projects"]>[number];
-
-// Id for projects with matching html description, usually the GitHub repository name.
-// Will fail compile if you don't add a matching entry in projectHtmlDescriptions.
-export const ProjectIds = ["yaqinhasan.com", "ThymPi", "VidSrcWrapper"] as const;
-export type ProjectId = (typeof ProjectIds)[number];
-export const isProjectId = (id: string): id is ProjectId => ProjectIds.includes(id as ProjectId);
-
-// Extend with additional portfolio-specific properties
-export type FullProject = CVProject & {
-  id?: ProjectId; // optional id for matching with html descriptions
-  htmlDescription?: string; // rich HTML content, rendered instead of description when present
-  status?: string; // "Complete", "In Progress", "Archived", etc.
+/** GitHubProject in githubProjects.ts file that sync-github-projects.ts generates */
+export type GitHubProject = {
+  id: string; // repo name — the canonical project ID
+  name: string; // repo name
+  description: string | null; // GitHub repo description (the one-liner)
+  htmlDescription: string | null; // README markdown converted to HTML, null if no README
+  url: string; // html_url
+  language: string | null; // primary language from GitHub
+  topics: string[]; // GitHub repo topics
+  archived: boolean;
+  createdAt: string;
+  updatedAt: string;
 };
+
+/** (jsonResume compliant! derive from CV type) Resolved project for the CV (after merging githubProjects.ts + cvOverrides.ts)  */
+export type CVProject = NonNullable<CV["projects"]>[number];
+
+/** Resolved project for the Projects page (after merging githubProjects.ts and projectOverrides.ts) */
+export type FullProject = {
+  id: string;
+  name: string; // displayName from override, or repo name
+  description?: string;
+  htmlDescription?: string; // override HTML or README HTML
+  url?: string;
+  keywords?: string[];
+  category?: "Desktop" | "Web" | "Package" | "Academic" | "Other" | "Joke";
+  status?: "Complete" | "In Progress" | "Archived";
+  order: number; // sort order within category
+};
+
+export type FullProjectCategory = NonNullable<FullProject["category"]>;
+export type FullProjectStatus = NonNullable<FullProject["status"]>;

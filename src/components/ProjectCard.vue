@@ -18,11 +18,16 @@
           />
         </div>
       </div>
+      <p v-if="project.description" class="project-subtitle">{{ project.description }}</p>
     </div>
 
     <div class="project-body">
-      <div v-if="project.htmlDescription" class="project-description" v-html="project.htmlDescription" />
-      <p v-else-if="project.description" class="project-description">{{ project.description }}</p>
+      <div v-if="project.htmlDescription" class="description-container">
+        <div ref="descriptionRef" class="project-description" :class="{ truncated: !expanded }" v-html="project.htmlDescription" />
+        <button v-if="isOverflowing || expanded" class="toggle-btn" @click="toggle">
+          {{ expanded ? "less..." : "more..." }}
+        </button>
+      </div>
 
       <div v-if="project.keywords?.length" class="project-keywords">
         <span v-for="keyword in project.keywords" :key="keyword" class="keyword-chip">{{ keyword }}</span>
@@ -32,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, onMounted, onUnmounted, nextTick } from "vue";
 import GButton from "@/components/GButton.vue";
 import type { FullProject } from "@/data/models/Project";
 
@@ -47,6 +52,29 @@ const statusClass = computed(() => {
   if (s === "in progress") return "status-in-progress";
   if (s === "archived") return "status-archived";
   return "";
+});
+
+const descriptionRef = ref<HTMLElement | null>(null);
+const expanded = ref(false);
+const isOverflowing = ref(false);
+
+async function checkOverflow() {
+  await nextTick();
+  if (!descriptionRef.value || expanded.value) return;
+  isOverflowing.value = descriptionRef.value.scrollHeight > descriptionRef.value.clientHeight + 1;
+}
+
+function toggle() {
+  expanded.value = !expanded.value;
+}
+
+onMounted(() => {
+  checkOverflow();
+  window.addEventListener("resize", checkOverflow);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", checkOverflow);
 });
 </script>
 
@@ -74,7 +102,7 @@ const statusClass = computed(() => {
 
 .project-title-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
 }
@@ -139,6 +167,17 @@ const statusClass = computed(() => {
   border-color: var(--color-border-light);
 }
 
+.project-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .project-body {
   padding: 1.5rem;
 }
@@ -149,9 +188,25 @@ const statusClass = computed(() => {
   }
 }
 
+.description-container {
+  margin-bottom: 0.75rem;
+}
+
 .project-description {
   line-height: 1.6;
-  margin-bottom: 0.75rem;
+}
+
+.project-description.truncated {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .project-description.truncated {
+    -webkit-line-clamp: 4;
+  }
 }
 
 .project-description :deep(h4) {
@@ -163,6 +218,22 @@ const statusClass = computed(() => {
 .project-description :deep(p) {
   margin-bottom: 0.75rem;
   line-height: 1.6;
+}
+
+.toggle-btn {
+  margin-top: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+
+.toggle-btn:hover {
+  opacity: 1;
 }
 
 .project-keywords {

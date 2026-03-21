@@ -6,6 +6,7 @@ node_modules
 /public/cv.json
 
 # local env files
+.env
 .env.local
 .env.*.local
 

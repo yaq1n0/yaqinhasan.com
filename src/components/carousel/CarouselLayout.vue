@@ -66,11 +66,11 @@ import type { CarouselItem } from "@/data/models/CarouselItem";
 // Import Swiper styles
 import "swiper/css";
 
-interface CarouselLayoutProps {
+type CarouselLayoutProps = {
   title: string;
   items: CarouselItem[];
   initialItemId?: string;
-}
+};
 
 const props = withDefaults(defineProps<CarouselLayoutProps>(), {
   initialItemId: ""
