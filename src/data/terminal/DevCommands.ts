@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import type { Command, AddOutputFn } from "./Commands";
+import type { Command, AddOutputFn } from "./Command";
 
 export function createDevCommands(addOutput: AddOutputFn, isDevMode: Ref<boolean>, toggleDevMode: () => void): Command[] {
   return [

@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
 import type { Router, RouteLocationNormalizedLoaded } from "vue-router";
-import type { Command, AddOutputFn } from "./Commands";
+import type { Command, AddOutputFn } from "./Command";
 
 export function createNavigationCommands(addOutput: AddOutputFn, router: Router, route: RouteLocationNormalizedLoaded, isDevMode: Ref<boolean>): Command[] {
   return [
@@ -10,11 +10,9 @@ export function createNavigationCommands(addOutput: AddOutputFn, router: Router,
       execute: () => {
         addOutput("output", "<strong>Available pages:</strong>");
         addOutput("output", "");
-        addOutput("output", "  <span style='color: var(--color-accent);'>home</span>         Landing page");
-        addOutput("output", "  <span style='color: var(--color-accent);'>about</span>        Skills & education");
-        addOutput("output", "  <span style='color: var(--color-accent);'>experience</span>   Work experience");
-        addOutput("output", "  <span style='color: var(--color-accent);'>projects</span>    Portfolio showcase");
-        addOutput("output", "  <span style='color: var(--color-accent);'>interests</span>   Personal interests");
+        addOutput("output", "  <span style='color: var(--color-accent);'>home</span>         Home Page");
+        addOutput("output", "  <span style='color: var(--color-accent);'>experience</span>   Professional Experience");
+        addOutput("output", "  <span style='color: var(--color-accent);'>projects</span>    Personal Projects ");
 
         if (isDevMode.value) {
           addOutput("output", "");
@@ -27,7 +25,7 @@ export function createNavigationCommands(addOutput: AddOutputFn, router: Router,
     },
     {
       name: "cd",
-      description: "Navigate to a page (e.g., cd /about)",
+      description: "Navigate to a page (e.g., cd /projects)",
       execute: (args) => {
         if (args.length === 0) {
           router.push("/");
@@ -41,7 +39,7 @@ export function createNavigationCommands(addOutput: AddOutputFn, router: Router,
           path = "/" + path;
         }
 
-        const validPaths = ["/", "/home", "/about", "/experience", "/projects", "/interests"];
+        const validPaths = ["/", "/home", "/experience", "/projects"];
 
         if (isDevMode.value) {
           validPaths.push("/debug", "/debug-carousel");

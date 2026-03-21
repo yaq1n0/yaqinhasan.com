@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import type { Command, AddOutputFn } from "./Commands";
+import type { Command, AddOutputFn } from "./Command";
 import { CVLink } from "../ExternalLinks";
 
 export function createSimpleCommands(addOutput: AddOutputFn, allCommands: Ref<Command[]>): Command[] {
@@ -36,9 +36,9 @@ export function createSimpleCommands(addOutput: AddOutputFn, allCommands: Ref<Co
       execute: () => {
         addOutput("output", "<strong>Yaqin Hasan</strong>");
         addOutput("output", "");
-        addOutput("output", "  Email:  yaqin.k.hasan@gmail.com");
-        addOutput("output", "  GitHub: github.com/yaq1n0");
-        addOutput("output", "  LinkedIn: linkedin.com/in/yaqinhasan");
+        addOutput("output", `  Email:    <a href="mailto:yaqin.k.hasan@gmail.com" style="color: var(--color-accent);">yaqin.k.hasan@gmail.com</a>`);
+        addOutput("output", `  GitHub:   <a href="https://github.com/yaq1n0" style="color: var(--color-accent);">github.com/yaq1n0</a>`);
+        addOutput("output", `  LinkedIn: <a href="https://linkedin.com/in/yaqinhasan" style="color: var(--color-accent);">linkedin.com/in/yaqinhasan</a>`);
         addOutput("output", `  CV: <a href="${CVLink}" style="color: var(--color-accent);">Download CV</a>`);
       }
     },
