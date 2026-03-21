@@ -27,7 +27,7 @@ export const cvData: CV = {
         "Unified customer financial workflows by delivering Xero and QuickBooks integrations, implementing OAuth account linking, webhook ingestion and error reconciliation.",
         "Cut MongoDB Atlas costs by ~1000£/month by profiling query patterns, identifying excessive search memory consumption from read-heavy workloads, and migrating to dedicated Atlas Search nodes.",
         "Halved CI/CD pipeline run times by transitioning to hybrid local and cloud runners, and managed Azure production deployments.",
-        "Onboarded and mentored engineers and SDETs from zero experience to full team contribution, covering SDLC principles, full-stack development best practices and developer tooling."
+        "Onboarded and mentored engineers and SDETs from zero experience to full team contribution, covering SDLC principles, full stack development best practices and developer tooling."
       ]
     }
   ],

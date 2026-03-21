@@ -7,7 +7,7 @@
           <div class="flex-1">
             <h1 class="m-0 flex flex-col gap-[clamp(0.25rem,1vw,0.5rem)]">
               <span class="text-[clamp(1.75rem,5vw,3rem)] font-extrabold text-text-primary leading-tight tracking-tight">Software Engineer</span>
-              <span class="text-[clamp(0.875rem,2vw,1.25rem)] font-normal text-accent leading-relaxed mt-1">Full-Stack • BSc Computer Science</span>
+              <span class="text-[clamp(0.875rem,2vw,1.25rem)] font-normal text-accent leading-relaxed mt-1">Full Stack • BSc Computer Science</span>
             </h1>
           </div>
           <div class="shrink-0">
@@ -24,7 +24,7 @@
         </ul>
 
         <p class="mt-[clamp(1rem,2vw,1.5rem)] max-sm:mt-3 text-[clamp(0.8125rem,1.25vw,0.9375rem)] text-text-secondary italic leading-relaxed">
-          Based in Cambridge, UK • Skilled Worker Sponsorship Required
+          Based in Cambridge, UK • Open to relocation • Skilled Worker Sponsorship Required
         </p>
       </div>
     </section>
