@@ -1,7 +1,7 @@
 import type { CV } from "@/data/models/CV";
+import { CVProjects } from "./projects/projectHelpers";
 
-// Non-project CV data — projects come from githubProjects + cvOverrides
-export const cvData: Omit<CV, "projects"> = {
+export const cvData: CV = {
   basics: {
     name: "Yaqin Hasan",
     email: "yaqin.k.hasan@gmail.com",
@@ -45,6 +45,7 @@ export const cvData: Omit<CV, "projects"> = {
       ]
     }
   ],
+  projects: CVProjects,
   skills: [
     { name: "Languages", keywords: ["C#", "TypeScript", "JavaScript", "Python", "Rust", "Swift", "SQL"] },
     { name: "Frontend", keywords: ["Vue", "React", "Vite", "Pinia", "SPA Development", "Responsive UI"] },

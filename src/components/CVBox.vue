@@ -9,11 +9,8 @@
     </div>
 
     <!-- Only render CV if viewport is wide enough -->
-    <div v-if="isLoaded && cvData && !isTooNarrow" class="bg-bg-secondary rounded-xl p-8 shadow-md">
+    <div v-if="isWideEnoughForCV" class="bg-bg-secondary rounded-xl p-8 shadow-md">
       <render-c-v :cv="cvData" />
-    </div>
-    <div v-else-if="!isLoaded" class="flex justify-center items-center min-h-[200px] text-text-secondary text-[clamp(1rem,1.5vw,1.125rem)]">
-      <p>Loading CV...</p>
     </div>
 
     <div class="my-4 mx-auto text-sm text-text-secondary opacity-70 text-center">
@@ -31,17 +28,14 @@ import { ref } from "vue";
 import { useResizeObserver } from "@vueuse/core";
 import RenderCV from "@/components/RenderCV.vue";
 import GButton from "@/components/GButton.vue";
-import { useCVData } from "@/composables/UseCVData";
+import { cvData } from "@/data/cvData";
 
-const { cvData, isLoaded } = useCVData();
-
-const NARROW_THRESHOLD = 400;
 const cvBoxRef = ref<HTMLElement | null>(null);
-const isTooNarrow = ref(false);
+const isWideEnoughForCV = ref(false);
 
 useResizeObserver(cvBoxRef, (entries) => {
   const { width } = entries[0].contentRect;
-  isTooNarrow.value = width < NARROW_THRESHOLD;
+  isWideEnoughForCV.value = width > 400;
 });
 
 function viewCV() {
