@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
 import AboutPage from "@/pages/AboutPage.vue";
 import ExperiencePage from "@/pages/ExperiencePage.vue";
@@ -9,7 +9,7 @@ import DebugPage from "@/pages/dev/DebugPage.vue";
 import DebugCarouselPage from "@/pages/dev/DebugCarouselPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
@@ -57,17 +57,6 @@ const routes: Array<RouteRecordRaw> = [
   }
 ];
 
-// Using HTML5 history mode for cleaner URLs
-const router = createRouter({
-  history: createWebHistory("/"),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
-  }
-});
-
-export default router;
+export const scrollBehavior = (to: unknown, from: unknown, savedPosition: unknown) => {
+  return savedPosition || { top: 0 };
+};

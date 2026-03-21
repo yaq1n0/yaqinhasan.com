@@ -20,6 +20,7 @@ import {
  */
 export function useTheme() {
   const applyTheme = (themeId: ThemeId) => {
+    if (import.meta.env.SSR) return;
     // Remove old dark mode class if it exists (cleanup)
     document.documentElement.classList.remove("dark");
 
@@ -28,17 +29,18 @@ export function useTheme() {
   };
 
   // Get system preference and use as default
-  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const systemPrefersDark = !import.meta.env.SSR && window.matchMedia("(prefers-color-scheme: dark)").matches;
   const defaultTheme: ThemeId = systemPrefersDark ? "default-dark" : "default-light";
 
   /** get stored valid theme or fallback to default system preference */
   const getValidTheme = (): ThemeId => {
+    if (import.meta.env.SSR) return defaultTheme;
     const stored = localStorage.getItem("theme");
     return isValidTheme(stored) ? stored : defaultTheme;
   };
 
   // Store theme preference in localStorage
-  const currentTheme = useStorage<ThemeId>("theme", getValidTheme(), localStorage, {
+  const currentTheme = useStorage<ThemeId>("theme", getValidTheme(), import.meta.env.SSR ? undefined : localStorage, {
     listenToStorageChanges: true
   });
 
@@ -80,6 +82,7 @@ export function useTheme() {
 
   /** validate and correct invalid theme on init */
   const init = () => {
+    if (import.meta.env.SSR) return;
     // Validate and correct invalid theme on load
     if (!isValidTheme(currentTheme.value)) {
       currentTheme.value = defaultTheme;

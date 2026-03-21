@@ -1,6 +1,6 @@
-import { createApp } from "vue";
+import { ViteSSG } from "vite-ssg";
 import App from "./App.vue";
-import router from "./router";
+import { routes, scrollBehavior } from "./router";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -71,19 +71,6 @@ library.add(
   faLinkedin
 );
 
-const app = createApp(App);
-
-app.component("FontAwesomeIcon", FontAwesomeIcon);
-app.use(router);
-
-// Handle initial route for SSG pages
-const initialRoute = window.__INITIAL_ROUTE__;
-// async function to handle initial route, is blocking though!
-(async () => {
-  if (initialRoute && initialRoute !== "/") {
-    // Wait for router to be ready before setting the route
-    await router.isReady();
-    router.push(initialRoute);
-  }
-  app.mount("#app");
-})();
+export const createApp = ViteSSG(App, { routes, scrollBehavior }, ({ app }) => {
+  app.component("FontAwesomeIcon", FontAwesomeIcon);
+});

@@ -2,56 +2,22 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath, URL } from "node:url";
-import { staticRouteGenerator } from "./plugins/staticRouteGenerator.js";
-import { extractRoutes } from "./plugins/routeExtractor.js";
 import fs from "fs";
 import path from "path";
 
-// Get routes from router configuration
-const routes = extractRoutes();
-
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    vue(),
-    // Generate static HTML files for each route using our custom plugin
-    staticRouteGenerator(routes),
-    // Fix asset paths in 404.html
-    {
-      name: "fix-404-assets",
-      apply: "build",
-      enforce: "post",
-      closeBundle: async () => {
-        // Find the assets
-        const distDir = path.resolve(process.cwd(), "dist");
-        let mainJsFile = "";
-        let mainCssFile = "";
-
-        try {
-          const assets = fs.readdirSync(path.join(distDir, "assets"));
-          mainJsFile = assets.find((file) => file.startsWith("main") && file.endsWith(".js"));
-          mainCssFile = assets.find((file) => file.startsWith("main") && file.endsWith(".css"));
-
-          if (mainJsFile && mainCssFile) {
-            // Read the 404.html file
-            const file404Path = path.join(distDir, "404.html");
-            if (fs.existsSync(file404Path)) {
-              let content = fs.readFileSync(file404Path, "utf-8");
-              // Update asset paths
-              content = content.replace("/assets/main.js", `/assets/${mainJsFile}`);
-              content = content.replace("/assets/main.css", `/assets/${mainCssFile}`);
-              // Write the file back
-              fs.writeFileSync(file404Path, content);
-              console.log("Updated asset paths in 404.html");
-            }
-          }
-        } catch (err) {
-          console.error("Error updating 404.html:", err);
-        }
-      }
+  plugins: [tailwindcss(), vue()],
+  ssgOptions: {
+    script: "async",
+    formatting: "minify",
+    onFinished() {
+      // Copy pre-rendered index.html as 404.html for GitHub Pages unknown-route fallback.
+      // Vue Router's catch-all will handle rendering NotFoundPage on the client.
+      const distDir = path.resolve(process.cwd(), "dist");
+      fs.copyFileSync(path.join(distDir, "index.html"), path.join(distDir, "404.html"));
     }
-  ],
+  },
   base: "/",
   resolve: {
     alias: {
@@ -62,21 +28,16 @@ export default defineConfig({
   server: {
     port: 3000
   },
-  // Ensure all files in public folder are copied
   publicDir: "public",
   build: {
-    assetsInlineLimit: 0, // Disable asset inlining
+    assetsInlineLimit: 0,
     rollupOptions: {
-      input: {
-        main: fileURLToPath(new URL("./index.html", import.meta.url))
-      },
       output: {
-        manualChunks: {
-          // Separate vendor chunks
-          vue: ["vue", "vue-router"],
-          swiper: ["swiper"],
-          vueuse: ["@vueuse/core"],
-          fontawesome: ["@fortawesome/fontawesome-svg-core", "@fortawesome/vue-fontawesome"]
+        manualChunks: (id) => {
+          if (id.includes("/node_modules/vue/") || id.includes("/node_modules/vue-router/")) return "vue";
+          if (id.includes("/node_modules/swiper/")) return "swiper";
+          if (id.includes("/node_modules/@vueuse/")) return "vueuse";
+          if (id.includes("/node_modules/@fortawesome/")) return "fontawesome";
         }
       }
     },
