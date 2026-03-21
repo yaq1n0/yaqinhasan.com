@@ -29,6 +29,7 @@ import { useResizeObserver } from "@vueuse/core";
 import RenderCV from "@/components/RenderCV.vue";
 import GButton from "@/components/GButton.vue";
 import { cvData } from "@/data/cvData";
+import { CVLink } from "@/data/ExternalLinks";
 
 const cvBoxRef = ref<HTMLElement | null>(null);
 const isWideEnoughForCV = ref(false);
@@ -39,12 +40,12 @@ useResizeObserver(cvBoxRef, (entries) => {
 });
 
 function viewCV() {
-  window.open("/cv.pdf", "_blank");
+  window.open(CVLink, "_blank");
 }
 
 function downloadCV() {
   const link = document.createElement("a");
-  link.href = "/cv.pdf";
+  link.href = CVLink;
   link.download = "cv.pdf";
   document.body.appendChild(link);
   link.click();
