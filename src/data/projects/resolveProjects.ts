@@ -21,7 +21,7 @@ function resolveFullProject(id: string): FullProject | null {
     id,
     name: override.displayName ?? gh.name,
     description: override.description ?? gh.description ?? undefined,
-    htmlDescription: override.htmlDescription ?? gh.readmeHtml ?? undefined,
+    htmlDescription: override.htmlDescription ?? gh.htmlDescription ?? undefined,
     url: gh.url,
     keywords: override.keywords ?? (gh.topics.length > 0 ? gh.topics : undefined),
     type: override.type,
