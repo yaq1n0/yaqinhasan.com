@@ -13,7 +13,7 @@ export function useCVData() {
   onMounted(async () => {
     try {
       const { cvData: data } = await import("../data/cvData");
-      const { getCVProjects } = await import("../data/projects/resolveProjects");
+      const { getCVProjects } = await import("../data/projects/projectHelpers");
       cvData.value = { ...data, projects: getCVProjects() } as CV;
       isLoaded.value = true;
     } catch (e) {
