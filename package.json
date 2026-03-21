@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "npm run gen:cv-json",
-    "build": "vite build",
+    "build": "vite-ssg build",
     "serve": "npm run build && npx serve dist",
     "preview": "vite preview",
     "test": "vitest run",
@@ -34,6 +34,7 @@
     "@vueuse/core": "^14.2.1",
     "marked": "^17.0.5",
     "swiper": "^12.1.2",
+    "vite-ssg": "^28.3.0",
     "vue": "^3.5.29",
     "vue-router": "^5.0.3",
     "zod": "^4.3.6"
