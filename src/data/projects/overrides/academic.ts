@@ -1,46 +1,30 @@
-import { FullProject } from "../../models/Project";
+import { withCategory } from "./withCategory";
 
-export const academicOverrides: Record<string, Partial<FullProject>> = {
-  STQL: {
-    description: "Interpreter for a custom SQL-inspired RDF querying language, implemented in Haskell",
-    category: "Academic",
+export const academicOverrides = withCategory("Academic", {
+  ThymPi: {
+    description: "Proof-of-concept robotics platform using sensor data to augment visual navigation systems for autonomously navigating robots.",
     status: "Complete",
-    keywords: ["Haskell", "Interpreter Design", "Compiler Theory", "Formal Language Theory"],
+    keywords: ["Python", "OpenCV", "Machine Vision", "Robotics", "Autonomous Navigation", "Final year project"],
     order: 1
   },
-  DegreeArchive: {
-    description: "A curated archive of notable university coursework projects from the BSc Computer Science degree",
-    category: "Academic",
+  STQL: {
     status: "Complete",
-    keywords: ["Java", "Academic", "University"],
+    keywords: ["Haskell", "Interpreter Design", "Compiler Theory", "Formal Language Theory"],
     order: 2
   },
-  RotationalDynamicsSimulator: {
-    description: "Rotational dynamics (angular momentum and inertia) calculator and visualizer, university software engineering group project",
-    category: "Academic",
-    status: "Complete",
-    keywords: ["Python", "Tkinter", "Physics Simulation", "Academic"],
-    order: 3
-  },
   RunwayRedeclarationCalculator: {
-    description: "Runway redeclaration calculation desktop app, software engineering group project using Java/JavaFX and AGILE",
-    category: "Academic",
     status: "Complete",
     keywords: ["Java", "JavaFX", "Software Engineering", "Academic"],
-    order: 4
+    order: 3
   },
   TetrECS: {
-    description: "JavaFX Tetris clone with networked multiplayer highscores, Programming 2 university coursework",
-    category: "Academic",
     status: "Complete",
     keywords: ["Java", "JavaFX", "Game Development", "Academic"],
-    order: 5
+    order: 4
   },
-  EloSimulator: {
-    description: "Implementation and simulation environment for the Elo algorithm and similar ranking algorithms",
-    category: "Academic",
+  RotationalDynamicsSimulator: {
     status: "Complete",
-    keywords: ["Java", "Algorithms", "Simulation", "Academic"],
-    order: 6
+    keywords: ["Python", "Tkinter", "Physics Simulation", "Academic"],
+    order: 5
   }
-};
+});
