@@ -1,5 +1,18 @@
 # Standalone scripts that perform special development functions
 
+## GitHub Auth Token
+
+`sync:github` reads `GITHUB_TOKEN` from `.env` in the project root (gitignored). Without it the script still works but is subject to GitHub's unauthenticated rate limit (60 req/hr).
+
+**Creating a token:**
+
+1. Go to GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens
+2. Click **Generate new token**
+3. Set an expiry, select your account as the resource owner
+4. Copy the token and paste it as `GITHUB_TOKEN=<token>` in `.env`
+
+---
+
 ## CV JSON Generation Scripts
 
 | File Name                 | `npm run` command | Function                                                                                                                         |

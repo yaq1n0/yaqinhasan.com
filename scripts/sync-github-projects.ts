@@ -2,32 +2,25 @@ import { writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { marked } from "marked";
+import type { components } from "@octokit/openapi-types";
+
+/** octokit provided GitHub types */
+type GitHubRepo = components["schemas"]["repository"];
+type GitHubReadmeResponse = components["schemas"]["content-file"];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const GITHUB_USER = "yaq1n0";
-const OUTPUT_PATH = resolve(__dirname, "../src/data/projects/githubProjects.ts");
-
-interface GitHubRepo {
-  name: string;
-  description: string | null;
-  html_url: string;
-  language: string | null;
-  topics: string[];
-  fork: boolean;
-  archived: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
-interface GitHubReadmeResponse {
-  content: string; // base64-encoded
-  encoding: string;
-}
+const GITHUB_USER = "yaq1n0"; // my GitHub username
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const authHeaders: Record<string, string> = GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {};
+const OUTPUT_PATH = resolve(__dirname, "../src/data/projects/githubProjects.ts"); // path to githubProjects.ts output file
+const getBaseRawUrl = (repoName: string) => `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/main/`;
+const getBaseBlobUrl = (repoName: string) => `https://github.com/${GITHUB_USER}/${repoName}/blob/main/`;
+const getReadmeUrl = (repoName: string) => `https://api.github.com/repos/${GITHUB_USER}/${repoName}/readme`;
 
 /** Rewrite relative URLs in HTML to absolute GitHub URLs */
-function rewriteRelativeUrls(html: string, repoName: string): string {
-  const baseRaw = `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/main/`;
-  const baseBlob = `https://github.com/${GITHUB_USER}/${repoName}/blob/main/`;
+const rewriteRelativeUrls = (html: string, repoName: string): string => {
+  const baseRaw = getBaseRawUrl(repoName);
+  const baseBlob = getBaseBlobUrl(repoName);
 
   // Rewrite src attributes (images, videos) → raw.githubusercontent.com for direct file access
   html = html.replace(
@@ -42,37 +35,36 @@ function rewriteRelativeUrls(html: string, repoName: string): string {
   );
 
   return html;
-}
+};
 
 /** Fetch README for a repo, return HTML or null if no README */
-async function fetchReadmeHtml(repoName: string): Promise<string | null> {
-  const url = `https://api.github.com/repos/${GITHUB_USER}/${repoName}/readme`;
+const fetchReadmeHtml = async (repoName: string) => {
+  const url = getReadmeUrl(repoName);
   const res = await fetch(url, {
-    headers: { Accept: "application/vnd.github.v3+json" }
+    headers: { Accept: "application/vnd.github.v3+json", ...authHeaders }
   });
 
-  if (res.status === 404) return null;
+  if (res.status === 404) return undefined;
   if (!res.ok) {
     console.warn(`Failed to fetch README for ${repoName}: ${res.status}`);
-    return null;
+    return undefined;
   }
 
   const data = (await res.json()) as GitHubReadmeResponse;
   const markdown = Buffer.from(data.content, "base64").toString("utf-8");
   const html = await marked(markdown);
-  return rewriteRelativeUrls(html, repoName);
-}
+  const withRewrittenUrls = rewriteRelativeUrls(html, repoName);
+  return withRewrittenUrls;
+};
 
 /** Escape backticks and backslashes for safe embedding in a JS template literal */
-function escapeForTemplateLiteral(str: string): string {
-  return str.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
-}
+const escapeForTemplateLiteral = (str: string): string => str.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
 
 async function main() {
   console.log(`Fetching repos for ${GITHUB_USER}...`);
 
-  const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`, {
-    headers: { Accept: "application/vnd.github.v3+json" }
+  const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`, {
+    headers: { Accept: "application/vnd.github.v3+json", ...authHeaders }
   });
 
   if (!reposRes.ok) {
@@ -83,29 +75,27 @@ async function main() {
   const allRepos = (await reposRes.json()) as GitHubRepo[];
   const repos = allRepos.filter((r) => !r.fork);
 
-  console.log(`Found ${repos.length} non-fork repos. Fetching READMEs...`);
+  console.log(`Found ${repos.length} non-fork public repos. Fetching READMEs...`);
 
-  const projects: string[] = [];
+  const results = await Promise.all(
+    repos.map(async (repo) => {
+      console.log(`  ${repo.name}...`);
+      return { repo, readmeHtml: await fetchReadmeHtml(repo.name) };
+    })
+  );
 
-  for (const repo of repos) {
-    console.log(`  ${repo.name}...`);
-    const readmeHtml = await fetchReadmeHtml(repo.name);
-
-    const entry = `  {
+  const projects = results.map(({ repo, readmeHtml }) => `  {
     id: ${JSON.stringify(repo.name)},
     name: ${JSON.stringify(repo.name)},
     description: ${JSON.stringify(repo.description)},
+    htmlDescription: ${readmeHtml ? `\`${escapeForTemplateLiteral(readmeHtml)}\`` : "null"},
     url: ${JSON.stringify(repo.html_url)},
-    readmeHtml: ${readmeHtml !== null ? `\`${escapeForTemplateLiteral(readmeHtml)}\`` : "null"},
     language: ${JSON.stringify(repo.language)},
     topics: ${JSON.stringify(repo.topics)},
     archived: ${repo.archived},
     createdAt: ${JSON.stringify(repo.created_at)},
     updatedAt: ${JSON.stringify(repo.updated_at)}
-  }`;
-
-    projects.push(entry);
-  }
+  }`);
 
   const output = `// AUTO-GENERATED by scripts/sync-github-projects.ts — do not edit manually
 // Last synced: ${new Date().toISOString()}
