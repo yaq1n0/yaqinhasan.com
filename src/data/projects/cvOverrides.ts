@@ -13,11 +13,6 @@ export const cvOverrides: Record<string, Partial<CVProject>> = {
     description: "Spotlight-inspired menu bar utility for launching & scheduling local script-based workflows, built with Swift & SwiftUI.",
     keywords: ["Swift", "SwiftUI", "macOS Development", "Desktop App Development", "Shell Scripting"]
   },
-  STQL: {
-    name: "STQL • Interpreter",
-    description: "Interpreter for a custom SQL-inspired RDF querying language, implemented in Haskell",
-    keywords: ["Haskell", "Interpreter Design", "Compiler Theory", "Formal Language Theory"]
-  },
   "opl-py": {
     name: "opl-py • PyPI package",
     description:
@@ -28,6 +23,11 @@ export const cvOverrides: Record<string, Partial<CVProject>> = {
     name: "prompt-as-endpoint • npm library",
     description: "Open source TypeScript library for building AI-powered APIs with runtime schema validation, prompt templating, and output validation.",
     keywords: ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm", "Developer Experience"]
+  },
+  STQL: {
+    name: "STQL • Interpreter",
+    description: "Interpreter for a custom SQL-inspired RDF querying language, implemented in Haskell",
+    keywords: ["Haskell", "Interpreter Design", "Compiler Theory", "Formal Language Theory"]
   },
   ThymPi: {
     name: "ThymPi • Research project",
