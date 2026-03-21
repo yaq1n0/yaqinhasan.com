@@ -21,13 +21,9 @@
 </template>
 
 <script setup lang="ts">
+import { CVExperience } from "@/data/models/Experience";
+
 defineProps<{
-  experience: {
-    position: string;
-    name: string;
-    startDate: string;
-    endDate: string;
-    highlights: string[];
-  };
+  experience: CVExperience;
 }>();
 </script>

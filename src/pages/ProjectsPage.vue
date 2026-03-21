@@ -13,60 +13,27 @@ import { ref, computed, onMounted } from "vue";
 import CarouselLayout from "@/components/carousel/CarouselLayout.vue";
 import ProjectCard from "@/components/ProjectCard.vue";
 import { type CarouselItem } from "@/data/models/CarouselItem";
-import { isProjectId, ProjectId, type FullProject, type CVProject } from "@/data/models/Project";
-import cvData from "@/data/cv.json";
-import { additionalProjects } from "@/data/projects/additionalProjects";
+import type { FullProject } from "@/data/models/Project";
+import { fullProjects } from "@/data/projects/projectHelpers";
+import { useDevMode } from "@/composables/UseDevMode";
 
-import { projectHtmlDescriptions } from "@/data/projects/projectHtmlDescriptions";
+const { isDevMode } = useDevMode();
 
-/** Combine a project with its HTML description if it exists */
-const withHtmlDescription = (project: CVProject): FullProject => {
-  const projectId = isProjectId(project.id || "") ? (project.id as ProjectId) : undefined;
-  const htmlDescription = projectId ? projectHtmlDescriptions[projectId] : undefined;
-  return {
-    ...project,
-    htmlDescription
-  };
-};
-
-// Merge cv.json projects with additional projects, applying htmlDescription overrides
-const allProjects = computed<FullProject[]>(() => [...(cvData.projects ?? []), ...additionalProjects].map((p) => withHtmlDescription(p)));
-
-// Category order and labels
-const categoryOrder: { id: string; label: string }[] = [
-  { id: "web", label: "Web" },
-  { id: "desktop", label: "Desktop" },
-  { id: "other", label: "Other" }
-];
-
-// Convert type string to category ID
-function typeToCategoryId(type?: string): string {
-  if (!type) return "other";
-  return type.toLowerCase();
-}
-
-// Only show categories that have projects
-const categoryItems = computed<CarouselItem[]>(() => {
-  const usedIds = new Set(allProjects.value.map((p) => typeToCategoryId(p.type)));
-  return categoryOrder.filter((c) => usedIds.has(c.id));
+// Group projects by category; uncategorized → "Other". "Joke" only visible in dev mode.
+const projectsByCategory = computed(() => {
+  const groups: Record<string, FullProject[]> = {};
+  for (const project of fullProjects) {
+    const cat = project.category ?? "Other";
+    if (cat === "Joke" && !isDevMode.value) continue;
+    (groups[cat] ??= []).push(project);
+  }
+  return groups;
 });
 
-// Group projects by category ID
-const projectsByCategory = computed<Record<string, FullProject[]>>(() => {
-  const grouped: Record<string, FullProject[]> = {};
-  for (const cat of categoryOrder) {
-    grouped[cat.id] = [];
-  }
-  for (const project of allProjects.value) {
-    const catId = typeToCategoryId(project.type);
-    if (!grouped[catId]) grouped[catId] = [];
-    grouped[catId].push(project);
-  }
-  return grouped;
-});
+const categoryItems = computed<CarouselItem[]>(() => Object.keys(projectsByCategory.value).map((id) => ({ id, label: id })));
 
 // State for active category
-const activeCategory = ref("web-app");
+const activeCategory = ref("Web");
 
 // Initialize with URL hash if present
 onMounted(() => {
