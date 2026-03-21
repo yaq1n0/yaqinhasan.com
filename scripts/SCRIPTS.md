@@ -53,6 +53,12 @@ flowchart TD
 | ----------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `generate-cv-schema.ts` | `gen:cv-schema`   | Pulls the `jsonresume.org` JSON Schema and generates `src/data/models/CV.ts` TypeScript CV type definition using `jsonSchemaToZod` |
 
+## Project Audit Script
+
+| File Name           | `npm run` command | Function                                                                                              |
+| ------------------- | ----------------- | ----------------------------------------------------------------------------------------------------- |
+| `audit-projects.ts` | `audit:projects`  | Prints a table showing all GitHub projects and whether they appear on the Projects page and/or the CV |
+
 ## Theme Validation Scripts
 
 | File Name              | `npm run` command   | Function                                       |
