@@ -15,42 +15,25 @@ import ProjectCard from "@/components/ProjectCard.vue";
 import { type CarouselItem } from "@/data/models/CarouselItem";
 import type { FullProject } from "@/data/models/Project";
 import { fullProjects } from "@/data/projects/projectHelpers";
+import { useDevMode } from "@/composables/UseDevMode";
 
-// Category order and labels
-const categoryOrder: { id: string; label: string }[] = [
-  { id: "web", label: "Web" },
-  { id: "desktop", label: "Desktop" },
-  { id: "other", label: "Other" }
-];
+const { isDevMode } = useDevMode();
 
-// Convert type string to category ID
-function typeToCategoryId(type?: string): string {
-  if (!type) return "other";
-  return type.toLowerCase();
-}
-
-// Only show categories that have projects
-const categoryItems = computed<CarouselItem[]>(() => {
-  const usedIds = new Set(fullProjects.map((p) => typeToCategoryId(p.type)));
-  return categoryOrder.filter((c) => usedIds.has(c.id));
-});
-
-// Group projects by category ID
-const projectsByCategory = computed<Record<string, FullProject[]>>(() => {
-  const grouped: Record<string, FullProject[]> = {};
-  for (const cat of categoryOrder) {
-    grouped[cat.id] = [];
-  }
+// Group projects by category; uncategorized → "Other". "Joke" only visible in dev mode.
+const projectsByCategory = computed(() => {
+  const groups: Record<string, FullProject[]> = {};
   for (const project of fullProjects) {
-    const catId = typeToCategoryId(project.type);
-    if (!grouped[catId]) grouped[catId] = [];
-    grouped[catId].push(project);
+    const cat = project.category ?? "Other";
+    if (cat === "Joke" && !isDevMode.value) continue;
+    (groups[cat] ??= []).push(project);
   }
-  return grouped;
+  return groups;
 });
+
+const categoryItems = computed<CarouselItem[]>(() => Object.keys(projectsByCategory.value).map((id) => ({ id, label: id })));
 
 // State for active category
-const activeCategory = ref("web-app");
+const activeCategory = ref("Web");
 
 // Initialize with URL hash if present
 onMounted(() => {
