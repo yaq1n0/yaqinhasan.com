@@ -11,11 +11,11 @@
       </p>
     </div>
 
-    <experience-card v-for="(ex, index) in cvData.work" :key="index" :experience="ex" />
+    <experience-card v-for="ex in fullExperiences" :key="ex.id" :experience="ex" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { cvData } from "@/data/cvData";
+import { fullExperiences } from "@/data/experience/experienceHelpers";
 import ExperienceCard from "@/components/ExperienceCard.vue";
 </script>
