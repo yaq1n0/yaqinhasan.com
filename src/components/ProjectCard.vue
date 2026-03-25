@@ -2,10 +2,7 @@
   <div class="project-card bg-bg-tertiary rounded-xl overflow-hidden" :class="{ simplified }">
     <div class="project-header bg-bg-secondary px-6 py-3 max-md:px-4 max-md:py-2">
       <div class="flex items-center justify-between gap-2">
-        <h3
-          class="text-xl font-semibold text-accent m-0 flex-1 min-w-0 max-md:text-lg max-sm:text-base"
-          :class="{ 'text-base': simplified }"
-        >
+        <h3 class="text-xl font-semibold text-accent m-0 flex-1 min-w-0 max-md:text-lg max-sm:text-base" :class="{ 'text-base': simplified }">
           {{ project.name }}
         </h3>
         <div class="flex items-center gap-2 shrink-0">
@@ -35,12 +32,7 @@
     <!-- Default: htmlDescription + keywords -->
     <div v-if="!simplified" class="p-6 max-sm:p-3">
       <div v-if="project.htmlDescription" class="mb-3">
-        <div
-          ref="descriptionRef"
-          class="leading-relaxed"
-          :class="{ 'line-clamp-8 max-md:line-clamp-4': !expanded }"
-          v-html="project.htmlDescription"
-        />
+        <div ref="descriptionRef" class="leading-relaxed" :class="{ 'line-clamp-8 max-md:line-clamp-4': !expanded }" v-html="project.htmlDescription" />
         <button
           v-if="isOverflowing || expanded"
           class="mt-2 p-0 text-sm text-accent opacity-80 transition-opacity duration-150 hover:opacity-100 cursor-pointer"
