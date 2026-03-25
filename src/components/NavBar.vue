@@ -110,7 +110,7 @@ const structure = computed(() => {
 
   return {
     left: [homeButton, experienceButton, projectsButton],
-    right: [githubButton, linkedinButton]
+    right: [linkedinButton, githubButton]
   };
 });
 
