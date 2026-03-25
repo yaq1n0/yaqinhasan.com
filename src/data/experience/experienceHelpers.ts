@@ -17,7 +17,7 @@ const resolveFullExperience = (id: string): FullExperience | undefined => {
   const override = experienceOverrides[id] ?? {};
 
   // Merge highlight-level overrides
-  let highlights: TaggedHighlight[] = base.highlights.map((h, i) => {
+  const highlights: TaggedHighlight[] = base.highlights.map((h, i) => {
     const ho = override.highlightOverrides?.[i];
     return ho ? { ...h, ...ho } : h;
   });
