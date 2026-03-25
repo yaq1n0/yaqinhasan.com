@@ -1,5 +1,5 @@
 <template>
-  <div class="debug-carousel-page">
+  <div class="max-w-[1200px] w-full mx-auto p-8 box-border overflow-x-hidden max-md:px-3 max-md:py-6 max-sm:px-2 max-sm:py-4">
     <carousel-layout
       ref="carouselRef"
       title="Swiper Carousel Demo"
@@ -10,54 +10,73 @@
     >
       <template #default="{ activeItem }">
         <!-- Item 1 -->
-        <div v-show="activeItem.id === 'item1'" class="carousel-content">
-          <h2>Basic Content</h2>
-          <p>This is a basic content slide demonstrating text in the carousel.</p>
-          <ul>
-            <li>Simple list item 1</li>
-            <li>Simple list item 2</li>
-            <li>Simple list item 3</li>
+        <div
+          v-show="activeItem.id === 'item1'"
+          class="p-10 bg-bg-secondary rounded-lg min-h-[300px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mb-6 w-full box-border relative max-md:p-7 max-md:min-h-[250px] max-md:mb-5 max-sm:p-5 max-sm:min-h-[200px] max-sm:mb-4 max-sm:rounded-md"
+        >
+          <h2 class="mt-0 text-accent mb-5 text-[1.75rem] font-semibold max-md:text-2xl max-md:mb-4 max-sm:text-xl max-sm:mb-3">Basic Content</h2>
+          <p class="mb-5 leading-relaxed text-base text-text-primary max-md:mb-4 max-md:leading-snug max-sm:mb-3 max-sm:text-[0.9375rem] max-sm:leading-tight">This is a basic content slide demonstrating text in the carousel.</p>
+          <ul class="mb-5 pl-6 max-md:mb-4 max-md:pl-5 max-sm:mb-3 max-sm:pl-4">
+            <li class="mb-2 leading-normal max-sm:mb-1.5 max-sm:leading-tight max-sm:text-[0.9375rem]">Simple list item 1</li>
+            <li class="mb-2 leading-normal max-sm:mb-1.5 max-sm:leading-tight max-sm:text-[0.9375rem]">Simple list item 2</li>
+            <li class="mb-2 leading-normal max-sm:mb-1.5 max-sm:leading-tight max-sm:text-[0.9375rem]">Simple list item 3</li>
           </ul>
         </div>
 
         <!-- Item 2 -->
-        <div v-show="activeItem.id === 'item2'" class="carousel-content">
-          <h2>Rich Content</h2>
-          <p>This slide demonstrates rich content with buttons and links.</p>
-          <div class="button-row">
-            <button class="demo-button">Demo Button</button>
-            <a href="#" class="demo-link">Demo Link</a>
+        <div
+          v-show="activeItem.id === 'item2'"
+          class="p-10 bg-bg-secondary rounded-lg min-h-[300px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mb-6 w-full box-border relative max-md:p-7 max-md:min-h-[250px] max-md:mb-5 max-sm:p-5 max-sm:min-h-[200px] max-sm:mb-4 max-sm:rounded-md"
+        >
+          <h2 class="mt-0 text-accent mb-5 text-[1.75rem] font-semibold max-md:text-2xl max-md:mb-4 max-sm:text-xl max-sm:mb-3">Rich Content</h2>
+          <p class="mb-5 leading-relaxed text-base text-text-primary max-md:mb-4 max-md:leading-snug max-sm:mb-3 max-sm:text-[0.9375rem] max-sm:leading-tight">This slide demonstrates rich content with buttons and links.</p>
+          <div class="flex gap-5 my-6 flex-wrap max-md:gap-4 max-md:my-5 max-sm:gap-3 max-sm:my-4">
+            <button class="py-2.5 px-5 bg-accent text-white border-none rounded cursor-pointer font-medium max-md:py-2 max-md:px-4 max-md:text-[0.9375rem] max-sm:py-[0.4375rem] max-sm:px-[0.875rem] max-sm:text-sm max-sm:rounded-[0.1875rem]">Demo Button</button>
+            <a href="#" class="py-2.5 px-5 text-accent underline font-medium hover:text-accent-light max-md:py-2 max-md:px-4 max-md:text-[0.9375rem] max-sm:py-[0.4375rem] max-sm:px-[0.875rem] max-sm:text-sm">Demo Link</a>
           </div>
         </div>
 
         <!-- Item 3 -->
-        <div v-show="activeItem.id === 'item3'" class="carousel-content">
-          <h2>Media Content</h2>
-          <p>This slide demonstrates media content.</p>
-          <img src="https://via.placeholder.com/600x300" alt="Placeholder" class="demo-image" />
+        <div
+          v-show="activeItem.id === 'item3'"
+          class="p-10 bg-bg-secondary rounded-lg min-h-[300px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mb-6 w-full box-border relative max-md:p-7 max-md:min-h-[250px] max-md:mb-5 max-sm:p-5 max-sm:min-h-[200px] max-sm:mb-4 max-sm:rounded-md"
+        >
+          <h2 class="mt-0 text-accent mb-5 text-[1.75rem] font-semibold max-md:text-2xl max-md:mb-4 max-sm:text-xl max-sm:mb-3">Media Content</h2>
+          <p class="mb-5 leading-relaxed text-base text-text-primary max-md:mb-4 max-md:leading-snug max-sm:mb-3 max-sm:text-[0.9375rem] max-sm:leading-tight">This slide demonstrates media content.</p>
+          <img
+            src="https://via.placeholder.com/600x300"
+            alt="Placeholder"
+            class="max-w-full h-auto rounded-lg shadow-[0_4px_10px_rgba(0,0,0,0.15)] block my-6 mx-auto max-md:my-5 max-md:rounded-md max-md:shadow-md max-sm:my-4 max-sm:rounded max-sm:shadow-sm"
+          />
         </div>
 
         <!-- Item 4 -->
-        <div v-show="activeItem.id === 'item4'" class="carousel-content">
-          <h2>Layout Example</h2>
-          <div class="two-columns">
-            <div class="column">
-              <h3>Column 1</h3>
-              <p>This is the first column of content.</p>
+        <div
+          v-show="activeItem.id === 'item4'"
+          class="p-10 bg-bg-secondary rounded-lg min-h-[300px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mb-6 w-full box-border relative max-md:p-7 max-md:min-h-[250px] max-md:mb-5 max-sm:p-5 max-sm:min-h-[200px] max-sm:mb-4 max-sm:rounded-md"
+        >
+          <h2 class="mt-0 text-accent mb-5 text-[1.75rem] font-semibold max-md:text-2xl max-md:mb-4 max-sm:text-xl max-sm:mb-3">Layout Example</h2>
+          <div class="flex gap-10 my-6 max-md:flex-col max-md:gap-6 max-md:my-5 max-sm:gap-4 max-sm:my-4">
+            <div class="flex-1">
+              <h3 class="mt-0 text-accent-light mb-3 text-xl max-md:text-lg max-md:mb-2 max-sm:text-base">Column 1</h3>
+              <p class="mb-5 leading-relaxed text-base text-text-primary max-md:mb-4 max-md:leading-snug max-sm:mb-3 max-sm:text-[0.9375rem] max-sm:leading-tight">This is the first column of content.</p>
             </div>
-            <div class="column">
-              <h3>Column 2</h3>
-              <p>This is the second column of content.</p>
+            <div class="flex-1">
+              <h3 class="mt-0 text-accent-light mb-3 text-xl max-md:text-lg max-md:mb-2 max-sm:text-base">Column 2</h3>
+              <p class="mb-5 leading-relaxed text-base text-text-primary max-md:mb-4 max-md:leading-snug max-sm:mb-3 max-sm:text-[0.9375rem] max-sm:leading-tight">This is the second column of content.</p>
             </div>
           </div>
         </div>
 
         <!-- Item 5 -->
-        <div v-show="activeItem.id === 'item5'" class="carousel-content">
-          <h2>Card Example</h2>
-          <div class="demo-card">
-            <h3>Card Title</h3>
-            <p>This is a card element within the carousel slide.</p>
+        <div
+          v-show="activeItem.id === 'item5'"
+          class="p-10 bg-bg-secondary rounded-lg min-h-[300px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mb-6 w-full box-border relative max-md:p-7 max-md:min-h-[250px] max-md:mb-5 max-sm:p-5 max-sm:min-h-[200px] max-sm:mb-4 max-sm:rounded-md"
+        >
+          <h2 class="mt-0 text-accent mb-5 text-[1.75rem] font-semibold max-md:text-2xl max-md:mb-4 max-sm:text-xl max-sm:mb-3">Card Example</h2>
+          <div class="bg-bg-primary p-7 rounded-xl shadow-[0_6px_12px_rgba(0,0,0,0.15)] my-6 border border-border max-md:p-6 max-md:rounded-[0.625rem] max-md:shadow-md max-md:my-5 max-sm:p-5 max-sm:rounded-lg max-sm:shadow max-sm:my-4">
+            <h3 class="mt-0 mb-3 text-accent text-xl max-md:text-lg max-md:mb-2 max-sm:text-base max-sm:mb-2">Card Title</h3>
+            <p class="mb-0 leading-relaxed text-base text-text-primary max-md:leading-snug max-sm:text-[0.9375rem] max-sm:leading-tight">This is a card element within the carousel slide.</p>
           </div>
         </div>
       </template>
@@ -83,362 +102,3 @@ const carouselItems: CarouselItem[] = [
   { id: "item5", label: "Card Example" }
 ];
 </script>
-
-<style scoped>
-.debug-carousel-page {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-@media (max-width: 768px) {
-  .debug-carousel-page {
-    padding: 1.5rem 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .debug-carousel-page {
-    padding: 1rem 0.5rem;
-  }
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--color-accent);
-}
-
-@media (max-width: 768px) {
-  h1 {
-    margin-bottom: 1.5rem;
-    font-size: 1.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
-}
-
-.carousel-content {
-  padding: 2.5rem;
-  background-color: var(--color-bg-secondary);
-  border-radius: 0.5rem;
-  min-height: 300px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .carousel-content {
-    padding: 1.75rem;
-    min-height: 250px;
-    margin-bottom: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-content {
-    padding: 1.25rem;
-    min-height: 200px;
-    margin-bottom: 1rem;
-    border-radius: 0.375rem;
-  }
-}
-
-.carousel-content h2 {
-  margin-top: 0;
-  color: var(--color-accent);
-  margin-bottom: 1.25rem;
-  font-size: 1.75rem;
-  font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  .carousel-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-content h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-  }
-}
-
-.carousel-content h3 {
-  color: var(--color-accent-light);
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-}
-
-@media (max-width: 768px) {
-  .carousel-content h3 {
-    font-size: 1.125rem;
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-content h3 {
-    font-size: 1rem;
-    margin-top: 1rem;
-  }
-}
-
-.carousel-content p {
-  margin-bottom: 1.25rem;
-  line-height: 1.6;
-  font-size: 1rem;
-  color: var(--color-text-primary);
-}
-
-@media (max-width: 768px) {
-  .carousel-content p {
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-content p {
-    margin-bottom: 0.75rem;
-    font-size: 0.9375rem;
-    line-height: 1.4;
-  }
-}
-
-.carousel-content ul {
-  margin-bottom: 1.25rem;
-  padding-left: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .carousel-content ul {
-    margin-bottom: 1rem;
-    padding-left: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-content ul {
-    margin-bottom: 0.75rem;
-    padding-left: 1rem;
-  }
-}
-
-.carousel-content ul li {
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-@media (max-width: 480px) {
-  .carousel-content ul li {
-    margin-bottom: 0.375rem;
-    line-height: 1.4;
-    font-size: 0.9375rem;
-  }
-}
-
-.button-row {
-  display: flex;
-  gap: 1.25rem;
-  margin: 1.5rem 0;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-  .button-row {
-    gap: 1rem;
-    margin: 1.25rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .button-row {
-    gap: 0.75rem;
-    margin: 1rem 0;
-  }
-}
-
-.demo-button {
-  padding: 0.625rem 1.25rem;
-  background-color: var(--color-accent);
-  color: white;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .demo-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9375rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .demo-button {
-    padding: 0.4375rem 0.875rem;
-    font-size: 0.875rem;
-    border-radius: 0.1875rem;
-  }
-}
-
-.demo-link {
-  padding: 0.625rem 1.25rem;
-  color: var(--color-accent);
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .demo-link {
-    padding: 0.5rem 1rem;
-    font-size: 0.9375rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .demo-link {
-    padding: 0.4375rem 0.875rem;
-    font-size: 0.875rem;
-  }
-}
-
-.demo-link:hover {
-  color: var(--color-accent-light);
-}
-
-.demo-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  display: block;
-  margin: 1.5rem auto;
-}
-
-@media (max-width: 768px) {
-  .demo-image {
-    margin: 1.25rem auto;
-    border-radius: 0.375rem;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-  }
-}
-
-@media (max-width: 480px) {
-  .demo-image {
-    margin: 1rem auto;
-    border-radius: 0.25rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.two-columns {
-  display: flex;
-  gap: 2.5rem;
-  margin: 1.5rem 0;
-}
-
-@media (max-width: 768px) {
-  .two-columns {
-    flex-direction: column;
-    gap: 1.5rem;
-    margin: 1.25rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .two-columns {
-    gap: 1rem;
-    margin: 1rem 0;
-  }
-}
-
-.two-columns .column {
-  flex: 1;
-}
-
-.two-columns .column h3 {
-  margin-top: 0;
-}
-
-.demo-card {
-  background-color: var(--color-bg-primary);
-  padding: 1.75rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  margin: 1.5rem 0;
-  border: 1px solid var(--color-border);
-}
-
-@media (max-width: 768px) {
-  .demo-card {
-    padding: 1.5rem;
-    border-radius: 0.625rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-    margin: 1.25rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .demo-card {
-    padding: 1.25rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    margin: 1rem 0;
-  }
-}
-
-.demo-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  color: var(--color-accent);
-}
-
-@media (max-width: 480px) {
-  .demo-card h3 {
-    margin-bottom: 0.5rem;
-  }
-}
-
-.demo-card p {
-  margin-bottom: 0;
-}
-
-/* Touch-specific optimizations */
-@media (hover: none) and (pointer: coarse) {
-  .demo-button:hover {
-    transform: none;
-    box-shadow: none;
-    filter: none;
-  }
-
-  .demo-button:active {
-    background-color: var(--color-accent-dark, var(--color-accent));
-  }
-
-  .demo-link:hover {
-    color: var(--color-accent);
-  }
-
-  .demo-link:active {
-    color: var(--color-accent-light);
-  }
-}
-</style>

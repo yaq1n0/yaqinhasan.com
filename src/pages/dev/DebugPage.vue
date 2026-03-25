@@ -1,137 +1,140 @@
 <template>
-  <div class="debug-page">
-    <h1>Component Debug Page</h1>
-    <p class="description">This page demonstrates all components in isolation with their variants.</p>
+  <div class="max-w-[1200px] mx-auto p-8 max-md:p-4">
+    <h1 class="text-[2.5rem] mb-4 text-accent text-center">Component Debug Page</h1>
+    <p class="text-center mb-12 text-xl text-text-secondary">This page demonstrates all components in isolation with their variants.</p>
 
-    <div class="debug-links">
-      <router-link to="/debug-carousel" class="debug-link">
+    <div class="flex justify-center mb-8">
+      <router-link
+        to="/debug-carousel"
+        class="inline-flex items-center gap-2 py-3 px-6 bg-accent text-bg-primary rounded-lg font-semibold hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)] transition-transform"
+      >
         <font-awesome-icon :icon="['fas', 'sliders-h']" />
         Carousel Debug Page
       </router-link>
     </div>
 
     <!-- Button Component -->
-    <section>
-      <h2>Button Component</h2>
+    <section class="mb-16">
+      <h2 class="text-[1.8rem] mb-6 pb-2 border-b border-border text-accent-light">Button Component</h2>
 
-      <div class="component-grid">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-md:grid-cols-1 gap-8">
         <!-- Default Button -->
-        <div class="component-variant">
-          <h3>Default Button</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Default Button</h3>
           <g-button label="Default Button" />
         </div>
 
         <!-- Default Button with Icon -->
-        <div class="component-variant">
-          <h3>Default Button with Icon</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Default Button with Icon</h3>
           <g-button label="Default Button" icon="close" />
         </div>
 
         <!-- Button with Icon -->
-        <div class="component-variant">
-          <h3>Label Right + Icon</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Label Right + Icon</h3>
           <g-button label="Label Right" icon="arrow-right" label-pos="right" />
         </div>
 
         <!-- Button with Icon Left -->
-        <div class="component-variant">
-          <h3>Label Left + Icon</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Label Left + Icon</h3>
           <g-button label="Label Left" icon="arrow-left" label-pos="left" />
         </div>
 
         <!-- Button with Icon Above -->
-        <div class="component-variant">
-          <h3>Label Above + Icon</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Label Above + Icon</h3>
           <g-button label="Label Above" icon="arrow-up" label-pos="above" />
         </div>
 
         <!-- Button with Icon Below -->
-        <div class="component-variant">
-          <h3>Label Below + Icon</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Label Below + Icon</h3>
           <g-button label="Label Below" icon="arrow-down" label-pos="below" />
         </div>
 
         <!-- Button Shapes -->
-        <div class="component-variant">
-          <h3>Shape: Rounded</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Shape: Rounded</h3>
           <g-button label="Rounded Button" shape="rounded" />
         </div>
 
-        <div class="component-variant">
-          <h3>Shape: Squircle (Default)</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Shape: Squircle (Default)</h3>
           <g-button label="Squircle Button" shape="squircle" />
         </div>
 
         <!-- Button Borders -->
-        <div class="component-variant">
-          <h3>Border: Thin</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Border: Thin</h3>
           <g-button label="Thin Border" border="thin" />
         </div>
 
         <!-- Icon Sizes -->
-        <div class="component-variant">
-          <h3>Icon Size: Small (Default)</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Icon Size: Small (Default)</h3>
           <g-button label="Small Icon" icon="star" icon-size="sm" />
         </div>
 
-        <div class="component-variant">
-          <h3>Icon Size: Medium</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Icon Size: Medium</h3>
           <g-button label="Medium Icon" icon="star" icon-size="md" />
         </div>
 
-        <div class="component-variant">
-          <h3>Icon Size: Large</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Icon Size: Large</h3>
           <g-button label="Large Icon" icon="star" icon-size="lg" />
         </div>
 
         <!-- Icon Size with Different Label Positions -->
-        <div class="component-variant">
-          <h3>Large Icon + Label Below</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Large Icon + Label Below</h3>
           <g-button label="Label Below" icon="star" icon-size="lg" label-pos="below" background="transparent" border="none" />
         </div>
 
-        <div class="component-variant">
-          <h3>Border: Thick</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Border: Thick</h3>
           <g-button label="Thick Border" border="thick" />
         </div>
 
-        <div class="component-variant">
-          <h3>Border: None</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Border: None</h3>
           <g-button label="No Border" border="none" />
         </div>
 
         <!-- Button as Link -->
-        <div class="component-variant">
-          <h3>Router Link (to="/")</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Router Link (to="/")</h3>
           <g-button label="Go to Home" to="/" icon="home" />
         </div>
 
-        <div class="component-variant">
-          <h3>External Link (href)</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">External Link (href)</h3>
           <g-button label="GitHub" href="https://github.com" icon="code-branch" icon-prefix="fab" />
         </div>
 
         <!-- Custom Background -->
-        <div class="component-variant">
-          <h3>Custom Background</h3>
+        <div class="bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Custom Background</h3>
           <g-button label="Custom Color" background="rgba(255, 0, 0, 0.3)" />
         </div>
       </div>
     </section>
 
     <!-- CollapsibleSection Component -->
-    <section>
-      <h2>CollapsibleSection Component</h2>
+    <section class="mb-16">
+      <h2 class="text-[1.8rem] mb-6 pb-2 border-b border-border text-accent-light">CollapsibleSection Component</h2>
 
-      <div class="component-grid">
-        <div class="wide">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-md:grid-cols-1 gap-8">
+        <div class="col-span-full">
           <collapsible-section title="Closed by default" :model-value="false">
             <p>This is the content of the collapsible section. It can contain any content.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </collapsible-section>
         </div>
 
-        <div class="wide">
+        <div class="col-span-full">
           <collapsible-section title="Open by default" :model-value="true">
             <p>This section is initially open.</p>
             <p>You can toggle it by clicking on the header.</p>
@@ -141,21 +144,21 @@
     </section>
 
     <!-- NavBar Component -->
-    <section>
-      <h2>NavBar Component</h2>
+    <section class="mb-16">
+      <h2 class="text-[1.8rem] mb-6 pb-2 border-b border-border text-accent-light">NavBar Component</h2>
 
-      <div class="component-grid">
-        <div class="component-variant wide">
-          <h3>Navigation Bar (Normal)</h3>
-          <div class="nav-container">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-md:grid-cols-1 gap-8">
+        <div class="col-span-full bg-bg-tertiary rounded-lg p-6">
+          <h3 class="text-xl mb-4 text-text-secondary">Navigation Bar (Normal)</h3>
+          <div class="border border-border rounded-lg overflow-hidden">
             <nav-bar />
           </div>
           <p class="mt-4">Try toggling dev mode to see additional nav items</p>
         </div>
 
-        <div class="component-variant wide narrow-demo-container">
-          <h3>Navigation Bar (Narrow/Mobile View)</h3>
-          <div class="nav-container narrow-demo">
+        <div class="col-span-full bg-bg-tertiary rounded-lg p-6 narrow-demo-container">
+          <h3 class="text-xl mb-4 text-text-secondary">Navigation Bar (Narrow/Mobile View)</h3>
+          <div class="border border-border rounded-lg overflow-hidden narrow-demo max-w-[480px] mx-auto !overflow-visible">
             <nav-bar />
           </div>
           <p class="mt-4">This demonstrates how the navbar appears on mobile devices with the overflow menu</p>
@@ -172,134 +175,13 @@ import NavBar from "@/components/NavBar.vue";
 </script>
 
 <style scoped>
-.debug-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.debug-page h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-accent);
-  text-align: center;
-}
-
-.debug-page .description {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: 1.2rem;
-  color: var(--color-text-secondary);
-}
-
-.debug-page .debug-links {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.debug-page .debug-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--color-accent);
-  color: var(--color-bg-primary);
-  border-radius: 0.5rem;
-  font-weight: 600;
-}
-
-.debug-page .debug-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.debug-page section {
-  margin-bottom: 4rem;
-}
-
-.debug-page section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-accent-light);
-}
-
-.debug-page .component-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.debug-page .component-grid .wide {
-  grid-column: 1 / -1;
-}
-
-.debug-page .component-variant {
-  background: var(--color-bg-tertiary);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-}
-
-.debug-page .component-variant h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: var(--color-text-secondary);
-}
-
-.debug-page .component-variant .mt-4 {
-  margin-top: 1rem;
-}
-
-.debug-page .component-variant .p-4 {
-  padding: 1rem;
-}
-
-.debug-page .component-variant .border {
-  border: 1px solid var(--color-border);
-}
-
-.debug-page .component-variant .rounded {
-  border-radius: 0.5rem;
-}
-
-.debug-page .nav-container {
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-.debug-page .nav-container.narrow-demo {
-  max-width: 480px;
-  margin: 0 auto;
-  overflow: visible;
-}
-
 /* Force mobile view styles regardless of actual screen width */
-.debug-page .nav-container.narrow-demo :deep(.hide-on-mobile) {
+.narrow-demo :deep(.hide-on-mobile) {
   display: none !important;
 }
 
-.debug-page .nav-container.narrow-demo :deep(.menu-toggle) {
+.narrow-demo :deep(.menu-toggle) {
   display: flex !important;
   order: -1;
-}
-
-.debug-page .carousel-demo {
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-  .debug-page {
-    padding: 1rem;
-  }
-
-  .debug-page .component-grid {
-    grid-template-columns: 1fr;
-  }
 }
 </style>
