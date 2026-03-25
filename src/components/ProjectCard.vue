@@ -1,10 +1,21 @@
 <template>
-  <div class="project-card">
-    <div class="project-header">
-      <div class="project-title-row">
-        <h3>{{ project.name }}</h3>
-        <div class="project-actions">
-          <span v-if="project.status" class="status-badge" :class="statusClass">{{ project.status }}</span>
+  <div class="project-card bg-bg-tertiary rounded-xl overflow-hidden" :class="{ simplified }">
+    <div class="project-header bg-bg-secondary px-6 py-3 max-md:px-4 max-md:py-2">
+      <div class="flex items-center justify-between gap-2">
+        <h3
+          class="text-xl font-semibold text-accent m-0 flex-1 min-w-0 max-md:text-lg max-sm:text-base"
+          :class="{ 'text-base': simplified }"
+        >
+          {{ project.name }}
+        </h3>
+        <div class="flex items-center gap-2 shrink-0">
+          <span
+            v-if="project.status"
+            class="text-sm py-0.5 px-2.5 rounded font-medium whitespace-nowrap bg-bg-primary text-text-secondary border border-border-light"
+            :class="[statusClass, simplified ? 'text-xs py-0.5 px-2' : '']"
+          >
+            {{ statusLabel }}
+          </span>
           <g-button
             v-if="project.url"
             :href="project.url"
@@ -18,19 +29,47 @@
           />
         </div>
       </div>
-      <p v-if="project.description" class="project-subtitle">{{ project.description }}</p>
+      <p v-if="!simplified && project.description" class="mt-1 mb-0 text-sm text-text-secondary leading-snug line-clamp-2">{{ project.description }}</p>
     </div>
 
-    <div class="project-body">
-      <div v-if="project.htmlDescription" class="description-container">
-        <div ref="descriptionRef" class="project-description" :class="{ truncated: !expanded }" v-html="project.htmlDescription" />
-        <button v-if="isOverflowing || expanded" class="toggle-btn" @click="toggle">
+    <!-- Default: htmlDescription + keywords -->
+    <div v-if="!simplified" class="p-6 max-sm:p-3">
+      <div v-if="project.htmlDescription" class="mb-3">
+        <div
+          ref="descriptionRef"
+          class="leading-relaxed"
+          :class="{ 'line-clamp-8 max-md:line-clamp-4': !expanded }"
+          v-html="project.htmlDescription"
+        />
+        <button
+          v-if="isOverflowing || expanded"
+          class="mt-2 p-0 text-sm text-accent opacity-80 transition-opacity duration-150 hover:opacity-100 cursor-pointer"
+          @click="toggle"
+        >
           {{ expanded ? "less..." : "more..." }}
         </button>
       </div>
 
-      <div v-if="project.keywords?.length" class="project-keywords">
-        <span v-for="keyword in project.keywords" :key="keyword" class="keyword-chip">{{ keyword }}</span>
+      <div v-if="project.keywords?.length" class="flex flex-wrap gap-1 mt-3">
+        <span
+          v-for="keyword in project.keywords"
+          :key="keyword"
+          class="text-sm py-0.5 px-2 rounded bg-accent-translucent text-accent-light whitespace-nowrap"
+          >{{ keyword }}</span
+        >
+      </div>
+    </div>
+
+    <!-- Simplified: description (plain text) + keywords -->
+    <div v-if="simplified" class="py-3 px-6 pb-4">
+      <p v-if="project.description" class="text-[0.8125rem] text-text-secondary leading-snug m-0 mb-2.5">{{ project.description }}</p>
+      <div v-if="project.keywords?.length" class="flex flex-wrap gap-1 mt-3">
+        <span
+          v-for="keyword in project.keywords.slice(0, 5)"
+          :key="keyword"
+          class="text-xs py-0.5 px-1.5 rounded bg-accent-translucent text-accent-light whitespace-nowrap"
+          >{{ keyword }}</span
+        >
       </div>
     </div>
   </div>
@@ -41,16 +80,26 @@ import { computed, ref, onMounted, onUnmounted, nextTick } from "vue";
 import GButton from "@/components/GButton.vue";
 import type { FullProject } from "@/data/models/Project";
 
-const props = defineProps<{
-  project: FullProject;
-}>();
+const props = withDefaults(
+  defineProps<{
+    project: FullProject;
+    simplified?: boolean;
+  }>(),
+  { simplified: false }
+);
+
+const statusLabel = computed(() => {
+  if (!props.project.status) return "";
+  if (props.project.status === "In Progress") return "Active";
+  return props.project.status;
+});
 
 const statusClass = computed(() => {
   if (!props.project.status) return "";
   const s = props.project.status.toLowerCase();
-  if (s === "complete") return "status-complete";
-  if (s === "in progress") return "status-in-progress";
-  if (s === "archived") return "status-archived";
+  if (s === "complete") return "text-[#4ade80] border-[rgba(74,222,128,0.3)]";
+  if (s === "in progress") return "text-[#facc15] border-[rgba(250,204,21,0.3)]";
+  if (s === "archived") return "";
   return "";
 });
 
@@ -79,176 +128,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.project-card {
-  background-color: var(--color-bg-tertiary);
-  border-radius: 0.75rem;
-  overflow: hidden;
-}
-
-.project-card + .project-card {
+.project-card:not(.simplified) + .project-card:not(.simplified) {
   margin-top: 1.5rem;
-}
-
-.project-header {
-  background-color: var(--color-bg-secondary);
-  padding: 0.75rem 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .project-header {
-    padding: 0.5rem 1rem;
-  }
-}
-
-.project-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.project-title-row h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  margin: 0;
-  flex: 1;
-  min-width: 0;
-}
-
-@media (max-width: 768px) {
-  .project-title-row h3 {
-    font-size: 1.125rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .project-title-row h3 {
-    font-size: 1rem;
-  }
-}
-
-.project-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.project-actions :deep(.btn) {
-  min-width: 0 !important;
-  min-height: 0 !important;
-  padding: 0.25rem !important;
-}
-
-.status-badge {
-  font-size: 0.875rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 0.25rem;
-  font-weight: 500;
-  white-space: nowrap;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-secondary);
-  border: 1px solid var(--color-border-light);
-}
-
-.status-badge.status-complete {
-  color: #4ade80;
-  border-color: rgba(74, 222, 128, 0.3);
-}
-
-.status-badge.status-in-progress {
-  color: #facc15;
-  border-color: rgba(250, 204, 21, 0.3);
-}
-
-.status-badge.status-archived {
-  color: var(--color-text-secondary);
-  border-color: var(--color-border-light);
-}
-
-.project-subtitle {
-  margin: 0.25rem 0 0;
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.project-body {
-  padding: 1.5rem;
-}
-
-@media (max-width: 640px) {
-  .project-body {
-    padding: 0.75rem;
-  }
-}
-
-.description-container {
-  margin-bottom: 0.75rem;
-}
-
-.project-description {
-  line-height: 1.6;
-}
-
-.project-description.truncated {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .project-description.truncated {
-    -webkit-line-clamp: 4;
-  }
-}
-
-.project-description :deep(h4) {
-  font-size: 1.125rem;
-  color: var(--color-accent-light);
-  margin: 1.5rem 0 0.5rem;
-}
-
-.project-description :deep(p) {
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
-}
-
-.toggle-btn {
-  margin-top: 0.5rem;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-size: 0.875rem;
-  color: var(--color-accent);
-  opacity: 0.8;
-  transition: opacity 0.15s;
-}
-
-.toggle-btn:hover {
-  opacity: 1;
-}
-
-.project-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-top: 0.75rem;
-}
-
-.keyword-chip {
-  font-size: 0.875rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 0.25rem;
-  background-color: var(--color-accent-translucent);
-  color: var(--color-accent-light);
-  white-space: nowrap;
 }
 </style>
