@@ -92,6 +92,13 @@ const structure = computed(() => {
     to: "/projects"
   };
 
+  const blogButton: ButtonProps = {
+    label: "Blog",
+    hideLabel: isNarrow,
+    icon: "book",
+    to: "/blog"
+  };
+
   const githubButton: ButtonProps = {
     href: GitHubLink,
     label: "GitHub",
@@ -109,7 +116,7 @@ const structure = computed(() => {
   };
 
   return {
-    left: [homeButton, experienceButton, projectsButton],
+    left: [homeButton, experienceButton, projectsButton, blogButton],
     right: [linkedinButton, githubButton]
   };
 });
