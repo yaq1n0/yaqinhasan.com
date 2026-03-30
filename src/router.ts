@@ -24,6 +24,16 @@ export const routes: Array<RouteRecordRaw> = [
     component: ProjectsPage
   },
   {
+    path: "/blog",
+    name: "blog",
+    component: () => import("@/pages/BlogListPage.vue")
+  },
+  {
+    path: "/blog/:slug",
+    name: "blog-post",
+    component: () => import("@/pages/BlogPostPage.vue")
+  },
+  {
     path: "/cv",
     name: "cv",
     component: CVPage
