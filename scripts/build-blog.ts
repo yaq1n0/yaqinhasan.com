@@ -92,7 +92,10 @@ async function main() {
 
     const slug = basename(file, ".md");
     const htmlContent = await marked.parse(content);
-    const wordCount = content.replace(/[#*`\->\[\]()]/g, "").split(/\s+/).filter(Boolean).length;
+    const wordCount = content
+      .replace(/[#*`\->\[\]()]/g, "")
+      .split(/\s+/)
+      .filter(Boolean).length;
     const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
     posts.push({

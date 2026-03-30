@@ -32,7 +32,12 @@
     <!-- Default: htmlDescription + keywords -->
     <div v-if="!simplified" class="p-6 max-sm:p-3">
       <div v-if="project.htmlDescription" class="mb-3">
-        <div ref="descriptionRef" class="prose max-w-none leading-relaxed" :class="{ 'line-clamp-8 max-md:line-clamp-4': !expanded }" v-html="project.htmlDescription" />
+        <div
+          ref="descriptionRef"
+          class="prose max-w-none leading-relaxed"
+          :class="{ 'line-clamp-8 max-md:line-clamp-4': !expanded }"
+          v-html="project.htmlDescription"
+        />
         <button
           v-if="isOverflowing || expanded"
           class="mt-2 p-0 text-sm text-accent opacity-80 transition-opacity duration-150 hover:opacity-100 cursor-pointer"
