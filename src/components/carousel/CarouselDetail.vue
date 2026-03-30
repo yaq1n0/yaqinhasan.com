@@ -11,7 +11,7 @@
       {{ summary }}
     </p>
 
-    <div class="p-6 max-sm:p-3 prose prose-headings:text-accent-light max-w-none">
+    <div class="p-6 max-sm:p-3 prose max-w-none">
       <slot />
     </div>
 
