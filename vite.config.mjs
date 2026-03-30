@@ -1,16 +1,47 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 import { fileURLToPath, URL } from "node:url";
 import fs from "fs";
 import path from "path";
 
+function getBlogSlugs() {
+  const blogDir = path.resolve(process.cwd(), "content/blog");
+  if (!fs.existsSync(blogDir)) return [];
+  return fs
+    .readdirSync(blogDir)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => f.replace(/\.md$/, ""));
+}
+
+function hasBlogImages() {
+  const imagesDir = path.resolve(process.cwd(), "content/blog/images");
+  if (!fs.existsSync(imagesDir)) return false;
+  return fs.readdirSync(imagesDir).some((f) => !f.startsWith("."));
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [tailwindcss(), vue()],
+  plugins: [
+    tailwindcss(),
+    vue(),
+    ...(hasBlogImages()
+      ? [
+          viteStaticCopy({
+            targets: [{ src: "content/blog/images/*", dest: "blog/images" }]
+          })
+        ]
+      : [])
+  ],
   ssgOptions: {
     script: "async",
     formatting: "minify",
+    includedRoutes(paths) {
+      const blogSlugs = getBlogSlugs();
+      const blogRoutes = blogSlugs.map((slug) => `/blog/${slug}`);
+      return [...paths.filter((p) => !p.includes(":")), ...blogRoutes];
+    },
     onFinished() {
       // Copy pre-rendered index.html as 404.html for GitHub Pages unknown-route fallback.
       // Vue Router's catch-all will handle rendering NotFoundPage on the client.

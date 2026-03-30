@@ -226,4 +226,197 @@
     --color-border: rgba(255, 255, 255, 0.15);
     --color-border-light: rgba(255, 255, 255, 0.08);
   }
+
+  /* ═══════════════════════════════════════════
+     PROSE — theme-aware typography overrides
+     ═══════════════════════════════════════════ */
+  .prose {
+    --tw-prose-body: var(--color-text-primary);
+    --tw-prose-headings: var(--color-accent-light);
+    --tw-prose-lead: var(--color-text-secondary);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: var(--color-text-primary);
+    --tw-prose-counters: var(--color-text-secondary);
+    --tw-prose-bullets: var(--color-text-secondary);
+    --tw-prose-hr: var(--color-border);
+    --tw-prose-quotes: var(--color-text-secondary);
+    --tw-prose-quote-borders: var(--color-accent-translucent);
+    --tw-prose-captions: var(--color-text-secondary);
+    --tw-prose-kbd: var(--color-text-primary);
+    --tw-prose-kbd-shadows: 0 0 0;
+    --tw-prose-code: var(--color-accent-dark);
+    --tw-prose-pre-code: inherit;
+    --tw-prose-pre-bg: var(--color-bg-secondary);
+    --tw-prose-th-borders: var(--color-border);
+    --tw-prose-td-borders: var(--color-border-light);
+    color: var(--color-text-primary);
+  }
+
+  /* Headings */
+  .prose :where(h1, h2, h3, h4) {
+    color: var(--color-accent-light);
+    font-weight: 700;
+  }
+  .prose :where(h1) {
+    font-size: 1.875rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .prose :where(h2) {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose :where(h3) {
+    font-size: 1.25rem;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Paragraphs & lists */
+  .prose :where(p) {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+  }
+  .prose :where(ul, ol) {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+  }
+  .prose :where(ul) {
+    list-style-type: disc;
+  }
+  .prose :where(ol) {
+    list-style-type: decimal;
+  }
+  .prose :where(li) {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Links */
+  .prose :where(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--transition-duration-fast);
+  }
+  .prose :where(a:hover) {
+    color: var(--color-accent-light);
+  }
+
+  /* Bold */
+  .prose :where(strong) {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  /* Inline code */
+  .prose :where(code):not(:where(pre code)) {
+    color: var(--color-accent-dark);
+    background: var(--color-bg-secondary);
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    font-family: var(--font-family-mono);
+  }
+  .prose :where(code)::before,
+  .prose :where(code)::after {
+    content: none;
+  }
+
+  /* Blockquotes */
+  .prose :where(blockquote) {
+    border-left: 3px solid var(--color-accent-translucent);
+    padding-left: 1rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Horizontal rule */
+  .prose :where(hr) {
+    border-color: var(--color-border-light);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Images */
+  .prose :where(img) {
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Tables */
+  .prose :where(table) {
+    width: 100%;
+    font-size: 0.875rem;
+  }
+  .prose :where(th) {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.5rem 0.75rem;
+  }
+  .prose :where(td) {
+    border-bottom: 1px solid var(--color-border-light);
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* ═══════════════════════════════════════════
+     SHIKI — code block styling & theme switching
+     ═══════════════════════════════════════════ */
+
+  /* Code block container */
+  .prose :where(pre),
+  .shiki {
+    background: var(--color-bg-secondary) !important;
+    border: 1px solid var(--color-border-light);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-family: var(--font-family-mono);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .shiki code {
+    background: none !important;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+
+  /* Shiki dual-theme: light themes use --shiki-light, dark themes use --shiki-dark */
+  [data-theme$="-light"] .shiki,
+  [data-theme$="-light"] .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: var(--shiki-light-bg) !important;
+  }
+  [data-theme$="-light"] .shiki code,
+  [data-theme$="-light"] .shiki code span {
+    background-color: transparent !important;
+  }
+
+  [data-theme$="-dark"] .shiki,
+  [data-theme$="-dark"] .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+  [data-theme$="-dark"] .shiki code,
+  [data-theme$="-dark"] .shiki code span {
+    background-color: transparent !important;
+  }
+
+  /* Override shiki container bg with theme color (not github's bg) */
+  [data-theme$="-light"] .shiki,
+  [data-theme$="-dark"] .shiki {
+    background-color: var(--color-bg-secondary) !important;
+  }
 }

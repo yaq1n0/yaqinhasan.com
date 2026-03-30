@@ -32,7 +32,8 @@ import {
   faBug,
   faBriefcase,
   faDownload,
-  faEye
+  faEye,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -67,6 +68,7 @@ library.add(
   faBriefcase,
   faDownload,
   faEye,
+  faSearch,
   faGithub,
   faLinkedin
 );
