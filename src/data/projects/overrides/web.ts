@@ -20,5 +20,10 @@ export const webOverrides = withCategory("Web", {
     status: "Complete",
     keywords: ["Vue", "Vite", "TypeScript", "npm", "Package Development"],
     order: 4
+  },
+  TableTopBots: {
+    status: "Complete",
+    keywords: ["Python", "FastAPI", "React", "Full Stack"],
+    order: 5
   }
 });
