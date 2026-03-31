@@ -3,7 +3,7 @@
     :is="componentType"
     v-bind="componentProps"
     :title="label"
-    :class="['btn', `shape-${shape}`, `border-${border}`, `label-${labelPos}`, { 'has-icon': !!icon }]"
+    :class="['btn', `shape-${shape}`, `border-${border}`, `label-${labelPos}`, { 'has-icon': !!icon, 'has-label': !!(label && !hideLabel) }]"
     :style="{ '--btn-bg-color': background }"
     @click="$emit('click', $event)"
   >
@@ -82,6 +82,12 @@ const parsedIcon = computed(() => {
   min-height: 40px;
   max-width: 100%;
   width: auto;
+}
+
+.btn:not(.has-label) {
+  padding: 0.25rem;
+  min-width: unset;
+  min-height: unset;
 }
 
 .btn .btn-content {
