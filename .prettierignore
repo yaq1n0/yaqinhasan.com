@@ -1,0 +1,4 @@
+# ignore generated files
+/src/data/models/CV.ts
+/src/data/projects/githubProjects.ts
+/src/data/blog/blogPosts.ts
