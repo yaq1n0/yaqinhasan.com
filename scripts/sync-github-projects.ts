@@ -10,17 +10,18 @@ type GitHubReadmeResponse = components["schemas"]["content-file"];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const GITHUB_USER = "yaq1n0"; // my GitHub username
+const GITHUB_ORG = "DooDooDynamics"; // my GitHub org
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const authHeaders: Record<string, string> = GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {};
 const OUTPUT_PATH = resolve(__dirname, "../src/data/projects/githubProjects.ts"); // path to githubProjects.ts output file
-const getBaseRawUrl = (repoName: string) => `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/main/`;
-const getBaseBlobUrl = (repoName: string) => `https://github.com/${GITHUB_USER}/${repoName}/blob/main/`;
-const getReadmeUrl = (repoName: string) => `https://api.github.com/repos/${GITHUB_USER}/${repoName}/readme`;
+const getBaseRawUrl = (owner: string, repoName: string) => `https://raw.githubusercontent.com/${owner}/${repoName}/main/`;
+const getBaseBlobUrl = (owner: string, repoName: string) => `https://github.com/${owner}/${repoName}/blob/main/`;
+const getReadmeUrl = (owner: string, repoName: string) => `https://api.github.com/repos/${owner}/${repoName}/readme`;
 
 /** Rewrite relative URLs in HTML to absolute GitHub URLs */
-const rewriteRelativeUrls = (html: string, repoName: string): string => {
-  const baseRaw = getBaseRawUrl(repoName);
-  const baseBlob = getBaseBlobUrl(repoName);
+const rewriteRelativeUrls = (html: string, owner: string, repoName: string): string => {
+  const baseRaw = getBaseRawUrl(owner, repoName);
+  const baseBlob = getBaseBlobUrl(owner, repoName);
 
   // Rewrite src attributes (images, videos) → raw.githubusercontent.com for direct file access
   html = html.replace(
@@ -38,8 +39,8 @@ const rewriteRelativeUrls = (html: string, repoName: string): string => {
 };
 
 /** Fetch README for a repo, return HTML or null if no README */
-const fetchReadmeHtml = async (repoName: string) => {
-  const url = getReadmeUrl(repoName);
+const fetchReadmeHtml = async (owner: string, repoName: string) => {
+  const url = getReadmeUrl(owner, repoName);
   const res = await fetch(url, {
     headers: { Accept: "application/vnd.github.v3+json", ...authHeaders }
   });
@@ -53,40 +54,44 @@ const fetchReadmeHtml = async (repoName: string) => {
   const data = (await res.json()) as GitHubReadmeResponse;
   const markdown = Buffer.from(data.content, "base64").toString("utf-8");
   const html = await marked(markdown);
-  const withRewrittenUrls = rewriteRelativeUrls(html, repoName);
+  const withRewrittenUrls = rewriteRelativeUrls(html, owner, repoName);
   return withRewrittenUrls;
 };
 
 /** Escape backticks and backslashes for safe embedding in a JS template literal */
 const escapeForTemplateLiteral = (str: string): string => str.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
 
-async function main() {
-  console.log(`Fetching repos for ${GITHUB_USER}...`);
-
-  const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`, {
+async function fetchRepos(owner: string, type: "users" | "orgs"): Promise<GitHubRepo[]> {
+  const res = await fetch(`https://api.github.com/${type}/${owner}/repos?per_page=100`, {
     headers: { Accept: "application/vnd.github.v3+json", ...authHeaders }
   });
-
-  if (!reposRes.ok) {
-    console.error(`Failed to fetch repos: ${reposRes.status}`);
-    process.exit(1);
+  if (!res.ok) {
+    console.error(`Failed to fetch repos for ${owner}: ${res.status}`);
+    return [];
   }
+  const all = (await res.json()) as GitHubRepo[];
+  return all.filter((r) => !r.fork);
+}
 
-  const allRepos = (await reposRes.json()) as GitHubRepo[];
-  const repos = allRepos.filter((r) => !r.fork);
+async function main() {
+  console.log(`Fetching repos for ${GITHUB_USER} and ${GITHUB_ORG}...`);
+
+  const [userRepos, orgRepos] = await Promise.all([fetchRepos(GITHUB_USER, "users"), fetchRepos(GITHUB_ORG, "orgs")]);
+  const repos = [...userRepos, ...orgRepos];
 
   console.log(`Found ${repos.length} non-fork public repos. Fetching READMEs...`);
 
   const results = await Promise.all(
     repos.map(async (repo) => {
-      console.log(`  ${repo.name}...`);
-      return { repo, readmeHtml: await fetchReadmeHtml(repo.name) };
+      const owner = repo.owner!.login;
+      console.log(`  ${owner}/${repo.name}...`);
+      return { repo, readmeHtml: await fetchReadmeHtml(owner, repo.name) };
     })
   );
 
   const projects = results.map(
     ({ repo, readmeHtml }) => `  {
-    id: ${JSON.stringify(repo.name)},
+    id: ${JSON.stringify(repo.name)}, // if you have a repo that's the same name in the user and the org, it will crash, but I don't do this because it's stupid
     name: ${JSON.stringify(repo.name)},
     description: ${JSON.stringify(repo.description)},
     htmlDescription: ${readmeHtml ? `\`${escapeForTemplateLiteral(readmeHtml)}\`` : "null"},
