@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import { fileURLToPath, URL } from "node:url";
 import fs from "fs";
 import path from "path";
@@ -10,29 +9,16 @@ function getBlogSlugs() {
   const blogDir = path.resolve(process.cwd(), "content/blog");
   if (!fs.existsSync(blogDir)) return [];
   return fs
-    .readdirSync(blogDir)
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => f.replace(/\.md$/, ""));
-}
-
-function hasBlogImages() {
-  const imagesDir = path.resolve(process.cwd(), "content/blog/images");
-  if (!fs.existsSync(imagesDir)) return false;
-  return fs.readdirSync(imagesDir).some((f) => !f.startsWith("."));
+    .readdirSync(blogDir, { withFileTypes: true })
+    .filter((e) => e.isDirectory())
+    .map((e) => e.name);
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     tailwindcss(),
-    vue(),
-    ...(hasBlogImages()
-      ? [
-          viteStaticCopy({
-            targets: [{ src: "content/blog/images/*", dest: "blog/images" }]
-          })
-        ]
-      : [])
+    vue()
   ],
   ssgOptions: {
     script: "async",

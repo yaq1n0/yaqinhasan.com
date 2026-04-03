@@ -7,7 +7,7 @@ export const blogPosts: BlogPost[] = [
     title: "Hello World!: The first blog post",
     date: "2026-03-30",
     description: "The first post on my blog, detailing how it's built.",
-    tags: ["web", "dev", "blog"],
+    tags: ["web","dev","blog"],
     coverImage: undefined,
     draft: false,
     content: `
@@ -47,9 +47,9 @@ print(fibonacci(10))
 
 ### Embedded Content (Images)
 
-You can embed saved images from the \`content/blog/images/..\` directory using standard md embedding syntax:
+You can embed images saved alongside the post using standard md embedding syntax:
 
-![image](/content/blog/images/coconut.jpg)
+![image](./coconut.jpg)
 
 Or you can use a url for online images (this is the same image, just served from the internet):
 
@@ -97,8 +97,8 @@ More posts coming at some point...
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> fib[:n]</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(fibonacci(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">))</span></span></code></pre><h3>Embedded Content (Images)</h3>
-<p>You can embed saved images from the <code>content/blog/images/..</code> directory using standard md embedding syntax:</p>
-<p><img src="/content/blog/images/coconut.jpg" alt="image"></p>
+<p>You can embed images saved alongside the post using standard md embedding syntax:</p>
+<p><img src="/blog-assets/hello-world/coconut.jpg" alt="image"></p>
 <p>Or you can use a url for online images (this is the same image, just served from the internet):</p>
 <p><img src="https://preview.redd.it/this-is-inside-the-tf2-game-files-as-why-v0-vw6c9iwr6rk51.jpg?auto=webp&s=e7afd0eb74dc2572e7c50cee902cda7c140d6a74" alt="image"></p>
 <p>This is the iconic <code>coconut.jpg</code>, which is load-bearing in the TF2 codebase.</p>
@@ -120,6 +120,6 @@ More posts coming at some point...
   }
 ];
 
-export const allTags: string[] = ["blog", "dev", "web"];
+export const allTags: string[] = ["blog","dev","web"];
 
 export const blogPostsBySlug: Record<string, BlogPost> = Object.fromEntries(blogPosts.map((p) => [p.slug, p]));

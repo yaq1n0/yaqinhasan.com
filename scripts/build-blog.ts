@@ -1,5 +1,5 @@
-import { readFileSync, readdirSync, writeFileSync } from "fs";
-import { resolve, dirname, basename } from "path";
+import { readFileSync, readdirSync, writeFileSync, mkdirSync, copyFileSync } from "fs";
+import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import matter from "gray-matter";
 import { Marked } from "marked";
@@ -7,6 +7,7 @@ import { createHighlighter } from "shiki";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const BLOG_DIR = resolve(__dirname, "../content/blog");
+const PUBLIC_DIR = resolve(__dirname, "../public");
 const OUTPUT_PATH = resolve(__dirname, "../src/data/blog/blogPosts.ts");
 
 const includeDrafts = process.argv.includes("--include-drafts");
@@ -42,10 +43,11 @@ async function main() {
     }
   });
 
-  // Read all .md files
-  const files = readdirSync(BLOG_DIR).filter((f) => f.endsWith(".md"));
+  // Scan for post directories (each directory = one post, slug = directory name)
+  const entries = readdirSync(BLOG_DIR, { withFileTypes: true });
+  const dirs = entries.filter((e) => e.isDirectory());
 
-  if (files.length === 0) {
+  if (dirs.length === 0) {
     console.warn("No blog posts found in content/blog/");
   }
 
@@ -62,9 +64,11 @@ async function main() {
     readingTime: number;
   }> = [];
 
-  for (const file of files) {
-    const filePath = resolve(BLOG_DIR, file);
-    const raw = readFileSync(filePath, "utf-8");
+  for (const dir of dirs) {
+    const slug = dir.name;
+    const postDir = resolve(BLOG_DIR, slug);
+    const mdPath = resolve(postDir, `${slug}.md`);
+    const raw = readFileSync(mdPath, "utf-8");
     const { data: frontmatter, content } = matter(raw);
 
     // Validate frontmatter
@@ -78,7 +82,7 @@ async function main() {
     };
 
     if (!title || !date || !description || !tags) {
-      console.error(`Invalid frontmatter in ${file}: missing required fields (title, date, description, tags)`);
+      console.error(`Invalid frontmatter in ${slug}/${slug}.md: missing required fields (title, date, description, tags)`);
       process.exit(1);
     }
 
@@ -86,12 +90,27 @@ async function main() {
 
     // Skip drafts unless flag is set
     if (isDraft && !includeDrafts) {
-      console.log(`Skipping draft: ${file}`);
+      console.log(`Skipping draft: ${slug}`);
       continue;
     }
 
-    const slug = basename(file, ".md");
-    const htmlContent = await marked.parse(content);
+    // Copy all non-md assets to public/blog-assets/[slug]/
+    const assetFiles = readdirSync(postDir).filter((f) => !f.endsWith(".md"));
+    if (assetFiles.length > 0) {
+      const destDir = resolve(PUBLIC_DIR, "blog-assets", slug);
+      mkdirSync(destDir, { recursive: true });
+      for (const asset of assetFiles) {
+        copyFileSync(resolve(postDir, asset), resolve(destDir, asset));
+      }
+    }
+
+    // Rewrite ./relative-path image references to absolute public paths
+    const rewrittenContent = content.replace(
+      /!\[([^\]]*)\]\(\.\/([^)]+)\)/g,
+      (_, alt, filename) => `![${alt}](/blog-assets/${slug}/${filename})`
+    );
+
+    const htmlContent = await marked.parse(rewrittenContent);
     const wordCount = content
       .replace(/[#*`\->\[\]()]/g, "")
       .split(/\s+/)

@@ -42,9 +42,9 @@ print(fibonacci(10))
 
 ### Embedded Content (Images)
 
-You can embed saved images from the `content/blog/images/..` directory using standard md embedding syntax:
+You can embed images saved alongside the post using standard md embedding syntax:
 
-![image](/content/blog/images/coconut.jpg)
+![image](./coconut.jpg)
 
 Or you can use a url for online images (this is the same image, just served from the internet):
 
