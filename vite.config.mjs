@@ -29,7 +29,7 @@ export default defineConfig({
     ...(hasBlogImages()
       ? [
           viteStaticCopy({
-            targets: [{ src: "content/blog/images/*", dest: "blog/images" }]
+            targets: [{ src: "content/blog/images/*", dest: "content/blog/images" }]
           })
         ]
       : [])
