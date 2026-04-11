@@ -2,11 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Yaqin Hasan - Software Engineer - Personal Portfolio" />
+    <meta name="description" content="Yaqin Hasan - Software Engineer - Full Stack  - Portfolio" />
     <meta name="darkreader-lock" />
+
+    <link rel="icon" href="/favicon.ico" />
+
     <title>Yaqin Hasan</title>
+
     <style>
       html[data-theme="default-light"] {
         background: #fdf6e3;
@@ -30,7 +33,10 @@
     <script>
       (function () {
         var stored = localStorage.getItem("theme");
-        var theme;
+        let theme;
+        // default theme based on prefers color scheme
+        const prefersDark = matchMedia("(prefers-color-scheme:dark)").matches;
+        const defaultTheme = prefersDark ? "default-dark" : "default-light";
         try {
           theme = JSON.parse(stored);
         } catch (e) {
@@ -38,16 +44,15 @@
         }
         var valid = ["default-light", "default-dark", "futuristic-light", "futuristic-dark", "pastel-light", "pastel-dark"];
         if (valid.indexOf(theme) === -1) {
-          theme = matchMedia("(prefers-color-scheme:dark)").matches ? "default-dark" : "default-light";
+          theme = defaultTheme;
         }
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
-    <!-- This is the main entry point -->
   </head>
   <body>
     <noscript>
-      <strong> We're sorry but this site doesn't work properly without JavaScript enabled. Please enable it to continue. </strong>
+      <strong> This site doesn't work properly without JavaScript enabled. Please enable it to continue. </strong>
     </noscript>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
