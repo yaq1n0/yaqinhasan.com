@@ -7,10 +7,17 @@ import type { FullProject, CVProject } from "@/data/models/Project";
 const githubProjectsById = new Map(githubProjects.map((p) => [p.id, p]));
 const findMatchedRepo = (id: string) => githubProjectsById.get(id);
 
+/** [] | undefined -> undefined */
+const normalizeEmptyArray = <T>(arr?: T[]): T[] | undefined => (arr && arr.length > 0 ? arr : undefined);
+
+/** Projects that exist, but don't exist as a github repo */
+const virtualProjectIds = new Set(["opensona"]);
+const isVirtualProject = (id: string) => virtualProjectIds.has(id);
+
 /** Resolve a project for the Projects page */
 const resolveFullProject = (id: string): FullProject | undefined => {
   const gh = findMatchedRepo(id);
-  if (!gh) {
+  if (!gh && !isVirtualProject(id)) {
     console.warn(`[resolveProjects] Override references unknown repo: "${id}"`);
     return undefined;
   }
@@ -18,13 +25,13 @@ const resolveFullProject = (id: string): FullProject | undefined => {
   const override = projectOverrides[id];
   return {
     id,
-    name: override.name ?? gh.name,
-    description: override.description ?? gh.description ?? undefined,
-    htmlDescription: override.htmlDescription ?? gh.htmlDescription ?? undefined,
-    url: gh.url,
-    keywords: override.keywords ?? (gh.topics.length > 0 ? gh.topics : undefined),
+    name: override.name ?? gh?.name ?? "",
+    description: override.description ?? gh?.description ?? undefined,
+    htmlDescription: override.htmlDescription ?? gh?.htmlDescription ?? undefined,
+    url: gh?.url,
+    keywords: normalizeEmptyArray(override.keywords) ?? normalizeEmptyArray(gh?.topics),
     category: override.category,
-    status: override.status ?? (gh.archived ? "Archived" : undefined),
+    status: override.status ?? (gh?.archived ? "Archived" : undefined),
     order: override.order ?? 999
   };
 };
@@ -40,17 +47,18 @@ export const fullProjects = getFullProjects();
 /** Resolve a project for the CV */
 const resolveCVProject = (id: string): CVProject | undefined => {
   const gh = findMatchedRepo(id);
-  if (!gh) {
+
+  if (!gh && !isVirtualProject(id)) {
     console.warn(`[resolveProjects] CV override references unknown repo: "${id}"`);
     return undefined;
   }
 
   const overrides = cvOverrides[id];
   return {
-    name: overrides?.name ?? gh.name,
-    description: overrides?.description ?? gh.description ?? undefined,
-    keywords: overrides?.keywords ?? (gh.topics.length > 0 ? gh.topics : undefined),
-    url: gh.url
+    name: overrides?.name ?? gh?.name,
+    description: overrides?.description ?? gh?.description ?? undefined,
+    keywords: normalizeEmptyArray(overrides?.keywords) ?? normalizeEmptyArray(gh?.topics),
+    url: gh?.url
   };
 };
 
