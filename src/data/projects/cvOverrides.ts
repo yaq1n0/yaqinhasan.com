@@ -13,17 +13,19 @@ export const cvOverrides: Record<string, Partial<CVProject>> = {
     description: "Spotlight-inspired menu bar utility for launching & scheduling local script-based workflows, built with Swift & SwiftUI.",
     keywords: ["Swift", "SwiftUI", "macOS Development", "Desktop App Development", "Shell Scripting"]
   },
+  opensona: {
+    name: "opensona • npm library",
+    description:
+      "Open source TypeScript framework for building graph RAG pipelines using Fandom wiki data. Powering persona-based chat on mikoshidb.net, running fully client-side with WebLLM",
+    keywords: ["TypeScript", "AI", "LLM", "RAG", "WebLLM", "npm", "Developer Tooling"]
+  },
   "opl-py": {
     name: "opl-py • PyPI package",
     description:
       "Open source Python SDK and dockerised web app for querying and analysing OpenPowerlifting data, with performance prediction using machine learning",
     keywords: ["Python", "FastAPI", "React", "Docker", "scikit-learn", "PyTorch", "PyPI", "Machine Learning", "Data analytics"]
   },
-  "prompt-as-endpoint": {
-    name: "prompt-as-endpoint • npm library",
-    description: "Open source TypeScript library for building AI-powered APIs with runtime schema validation, prompt templating, and output validation.",
-    keywords: ["TypeScript", "AI", "LLM", "REST API", "Zod", "npm", "Developer Experience"]
-  },
+
   STQL: {
     name: "STQL • Interpreter",
     description: "Interpreter for a custom SQL-inspired RDF querying language, implemented in Haskell",
