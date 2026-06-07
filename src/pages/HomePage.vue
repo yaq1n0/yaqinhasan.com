@@ -21,7 +21,7 @@
         <p class="text-[clamp(0.9375rem,1.5vw,1.125rem)] text-text-secondary leading-relaxed mt-3">Pull Requests on weekdays. Personal Records on weekends.</p>
 
         <p class="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.8125rem,1.25vw,0.9375rem)] text-text-secondary italic leading-relaxed opacity-70">
-          Cambridge, UK · Open to relocation · Visa sponsorship required
+          Cambridge, UK<template v-if="looking"> · Open to relocation · Visa sponsorship required</template>
         </p>
       </div>
 
@@ -86,7 +86,9 @@
       :class="{ visible: visibleSections.contact }"
     >
       <h2 class="text-[clamp(1.25rem,3vw,1.625rem)] font-bold text-text-primary mb-3">Let's Talk!</h2>
-      <p class="text-[clamp(0.8125rem,1.25vw,0.9375rem)] text-text-secondary mb-7">Looking for my next role · Open to collaboration</p>
+      <p class="text-[clamp(0.8125rem,1.25vw,0.9375rem)] text-text-secondary mb-7">
+        <template v-if="looking">Looking for my next role · </template>Open to collaboration
+      </p>
       <div class="flex gap-3.5 justify-center flex-wrap">
         <g-button :href="`mailto:${email}`" icon="envelope" icon-prefix="fas" label="Email" />
         <g-button :href="LinkedInLink" icon="linkedin" icon-prefix="fab" label="LinkedIn" />
@@ -104,6 +106,7 @@ import ProjectCard from "@/components/ProjectCard.vue";
 import RenderCV from "@/components/RenderCV.vue";
 import { fullProjects } from "@/data/projects/projectHelpers";
 import { GitHubLink, LinkedInLink, CVLink } from "@/data/ExternalLinks";
+import { looking } from "@/data/featureFlags";
 import { cvData } from "@/data/cvData";
 
 const email = cvData.basics?.email ?? "";
