@@ -18,7 +18,7 @@
             ><span v-else>{{ item.text }}</span>
           </template>
         </div>
-        <div>Open to relocation · Visa sponsorship required</div>
+        <div v-if="looking">Open to relocation · Visa sponsorship required</div>
       </div>
     </header>
 
@@ -83,6 +83,7 @@
 import type { CV } from "@/data/models/CV";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+import { looking } from "@/data/featureFlags";
 
 const props = defineProps<{
   cv: CV;
