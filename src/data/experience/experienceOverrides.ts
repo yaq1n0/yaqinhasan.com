@@ -6,6 +6,7 @@ import type { ExperienceOverride } from "@/data/models/Experience";
  * Key = BaseExperience.id from experiences.ts.
  */
 export const experienceOverrides: Record<string, ExperienceOverride> = {
+  portswigger: {},
   "cambridge-kinetics": {
     // No overrides needed yet — base data is already website-ready.
     // Examples of what you could override:

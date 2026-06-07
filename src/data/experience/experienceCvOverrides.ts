@@ -9,6 +9,10 @@ import type { CVExperience } from "@/data/models/Experience";
  * (which flattens highlights and recombines title + techStack into position).
  */
 export const experienceCvOverrides: Record<string, Partial<CVExperience>> = {
+  portswigger: {
+    // techStack empty in base, so override position to avoid trailing " • "
+    position: "Product Engineer"
+  },
   "cambridge-kinetics": {
     // No overrides needed — the auto-generated position and highlights are CV-ready.
     // Examples:

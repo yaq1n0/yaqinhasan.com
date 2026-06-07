@@ -3,6 +3,15 @@ import type { BaseExperience } from "@/data/models/Experience";
 /** Source-of-truth experience data. Tags drive the carousel filter on ExperiencePage. */
 export const experiences: BaseExperience[] = [
   {
+    id: "portswigger",
+    company: "PortSwigger",
+    title: "Product Engineer",
+    techStack: [],
+    startDate: "June 2026",
+    endDate: "Present",
+    highlights: []
+  },
+  {
     id: "cambridge-kinetics",
     company: "Cambridge Kinetics",
     title: "Software Engineer (Full Stack)",
