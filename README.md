@@ -41,7 +41,19 @@ npm run prettier:fix
 ### JSON -> Web CV
 
 - Displays cv.json dynamically using Vue.
-- Allows generation of cv.pdf using `render-pdf.ts`. (requires playwright setup with `npm run setup:playwright`)
+- Allows generation of cv.pdf using `render-cv.ts` (requires playwright setup with `npm run setup:playwright`):
+  - `npm run render:cv` → **public, scrubbed** `public/cv.pdf` (no contact info) — this is the one that's committed and served on the site.
+  - `npm run render:cv:contact` → **private** `cv-private.pdf` (gitignored) **with** contact info, for sending to recruiters / job sites.
+
+#### Contact info (email & phone)
+
+Contact details are never committed to the repo or shipped on the deployed site. `cvData.ts`
+reads them from `VITE_CV_EMAIL` / `VITE_CV_PHONE`, which you set in a **gitignored `.env.local`**
+(see `.env.example`). With those vars unset, every consumer (web CV, `cv.json`, `cv.pdf`, the
+"Email" button, terminal `whoami`) simply omits them. The live site is scrubbed by default and
+only shows contact info if those env vars are explicitly added to the deploy workflow. See
+[`scripts/SCRIPTS.md`](scripts/SCRIPTS.md#contact-info-gating-email-and-phone)
+for the full gating table and caveats.
 
 ### Interactive "Terminal"
 

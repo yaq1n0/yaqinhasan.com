@@ -15,11 +15,46 @@
 
 ## CV JSON Generation Scripts
 
-| File Name                 | `npm run` command | Function                                                                                                                         |
-| ------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `sync-github-projects.ts` | `sync:github`     | Pulls GitHub projects into `src/data/projects/githubProjects.ts`                                                                 |
-| `generate-cv-json.ts`     | `gen:cv-json`     | Generates `cv.json` by combining `githubProjects.ts`, `cvOverrides.ts`, and `cvData.ts`. Also runs automatically via `prebuild`. |
-| `render-pdf.ts`           | `render:pdf`      | Navigates to `.../cv` and renders `public/cv.pdf` using Playwright                                                               |
+| File Name                 | `npm run` command   | Function                                                                                                                                |
+| ------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `sync-github-projects.ts` | `sync:github`       | Pulls GitHub projects into `src/data/projects/githubProjects.ts`                                                                        |
+| `generate-cv-json.ts`     | `gen:cv-json`       | Generates `public/cv.json` by combining `githubProjects.ts`, `cvOverrides.ts`, and `cvData.ts`. Also runs automatically via `prebuild`. |
+| `render-cv.ts`            | `render:cv`         | Navigates to `.../cv` and renders the **public, scrubbed** `public/cv.pdf` using Playwright                                             |
+| `render-cv.ts`            | `render:cv:contact` | Same, but renders a **private** `cv-private.pdf` (gitignored) **with contact info** from `.env.local`                                   |
+
+### Contact info gating (email and phone)
+
+Contact details are **never** stored in the repo or on the deployed site. `cvData.ts`
+reads them from the environment:
+
+```ts
+const env = import.meta.env as ImportMetaEnv | undefined;
+email: env?.VITE_CV_EMAIL || undefined,
+phone: env?.VITE_CV_PHONE || undefined,
+```
+
+When those vars are unset, `basics.email` / `basics.phone` are `undefined` and every
+consumer omits them (web `/cv`, `cv.json`, `cv.pdf`, the Home "Email" button, terminal `whoami`).
+
+Set the real values in a **gitignored `.env.local`** (see `.env.example`):
+
+```bash
+VITE_CV_EMAIL=you@example.com
+VITE_CV_PHONE=00000 000000
+```
+
+| Where                                          | Contact info shown? | Why                                                                                           |
+| ---------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| `npm run render:cv:contact` → `cv-private.pdf` | ✅ yes              | reads `.env.local`; output is gitignored — this is the copy you send to recruiters            |
+| `npm run render:cv` → `public/cv.pdf`          | ❌ no               | forces an empty `envDir`, so `.env.local` is ignored and the committed PDF is always scrubbed |
+| `gen:cv-json` → `public/cv.json`               | ❌ no               | runs under `tsx` with no Vite env, so it's always scrubbed                                    |
+| Deployed site (GitHub Actions `npm run build`) | ❌ no               | CI has no `.env.local` / env vars                                                             |
+| Deployed site **opted in**                     | ✅ yes              | only if `VITE_CV_EMAIL` / `VITE_CV_PHONE` are explicitly added to the deploy workflow's env   |
+
+> ⚠️ The opt-in is "env var present at build time." Deploys go through GitHub Actions
+> (no `.env.local`), so the live site is scrubbed by default. Do **not** run `npm run build`
+> locally with `.env.local` present and then manually publish that `dist/` — the prerendered
+> `/cv` HTML would include contact info. Always deploy via CI.
 
 ### CV JSON Pipeline
 
@@ -34,7 +69,7 @@ flowchart TD
     resolveProjects["src/data/projects/resolveProjects.ts"]
     ProjectsPage["src/pages/ProjectsPage.vue"]
     genJson["npm run gen:cv-json\nscripts/generate-cv-json.ts\n(also runs automatically via prebuild)"]
-    cvJson[("dist/cv.json\n(auto-generated)")]
+    cvJson[("public/cv.json\n(auto-generated, scrubbed)")]
 
     GH --> sync --> ghProjects
     ghProjects --> resolveProjects
