@@ -24,6 +24,7 @@
     "gen:cv-schema": "tsx scripts/generate-cv-schema.ts",
     "gen:cv-json": "tsx scripts/generate-cv-json.ts",
     "render:cv": "npx tsx scripts/render-cv.ts",
+    "render:cv:contact": "INCLUDE_CONTACT=1 npx tsx scripts/render-cv.ts",
     "validate:themes": "tsx scripts/validate-themes.ts",
     "validate:contrast": "tsx scripts/validate-contrast.ts",
     "audit:projects": "tsx scripts/audit-projects.ts"

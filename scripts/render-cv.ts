@@ -1,21 +1,32 @@
 import { chromium } from "playwright";
 import { createServer, type ViteDevServer } from "vite";
 import path from "path";
+import os from "os";
+import fs from "fs";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
-const outputPath = path.join(projectRoot, "public", "cv.pdf");
+
+// INCLUDE_CONTACT=1 renders a PRIVATE CV with contact info (from .env.local) to
+// a gitignored file. The default renders the PUBLIC, scrubbed cv.pdf — loading
+// env from an empty dir so local contact details can never be baked into the
+// committed public/cv.pdf by accident.
+const includeContact = process.env.INCLUDE_CONTACT === "1";
+const outputPath = includeContact ? path.join(projectRoot, "cv-private.pdf") : path.join(projectRoot, "public", "cv.pdf");
+const envDir = includeContact ? projectRoot : fs.mkdtempSync(path.join(os.tmpdir(), "cv-noenv-"));
 
 async function renderPDF() {
   let server: ViteDevServer | null = null;
 
   try {
+    console.log(includeContact ? "Rendering PRIVATE CV (with contact info)..." : "Rendering PUBLIC CV (contact info scrubbed)...");
     console.log("Starting Vite dev server...");
 
     // Start Vite dev server
     server = await createServer({
       root: projectRoot,
+      envDir,
       server: {
         port: 5174, // Use different port to avoid conflicts
         strictPort: true

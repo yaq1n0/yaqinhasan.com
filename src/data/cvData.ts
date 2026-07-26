@@ -2,11 +2,18 @@ import type { CV } from "@/data/models/CV";
 import { CVProjects } from "./projects/projectHelpers";
 import { cvExperiences } from "./experience/experienceHelpers";
 
+// Contact details are injected from the environment so they never live in the
+// repo or on the deployed site. Set VITE_CV_EMAIL / VITE_CV_PHONE in a local
+// .env.local (gitignored) to render a CV with contact info — see README.
+// `import.meta.env` is undefined when this module is loaded outside Vite
+// (e.g. the gen:cv-json tsx script), so guard the access.
+const env = import.meta.env as ImportMetaEnv | undefined;
+
 export const cvData: CV = {
   basics: {
     name: "Yaqin Hasan",
-    email: "redacted@example.com",
-    phone: "REDACTED",
+    email: env?.VITE_CV_EMAIL || undefined,
+    phone: env?.VITE_CV_PHONE || undefined,
     url: "https://yaqinhasan.com",
     location: { city: "Cambridge", countryCode: "UK" },
     profiles: [

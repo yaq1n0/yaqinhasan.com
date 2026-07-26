@@ -90,7 +90,7 @@
         <template v-if="looking">Looking for my next role · </template>Open to collaboration
       </p>
       <div class="flex gap-3.5 justify-center flex-wrap">
-        <g-button :href="`mailto:${email}`" icon="envelope" icon-prefix="fas" label="Email" />
+        <g-button v-if="email" :href="`mailto:${email}`" icon="envelope" icon-prefix="fas" label="Email" />
         <g-button :href="LinkedInLink" icon="linkedin" icon-prefix="fab" label="LinkedIn" />
         <g-button :href="GitHubLink" icon="github" icon-prefix="fab" label="GitHub" />
       </div>

@@ -1,6 +1,7 @@
 import type { Ref } from "vue";
 import type { Command, AddOutputFn } from "./Command";
 import { CVLink } from "../ExternalLinks";
+import { cvData } from "../cvData";
 
 export function createSimpleCommands(addOutput: AddOutputFn, allCommands: Ref<Command[]>): Command[] {
   return [
@@ -36,7 +37,11 @@ export function createSimpleCommands(addOutput: AddOutputFn, allCommands: Ref<Co
       execute: () => {
         addOutput("output", "<strong>Yaqin Hasan</strong>");
         addOutput("output", "");
-        addOutput("output", `  Email:    <a href="mailto:redacted@example.com" style="color: var(--color-accent);">redacted@example.com</a>`);
+        // Email only shows when contact info is present (see cvData / .env.local).
+        const email = cvData.basics?.email;
+        if (email) {
+          addOutput("output", `  Email:    <a href="mailto:${email}" style="color: var(--color-accent);">${email}</a>`);
+        }
         addOutput("output", `  GitHub:   <a href="https://github.com/yaq1n0" style="color: var(--color-accent);">github.com/yaq1n0</a>`);
         addOutput("output", `  LinkedIn: <a href="https://linkedin.com/in/yaqinhasan" style="color: var(--color-accent);">linkedin.com/in/yaqinhasan</a>`);
         addOutput("output", `  CV: <a href="${CVLink}" style="color: var(--color-accent);">Download CV</a>`);

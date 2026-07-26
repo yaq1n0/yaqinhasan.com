@@ -2,8 +2,11 @@
 node_modules
 /dist
 /build
-# ignore cv.json, it'll be copied from /src/data/cv.json during prebuild 
+# ignore cv.json, it'll be copied from /src/data/cv.json during prebuild
 /public/cv.json
+
+# private CV rendered locally with contact info (npm run render:cv:contact)
+/cv-private.pdf
 
 # local env files
 .env
