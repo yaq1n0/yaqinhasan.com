@@ -38,23 +38,31 @@ export const cvData: CV = {
   ],
   projects: CVProjects,
   skills: [
-    { name: "Languages", keywords: ["C#", "TypeScript", "JavaScript", "Python", "Rust", "Swift", "SQL"] },
-    { name: "Frontend", keywords: ["Vue", "React", "Vite", "Pinia", "SPA Development", "Responsive UI"] },
+    { name: "Languages", keywords: ["Java", "Python", "TypeScript", "C#", "SQL", "Rust", "Swift"] },
+    {
+      name: "AI & Agents",
+      keywords: ["Agentic Systems", "Strands Agents", "LiteLLM", "MCP", "AG-UI", "LLM Tool Calling", "Agent Evals", "LLM Classifiers"]
+    },
     {
       name: "Backend",
-      keywords: [".NET", "Node.js", "FastAPI", "GraphQL", "REST APIs", "Microservices", "OAuth", "Webhooks"]
+      keywords: ["Quarkus", ".NET", "Node.js", "FastAPI", "REST", "GraphQL", "Modular Monoliths", "Distributed Systems"]
     },
     {
-      name: "Data",
-      keywords: ["MongoDB", "PostgreSQL", "Database Design", "Data Synchronisation", "Schema Design"]
+      name: "Data & Storage",
+      keywords: ["PostgreSQL", "Redis", "S3", "MongoDB", "Schema Design", "Data Synchronisation"]
     },
     {
-      name: "Infrastructure & DevOps",
-      keywords: ["Azure", "AWS", "Docker", "GitHub Actions", "CI/CD Pipelines", "Cloud Infrastructure"]
+      name: "Cloud & Infrastructure",
+      keywords: ["AWS", "Kubernetes", "Docker", "Azure", "GitHub Actions", "CI/CD"]
     },
     {
-      name: "Testing & Practices",
-      keywords: ["Vitest", "XUnit", "Playwright", "TDD", "Agile", "Code Review"]
+      name: "Observability",
+      keywords: ["OpenTelemetry", "AWS Kinesis Firehose", "Product Analytics", "Metrics-driven Iteration"]
+    },
+    { name: "Frontend", keywords: ["Vue", "React", "Vite", "Pinia"] },
+    {
+      name: "Practices",
+      keywords: ["Product Engineering", "Hypothesis-driven Development", "TDD", "Vitest", "Playwright", "XUnit", "Code Review"]
     }
   ]
 };
