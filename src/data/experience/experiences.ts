@@ -5,11 +5,28 @@ export const experiences: BaseExperience[] = [
   {
     id: "portswigger",
     company: "PortSwigger",
-    title: "Product Engineer",
-    techStack: [],
+    title: "Product Engineer | Burp AT",
+    techStack: ["Java (Quarkus)", "Python (Strands)", "AWS", "Kubernetes", "PostgreSQL", "LLM Agents"],
     startDate: "June 2026",
     endDate: "Present",
-    highlights: []
+    highlights: [
+      {
+        text: "Reduced user approval friction without compromising safety by driving evals-led, end-to-end delivery of an LLM action classifier that auto-approves safe agent actions.",
+        tags: ["Featured", "AI"]
+      },
+      {
+        text: "Own product features end to end, from data-driven hypotheses through implementation, outcome measurement and iteration.",
+        tags: ["Featured"]
+      },
+      {
+        text: "Steer model, prompt and tooling decisions by building agent evals that measure task completion performance.",
+        tags: ["Featured", "AI"]
+      },
+      {
+        text: "Inform product decisions with usage data by developing data and observability pipelines (OpenTelemetry, AWS Kinesis Firehose) that track key metrics.",
+        tags: ["Infra"]
+      }
+    ]
   },
   {
     id: "cambridge-kinetics",
